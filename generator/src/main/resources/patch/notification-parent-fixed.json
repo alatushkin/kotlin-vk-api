@@ -1,0 +1,24 @@
+{
+  "objects": {
+    "notifications_notification_parent": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/wall_wallpost_to_id"
+        },
+        {
+          "$ref": "#/definitions/photos_photo"
+        },
+        {
+          "$ref": "#/definitions/board_topic"
+        },
+        {
+          "$ref": "#/definitions/video_video"
+        },
+        {
+          "$ref": "#/definitions/notifications_notifications_comment"
+        }
+      ]
+    }
+  }
+}

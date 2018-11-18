@@ -1,0 +1,135 @@
+{
+  "objects": {
+    "wall_wallpost_attachment": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/photos_photo"
+        },
+        {
+          "$ref": "#/definitions/wall_posted_photo"
+        },
+        {
+          "$ref": "#/definitions/audio_audio_full"
+        },
+        {
+          "$ref": "#/definitions/video_video"
+        },
+        {
+          "$ref": "#/definitions/docs_doc"
+        },
+        {
+          "$ref": "#/definitions/base_link"
+        },
+        {
+          "$ref": "#/definitions/wall_graffiti"
+        },
+        {
+          "$ref": "#/definitions/wall_attached_note"
+        },
+        {
+          "$ref": "#/definitions/wall_app_post"
+        },
+        {
+          "$ref": "#/definitions/polls_poll"
+        },
+        {
+          "$ref": "#/definitions/pages_wikipage_full"
+        },
+        {
+          "$ref": "#/definitions/photos_photo_album"
+        },
+        {
+          "properties": {
+            "photos_list": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "String ID of photo"
+              }
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/market_market_album"
+        },
+        {
+          "$ref": "#/definitions/market_market_item"
+        }
+      ]
+    },
+    "wall_comment_attachment": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/photos_photo"
+        },
+        {
+          "$ref": "#/definitions/audio_audio_full"
+        },
+        {
+          "$ref": "#/definitions/video_video"
+        },
+        {
+          "$ref": "#/definitions/docs_doc"
+        },
+        {
+          "$ref": "#/definitions/base_link"
+        },
+        {
+          "$ref": "#/definitions/wall_attached_note"
+        },
+        {
+          "$ref": "#/definitions/pages_wikipage_full"
+        },
+        {
+          "$ref": "#/definitions/market_market_album"
+        },
+        {
+          "$ref": "#/definitions/market_market_item"
+        },
+        {
+          "$ref": "#/definitions/base_sticker"
+        }
+      ]
+    },
+    "messages_message_attachment": {
+      "type": "object",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/photos_photo"
+        },
+        {
+          "$ref": "#/definitions/audio_audio_full"
+        },
+        {
+          "$ref": "#/definitions/video_video"
+        },
+        {
+          "$ref": "#/definitions/docs_doc"
+        },
+        {
+          "$ref": "#/definitions/base_link"
+        },
+        {
+          "$ref": "#/definitions/market_market_item"
+        },
+        {
+          "$ref": "#/definitions/market_market_album"
+        },
+        {
+          "$ref": "#/definitions/gifts_layout"
+        },
+        {
+          "$ref": "#/definitions/base_sticker"
+        },
+        {
+          "$ref": "#/definitions/wall_wallpost_attached"
+        },
+        {
+          "$ref": "#/definitions/wall_wall_comment"
+        }
+      ]
+    }
+  }
+}

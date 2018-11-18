@@ -1,0 +1,100 @@
+{
+  "objects": {
+    "video_video": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Video ID"
+        },
+        "owner_id": {
+          "type": "integer",
+          "description": "Video owner ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Video title"
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Video duration in seconds"
+        },
+        "description": {
+          "type": "string",
+          "description": "Video description"
+        },
+        "date": {
+          "type": "integer",
+          "description": "Date when video has been uploaded in Unixtime"
+        },
+        "views": {
+          "type": "integer",
+          "description": "Number of views"
+        },
+        "comments": {
+          "type": "integer",
+          "description": "Number of comments"
+        },
+        "photo_130": {
+          "type": "string",
+          "description": "URL of the preview image with 130 px in width"
+        },
+        "photo_320": {
+          "type": "string",
+          "description": "URL of the preview image with 320 px in width"
+        },
+        "photo_640": {
+          "type": "string",
+          "description": "URL of the preview image with 320 px in width"
+        },
+        "photo_800": {
+          "type": "string",
+          "description": "URL of the preview image with 800 px in width"
+        },
+        "access_key": {
+          "type": "string",
+          "description": "Video access key"
+        },
+        "adding_date": {
+          "type": "integer",
+          "description": "Date when the video has been added in Unixtime"
+        },
+        "player": {
+          "type": "string",
+          "description": "URL of the page with a player that can be used to play the video in the browser."
+        },
+        "can_edit": {
+          "description": "Information whether current user can edit the video",
+          "$ref": "#/definitions/base_bool_int"
+        },
+        "can_add": {
+          "description": "Information whether current user can add the video",
+          "$ref": "#/definitions/base_bool_int"
+        },
+        "processing": {
+          "description": "Returns if the video is processing",
+          "$ref": "#/definitions/base_property_exists"
+        },
+        "live": {
+          "description": "Returns if the video is live translation",
+          "$ref": "#/definitions/base_property_exists"
+        },
+        "files": {
+          "$ref": "#/definitions/video_video_files"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer",
+          "description": "Video width"
+        },
+        "height": {
+          "type": "integer",
+          "description": "Video height"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

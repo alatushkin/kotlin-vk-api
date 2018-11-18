@@ -1,0 +1,81 @@
+{
+  "objects": {
+    "docs_doc": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Document ID",
+          "minimum": 0
+        },
+        "owner_id": {
+          "type": "integer",
+          "description": "Document owner ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Document title"
+        },
+        "size": {
+          "type": "integer",
+          "description": "File size in bites",
+          "minimum": 0
+        },
+        "ext": {
+          "type": "string",
+          "description": "File extension"
+        },
+        "url": {
+          "type": "string",
+          "description": "File URL"
+        },
+        "date": {
+          "type": "integer",
+          "description": "Date when file has been uploaded in Unixtime",
+          "minimum": 0
+        },
+        "type": {
+          "type": "integer",
+          "description": "Doc type",
+          "enum": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "enumNames": [
+            "text",
+            "arch",
+            "gif",
+            "image",
+            "audio",
+            "video",
+            "ebook",
+            "unknown"
+          ]
+        },
+        "preview": {
+          "$ref": "#/definitions/docs_doc_preview"
+        },
+        "access_key": {
+          "type": "string",
+          "description": "Access key for the document"
+        }
+      },
+      "required": [
+        "id",
+        "owner_id",
+        "title",
+        "size",
+        "ext",
+        "date",
+        "type"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

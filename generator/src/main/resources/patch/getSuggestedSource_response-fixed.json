@@ -1,0 +1,32 @@
+{
+  "responses": {
+    "newsfeed_getSuggestedSources_response": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "description": "Total number"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "objects.json#/definitions/groups_group_full"
+                  },
+                  {
+                    "$ref": "objects.json#/definitions/users_user_xtr_type"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

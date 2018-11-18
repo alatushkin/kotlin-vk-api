@@ -1,0 +1,62 @@
+{
+  "objects": {
+    "base_link": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "external",
+            "other"
+          ]
+        },
+        "is_external": {
+          "$ref": "#/definitions/base_bool_int"
+        },
+        "url": {
+          "type": "string",
+          "description": "Link URL"
+        },
+        "title": {
+          "type": "string",
+          "description": "Link title"
+        },
+        "caption": {
+          "type": "string",
+          "description": "Link caption"
+        },
+        "description": {
+          "type": "string",
+          "description": "Link description"
+        },
+        "photo": {
+          "$ref": "#/definitions/photos_photo"
+        },
+        "preview_url": {
+          "type": "string",
+          "description": "URL of the page with article preview"
+        },
+        "preview_page": {
+          "type": "string",
+          "description": "String ID of the page with article preview"
+        },
+        "button": {
+          "$ref": "#/definitions/base_link_button"
+        },
+        "product": {
+          "$ref": "#/definitions/base_link_product"
+        },
+        "rating": {
+          "$ref": "#/definitions/base_link_rating"
+        },
+        "application": {
+          "$ref": "#/definitions/base_link_application"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

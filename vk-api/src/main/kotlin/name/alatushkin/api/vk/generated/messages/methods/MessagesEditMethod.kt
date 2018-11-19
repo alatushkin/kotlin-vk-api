@@ -24,8 +24,8 @@ class MessagesEditMethod() : VkMethod<Boolean>(
 
     var peerId: Long? by props
     var message: String? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var attachment: Array<String>? by props
     var keepForwardMessages: Boolean? by props
     var keepSnippets: Boolean? by props
@@ -34,8 +34,8 @@ class MessagesEditMethod() : VkMethod<Boolean>(
     constructor(
         peerId: Long? = null,
         message: String? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         attachment: Array<String>? = null,
         keepForwardMessages: Boolean? = null,
         keepSnippets: Boolean? = null,
@@ -61,12 +61,12 @@ class MessagesEditMethod() : VkMethod<Boolean>(
         return this
     }
 
-    fun setLat(lat: Long): MessagesEditMethod {
+    fun setLat(lat: Double): MessagesEditMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): MessagesEditMethod {
+    fun setLong(long: Double): MessagesEditMethod {
         this.long = long
         return this
     }

@@ -24,19 +24,19 @@ class PhotosPutTagMethod() : VkMethod<Long>(
     var ownerId: Long? by props
     var photoId: Long? by props
     var userId: Long? by props
-    var x: Long? by props
-    var y: Long? by props
-    var x2: Long? by props
-    var y2: Long? by props
+    var x: Double? by props
+    var y: Double? by props
+    var x2: Double? by props
+    var y2: Double? by props
 
     constructor(
         ownerId: Long? = null,
         photoId: Long? = null,
         userId: Long? = null,
-        x: Long? = null,
-        y: Long? = null,
-        x2: Long? = null,
-        y2: Long? = null
+        x: Double? = null,
+        y: Double? = null,
+        x2: Double? = null,
+        y2: Double? = null
     ) : this() {
         this.ownerId = ownerId
         this.photoId = photoId
@@ -62,22 +62,22 @@ class PhotosPutTagMethod() : VkMethod<Long>(
         return this
     }
 
-    fun setX(x: Long): PhotosPutTagMethod {
+    fun setX(x: Double): PhotosPutTagMethod {
         this.x = x
         return this
     }
 
-    fun setY(y: Long): PhotosPutTagMethod {
+    fun setY(y: Double): PhotosPutTagMethod {
         this.y = y
         return this
     }
 
-    fun setX2(x2: Long): PhotosPutTagMethod {
+    fun setX2(x2: Double): PhotosPutTagMethod {
         this.x2 = x2
         return this
     }
 
-    fun setY2(y2: Long): PhotosPutTagMethod {
+    fun setY2(y2: Double): PhotosPutTagMethod {
         this.y2 = y2
         return this
     }

@@ -19,8 +19,8 @@ open class PhotoXtrRealOffset(
     val height: Long? = null,
     val text: String? = null,
     val date: VkDate,
-    val lat: Long? = null,
-    val long: Long? = null,
+    val lat: Double? = null,
+    val long: Double? = null,
     val accessKey: String? = null,
     val hidden: Boolean? = null,
     val realOffset: Long? = null

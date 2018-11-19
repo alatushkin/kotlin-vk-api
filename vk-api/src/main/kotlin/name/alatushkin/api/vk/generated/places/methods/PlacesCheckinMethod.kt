@@ -23,16 +23,16 @@ class PlacesCheckinMethod() : VkMethod<CheckinResponse>(
 
     var placeId: Long? by props
     var text: String? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var friendsOnly: Boolean? by props
     var services: Array<String>? by props
 
     constructor(
         placeId: Long? = null,
         text: String? = null,
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         friendsOnly: Boolean? = null,
         services: Array<String>? = null
     ) : this() {
@@ -54,12 +54,12 @@ class PlacesCheckinMethod() : VkMethod<CheckinResponse>(
         return this
     }
 
-    fun setLatitude(latitude: Long): PlacesCheckinMethod {
+    fun setLatitude(latitude: Double): PlacesCheckinMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): PlacesCheckinMethod {
+    fun setLongitude(longitude: Double): PlacesCheckinMethod {
         this.longitude = longitude
         return this
     }

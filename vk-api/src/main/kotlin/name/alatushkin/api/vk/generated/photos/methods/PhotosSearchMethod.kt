@@ -26,8 +26,8 @@ class PhotosSearchMethod() : VkMethod<VkList<Photo>>(
 ) {
 
     var q: String? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var startTime: Long? by props
     var endTime: Long? by props
     var sort: Long? by props
@@ -37,8 +37,8 @@ class PhotosSearchMethod() : VkMethod<VkList<Photo>>(
 
     constructor(
         q: String? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         startTime: Long? = null,
         endTime: Long? = null,
         sort: Long? = null,
@@ -62,12 +62,12 @@ class PhotosSearchMethod() : VkMethod<VkList<Photo>>(
         return this
     }
 
-    fun setLat(lat: Long): PhotosSearchMethod {
+    fun setLat(lat: Double): PhotosSearchMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): PhotosSearchMethod {
+    fun setLong(long: Double): PhotosSearchMethod {
         this.long = long
         return this
     }

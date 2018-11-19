@@ -30,8 +30,8 @@ class WallEditAdsStealthMethod() : VkMethod<Boolean>(
     var message: String? by props
     var attachments: Array<String>? by props
     var signed: Boolean? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var placeId: Long? by props
     var linkButton: String? by props
     var linkTitle: String? by props
@@ -43,8 +43,8 @@ class WallEditAdsStealthMethod() : VkMethod<Boolean>(
         message: String? = null,
         attachments: Array<String>? = null,
         signed: Boolean? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         placeId: Long? = null,
         linkButton: String? = null,
         linkTitle: String? = null,
@@ -88,12 +88,12 @@ class WallEditAdsStealthMethod() : VkMethod<Boolean>(
         return this
     }
 
-    fun setLat(lat: Long): WallEditAdsStealthMethod {
+    fun setLat(lat: Double): WallEditAdsStealthMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): WallEditAdsStealthMethod {
+    fun setLong(long: Double): WallEditAdsStealthMethod {
         this.long = long
         return this
     }

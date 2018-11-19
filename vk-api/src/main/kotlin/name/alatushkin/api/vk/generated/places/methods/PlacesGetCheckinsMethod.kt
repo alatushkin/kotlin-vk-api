@@ -25,8 +25,8 @@ class PlacesGetCheckinsMethod() : VkMethod<VkList<Checkin>>(
     HashMap()
 ) {
 
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var place: Long? by props
     var userId: Long? by props
     var offset: Long? by props
@@ -36,8 +36,8 @@ class PlacesGetCheckinsMethod() : VkMethod<VkList<Checkin>>(
     var needPlaces: Boolean? by props
 
     constructor(
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         place: Long? = null,
         userId: Long? = null,
         offset: Long? = null,
@@ -57,12 +57,12 @@ class PlacesGetCheckinsMethod() : VkMethod<VkList<Checkin>>(
         this.needPlaces = needPlaces
     }
 
-    fun setLatitude(latitude: Long): PlacesGetCheckinsMethod {
+    fun setLatitude(latitude: Double): PlacesGetCheckinsMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): PlacesGetCheckinsMethod {
+    fun setLongitude(longitude: Double): PlacesGetCheckinsMethod {
         this.longitude = longitude
         return this
     }

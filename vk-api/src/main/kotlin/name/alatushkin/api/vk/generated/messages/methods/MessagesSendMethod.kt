@@ -37,8 +37,8 @@ class MessagesSendMethod() : VkMethod<Long>(
     var chatId: Long? by props
     var userIds: Array<Long>? by props
     var message: String? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var attachment: Array<String>? by props
     var forwardMessages: String? by props
     var stickerId: Long? by props
@@ -54,8 +54,8 @@ class MessagesSendMethod() : VkMethod<Long>(
         chatId: Long? = null,
         userIds: Array<Long>? = null,
         message: String? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         attachment: Array<String>? = null,
         forwardMessages: String? = null,
         stickerId: Long? = null,
@@ -115,12 +115,12 @@ class MessagesSendMethod() : VkMethod<Long>(
         return this
     }
 
-    fun setLat(lat: Long): MessagesSendMethod {
+    fun setLat(lat: Double): MessagesSendMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): MessagesSendMethod {
+    fun setLong(long: Double): MessagesSendMethod {
         this.long = long
         return this
     }

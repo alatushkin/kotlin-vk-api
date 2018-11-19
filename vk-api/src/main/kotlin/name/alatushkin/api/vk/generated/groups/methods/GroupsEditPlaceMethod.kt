@@ -27,8 +27,8 @@ class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
     var address: String? by props
     var countryId: Long? by props
     var cityId: Long? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
 
     constructor(
         groupId: Long? = null,
@@ -36,8 +36,8 @@ class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
         address: String? = null,
         countryId: Long? = null,
         cityId: Long? = null,
-        latitude: Long? = null,
-        longitude: Long? = null
+        latitude: Double? = null,
+        longitude: Double? = null
     ) : this() {
         this.groupId = groupId
         this.title = title
@@ -73,12 +73,12 @@ class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
         return this
     }
 
-    fun setLatitude(latitude: Long): GroupsEditPlaceMethod {
+    fun setLatitude(latitude: Double): GroupsEditPlaceMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): GroupsEditPlaceMethod {
+    fun setLongitude(longitude: Double): GroupsEditPlaceMethod {
         this.longitude = longitude
         return this
     }

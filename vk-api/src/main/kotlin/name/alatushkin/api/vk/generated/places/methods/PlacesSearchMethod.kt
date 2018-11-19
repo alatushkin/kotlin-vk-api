@@ -26,8 +26,8 @@ class PlacesSearchMethod() : VkMethod<VkList<PlaceFull>>(
 
     var q: String? by props
     var city: Long? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var radius: SearchRadius? by props
     var offset: Long? by props
     var count: Long? by props
@@ -35,8 +35,8 @@ class PlacesSearchMethod() : VkMethod<VkList<PlaceFull>>(
     constructor(
         q: String? = null,
         city: Long? = null,
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         radius: SearchRadius? = null,
         offset: Long? = null,
         count: Long? = null
@@ -60,12 +60,12 @@ class PlacesSearchMethod() : VkMethod<VkList<PlaceFull>>(
         return this
     }
 
-    fun setLatitude(latitude: Long): PlacesSearchMethod {
+    fun setLatitude(latitude: Double): PlacesSearchMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): PlacesSearchMethod {
+    fun setLongitude(longitude: Double): PlacesSearchMethod {
         this.longitude = longitude
         return this
     }

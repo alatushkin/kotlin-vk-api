@@ -28,7 +28,7 @@ class MarketEditMethod() : VkMethod<Boolean>(
     var name: String? by props
     var description: String? by props
     var categoryId: Long? by props
-    var price: Long? by props
+    var price: Double? by props
     var deleted: Boolean? by props
     var mainPhotoId: Long? by props
     var photoIds: Array<Long>? by props
@@ -39,7 +39,7 @@ class MarketEditMethod() : VkMethod<Boolean>(
         name: String? = null,
         description: String? = null,
         categoryId: Long? = null,
-        price: Long? = null,
+        price: Double? = null,
         deleted: Boolean? = null,
         mainPhotoId: Long? = null,
         photoIds: Array<Long>? = null
@@ -80,7 +80,7 @@ class MarketEditMethod() : VkMethod<Boolean>(
         return this
     }
 
-    fun setPrice(price: Long): MarketEditMethod {
+    fun setPrice(price: Double): MarketEditMethod {
         this.price = price
         return this
     }

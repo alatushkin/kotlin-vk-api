@@ -27,7 +27,7 @@ class MarketAddMethod() : VkMethod<AddResponse>(
     var name: String? by props
     var description: String? by props
     var categoryId: Long? by props
-    var price: Long? by props
+    var price: Double? by props
     var deleted: Boolean? by props
     var mainPhotoId: Long? by props
     var photoIds: Array<Long>? by props
@@ -37,7 +37,7 @@ class MarketAddMethod() : VkMethod<AddResponse>(
         name: String? = null,
         description: String? = null,
         categoryId: Long? = null,
-        price: Long? = null,
+        price: Double? = null,
         deleted: Boolean? = null,
         mainPhotoId: Long? = null,
         photoIds: Array<Long>? = null
@@ -72,7 +72,7 @@ class MarketAddMethod() : VkMethod<AddResponse>(
         return this
     }
 
-    fun setPrice(price: Long): MarketAddMethod {
+    fun setPrice(price: Double): MarketAddMethod {
         this.price = price
         return this
     }

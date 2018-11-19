@@ -8,9 +8,9 @@ open class PhotoTag(
     val placerId: Long,
     val taggedName: String,
     val date: VkDate,
-    val x: Long,
-    val y: Long,
-    val x2: Long,
-    val y2: Long,
+    val x: Double,
+    val y: Double,
+    val x2: Double,
+    val y2: Double,
     val viewed: Boolean
 )

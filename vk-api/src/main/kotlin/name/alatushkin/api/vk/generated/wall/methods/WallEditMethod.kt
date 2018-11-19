@@ -34,8 +34,8 @@ class WallEditMethod() : VkMethod<Boolean>(
     var services: String? by props
     var signed: Boolean? by props
     var publishDate: Long? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var placeId: Long? by props
     var markAsAds: Boolean? by props
 
@@ -48,8 +48,8 @@ class WallEditMethod() : VkMethod<Boolean>(
         services: String? = null,
         signed: Boolean? = null,
         publishDate: Long? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         placeId: Long? = null,
         markAsAds: Boolean? = null
     ) : this() {
@@ -107,12 +107,12 @@ class WallEditMethod() : VkMethod<Boolean>(
         return this
     }
 
-    fun setLat(lat: Long): WallEditMethod {
+    fun setLat(lat: Double): WallEditMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): WallEditMethod {
+    fun setLong(long: Double): WallEditMethod {
         this.long = long
         return this
     }

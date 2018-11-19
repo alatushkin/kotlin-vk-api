@@ -37,8 +37,8 @@ class WallPostMethod() : VkMethod<PostResponse>(
     var services: String? by props
     var signed: Boolean? by props
     var publishDate: Long? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var placeId: Long? by props
     var postId: Long? by props
     var guid: String? by props
@@ -53,8 +53,8 @@ class WallPostMethod() : VkMethod<PostResponse>(
         services: String? = null,
         signed: Boolean? = null,
         publishDate: Long? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         placeId: Long? = null,
         postId: Long? = null,
         guid: String? = null,
@@ -116,12 +116,12 @@ class WallPostMethod() : VkMethod<PostResponse>(
         return this
     }
 
-    fun setLat(lat: Long): WallPostMethod {
+    fun setLat(lat: Double): WallPostMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): WallPostMethod {
+    fun setLong(long: Double): WallPostMethod {
         this.long = long
         return this
     }

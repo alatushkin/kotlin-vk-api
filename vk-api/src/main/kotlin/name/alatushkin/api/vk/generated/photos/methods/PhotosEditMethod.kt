@@ -25,8 +25,8 @@ class PhotosEditMethod() : VkMethod<Boolean>(
     var ownerId: Long? by props
     var photoId: Long? by props
     var caption: String? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var placeStr: String? by props
     var foursquareId: String? by props
     var deletePlace: Boolean? by props
@@ -35,8 +35,8 @@ class PhotosEditMethod() : VkMethod<Boolean>(
         ownerId: Long? = null,
         photoId: Long? = null,
         caption: String? = null,
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         placeStr: String? = null,
         foursquareId: String? = null,
         deletePlace: Boolean? = null
@@ -66,12 +66,12 @@ class PhotosEditMethod() : VkMethod<Boolean>(
         return this
     }
 
-    fun setLatitude(latitude: Long): PhotosEditMethod {
+    fun setLatitude(latitude: Double): PhotosEditMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): PhotosEditMethod {
+    fun setLongitude(longitude: Double): PhotosEditMethod {
         this.longitude = longitude
         return this
     }

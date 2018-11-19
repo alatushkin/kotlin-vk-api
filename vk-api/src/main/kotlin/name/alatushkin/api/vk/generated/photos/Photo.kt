@@ -20,7 +20,7 @@ interface Photo : WallpostAttachment,
     val height: Long?
     val text: String?
     val date: VkDate
-    val lat: Long?
-    val long: Long?
+    val lat: Double?
+    val long: Double?
     val accessKey: String?
 }

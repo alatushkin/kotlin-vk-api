@@ -28,8 +28,8 @@ class PhotosSaveMethod() : VkMethod<Array<Photo>>(
     var server: Long? by props
     var photosList: String? by props
     var hash: String? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var caption: String? by props
 
     constructor(
@@ -38,8 +38,8 @@ class PhotosSaveMethod() : VkMethod<Array<Photo>>(
         server: Long? = null,
         photosList: String? = null,
         hash: String? = null,
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         caption: String? = null
     ) : this() {
         this.albumId = albumId
@@ -77,12 +77,12 @@ class PhotosSaveMethod() : VkMethod<Array<Photo>>(
         return this
     }
 
-    fun setLatitude(latitude: Long): PhotosSaveMethod {
+    fun setLatitude(latitude: Double): PhotosSaveMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): PhotosSaveMethod {
+    fun setLongitude(longitude: Double): PhotosSaveMethod {
         this.longitude = longitude
         return this
     }

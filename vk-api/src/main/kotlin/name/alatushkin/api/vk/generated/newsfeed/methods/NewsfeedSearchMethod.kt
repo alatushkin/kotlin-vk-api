@@ -25,8 +25,8 @@ class NewsfeedSearchMethod() : VkMethod<SearchResponse>(
 
     var q: String? by props
     var count: Long? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var startTime: Long? by props
     var endTime: Long? by props
     var startFrom: String? by props
@@ -35,8 +35,8 @@ class NewsfeedSearchMethod() : VkMethod<SearchResponse>(
     constructor(
         q: String? = null,
         count: Long? = null,
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         startTime: Long? = null,
         endTime: Long? = null,
         startFrom: String? = null,
@@ -62,12 +62,12 @@ class NewsfeedSearchMethod() : VkMethod<SearchResponse>(
         return this
     }
 
-    fun setLatitude(latitude: Long): NewsfeedSearchMethod {
+    fun setLatitude(latitude: Double): NewsfeedSearchMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): NewsfeedSearchMethod {
+    fun setLongitude(longitude: Double): NewsfeedSearchMethod {
         this.longitude = longitude
         return this
     }

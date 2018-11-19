@@ -24,8 +24,8 @@ class PlacesAddMethod() : VkMethod<AddResponse>(
 
     var type: Long? by props
     var title: String? by props
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var country: Long? by props
     var city: Long? by props
     var address: String? by props
@@ -33,8 +33,8 @@ class PlacesAddMethod() : VkMethod<AddResponse>(
     constructor(
         type: Long? = null,
         title: String? = null,
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         country: Long? = null,
         city: Long? = null,
         address: String? = null
@@ -58,12 +58,12 @@ class PlacesAddMethod() : VkMethod<AddResponse>(
         return this
     }
 
-    fun setLatitude(latitude: Long): PlacesAddMethod {
+    fun setLatitude(latitude: Double): PlacesAddMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): PlacesAddMethod {
+    fun setLongitude(longitude: Double): PlacesAddMethod {
         this.longitude = longitude
         return this
     }

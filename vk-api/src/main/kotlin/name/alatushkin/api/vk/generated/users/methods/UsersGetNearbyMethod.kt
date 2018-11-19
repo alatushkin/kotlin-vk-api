@@ -25,8 +25,8 @@ class UsersGetNearbyMethod() : VkMethod<VkList<UserFull>>(
     HashMap()
 ) {
 
-    var latitude: Long? by props
-    var longitude: Long? by props
+    var latitude: Double? by props
+    var longitude: Double? by props
     var accuracy: Long? by props
     var timeout: Long? by props
     var radius: GetNearbyRadius? by props
@@ -34,8 +34,8 @@ class UsersGetNearbyMethod() : VkMethod<VkList<UserFull>>(
     var nameCase: NameCase? by props
 
     constructor(
-        latitude: Long? = null,
-        longitude: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
         accuracy: Long? = null,
         timeout: Long? = null,
         radius: GetNearbyRadius? = null,
@@ -51,12 +51,12 @@ class UsersGetNearbyMethod() : VkMethod<VkList<UserFull>>(
         this.nameCase = nameCase
     }
 
-    fun setLatitude(latitude: Long): UsersGetNearbyMethod {
+    fun setLatitude(latitude: Double): UsersGetNearbyMethod {
         this.latitude = latitude
         return this
     }
 
-    fun setLongitude(longitude: Long): UsersGetNearbyMethod {
+    fun setLongitude(longitude: Double): UsersGetNearbyMethod {
         this.longitude = longitude
         return this
     }

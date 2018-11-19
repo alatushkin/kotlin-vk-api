@@ -31,8 +31,8 @@ class WallPostAdsStealthMethod() : VkMethod<PostAdsStealthResponse>(
     var message: String? by props
     var attachments: Array<String>? by props
     var signed: Boolean? by props
-    var lat: Long? by props
-    var long: Long? by props
+    var lat: Double? by props
+    var long: Double? by props
     var placeId: Long? by props
     var postId: Long? by props
     var guid: String? by props
@@ -45,8 +45,8 @@ class WallPostAdsStealthMethod() : VkMethod<PostAdsStealthResponse>(
         message: String? = null,
         attachments: Array<String>? = null,
         signed: Boolean? = null,
-        lat: Long? = null,
-        long: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
         placeId: Long? = null,
         postId: Long? = null,
         guid: String? = null,
@@ -88,12 +88,12 @@ class WallPostAdsStealthMethod() : VkMethod<PostAdsStealthResponse>(
         return this
     }
 
-    fun setLat(lat: Long): WallPostAdsStealthMethod {
+    fun setLat(lat: Double): WallPostAdsStealthMethod {
         this.lat = lat
         return this
     }
 
-    fun setLong(long: Long): WallPostAdsStealthMethod {
+    fun setLong(long: Double): WallPostAdsStealthMethod {
         this.long = long
         return this
     }

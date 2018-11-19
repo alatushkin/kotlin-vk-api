@@ -2,6 +2,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
+import name.alatushkin.api.vk.api.VkDate
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.friends.RequestsXtrMessage
@@ -24,14 +25,14 @@ class FriendsGetRequestsMethodExtended() : VkMethod<VkList<RequestsXtrMessage>>(
     var offset: Long? by props
     var count: Long? by props
     var out: Boolean? by props
-    var sort: String? by props
+    var sort: VkDate? by props
     var suggested: Boolean? by props
 
     constructor(
         offset: Long? = null,
         count: Long? = null,
         out: Boolean? = null,
-        sort: String? = null,
+        sort: VkDate? = null,
         suggested: Boolean? = null
     ) : this() {
         this.offset = offset
@@ -56,7 +57,7 @@ class FriendsGetRequestsMethodExtended() : VkMethod<VkList<RequestsXtrMessage>>(
         return this
     }
 
-    fun setSort(sort: String): FriendsGetRequestsMethodExtended {
+    fun setSort(sort: VkDate): FriendsGetRequestsMethodExtended {
         this.sort = sort
         return this
     }

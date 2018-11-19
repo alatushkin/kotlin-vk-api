@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.ads
 
 
 open class StatsSexAge(
-    val impressionsRate: Long? = null,
-    val clicksRate: Long? = null,
+    val impressionsRate: Double? = null,
+    val clicksRate: Double? = null,
     val value: String? = null
 )

@@ -21,7 +21,7 @@ open class NewsfeedPhoto(
     override val height: Long? = null,
     override val text: String? = null,
     override val date: VkDate,
-    override val lat: Long? = null,
-    override val long: Long? = null,
+    override val lat: Double? = null,
+    override val long: Double? = null,
     override val accessKey: String? = null
 ) : Photo

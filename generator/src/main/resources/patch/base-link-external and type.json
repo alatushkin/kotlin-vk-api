@@ -6,6 +6,7 @@
         "target": {
           "type": "string",
           "enum": [
+            "internal",
             "external",
             "other"
           ]

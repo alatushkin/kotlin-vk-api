@@ -416,7 +416,7 @@ class SourceGenerator {
         typesSpace.registerPremitiveType("integer", "Long")
         typesSpace.registerPremitiveType("string", "String")
         typesSpace.registerPremitiveType("boolean", "Boolean")
-        typesSpace.registerPremitiveType("number", "Long")
+        typesSpace.registerPremitiveType("number", "Double")
         typesSpace.registerPredefined("name.alatushkin.api.vk.api.VkDate")
         typesSpace.registerPredefined("name.alatushkin.api.vk.VkMethod")
         typesSpace.registerPredefined("name.alatushkin.api.vk.api.VkList")

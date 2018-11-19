@@ -16,9 +16,9 @@ import name.alatushkin.api.vk.generated.video.SaveResult
  *  @property [link] URL for embedding the video from an external website.
  *  @property [group_id] ID of the community in which the video will be saved. By default, the current user's page.
  *  @property [album_id] ID of the album to which the saved video will be added.
- *  @property [privacy_view] null
- *  @property [privacy_comment] null
- *  @property [no_comments] null
+ *  @property [privacy_view]
+ *  @property [privacy_comment]
+ *  @property [no_comments]
  *  @property [repeat] '1' — to repeat the playback of the video, '0' — to play the video once,
  */
 class VideoSaveMethod() : VkMethod<SaveResult>(

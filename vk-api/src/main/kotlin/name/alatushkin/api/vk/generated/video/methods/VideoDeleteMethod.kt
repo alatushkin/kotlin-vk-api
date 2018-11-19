@@ -10,7 +10,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  [https://vk.com/dev/video.delete]
  *  @property [video_id] Video ID.
  *  @property [owner_id] ID of the user or community that owns the video.
- *  @property [target_id] null
+ *  @property [target_id]
  */
 class VideoDeleteMethod() : VkMethod<Boolean>(
     "video.delete",

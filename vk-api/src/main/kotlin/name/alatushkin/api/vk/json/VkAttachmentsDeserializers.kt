@@ -29,7 +29,7 @@ abstract class AbstractVkAttachmentsDeserializer<T>(
         val c = p!!.codec
         val root: JsonNode = p.readValueAsTree()
         val typeValue = root["type"].asText()
-        return c.treeToValue(root[typeValue], typeMap.getOrElse(typeValue, error("Unknown $typeValue")))
+        return c.treeToValue(root[typeValue], typeMap.getOrElse(typeValue) { error("Unknown $typeValue") })
     }
 }
 

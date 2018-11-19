@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class AdStatus(@JsonValue val jsonValue: String) {
-    STOPPED("0"), STARTED("1"), DELETED("2");
+    STOPPED("0"), STARTED("1");
 
     override fun toString() = jsonValue
 

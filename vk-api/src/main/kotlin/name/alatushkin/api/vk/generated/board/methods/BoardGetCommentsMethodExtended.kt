@@ -14,7 +14,7 @@ import name.alatushkin.api.vk.generated.common.Sort
  *  @property [group_id] ID of the community that owns the discussion board.
  *  @property [topic_id] Topic ID.
  *  @property [need_likes] '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
- *  @property [start_comment_id] null
+ *  @property [start_comment_id]
  *  @property [offset] Offset needed to return a specific subset of comments.
  *  @property [count] Number of comments to return.
  *  @property [sort] Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,

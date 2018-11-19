@@ -56,7 +56,7 @@ data class ObjectType(val props: List<Prop>, val kind: Kind = Kind.CLASS, val pa
             )
         }
 
-        val parentTypes = parents.joinToString(",\n") { arg ->
+        val parentTypes = parents.joinToString(",\n    ") { arg ->
             sourceWriter.parentType(arg)
         }
 
@@ -78,7 +78,7 @@ data class ObjectType(val props: List<Prop>, val kind: Kind = Kind.CLASS, val pa
         if (kind == Kind.INTERFACE) {
             if (parents.isNotEmpty())
                 builder.append(" : ").append(parentTypes)
-            builder.append("{\n")
+            builder.append(" {\n")
         } else {
             builder.append("(\n")
         }

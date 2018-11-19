@@ -14,7 +14,7 @@ import name.alatushkin.api.vk.generated.auth.SignupSex
  *  @property [last_name] User's surname.
  *  @property [birthday] User's birthday.
  *  @property [client_id] Your application ID.
- *  @property [client_secret] null
+ *  @property [client_secret]
  *  @property [phone] User's phone number. Can be pre-checked with the [vk.com/dev/auth.checkPhone|auth.checkPhone] method.
  *  @property [password] User's password (minimum of 6 characters). Can be specified later with the [vk.com/dev/auth.confirm|auth.confirm] method.
  *  @property [test_mode] '1' — test mode, in which the user will not be registered and the phone number will not be checked for availability, '0' — default mode (default)

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class EditAgeLimits(@JsonValue val jsonValue: String) {
-    UNLIMITED("1"), PLUS_16("2"), PLUS_18("3");
+    UNLIMITED("1"), PLUS_16("2");
 
     override fun toString() = jsonValue
 

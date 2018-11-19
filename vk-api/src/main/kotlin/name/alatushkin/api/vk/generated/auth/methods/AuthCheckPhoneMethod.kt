@@ -10,8 +10,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  [https://vk.com/dev/auth.checkPhone]
  *  @property [phone] Phone number.
  *  @property [client_id] User ID.
- *  @property [client_secret] null
- *  @property [auth_by_phone] null
+ *  @property [client_secret]
+ *  @property [auth_by_phone]
  */
 class AuthCheckPhoneMethod() : VkMethod<Boolean>(
     "auth.checkPhone",

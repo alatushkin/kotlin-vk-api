@@ -9,10 +9,10 @@ import name.alatushkin.api.vk.generated.widgets.GetPagesResponse
  *  Gets a list of application/site pages where the [vk.com/dev/Comments|Comments widget] or [vk.com/dev/Like|Like widget] is installed.
  *
  *  [https://vk.com/dev/widgets.getPages]
- *  @property [widget_api_id] null
- *  @property [order] null
- *  @property [period] null
- *  @property [count] null
+ *  @property [widget_api_id]
+ *  @property [order]
+ *  @property [period]
+ *  @property [count]
  */
 class WidgetsGetPagesMethod() : VkMethod<GetPagesResponse>(
     "widgets.getPages",

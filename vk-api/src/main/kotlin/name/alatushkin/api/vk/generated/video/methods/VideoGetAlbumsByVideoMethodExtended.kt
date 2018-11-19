@@ -10,9 +10,9 @@ import name.alatushkin.api.vk.generated.video.VideoAlbumFull
  *  null
  *
  *  [https://vk.com/dev/video.getAlbumsByVideo]
- *  @property [target_id] null
- *  @property [owner_id] null
- *  @property [video_id] null
+ *  @property [target_id]
+ *  @property [owner_id]
+ *  @property [video_id]
  */
 class VideoGetAlbumsByVideoMethodExtended() : VkMethod<VkList<VideoAlbumFull>>(
     "video.getAlbumsByVideo",

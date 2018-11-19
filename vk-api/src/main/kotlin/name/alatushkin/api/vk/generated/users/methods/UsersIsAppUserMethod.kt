@@ -8,7 +8,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Returns information whether a user installed the application.
  *
  *  [https://vk.com/dev/users.isAppUser]
- *  @property [user_id] null
+ *  @property [user_id]
  */
 class UsersIsAppUserMethod() : VkMethod<Boolean>(
     "users.isAppUser",

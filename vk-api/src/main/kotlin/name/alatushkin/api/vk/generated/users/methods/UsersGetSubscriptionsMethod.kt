@@ -12,7 +12,7 @@ import name.alatushkin.api.vk.generated.users.GetSubscriptionsResponse
  *  @property [user_id] User ID.
  *  @property [offset] Offset needed to return a specific subset of subscriptions.
  *  @property [count] Number of users and communities to return.
- *  @property [fields] null
+ *  @property [fields]
  */
 class UsersGetSubscriptionsMethod() : VkMethod<GetSubscriptionsResponse>(
     "users.getSubscriptions",

@@ -8,8 +8,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Sets user game level in the application which can be seen by his/her friends.
  *
  *  [https://vk.com/dev/secure.setUserLevel]
- *  @property [levels] null
- *  @property [user_id] null
+ *  @property [levels]
+ *  @property [user_id]
  *  @property [level] level value.
  */
 class SecureSetUserLevelMethod() : VkMethod<Boolean>(

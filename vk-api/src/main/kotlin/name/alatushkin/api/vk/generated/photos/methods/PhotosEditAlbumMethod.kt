@@ -12,10 +12,10 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [title] New album title.
  *  @property [description] New album description.
  *  @property [owner_id] ID of the user or community that owns the album.
- *  @property [privacy_view] null
- *  @property [privacy_comment] null
- *  @property [upload_by_admins_only] null
- *  @property [comments_disabled] null
+ *  @property [privacy_view]
+ *  @property [privacy_comment]
+ *  @property [upload_by_admins_only]
+ *  @property [comments_disabled]
  */
 class PhotosEditAlbumMethod() : VkMethod<Boolean>(
     "photos.editAlbum",

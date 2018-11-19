@@ -52,7 +52,10 @@ class MethodExecutorImpl(
 
 
     override suspend fun <T> invoke(method: VkMethod<T>): VkResponse<T> {
-        val params = method.props.mapKeys { restorePropNames(it) }.entries.map {
+        val params = method.props
+            .filterValues { it != null }
+            .mapKeys { restorePropNames(it) }
+            .entries.map {
             Pair(
                 caseConvert(it.key),
                 toStringRequestValue(it.value)

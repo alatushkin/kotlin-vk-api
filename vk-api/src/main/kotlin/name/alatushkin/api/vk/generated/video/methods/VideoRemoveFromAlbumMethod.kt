@@ -8,11 +8,11 @@ import name.alatushkin.api.vk.api.VkResponse
  *  null
  *
  *  [https://vk.com/dev/video.removeFromAlbum]
- *  @property [target_id] null
- *  @property [album_id] null
- *  @property [album_ids] null
- *  @property [owner_id] null
- *  @property [video_id] null
+ *  @property [target_id]
+ *  @property [album_id]
+ *  @property [album_ids]
+ *  @property [owner_id]
+ *  @property [video_id]
  */
 class VideoRemoveFromAlbumMethod() : VkMethod<Boolean>(
     "video.removeFromAlbum",

@@ -11,8 +11,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [note_id] Note ID.
  *  @property [title] Note title.
  *  @property [text] Note text.
- *  @property [privacy_view] null
- *  @property [privacy_comment] null
+ *  @property [privacy_view]
+ *  @property [privacy_comment]
  */
 class NotesEditMethod() : VkMethod<Boolean>(
     "notes.edit",

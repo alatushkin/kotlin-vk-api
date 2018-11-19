@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class DomainResolvedType(@JsonValue val jsonValue: String) {
-    USER("user"), GROUP("group"), APPLICATION("application"), PAGE("page");
+    USER("user"), GROUP("group"), APPLICATION("application"),
+    PAGE("page");
 
     override fun toString() = jsonValue
 

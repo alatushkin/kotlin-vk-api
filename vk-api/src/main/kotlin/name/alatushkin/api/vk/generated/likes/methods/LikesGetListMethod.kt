@@ -19,7 +19,7 @@ import name.alatushkin.api.vk.generated.likes.GetListType
  *  @property [friends_only] Specifies which users are returned: '1' — to return only the current user's friends, '0' — to return all users (default)
  *  @property [offset] Offset needed to select a specific subset of users.
  *  @property [count] Number of user IDs to return (maximum '1000'). Default is '100' if 'friends_only' is set to '0', otherwise, the default is '10' if 'friends_only' is set to '1'.
- *  @property [skip_own] null
+ *  @property [skip_own]
  */
 class LikesGetListMethod() : VkMethod<VkList<Long>>(
     "likes.getList",

@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Interval(@JsonValue val jsonValue: String) {
-    HOUR("hour"), DAY("day"), WEEK("week"), MONTH("month"), FOREVER("forever");
+    HOUR("hour"), DAY("day"), WEEK("week"),
+    MONTH("month");
 
     override fun toString() = jsonValue
 

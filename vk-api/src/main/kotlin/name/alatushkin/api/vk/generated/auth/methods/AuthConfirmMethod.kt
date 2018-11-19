@@ -9,13 +9,13 @@ import name.alatushkin.api.vk.generated.auth.ConfirmResponse
  *  Completes a user's registration (begun with the [vk.com/dev/auth.signup|auth.signup] method) using an authorization code.
  *
  *  [https://vk.com/dev/auth.confirm]
- *  @property [client_id] null
- *  @property [client_secret] null
- *  @property [phone] null
- *  @property [code] null
- *  @property [password] null
- *  @property [test_mode] null
- *  @property [intro] null
+ *  @property [client_id]
+ *  @property [client_secret]
+ *  @property [phone]
+ *  @property [code]
+ *  @property [password]
+ *  @property [test_mode]
+ *  @property [intro]
  */
 class AuthConfirmMethod() : VkMethod<ConfirmResponse>(
     "auth.confirm",

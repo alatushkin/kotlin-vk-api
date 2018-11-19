@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class ItemWallpostType(@JsonValue val jsonValue: String) {
-    POST("post"), COPY("copy"), REPLY("reply");
+    POST("post"), COPY("copy");
 
     override fun toString() = jsonValue
 

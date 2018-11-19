@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.generated.docs.Doc
  *
  *  [https://vk.com/dev/docs.search]
  *  @property [q] Search query string.
- *  @property [search_own] null
+ *  @property [search_own]
  *  @property [count] Number of results to return.
  *  @property [offset] Offset needed to return a specific subset of results.
  */

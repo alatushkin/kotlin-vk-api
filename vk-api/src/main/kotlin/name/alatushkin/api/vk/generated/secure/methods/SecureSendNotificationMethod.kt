@@ -8,8 +8,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Sends notification to the user.
  *
  *  [https://vk.com/dev/secure.sendNotification]
- *  @property [user_ids] null
- *  @property [user_id] null
+ *  @property [user_ids]
+ *  @property [user_id]
  *  @property [message] notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
  */
 class SecureSendNotificationMethod() : VkMethod<Array<Long>>(

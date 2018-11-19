@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Mode(@JsonValue val jsonValue: String) {
-    DISABLED("0"), OPEN("1"), LIMITED("2");
+    DISABLED("0"), OPEN("1");
 
     override fun toString() = jsonValue
 

@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.generated.common.AccessLevel
  *  [https://vk.com/dev/pages.saveAccess]
  *  @property [page_id] Wiki page ID.
  *  @property [group_id] ID of the community that owns the wiki page.
- *  @property [user_id]
+ *  @property [user_id] 
  *  @property [view] Who can view the wiki page: '1' — only community members, '2' — all users can view the page, '0' — only community managers
  *  @property [edit] Who can edit the wiki page: '1' — only community members, '2' — all users can edit the page, '0' — only community managers
  */

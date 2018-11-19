@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [owner_id] ID of the user or community that owns the poll. Use a negative value to designate a community ID.
  *  @property [poll_id] Poll ID.
  *  @property [answer_id] Answer ID.
- *  @property [is_board] null
+ *  @property [is_board]
  */
 class PollsDeleteVoteMethod() : VkMethod<Boolean>(
     "polls.deleteVote",

@@ -13,8 +13,8 @@ import name.alatushkin.api.vk.generated.groups.OwnerXtrBanInfo
  *  @property [group_id] Community ID.
  *  @property [offset] Offset needed to return a specific subset of users.
  *  @property [count] Number of users to return.
- *  @property [fields] null
- *  @property [user_id] null
+ *  @property [fields]
+ *  @property [user_id]
  */
 class GroupsGetBannedMethod() : VkMethod<VkList<OwnerXtrBanInfo>>(
     "groups.getBanned",

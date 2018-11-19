@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class GroupFullAgeLimits(@JsonValue val jsonValue: String) {
-    NO("1"), OVER_16("2"), OVER_18("3");
+    NO("1"), OVER_16("2");
 
     override fun toString() = jsonValue
 

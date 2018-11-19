@@ -13,7 +13,7 @@ import name.alatushkin.api.vk.generated.places.Checkin
  *  @property [latitude] Geographical latitude of the initial search point, in degrees (from '-90' to '90').
  *  @property [longitude] Geographical longitude of the initial search point, in degrees (from '-180' to '180').
  *  @property [place] Location ID of check-ins to return. (Ignored if 'latitude' and 'longitude' are specified.)
- *  @property [user_id] null
+ *  @property [user_id]
  *  @property [offset] Offset needed to return a specific subset of check-ins. (Ignored if 'timestamp' is not null.)
  *  @property [count] Number of check-ins to return. (Ignored if 'timestamp' is not null.)
  *  @property [timestamp] Specifies that only those check-ins created after the specified timestamp will be returned.

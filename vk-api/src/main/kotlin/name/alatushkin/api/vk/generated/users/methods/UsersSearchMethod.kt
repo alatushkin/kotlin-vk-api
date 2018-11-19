@@ -36,7 +36,7 @@ import name.alatushkin.api.vk.generated.users.UserFull
  *  @property [has_photo] '1' — with photo only, '0' — all users
  *  @property [school_country] ID of the country where users finished school.
  *  @property [school_city] ID of the city where users finished school.
- *  @property [school_class] null
+ *  @property [school_class]
  *  @property [school] ID of the school.
  *  @property [school_year] School graduation year.
  *  @property [religion] Users' religious affiliation.
@@ -44,7 +44,7 @@ import name.alatushkin.api.vk.generated.users.UserFull
  *  @property [company] Name of the company where users work.
  *  @property [position] Job position.
  *  @property [group_id] ID of a community to search in communities.
- *  @property [from_list] null
+ *  @property [from_list]
  */
 class UsersSearchMethod() : VkMethod<VkList<UserFull>>(
     "users.search",

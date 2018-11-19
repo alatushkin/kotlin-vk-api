@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class CheckLinkLinkType(@JsonValue val jsonValue: String) {
-    COMMUNITY("community"), POST("post"), APPLICATION("application"), VIDEO("video"), SITE("site");
+    COMMUNITY("community"), POST("post"), APPLICATION("application"),
+    VIDEO("video");
 
     override fun toString() = jsonValue
 

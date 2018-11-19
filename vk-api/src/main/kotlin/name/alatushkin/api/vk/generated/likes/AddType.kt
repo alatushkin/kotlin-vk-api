@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class AddType(@JsonValue val jsonValue: String) {
-    POST("post"), COMMENT("comment"), PHOTO("photo"), AUDIO("audio"), VIDEO("video"), NOTE("note"), PHOTO_COMMENT("photo_comment"), VIDEO_COMMENT(
-        "video_comment"
-    ),
-    TOPIC_COMMENT("topic_comment"), SITEPAGE("sitepage");
+    POST("post"), COMMENT("comment"), PHOTO("photo"),
+    AUDIO("audio"), VIDEO("video"),
+    NOTE("note"), PHOTO_COMMENT("photo_comment"),
+    VIDEO_COMMENT("video_comment"), TOPIC_COMMENT("topic_comment"),
+    SITEPAGE("sitepage");
 
     override fun toString() = jsonValue
 

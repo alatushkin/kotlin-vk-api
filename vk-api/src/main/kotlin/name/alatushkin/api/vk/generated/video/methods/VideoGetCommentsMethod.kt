@@ -14,7 +14,7 @@ import name.alatushkin.api.vk.generated.wall.WallComment
  *  @property [owner_id] ID of the user or community that owns the video.
  *  @property [video_id] Video ID.
  *  @property [need_likes] '1' — to return an additional 'likes' field
- *  @property [start_comment_id] null
+ *  @property [start_comment_id]
  *  @property [offset] Offset needed to return a specific subset of comments.
  *  @property [count] Number of comments to return.
  *  @property [sort] Sort order: 'asc' — oldest comment first, 'desc' — newest comment first

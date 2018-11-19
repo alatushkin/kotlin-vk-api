@@ -21,8 +21,8 @@ import name.alatushkin.api.vk.generated.wall.PostResponse
  *  @property [long] Geographical longitude of a check-in, in degrees (from -180 to 180).
  *  @property [place_id] ID of the location where the user was tagged.
  *  @property [post_id] Post ID. Used for publishing of scheduled and suggested posts.
- *  @property [guid] null
- *  @property [mark_as_ads] null
+ *  @property [guid]
+ *  @property [mark_as_ads]
  */
 class WallPostMethod() : VkMethod<PostResponse>(
     "wall.post",

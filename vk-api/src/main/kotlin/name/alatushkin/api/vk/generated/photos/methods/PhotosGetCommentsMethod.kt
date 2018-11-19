@@ -14,12 +14,12 @@ import name.alatushkin.api.vk.generated.wall.WallComment
  *  @property [owner_id] ID of the user or community that owns the photo.
  *  @property [photo_id] Photo ID.
  *  @property [need_likes] '1' — to return an additional 'likes' field, '0' — (default)
- *  @property [start_comment_id] null
+ *  @property [start_comment_id]
  *  @property [offset] Offset needed to return a specific subset of comments. By default, '0'.
  *  @property [count] Number of comments to return.
  *  @property [sort] Sort order: 'asc' — old first, 'desc' — new first
- *  @property [access_key] null
- *  @property [fields] null
+ *  @property [access_key]
+ *  @property [fields]
  */
 class PhotosGetCommentsMethod() : VkMethod<VkList<WallComment>>(
     "photos.getComments",

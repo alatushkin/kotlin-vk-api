@@ -8,7 +8,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Returns user score in app
  *
  *  [https://vk.com/dev/apps.getScore]
- *  @property [user_id] null
+ *  @property [user_id]
  */
 class AppsGetScoreMethod() : VkMethod<Long>(
     "apps.getScore",

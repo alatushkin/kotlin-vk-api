@@ -9,12 +9,12 @@ import name.alatushkin.api.vk.generated.widgets.GetCommentsResponse
  *  Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
  *
  *  [https://vk.com/dev/widgets.getComments]
- *  @property [widget_api_id] null
- *  @property [url] null
- *  @property [page_id] null
- *  @property [order] null
- *  @property [fields] null
- *  @property [count] null
+ *  @property [widget_api_id]
+ *  @property [url]
+ *  @property [page_id]
+ *  @property [order]
+ *  @property [fields]
+ *  @property [count]
  */
 class WidgetsGetCommentsMethod() : VkMethod<GetCommentsResponse>(
     "widgets.getComments",

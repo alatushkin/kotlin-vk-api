@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Order(@JsonValue val jsonValue: String) {
-    UPDATED_DESC("1"), CREATED_DESC("2"), UPDATED_ASC("-1"), CREATED_ASC("-2"), AS_BY_ADMINISTRATOR("0");
+    UPDATED_DESC("1"), CREATED_DESC("2"), UPDATED_ASC("-1"),
+    CREATED_ASC("-2");
 
     override fun toString() = jsonValue
 

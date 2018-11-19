@@ -96,13 +96,17 @@ class KotlinSourceWriter(val typesSpace: TypesSpace) : SourceWriter {
     }
 
     override fun importClause(basePackage: String, typeId: TypeId): String {
-        val imports = referencedTypes
+        val importsToDo = referencedTypes
             .filterNot { it.packages.first() in setOf("kotlin") }
             .filterNot { it.packages.containsAll(typeId.packages) }
-            .map { importLine(basePackage, it) }
+
+        if (importsToDo.isEmpty())
+            return "\n"
+
+        return importsToDo.map { importLine(basePackage, it) }
             .toSortedSet()
-            .map { "import $it" }
-        return imports.joinToString("\n", postfix = "\n\n")
+            .map { "import $it" }.joinToString("\n", postfix = "\n\n")
+
     }
 
     override fun copy(): SourceWriter {

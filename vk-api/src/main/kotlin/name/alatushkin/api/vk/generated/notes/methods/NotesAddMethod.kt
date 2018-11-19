@@ -10,8 +10,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  [https://vk.com/dev/notes.add]
  *  @property [title] Note title.
  *  @property [text] Note text.
- *  @property [privacy_view] null
- *  @property [privacy_comment] null
+ *  @property [privacy_view]
+ *  @property [privacy_comment]
  */
 class NotesAddMethod() : VkMethod<Long>(
     "notes.add",

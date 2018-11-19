@@ -8,9 +8,9 @@ import name.alatushkin.api.vk.api.VkResponse
  *  null
  *
  *  [https://vk.com/dev/video.getAlbumsByVideo]
- *  @property [target_id] null
- *  @property [owner_id] null
- *  @property [video_id] null
+ *  @property [target_id]
+ *  @property [owner_id]
+ *  @property [video_id]
  */
 class VideoGetAlbumsByVideoMethod() : VkMethod<Array<Long>>(
     "video.getAlbumsByVideo",

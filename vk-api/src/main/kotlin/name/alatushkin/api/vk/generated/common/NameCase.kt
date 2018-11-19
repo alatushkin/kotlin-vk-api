@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class NameCase(@JsonValue val jsonValue: String) {
-    NOMINATIVE("nom"), GENITIVE("gen"), DATIVE("dat"), ACCUSATIVE("acc"), INSTRUMENTAL("ins"), PREPOSITIONAL("abl");
+    NOMINATIVE("nom"), GENITIVE("gen"), DATIVE("dat"),
+    ACCUSATIVE("acc"), INSTRUMENTAL("ins"),
+    PREPOSITIONAL("abl");
 
     override fun toString() = jsonValue
 

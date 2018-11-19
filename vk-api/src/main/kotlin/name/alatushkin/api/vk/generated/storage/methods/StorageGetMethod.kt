@@ -8,9 +8,9 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Returns a value of variable with the name set by key parameter.
  *
  *  [https://vk.com/dev/storage.get]
- *  @property [key] null
- *  @property [keys] null
- *  @property [user_id] null
+ *  @property [key]
+ *  @property [keys]
+ *  @property [user_id]
  */
 class StorageGetMethod() : VkMethod<String>(
     "storage.get",

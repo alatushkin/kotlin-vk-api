@@ -10,7 +10,7 @@ import name.alatushkin.api.vk.generated.status.Status
  *
  *  [https://vk.com/dev/status.get]
  *  @property [user_id] User ID or community ID. Use a negative value to designate a community ID.
- *  @property [group_id] null
+ *  @property [group_id]
  */
 class StatusGetMethod() : VkMethod<Status>(
     "status.get",

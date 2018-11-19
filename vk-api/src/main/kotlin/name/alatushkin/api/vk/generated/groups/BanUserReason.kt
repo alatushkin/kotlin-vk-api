@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class BanUserReason(@JsonValue val jsonValue: String) {
-    OTHER("0"), SPAM("1"), VERBAL_ABUSE("2"), STRONG_LANGUAGE("3"), IRRELEVANT_MESSAGES("4");
+    OTHER("0"), SPAM("1"), VERBAL_ABUSE("2"),
+    STRONG_LANGUAGE("3");
 
     override fun toString() = jsonValue
 

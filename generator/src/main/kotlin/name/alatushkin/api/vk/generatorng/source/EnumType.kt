@@ -76,17 +76,22 @@ data class EnumType(
 
     override fun generateSource(basePackage: String, typeId: TypeId, sourceWriter: SourceWriter): String {
         val result = StringBuilder("")
-            .append("import com.fasterxml.jackson.annotation.JsonCreator \n\n")
-            .append("import com.fasterxml.jackson.annotation.JsonValue \n\n")
+            .append("import com.fasterxml.jackson.annotation.JsonCreator\n\n")
+            .append("import com.fasterxml.jackson.annotation.JsonValue\n\n")
             .append("enum class ")
         result.append(typeId.typeName)
         result.append("(@JsonValue val jsonValue: String)")
         result.append(" {\n")
         result.append("    ")
-        result.append(items.joinToString(", ") { sourceWriter.enumItem(it.name, it.value) }).append(";\n")
+        result.append(items.mapIndexed { idx, item ->
+            sourceWriter.enumItem(
+                item.name,
+                item.value
+            ) + if (idx > 0 && idx % 2 == 0) ",\n    " else ", "
+        }.joinToString("").substringBeforeLast(", ")).append(";\n")
         result.append("\n")
 
-        result.append("    override fun toString()=jsonValue\n\n")
+        result.append("    override fun toString() = jsonValue\n\n")
 
 
         result.append(

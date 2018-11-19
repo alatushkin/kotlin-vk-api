@@ -12,10 +12,10 @@ import name.alatushkin.api.vk.generated.photos.PhotoAlbumFull
  *  @property [title] Album title.
  *  @property [group_id] ID of the community in which the album will be created.
  *  @property [description] Album description.
- *  @property [privacy_view] null
- *  @property [privacy_comment] null
- *  @property [upload_by_admins_only] null
- *  @property [comments_disabled] null
+ *  @property [privacy_view]
+ *  @property [privacy_comment]
+ *  @property [upload_by_admins_only]
+ *  @property [comments_disabled]
  */
 class PhotosCreateAlbumMethod() : VkMethod<PhotoAlbumFull>(
     "photos.createAlbum",

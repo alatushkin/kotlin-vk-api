@@ -11,11 +11,11 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [owner_id] ID of the user or community that owns the photo.
  *  @property [photo_id] Photo ID.
  *  @property [caption] New caption for the photo. If this parameter is not set, it is considered to be equal to an empty string.
- *  @property [latitude] null
- *  @property [longitude] null
- *  @property [place_str] null
- *  @property [foursquare_id] null
- *  @property [delete_place] null
+ *  @property [latitude]
+ *  @property [longitude]
+ *  @property [place_str]
+ *  @property [foursquare_id]
+ *  @property [delete_place]
  */
 class PhotosEditMethod() : VkMethod<Boolean>(
     "photos.edit",

@@ -9,7 +9,7 @@ import name.alatushkin.api.vk.generated.secure.SmsNotification
  *  Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
  *
  *  [https://vk.com/dev/secure.getSMSHistory]
- *  @property [user_id] null
+ *  @property [user_id]
  *  @property [date_from] filter by start date. It is set as UNIX-time.
  *  @property [date_to] filter by end date. It is set as UNIX-time.
  *  @property [limit] number of returned posts. By default — 1000.

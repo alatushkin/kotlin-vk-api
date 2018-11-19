@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class NameRequestStatus(@JsonValue val jsonValue: String) {
-    SUCCESS("success"), PROCESSING("processing"), DECLINED("declined"), WAS_ACCEPTED("was_accepted"), WAS_DECLINED("was_declined");
+    SUCCESS("success"), PROCESSING("processing"), DECLINED("declined"),
+    WAS_ACCEPTED("was_accepted");
 
     override fun toString() = jsonValue
 

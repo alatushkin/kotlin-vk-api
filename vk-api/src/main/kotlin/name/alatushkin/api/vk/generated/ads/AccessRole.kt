@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class AccessRole(@JsonValue val jsonValue: String) {
-    ADMIN("admin"), MANAGER("manager"), REPORTS("reports");
+    ADMIN("admin"), MANAGER("manager");
 
     override fun toString() = jsonValue
 

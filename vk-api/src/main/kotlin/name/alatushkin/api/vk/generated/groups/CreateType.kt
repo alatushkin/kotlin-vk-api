@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class CreateType(@JsonValue val jsonValue: String) {
-    GROUP("group"), PUBLIC("public"), EVENT("event");
+    GROUP("group"), PUBLIC("public");
 
     override fun toString() = jsonValue
 

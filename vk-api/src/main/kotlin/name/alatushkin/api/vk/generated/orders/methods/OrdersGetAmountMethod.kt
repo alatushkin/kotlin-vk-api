@@ -9,8 +9,8 @@ import name.alatushkin.api.vk.generated.orders.Amount
  *  null
  *
  *  [https://vk.com/dev/orders.getAmount]
- *  @property [user_id] null
- *  @property [votes] null
+ *  @property [user_id]
+ *  @property [votes]
  */
 class OrdersGetAmountMethod() : VkMethod<Amount>(
     "orders.getAmount",

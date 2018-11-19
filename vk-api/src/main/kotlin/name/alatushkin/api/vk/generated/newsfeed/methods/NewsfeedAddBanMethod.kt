@@ -8,8 +8,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Prevents news from specified users and communities from appearing in the current user's newsfeed.
  *
  *  [https://vk.com/dev/newsfeed.addBan]
- *  @property [user_ids] null
- *  @property [group_ids] null
+ *  @property [user_ids]
+ *  @property [group_ids]
  */
 class NewsfeedAddBanMethod() : VkMethod<Boolean>(
     "newsfeed.addBan",

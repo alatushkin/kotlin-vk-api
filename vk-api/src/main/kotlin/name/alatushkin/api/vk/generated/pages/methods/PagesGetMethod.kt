@@ -14,7 +14,7 @@ import name.alatushkin.api.vk.generated.pages.WikipageFull
  *  @property [global] '1' — to return information about a global wiki page
  *  @property [site_preview] '1' — resulting wiki page is a preview for the attached link
  *  @property [title] Wiki page title.
- *  @property [need_source] null
+ *  @property [need_source]
  *  @property [need_html] '1' — to return the page as HTML,
  */
 class PagesGetMethod() : VkMethod<WikipageFull>(

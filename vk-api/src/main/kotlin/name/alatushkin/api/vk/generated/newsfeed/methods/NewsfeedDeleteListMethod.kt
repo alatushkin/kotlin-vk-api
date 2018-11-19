@@ -8,7 +8,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  null
  *
  *  [https://vk.com/dev/newsfeed.deleteList]
- *  @property [list_id] null
+ *  @property [list_id]
  */
 class NewsfeedDeleteListMethod() : VkMethod<Boolean>(
     "newsfeed.deleteList",

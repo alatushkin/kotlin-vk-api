@@ -14,13 +14,13 @@ import name.alatushkin.api.vk.generated.apps.GetCatalogSort
  *  @property [sort] Sort order: 'popular_today' — popular for one day (default), 'visitors' — by visitors number , 'create_date' — by creation date, 'growth_rate' — by growth rate, 'popular_week' — popular for one week
  *  @property [offset] Offset required to return a specific subset of apps.
  *  @property [count] Number of apps to return.
- *  @property [platform] null
+ *  @property [platform]
  *  @property [extended] '1' — to return additional fields 'screenshots', 'MAU', 'catalog_position', and 'international'. If set, 'count' must be less than or equal to '100'. '0' — not to return additional fields (default).
- *  @property [return_friends] null
- *  @property [fields] null
- *  @property [name_case] null
+ *  @property [return_friends]
+ *  @property [fields]
+ *  @property [name_case]
  *  @property [q] Search query string.
- *  @property [genre_id] null
+ *  @property [genre_id]
  *  @property [filter] 'installed' — to return list of installed apps (only for mobile platform).
  */
 class AppsGetCatalogMethod() : VkMethod<VkList<App>>(

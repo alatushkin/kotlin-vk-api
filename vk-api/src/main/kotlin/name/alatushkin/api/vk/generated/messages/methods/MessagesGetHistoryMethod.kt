@@ -14,7 +14,7 @@ import name.alatushkin.api.vk.generated.messages.Message
  *  @property [offset] Offset needed to return a specific subset of messages.
  *  @property [count] Number of messages to return.
  *  @property [user_id] ID of the user whose message history you want to return.
- *  @property [peer_id] null
+ *  @property [peer_id]
  *  @property [start_message_id] Starting message ID from which to return history.
  *  @property [extended] Information whether the response should be extended
  *  @property [fields] Profile fields to return.

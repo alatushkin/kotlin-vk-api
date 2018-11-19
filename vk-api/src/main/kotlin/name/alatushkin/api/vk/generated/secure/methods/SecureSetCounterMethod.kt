@@ -8,8 +8,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Sets a counter which is shown to the user in bold in the left menu.
  *
  *  [https://vk.com/dev/secure.setCounter]
- *  @property [counters] null
- *  @property [user_id] null
+ *  @property [counters]
+ *  @property [user_id]
  *  @property [counter] counter value.
  */
 class SecureSetCounterMethod() : VkMethod<Boolean>(

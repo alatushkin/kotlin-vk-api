@@ -12,9 +12,9 @@ import name.alatushkin.api.vk.generated.apps.SendRequestType
  *  @property [user_id] id of the user to send a request
  *  @property [text] request text
  *  @property [type] request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
- *  @property [name] null
+ *  @property [name]
  *  @property [key] special string key to be sent with the request
- *  @property [separate] null
+ *  @property [separate]
  */
 class AppsSendRequestMethod() : VkMethod<Long>(
     "apps.sendRequest",

@@ -15,7 +15,7 @@ import name.alatushkin.api.vk.generated.newsfeed.SearchExtendedResponse
  *  @property [longitude] Geographical longitude point (in degrees, -180 to 180) within which to search.
  *  @property [start_time] Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
  *  @property [end_time] Latest timestamp (in Unix time) of a news item to return. By default, the current time.
- *  @property [start_from] null
+ *  @property [start_from]
  *  @property [fields] Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
  */
 class NewsfeedSearchMethodExtended() : VkMethod<SearchExtendedResponse>(

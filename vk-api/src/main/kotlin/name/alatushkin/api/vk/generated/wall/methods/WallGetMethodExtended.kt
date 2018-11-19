@@ -16,7 +16,7 @@ import name.alatushkin.api.vk.generated.wall.WallpostFull
  *  @property [offset] Offset needed to return a specific subset of posts.
  *  @property [count] Number of posts to return (maximum 100).
  *  @property [filter] Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
- *  @property [fields] null
+ *  @property [fields]
  */
 class WallGetMethodExtended() : VkMethod<VkList<WallpostFull>>(
     "wall.get",

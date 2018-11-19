@@ -13,7 +13,7 @@ import name.alatushkin.api.vk.generated.polls.Voters
  *  @property [owner_id] ID of the user or community that owns the poll. Use a negative value to designate a community ID.
  *  @property [poll_id] Poll ID.
  *  @property [answer_ids] Answer IDs.
- *  @property [is_board] null
+ *  @property [is_board]
  *  @property [friends_only] '1' — to return only current user's friends, '0' — to return all users (default),
  *  @property [offset] Offset needed to return a specific subset of voters. '0' — (default)
  *  @property [count] Number of user IDs to return (if the 'friends_only' parameter is not set, maximum '1000', otherwise '10'). '100' — (default)

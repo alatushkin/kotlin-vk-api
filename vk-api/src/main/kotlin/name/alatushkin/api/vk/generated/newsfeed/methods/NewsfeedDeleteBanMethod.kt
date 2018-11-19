@@ -8,8 +8,8 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Allows news from previously banned users and communities to be shown in the current user's newsfeed.
  *
  *  [https://vk.com/dev/newsfeed.deleteBan]
- *  @property [user_ids] null
- *  @property [group_ids] null
+ *  @property [user_ids]
+ *  @property [group_ids]
  */
 class NewsfeedDeleteBanMethod() : VkMethod<Boolean>(
     "newsfeed.deleteBan",

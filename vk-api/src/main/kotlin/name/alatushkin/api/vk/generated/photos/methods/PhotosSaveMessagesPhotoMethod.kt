@@ -10,8 +10,8 @@ import name.alatushkin.api.vk.generated.photos.Photo
  *
  *  [https://vk.com/dev/photos.saveMessagesPhoto]
  *  @property [photo] Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
- *  @property [server] null
- *  @property [hash] null
+ *  @property [server]
+ *  @property [hash]
  */
 class PhotosSaveMessagesPhotoMethod() : VkMethod<Array<Photo>>(
     "photos.saveMessagesPhoto",

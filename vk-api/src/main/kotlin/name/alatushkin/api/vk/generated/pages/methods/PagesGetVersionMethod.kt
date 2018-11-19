@@ -9,9 +9,9 @@ import name.alatushkin.api.vk.generated.pages.WikipageFull
  *  Returns the text of one of the previous versions of a wiki page.
  *
  *  [https://vk.com/dev/pages.getVersion]
- *  @property [version_id]
+ *  @property [version_id] 
  *  @property [group_id] ID of the community that owns the wiki page.
- *  @property [user_id]
+ *  @property [user_id] 
  *  @property [need_html] '1' — to return the page as HTML
  */
 class PagesGetVersionMethod() : VkMethod<WikipageFull>(

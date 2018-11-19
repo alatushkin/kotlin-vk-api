@@ -12,7 +12,7 @@ import name.alatushkin.api.vk.generated.wall.RepostResponse
  *  @property [object] ID of the object to be reposted on the wall. Example: "wall66748_3675"
  *  @property [message] Comment to be added along with the reposted object.
  *  @property [group_id] Target community ID when reposting to a community.
- *  @property [mark_as_ads] null
+ *  @property [mark_as_ads]
  */
 class WallRepostMethod() : VkMethod<RepostResponse>(
     "wall.repost",

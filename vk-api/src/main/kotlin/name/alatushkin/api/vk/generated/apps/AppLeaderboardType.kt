@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class AppLeaderboardType(@JsonValue val jsonValue: String) {
-    NOT_SUPPORTED("0"), LEVELS("1"), POINTS("2");
+    NOT_SUPPORTED("0"), LEVELS("1");
 
     override fun toString() = jsonValue
 

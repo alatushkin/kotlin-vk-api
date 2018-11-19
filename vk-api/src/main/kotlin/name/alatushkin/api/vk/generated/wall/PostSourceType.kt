@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class PostSourceType(@JsonValue val jsonValue: String) {
-    VK("vk"), WIDGET("widget"), API("api"), RSS("rss"), SMS("sms");
+    VK("vk"), WIDGET("widget"), API("api"),
+    RSS("rss");
 
     override fun toString() = jsonValue
 

@@ -9,7 +9,7 @@ import name.alatushkin.api.vk.generated.secure.Level
  *  Returns one of the previously set game levels of one or more users in the application.
  *
  *  [https://vk.com/dev/secure.getUserLevel]
- *  @property [user_ids] null
+ *  @property [user_ids]
  */
 class SecureGetUserLevelMethod() : VkMethod<Array<Level>>(
     "secure.getUserLevel",

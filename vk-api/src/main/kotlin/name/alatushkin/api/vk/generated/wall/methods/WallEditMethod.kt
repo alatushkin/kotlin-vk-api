@@ -19,7 +19,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [lat] Geographical latitude of the check-in, in degrees (from -90 to 90).
  *  @property [long] Geographical longitude of the check-in, in degrees (from -180 to 180).
  *  @property [place_id] ID of the location where the user was tagged.
- *  @property [mark_as_ads] null
+ *  @property [mark_as_ads]
  */
 class WallEditMethod() : VkMethod<Boolean>(
     "wall.edit",

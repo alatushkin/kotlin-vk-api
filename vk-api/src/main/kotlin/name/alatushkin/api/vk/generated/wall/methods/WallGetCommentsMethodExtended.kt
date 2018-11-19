@@ -14,7 +14,7 @@ import name.alatushkin.api.vk.generated.wall.WallComment
  *  @property [owner_id] User ID or community ID. Use a negative value to designate a community ID.
  *  @property [post_id] Post ID.
  *  @property [need_likes] '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
- *  @property [start_comment_id] null
+ *  @property [start_comment_id]
  *  @property [offset] Offset needed to return a specific subset of comments.
  *  @property [count] Number of comments to return (maximum 100).
  *  @property [sort] Sort order: 'asc' — chronological, 'desc' — reverse chronological

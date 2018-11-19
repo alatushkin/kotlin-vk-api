@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.generated.notifications.Notification
  *
  *  [https://vk.com/dev/notifications.get]
  *  @property [count] Number of notifications to return.
- *  @property [start_from] null
+ *  @property [start_from]
  *  @property [filters] Type of notifications to return: 'wall' — wall posts, 'mentions' — mentions in wall posts, comments, or topics, 'comments' — comments to wall posts, photos, and videos, 'likes' — likes, 'reposted' — wall posts that are copied from the current user's wall, 'followers' — new followers, 'friends' — accepted friend requests
  *  @property [start_time] Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
  *  @property [end_time] Latest timestamp (in Unix time) of a notification to return. By default, the current time.

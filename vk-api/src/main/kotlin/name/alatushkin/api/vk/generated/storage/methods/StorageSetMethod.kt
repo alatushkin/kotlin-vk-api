@@ -8,9 +8,9 @@ import name.alatushkin.api.vk.api.VkResponse
  *  Saves a value of variable with the name set by 'key' parameter.
  *
  *  [https://vk.com/dev/storage.set]
- *  @property [key] null
- *  @property [value] null
- *  @property [user_id] null
+ *  @property [key]
+ *  @property [value]
+ *  @property [user_id]
  */
 class StorageSetMethod() : VkMethod<Boolean>(
     "storage.set",

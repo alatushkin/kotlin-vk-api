@@ -16,7 +16,7 @@ import name.alatushkin.api.vk.generated.wall.WallpostFull
  *  @property [owners_only] '1' – returns only page owner's posts.
  *  @property [count] count of posts to return.
  *  @property [offset] Offset needed to return a specific subset of posts.
- *  @property [fields] null
+ *  @property [fields]
  */
 class WallSearchMethod() : VkMethod<VkList<WallpostFull>>(
     "wall.search",

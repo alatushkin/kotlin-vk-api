@@ -18,8 +18,8 @@ import name.alatushkin.api.vk.generated.photos.Photo
  *  @property [feed_type] Type of feed obtained in 'feed' field of the method.
  *  @property [feed] unixtime, that can be obtained with [vk.com/dev/newsfeed.get|newsfeed.get] method in date field to get all photos uploaded by the user on a specific day, or photos the user has been tagged on. Also, 'uid' parameter of the user the event happened with shall be specified.
  *  @property [photo_sizes] '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format]
- *  @property [offset] null
- *  @property [count] null
+ *  @property [offset]
+ *  @property [count]
  */
 class PhotosGetMethod() : VkMethod<VkList<Photo>>(
     "photos.get",

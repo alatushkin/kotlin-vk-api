@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class SaveProfileInfoRelation(@JsonValue val jsonValue: String) {
-    SINGLE("1"), RELATIONSHIP("2"), ENGAGED("3"), MARRIED("4"), COMPLICATED("5"), ACTIVELY_SEARCHING("6"), IN_LOVE("7"), NOT_SPECIFIED(
-        "0"
-    );
+    SINGLE("1"), RELATIONSHIP("2"), ENGAGED("3"),
+    MARRIED("4"), COMPLICATED("5"),
+    ACTIVELY_SEARCHING("6"), IN_LOVE("7"),
+    NOT_SPECIFIED("0");
 
     override fun toString() = jsonValue
 

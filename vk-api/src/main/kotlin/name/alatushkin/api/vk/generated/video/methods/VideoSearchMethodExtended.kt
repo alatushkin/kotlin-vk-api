@@ -16,10 +16,10 @@ import name.alatushkin.api.vk.generated.video.Video
  *  @property [hd] If not null, only searches for high-definition videos.
  *  @property [adult] '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
  *  @property [filters] Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
- *  @property [search_own]
+ *  @property [search_own] 
  *  @property [offset] Offset needed to return a specific subset of videos.
- *  @property [longer] null
- *  @property [shorter] null
+ *  @property [longer]
+ *  @property [shorter]
  *  @property [count] Number of videos to return.
  */
 class VideoSearchMethodExtended() : VkMethod<VkList<Video>>(

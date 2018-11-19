@@ -50,7 +50,10 @@ data class MethodType(
 
             builder.append(description())
 
-            builder.append("class ${typeId.typeName}()")
+            builder.append("class ${typeId.typeName}")
+            if (hasParams)
+                builder.append("()")
+
             builder.append(
                 " : $parentClass(\n    \"$methodUrl\",\n" +
                         "    ${toMapSource(defailtParams)}\n)"
@@ -72,13 +75,13 @@ data class MethodType(
                 builder.append(
                     arguments
                         .map {
-                            "    fun set${fieldName(it.name).capitalize()}(${fieldNameEscaped(it.name)}: ${realType(it.typeId).fullTypeName}): ${typeId.typeName} {\n" +
-                                    "        this.${fieldNameEscaped(it.name)} = ${fieldNameEscaped(it.name)};\n" +
+                            "\n    fun set${fieldName(it.name).capitalize()}(${fieldNameEscaped(it.name)}: ${realType(it.typeId).fullTypeName}): ${typeId.typeName} {\n" +
+                                    "        this.${fieldNameEscaped(it.name)} = ${fieldNameEscaped(it.name)}\n" +
                                     "        return this\n" +
                                     "    }"
                         }.joinToString(
                             "\n"
-                        )
+                        ).substring(1)
                 )
 
                 builder.append("\n\n")
@@ -121,7 +124,7 @@ data class MethodType(
  *  [https://vk.com/dev/${this.methodUrl}]
 """ +
                 this.arguments.map {
-                    " *  @property [${it.name}] ${it.description}"
+                    " *  @property [${it.name}]${(it.description?.trim()?.let { " $it" }) ?: ""}"
                 }.joinToString("\n") + "\n */\n"
     }
 }

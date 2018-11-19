@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.generated.photos.PhotoTag
  *  [https://vk.com/dev/photos.getTags]
  *  @property [owner_id] ID of the user or community that owns the photo.
  *  @property [photo_id] Photo ID.
- *  @property [access_key] null
+ *  @property [access_key]
  */
 class PhotosGetTagsMethod() : VkMethod<Array<PhotoTag>>(
     "photos.getTags",

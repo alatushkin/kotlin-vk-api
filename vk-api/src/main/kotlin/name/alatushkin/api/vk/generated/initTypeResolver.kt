@@ -1,5 +1,4 @@
 package name.alatushkin.api.vk.generated
-
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver
 import name.alatushkin.api.vk.generated.ads.Criteria
 import name.alatushkin.api.vk.generated.ads.CriteriaImpl

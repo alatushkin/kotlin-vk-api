@@ -12,7 +12,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [owner_id] Note owner ID.
  *  @property [reply_to] ID of the user to whom the reply is addressed (if the comment is a reply to another comment).
  *  @property [message] Comment text.
- *  @property [guid] null
+ *  @property [guid]
  */
 class NotesCreateCommentMethod() : VkMethod<Long>(
     "notes.createComment",

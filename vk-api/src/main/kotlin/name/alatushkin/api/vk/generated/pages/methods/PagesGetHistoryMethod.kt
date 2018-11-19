@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.generated.pages.WikipageVersion
  *  [https://vk.com/dev/pages.getHistory]
  *  @property [page_id] Wiki page ID.
  *  @property [group_id] ID of the community that owns the wiki page.
- *  @property [user_id]
+ *  @property [user_id] 
  */
 class PagesGetHistoryMethod() : VkMethod<Array<WikipageVersion>>(
     "pages.getHistory",

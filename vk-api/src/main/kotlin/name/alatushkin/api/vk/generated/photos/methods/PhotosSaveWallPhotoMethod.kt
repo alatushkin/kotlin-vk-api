@@ -12,8 +12,8 @@ import name.alatushkin.api.vk.generated.photos.Photo
  *  @property [user_id] ID of the user on whose wall the photo will be saved.
  *  @property [group_id] ID of community on whose wall the photo will be saved.
  *  @property [photo] Parameter returned when the the photo is [vk.com/dev/upload_files|uploaded to the server].
- *  @property [server] null
- *  @property [hash] null
+ *  @property [server]
+ *  @property [hash]
  *  @property [latitude] Geographical latitude, in degrees (from '-90' to '90').
  *  @property [longitude] Geographical longitude, in degrees (from '-180' to '180').
  *  @property [caption] Text describing the photo. 2048 digits max.

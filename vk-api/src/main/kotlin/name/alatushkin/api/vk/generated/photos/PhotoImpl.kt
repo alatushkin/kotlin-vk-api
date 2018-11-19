@@ -7,7 +7,7 @@ open class PhotoImpl(
     override val albumId: Long,
     override val ownerId: Long,
     override val userId: Long? = null,
-    override val images: Array<Image>? = null,
+    override val sizes: Array<Image>? = null,
     override val postId: Long? = null,
     override val width: Long? = null,
     override val height: Long? = null,

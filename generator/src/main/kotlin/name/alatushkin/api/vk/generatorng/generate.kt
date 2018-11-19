@@ -15,7 +15,8 @@ fun main(vararg args: String) {
         "video_video-width-height-platform.json",
         "getSuggestedSource_response-fixed.json",
         "notification-parent-fixed.json",
-        "message-send-keyboard-patch.json"
+        "message-send-keyboard-patch.json",
+        "photo-sizes-fix.json"
     )
 
     generator.resolveTypes()

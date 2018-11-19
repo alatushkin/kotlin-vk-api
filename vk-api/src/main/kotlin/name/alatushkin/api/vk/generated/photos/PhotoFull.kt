@@ -9,7 +9,7 @@ open class PhotoFull(
     val albumId: Long,
     val ownerId: Long,
     val userId: Long? = null,
-    val images: Array<Image>? = null,
+    val sizes: Array<Image>? = null,
     val postId: Long? = null,
     val width: Long? = null,
     val height: Long? = null,

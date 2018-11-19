@@ -14,7 +14,7 @@ interface Photo : WallpostAttachment,
     val albumId: Long
     val ownerId: Long
     val userId: Long?
-    val images: Array<Image>?
+    val sizes: Array<Image>?
     val postId: Long?
     val width: Long?
     val height: Long?

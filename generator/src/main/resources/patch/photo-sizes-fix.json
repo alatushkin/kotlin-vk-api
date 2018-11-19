@@ -1,0 +1,164 @@
+{
+  "objects": {
+    "photos_photo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Photo ID",
+          "minimum": 0
+        },
+        "album_id": {
+          "type": "integer",
+          "description": "Album ID"
+        },
+        "owner_id": {
+          "type": "integer",
+          "description": "Photo owner's ID"
+        },
+        "user_id": {
+          "type": "integer",
+          "description": "ID of the user who have uploaded the photo",
+          "minimum": 1
+        },
+        "sizes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/photos_image"
+          }
+        },
+        "post_id": {
+          "type": "integer",
+          "description": "Post ID",
+          "minimum": 1
+        },
+        "width": {
+          "type": "integer",
+          "description": "Original photo width",
+          "minimum": 0
+        },
+        "height": {
+          "type": "integer",
+          "description": "Original photo height",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string",
+          "description": "Photo caption"
+        },
+        "date": {
+          "type": "integer",
+          "description": "Date when uploaded",
+          "minimum": 0
+        },
+        "lat": {
+          "type": "number",
+          "description": "Latitude"
+        },
+        "long": {
+          "type": "number",
+          "description": "Longitude"
+        },
+        "access_key": {
+          "type": "string",
+          "description": "Access key for the photo"
+        }
+      },
+      "required": [
+        "id",
+        "album_id",
+        "owner_id",
+        "date"
+      ],
+      "additionalProperties": false
+    },
+    "photos_photo_full": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Photo ID",
+          "minimum": 0
+        },
+        "album_id": {
+          "type": "integer",
+          "description": "Album ID"
+        },
+        "owner_id": {
+          "type": "integer",
+          "description": "Photo owner's ID"
+        },
+        "user_id": {
+          "type": "integer",
+          "description": "ID of the user who have uploaded the photo",
+          "minimum": 1
+        },
+        "sizes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/photos_image"
+          }
+        },
+        "post_id": {
+          "type": "integer",
+          "description": "Post ID",
+          "minimum": 1
+        },
+        "width": {
+          "type": "integer",
+          "description": "Original photo width",
+          "minimum": 0
+        },
+        "height": {
+          "type": "integer",
+          "description": "Original photo height",
+          "minimum": 0
+        },
+        "text": {
+          "type": "string",
+          "description": "Photo caption"
+        },
+        "date": {
+          "type": "integer",
+          "description": "Date when uploaded",
+          "minimum": 0
+        },
+        "lat": {
+          "type": "number",
+          "description": "Latitude"
+        },
+        "long": {
+          "type": "number",
+          "description": "Longitude"
+        },
+        "access_key": {
+          "type": "string",
+          "description": "Access key for the photo"
+        },
+        "likes": {
+          "$ref": "#/definitions/base_likes"
+        },
+        "reposts": {
+          "$ref": "#/definitions/base_object_count"
+        },
+        "comments": {
+          "$ref": "#/definitions/base_object_count"
+        },
+        "can_comment": {
+          "description": "Information whether current user can comment the photo",
+          "$ref": "#/definitions/base_bool_int"
+        },
+        "tags": {
+          "$ref": "#/definitions/base_object_count"
+        }
+      },
+      "required": [
+        "id",
+        "album_id",
+        "owner_id",
+        "date"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

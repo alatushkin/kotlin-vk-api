@@ -49,13 +49,28 @@ private fun attachmentId(type: String, id: Long, ownerId: Long, accessKey: Strin
 }
 
 fun Photo.toAttachmentId() = attachmentId("photo", id, ownerId, accessKey)
+fun Photo.fullId() = attachmentId("", id, ownerId, accessKey)
+
 fun VideoFull.toAttachmentId() = attachmentId("video", id!!, ownerId!!, accessKey)
+fun VideoFull.fullId() = attachmentId("", id!!, ownerId!!, accessKey)
+
 fun Video.toAttachmentId() = attachmentId("video", id!!, ownerId!!, accessKey)
+fun Video.fullId() = attachmentId("", id!!, ownerId!!, accessKey)
+
 fun Audio.toAttachmentId() = attachmentId("audio", id, ownerId, accessKey)
+fun Audio.fullId() = attachmentId("", id, ownerId, accessKey)
+
 fun Doc.toAttachmentId() = attachmentId("doc", id, ownerId, accessKey)
+fun Doc.fullId() = attachmentId("", id, ownerId, accessKey)
+
 fun Wallpost.toAttachmentId() = attachmentId("wall", id!!, ownerId!!, accessKey)
+fun Wallpost.fullId() = attachmentId("", id!!, ownerId!!, accessKey)
+
 fun MarketItem.toAttachmentId() = attachmentId("market", id, ownerId)
+fun MarketItem.fullId() = attachmentId("", id, ownerId)
+
 fun Poll.toAttachmentId() = attachmentId("poll", id, ownerId)
+fun Poll.fullId() = attachmentId("", id, ownerId)
 
 
 

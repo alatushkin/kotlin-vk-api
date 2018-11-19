@@ -3,6 +3,7 @@ package name.alatushkin.api.vk.longpoll
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.yield
 import name.alatushkin.api.vk.*
+import name.alatushkin.api.vk.callback.MessageNew
 import name.alatushkin.api.vk.generated.messages.*
 import name.alatushkin.api.vk.generated.messages.methods.MessagesSendMethod
 import name.alatushkin.httpclient.httpClient
@@ -18,10 +19,16 @@ class SimpleServerLongPollEventSourceTest {
             val source = SimpleServerLongPollEventSource(groupAccessToken, groupId.toLong(), httpClient, timeOut)
             while (true) {
                 val (next, events) = source.getEvents()
-                println(next.dump())
-                println(events)
                 yield()
                 if (events.isNotEmpty()) {
+                    println(next.dump())
+                    println(events)
+                    val first = events.first()
+                    if (first is MessageNew) {
+                        println(first.attachment.peerId)
+                        println(first.attachment.fromId)
+                    }
+
                     val result = api(
                         MessagesSendMethod().setPeerId(peerId)
                             .setMessage("msg" + System.currentTimeMillis())
@@ -45,7 +52,6 @@ class SimpleServerLongPollEventSourceTest {
                             )
 
                     )
-                    println(result)
                 }
             }
 

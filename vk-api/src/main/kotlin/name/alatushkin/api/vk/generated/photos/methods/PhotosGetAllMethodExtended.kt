@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.photos.PhotoFullXtrRealOffset
+import name.alatushkin.api.vk.generated.photos.GetAllExtendedResponse
 
 /**
  *  Returns a list of photos belonging to a user or community, in reverse chronological order.
@@ -18,7 +17,7 @@ import name.alatushkin.api.vk.generated.photos.PhotoFullXtrRealOffset
  *  @property [need_hidden] '1' – to show information about photos being hidden from the block above the wall.
  *  @property [skip_hidden] '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
  */
-class PhotosGetAllMethodExtended() : VkMethod<VkList<PhotoFullXtrRealOffset>>(
+class PhotosGetAllMethodExtended() : VkMethod<GetAllExtendedResponse>(
     "photos.getAll",
     mutableMapOf("extended" to "1")
 ) {
@@ -87,6 +86,6 @@ class PhotosGetAllMethodExtended() : VkMethod<VkList<PhotoFullXtrRealOffset>>(
     override val classRef = PhotosGetAllMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<PhotoFullXtrRealOffset>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetAllExtendedResponse>>() {}
     }
 }

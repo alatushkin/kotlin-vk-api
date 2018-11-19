@@ -10,7 +10,7 @@ import name.alatushkin.api.vk.generated.common.UploadServer
  *
  *  [https://vk.com/dev/photos.getChatUploadServer]
  *  @property [chat_id] ID of the chat for which you want to upload a cover photo.
- *  @property [crop_x]
+ *  @property [crop_x] 
  *  @property [crop_y] 
  *  @property [crop_width] Width (in pixels) of the photo after cropping.
  */

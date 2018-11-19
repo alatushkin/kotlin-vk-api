@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.photos.GetCommentsExtendedResponse
 import name.alatushkin.api.vk.generated.photos.Sort
-import name.alatushkin.api.vk.generated.wall.WallComment
 
 /**
  *  Returns a list of comments on a photo.
@@ -21,7 +20,7 @@ import name.alatushkin.api.vk.generated.wall.WallComment
  *  @property [access_key]
  *  @property [fields]
  */
-class PhotosGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
+class PhotosGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
     "photos.getComments",
     mutableMapOf("extended" to "1")
 ) {
@@ -106,6 +105,6 @@ class PhotosGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
     override val classRef = PhotosGetCommentsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallComment>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
     }
 }

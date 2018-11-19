@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.notifications.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.notifications.Notification
+import name.alatushkin.api.vk.generated.notifications.GetResponse
 
 /**
  *  Returns a list of notifications about other users' feedback to the current user's wall posts.
@@ -16,7 +15,7 @@ import name.alatushkin.api.vk.generated.notifications.Notification
  *  @property [start_time] Earliest timestamp (in Unix time) of a notification to return. By default, 24 hours ago.
  *  @property [end_time] Latest timestamp (in Unix time) of a notification to return. By default, the current time.
  */
-class NotificationsGetMethod() : VkMethod<VkList<Notification>>(
+class NotificationsGetMethod() : VkMethod<GetResponse>(
     "notifications.get",
     HashMap()
 ) {
@@ -69,6 +68,6 @@ class NotificationsGetMethod() : VkMethod<VkList<Notification>>(
     override val classRef = NotificationsGetMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Notification>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetResponse>>() {}
     }
 }

@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Sort
-import name.alatushkin.api.vk.generated.wall.WallComment
+import name.alatushkin.api.vk.generated.wall.GetCommentsExtendedResponse
 
 /**
  *  Returns a list of comments on a post on a user wall or community wall.
@@ -20,7 +19,7 @@ import name.alatushkin.api.vk.generated.wall.WallComment
  *  @property [sort] Sort order: 'asc' — chronological, 'desc' — reverse chronological
  *  @property [preview_length] Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
  */
-class WallGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
+class WallGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
     "wall.getComments",
     mutableMapOf("extended" to "1")
 ) {
@@ -97,6 +96,6 @@ class WallGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
     override val classRef = WallGetCommentsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallComment>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
     }
 }

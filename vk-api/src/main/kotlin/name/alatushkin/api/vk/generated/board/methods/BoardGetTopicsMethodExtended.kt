@@ -2,11 +2,10 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.board.GetTopicsExtendedResponse
 import name.alatushkin.api.vk.generated.board.Order
 import name.alatushkin.api.vk.generated.board.Preview
-import name.alatushkin.api.vk.generated.board.Topic
 
 /**
  *  Returns a list of topics on a community's discussion board.
@@ -20,7 +19,7 @@ import name.alatushkin.api.vk.generated.board.Topic
  *  @property [preview] '1' — to return the first comment in each topic,, '2' — to return the last comment in each topic,, '0' — to return no comments. By default: '0'.
  *  @property [preview_length] Number of characters after which to truncate the previewed comment. To preview the full comment, specify '0'.
  */
-class BoardGetTopicsMethodExtended() : VkMethod<VkList<Topic>>(
+class BoardGetTopicsMethodExtended() : VkMethod<GetTopicsExtendedResponse>(
     "board.getTopics",
     mutableMapOf("extended" to "1")
 ) {
@@ -89,6 +88,6 @@ class BoardGetTopicsMethodExtended() : VkMethod<VkList<Topic>>(
     override val classRef = BoardGetTopicsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Topic>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetTopicsExtendedResponse>>() {}
     }
 }

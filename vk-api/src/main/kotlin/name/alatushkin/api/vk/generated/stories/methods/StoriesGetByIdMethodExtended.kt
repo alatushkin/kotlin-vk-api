@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.stories.Story
+import name.alatushkin.api.vk.generated.stories.GetByIdExtendedResponse
 
 /**
  *  Returns story by its ID.
@@ -13,7 +12,7 @@ import name.alatushkin.api.vk.generated.stories.Story
  *  @property [stories] Stories IDs separated by commas. Use format {owner_id}+'_'+{story_id}, for example, 12345_54331.
  *  @property [fields] Additional fields to return
  */
-class StoriesGetByIdMethodExtended() : VkMethod<VkList<Story>>(
+class StoriesGetByIdMethodExtended() : VkMethod<GetByIdExtendedResponse>(
     "stories.getById",
     mutableMapOf("extended" to "1")
 ) {
@@ -42,6 +41,6 @@ class StoriesGetByIdMethodExtended() : VkMethod<VkList<Story>>(
     override val classRef = StoriesGetByIdMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Story>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetByIdExtendedResponse>>() {}
     }
 }

@@ -2,8 +2,8 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.stories.GetBannedExtendedResponse
 
 /**
  *  Returns list of sources hidden from current user's feed.
@@ -11,7 +11,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  [https://vk.com/dev/stories.getBanned]
  *  @property [fields] Additional fields to return
  */
-class StoriesGetBannedMethodExtended() : VkMethod<VkList<Long>>(
+class StoriesGetBannedMethodExtended() : VkMethod<GetBannedExtendedResponse>(
     "stories.getBanned",
     mutableMapOf("extended" to "1")
 ) {
@@ -32,6 +32,6 @@ class StoriesGetBannedMethodExtended() : VkMethod<VkList<Long>>(
     override val classRef = StoriesGetBannedMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetBannedExtendedResponse>>() {}
     }
 }

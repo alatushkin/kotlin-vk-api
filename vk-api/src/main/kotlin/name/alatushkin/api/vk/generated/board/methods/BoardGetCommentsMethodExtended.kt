@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.board.TopicComment
+import name.alatushkin.api.vk.generated.board.GetCommentsExtendedResponse
 import name.alatushkin.api.vk.generated.common.Sort
 
 /**
@@ -19,7 +18,7 @@ import name.alatushkin.api.vk.generated.common.Sort
  *  @property [count] Number of comments to return.
  *  @property [sort] Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
  */
-class BoardGetCommentsMethodExtended() : VkMethod<VkList<TopicComment>>(
+class BoardGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
     "board.getComments",
     mutableMapOf("extended" to "1")
 ) {
@@ -88,6 +87,6 @@ class BoardGetCommentsMethodExtended() : VkMethod<VkList<TopicComment>>(
     override val classRef = BoardGetCommentsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<TopicComment>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
     }
 }

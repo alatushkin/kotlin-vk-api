@@ -115,7 +115,7 @@ class SourceGenerator {
         return when {
             responseObject is GeneralObject &&
                     responseObject.properties.containsKey("items") &&
-                    responseObject.properties.containsKey("count") -> makeVkListVkResult(
+                    responseObject.properties.containsKey("count") && responseObject.properties.size == 2 -> makeVkListVkResult(
                 makeType(::nameResponse, responseRef, responseObject.properties["items"]!!)
             )
             responseObject is ArrayObject -> makeListVkResult(

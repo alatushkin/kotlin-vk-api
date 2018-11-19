@@ -3,9 +3,8 @@ package name.alatushkin.api.vk.generated.messages.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.messages.Message
+import name.alatushkin.api.vk.generated.messages.GetHistoryResponse
 
 /**
  *  Returns message history for the specified user or group chat.
@@ -21,7 +20,7 @@ import name.alatushkin.api.vk.generated.messages.Message
  *  @property [group_id] Group ID (for group messages with group access token)
  *  @property [rev] Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
  */
-class MessagesGetHistoryMethod() : VkMethod<VkList<Message>>(
+class MessagesGetHistoryMethod() : VkMethod<GetHistoryResponse>(
     "messages.getHistory",
     HashMap()
 ) {
@@ -106,6 +105,6 @@ class MessagesGetHistoryMethod() : VkMethod<VkList<Message>>(
     override val classRef = MessagesGetHistoryMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Message>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetHistoryResponse>>() {}
     }
 }

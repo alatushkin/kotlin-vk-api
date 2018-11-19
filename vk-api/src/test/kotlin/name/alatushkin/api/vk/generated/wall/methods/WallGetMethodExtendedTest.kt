@@ -19,7 +19,22 @@ class WallGetMethodExtendedTest {
                 domain = "departureMsk"
             )
         )
-        println(result)
+        println(result.response)
+
+    }
+
+    @Test
+    fun smoke2() = runBlocking {
+        val timeOut = 95
+        val httpClient = httpClient(readTimeout = timeOut * 1000)
+        val api = MethodExecutorImpl(httpClient).withToken(userAccessToken)
+
+        val result = api(
+            WallGetMethodExtended(
+                domain = "departureMsk"
+            )
+        )
+        println(result.response)
 
     }
 

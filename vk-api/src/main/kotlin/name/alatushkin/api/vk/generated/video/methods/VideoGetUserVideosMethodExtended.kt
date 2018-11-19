@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.video.Video
+import name.alatushkin.api.vk.generated.video.GetUserVideosExtendedResponse
 
 /**
  *  Returns list of videos in which the user is tagged.
@@ -14,7 +13,7 @@ import name.alatushkin.api.vk.generated.video.Video
  *  @property [offset] Offset needed to return a specific subset of videos.
  *  @property [count] Number of videos to return.
  */
-class VideoGetUserVideosMethodExtended() : VkMethod<VkList<Video>>(
+class VideoGetUserVideosMethodExtended() : VkMethod<GetUserVideosExtendedResponse>(
     "video.getUserVideos",
     mutableMapOf("extended" to "1")
 ) {
@@ -51,6 +50,6 @@ class VideoGetUserVideosMethodExtended() : VkMethod<VkList<Video>>(
     override val classRef = VideoGetUserVideosMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Video>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetUserVideosExtendedResponse>>() {}
     }
 }

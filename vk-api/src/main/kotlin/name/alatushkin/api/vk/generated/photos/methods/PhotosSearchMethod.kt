@@ -13,7 +13,7 @@ import name.alatushkin.api.vk.generated.photos.Photo
  *  @property [q] Search query string.
  *  @property [lat] Geographical latitude, in degrees (from '-90' to '90').
  *  @property [long] Geographical longitude, in degrees (from '-180' to '180').
- *  @property [start_time]
+ *  @property [start_time] 
  *  @property [end_time] 
  *  @property [sort] Sort order:
  *  @property [offset] Offset needed to return a specific subset of photos.

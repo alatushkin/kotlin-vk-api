@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.video.VideoFull
+import name.alatushkin.api.vk.generated.video.GetExtendedResponse
 
 /**
  *  Returns detailed information about videos.
@@ -16,7 +15,7 @@ import name.alatushkin.api.vk.generated.video.VideoFull
  *  @property [count] Number of videos to return.
  *  @property [offset] Offset needed to return a specific subset of videos.
  */
-class VideoGetMethodExtended() : VkMethod<VkList<VideoFull>>(
+class VideoGetMethodExtended() : VkMethod<GetExtendedResponse>(
     "video.get",
     mutableMapOf("extended" to "1")
 ) {
@@ -69,6 +68,6 @@ class VideoGetMethodExtended() : VkMethod<VkList<VideoFull>>(
     override val classRef = VideoGetMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<VideoFull>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetExtendedResponse>>() {}
     }
 }

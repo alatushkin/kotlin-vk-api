@@ -2,8 +2,8 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.friends.GetRequestsResponse
 
 /**
  *  Returns information about the current user's incoming and outgoing friend requests.
@@ -15,7 +15,7 @@ import name.alatushkin.api.vk.api.VkResponse
  *  @property [sort] Sort order: '1' — by number of mutual friends, '0' — by date
  *  @property [suggested] '1' — to return a list of suggested friends, '0' — to return friend requests (default)
  */
-class FriendsGetRequestsMethod() : VkMethod<VkList<Long>>(
+class FriendsGetRequestsMethod() : VkMethod<GetRequestsResponse>(
     "friends.getRequests",
     mutableMapOf()
 ) {
@@ -68,6 +68,6 @@ class FriendsGetRequestsMethod() : VkMethod<VkList<Long>>(
     override val classRef = FriendsGetRequestsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetRequestsResponse>>() {}
     }
 }

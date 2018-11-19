@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.messages.ConversationWithMessage
 import name.alatushkin.api.vk.generated.messages.GetConversationsFilter
+import name.alatushkin.api.vk.generated.messages.GetConversationsResponse
 
 /**
  *  Returns a list of the current user's conversations.
@@ -19,7 +18,7 @@ import name.alatushkin.api.vk.generated.messages.GetConversationsFilter
  *  @property [start_message_id] ID of the message from what to return dialogs.
  *  @property [fields] Profile and communities fields to return.
  */
-class MessagesGetConversationsMethod() : VkMethod<VkList<ConversationWithMessage>>(
+class MessagesGetConversationsMethod() : VkMethod<GetConversationsResponse>(
     "messages.getConversations",
     HashMap()
 ) {
@@ -88,6 +87,6 @@ class MessagesGetConversationsMethod() : VkMethod<VkList<ConversationWithMessage
     override val classRef = MessagesGetConversationsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<ConversationWithMessage>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetConversationsResponse>>() {}
     }
 }

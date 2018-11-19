@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.wall.Filter
-import name.alatushkin.api.vk.generated.wall.WallpostFull
+import name.alatushkin.api.vk.generated.wall.GetExtendedResponse
 
 /**
  *  Returns a list of posts on a user wall or community wall.
@@ -18,7 +17,7 @@ import name.alatushkin.api.vk.generated.wall.WallpostFull
  *  @property [filter] Filter to apply: 'owner' — posts by the wall owner, 'others' — posts by someone else, 'all' — posts by the wall owner and others (default), 'postponed' — timed posts (only available for calls with an 'access_token'), 'suggests' — suggested posts on a community wall
  *  @property [fields]
  */
-class WallGetMethodExtended() : VkMethod<VkList<WallpostFull>>(
+class WallGetMethodExtended() : VkMethod<GetExtendedResponse>(
     "wall.get",
     mutableMapOf("extended" to "1")
 ) {
@@ -79,6 +78,6 @@ class WallGetMethodExtended() : VkMethod<VkList<WallpostFull>>(
     override val classRef = WallGetMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetExtendedResponse>>() {}
     }
 }

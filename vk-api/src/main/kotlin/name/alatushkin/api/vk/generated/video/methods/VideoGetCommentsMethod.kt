@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.video.GetCommentsResponse
 import name.alatushkin.api.vk.generated.video.Sort
-import name.alatushkin.api.vk.generated.wall.WallComment
 
 /**
  *  Returns a list of comments on a video.
@@ -19,7 +18,7 @@ import name.alatushkin.api.vk.generated.wall.WallComment
  *  @property [count] Number of comments to return.
  *  @property [sort] Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
  */
-class VideoGetCommentsMethod() : VkMethod<VkList<WallComment>>(
+class VideoGetCommentsMethod() : VkMethod<GetCommentsResponse>(
     "video.getComments",
     mutableMapOf()
 ) {
@@ -88,6 +87,6 @@ class VideoGetCommentsMethod() : VkMethod<VkList<WallComment>>(
     override val classRef = VideoGetCommentsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallComment>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetCommentsResponse>>() {}
     }
 }

@@ -12,7 +12,7 @@ import name.alatushkin.api.vk.generated.search.GetHintsResponse
  *  @property [q] Search query string.
  *  @property [offset] Offset for querying specific result subset
  *  @property [limit] Maximum number of results to return.
- *  @property [filters]
+ *  @property [filters] 
  *  @property [search_global] 
  */
 class SearchGetHintsMethod() : VkMethod<GetHintsResponse>(

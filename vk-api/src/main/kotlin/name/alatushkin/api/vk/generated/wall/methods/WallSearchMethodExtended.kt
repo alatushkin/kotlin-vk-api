@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.wall.WallpostFull
+import name.alatushkin.api.vk.generated.wall.SearchExtendedResponse
 
 /**
  *  Allows to search posts on user or community walls.
@@ -18,7 +17,7 @@ import name.alatushkin.api.vk.generated.wall.WallpostFull
  *  @property [offset] Offset needed to return a specific subset of posts.
  *  @property [fields]
  */
-class WallSearchMethodExtended() : VkMethod<VkList<WallpostFull>>(
+class WallSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     "wall.search",
     mutableMapOf("extended" to "1")
 ) {
@@ -87,6 +86,6 @@ class WallSearchMethodExtended() : VkMethod<VkList<WallpostFull>>(
     override val classRef = WallSearchMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
+        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
     }
 }

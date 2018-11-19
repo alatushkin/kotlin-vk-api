@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.apps.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.apps.GetLeaderboardExtendedResponse
 import name.alatushkin.api.vk.generated.apps.GetLeaderboardType
-import name.alatushkin.api.vk.generated.apps.Leaderboard
 
 /**
  *  Returns players rating in the game.
@@ -14,7 +13,7 @@ import name.alatushkin.api.vk.generated.apps.Leaderboard
  *  @property [type] Leaderboard type. Possible values: *'level' — by level,, *'points' — by mission points,, *'score' — by score ().
  *  @property [global] Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
  */
-class AppsGetLeaderboardMethodExtended() : VkMethod<VkList<Leaderboard>>(
+class AppsGetLeaderboardMethodExtended() : VkMethod<GetLeaderboardExtendedResponse>(
     "apps.getLeaderboard",
     mutableMapOf("extended" to "1")
 ) {
@@ -43,6 +42,6 @@ class AppsGetLeaderboardMethodExtended() : VkMethod<VkList<Leaderboard>>(
     override val classRef = AppsGetLeaderboardMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Leaderboard>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetLeaderboardExtendedResponse>>() {}
     }
 }

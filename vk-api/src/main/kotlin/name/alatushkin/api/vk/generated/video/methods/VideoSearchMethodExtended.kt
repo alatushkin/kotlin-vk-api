@@ -2,10 +2,9 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.generated.video.SearchExtendedResponse
 import name.alatushkin.api.vk.generated.video.Sort
-import name.alatushkin.api.vk.generated.video.Video
 
 /**
  *  Returns a list of videos under the set search criterion.
@@ -22,7 +21,7 @@ import name.alatushkin.api.vk.generated.video.Video
  *  @property [shorter]
  *  @property [count] Number of videos to return.
  */
-class VideoSearchMethodExtended() : VkMethod<VkList<Video>>(
+class VideoSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     "video.search",
     mutableMapOf("extended" to "1")
 ) {
@@ -115,6 +114,6 @@ class VideoSearchMethodExtended() : VkMethod<VkList<Video>>(
     override val classRef = VideoSearchMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Video>>>() {}
+        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
     }
 }

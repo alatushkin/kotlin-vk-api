@@ -2,9 +2,8 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
-import name.alatushkin.api.vk.generated.stories.Story
+import name.alatushkin.api.vk.generated.stories.GetRepliesExtendedResponse
 
 /**
  *  Returns replies to the story.
@@ -15,7 +14,7 @@ import name.alatushkin.api.vk.generated.stories.Story
  *  @property [access_key] Access key for the private object.
  *  @property [fields] Additional fields to return
  */
-class StoriesGetRepliesMethodExtended() : VkMethod<VkList<Array<Story>>>(
+class StoriesGetRepliesMethodExtended() : VkMethod<GetRepliesExtendedResponse>(
     "stories.getReplies",
     mutableMapOf("extended" to "1")
 ) {
@@ -60,6 +59,6 @@ class StoriesGetRepliesMethodExtended() : VkMethod<VkList<Array<Story>>>(
     override val classRef = StoriesGetRepliesMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Array<Story>>>>() {}
+        val classRef = object : TypeReference<VkResponse<GetRepliesExtendedResponse>>() {}
     }
 }

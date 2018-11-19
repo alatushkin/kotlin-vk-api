@@ -6,6 +6,7 @@ import name.alatushkin.api.vk.VK_OBJECT_MAPPER
 import name.alatushkin.api.vk.generated.audio.Audio
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.market.MarketItem
+import name.alatushkin.api.vk.generated.messages.AudioMessage
 import name.alatushkin.api.vk.generated.photos.Photo
 import name.alatushkin.api.vk.generated.photos.methods.PhotosGetMessagesUploadServerMethod
 import name.alatushkin.api.vk.generated.photos.methods.PhotosSaveMessagesPhotoMethod
@@ -71,6 +72,8 @@ fun MarketItem.fullId() = attachmentId("", id, ownerId)
 
 fun Poll.toAttachmentId() = attachmentId("poll", id, ownerId)
 fun Poll.fullId() = attachmentId("", id, ownerId)
+
+fun AudioMessage.fullId() = attachmentId("", id, ownerId)
 
 
 

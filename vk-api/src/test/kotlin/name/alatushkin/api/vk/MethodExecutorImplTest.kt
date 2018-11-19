@@ -11,7 +11,7 @@ class MethodExecutorImplTest {
     fun smokeTest1() {
 
         runBlocking {
-            val executor = MethodExecutorImpl(httpClient()).withToken(accessToken)
+            val executor = MethodExecutorImpl(httpClient()).withToken(groupAccessToken)
             val result = executor(GroupsGetByIdMethod().setGroupId(groupId))
             println(result)
 

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.api
 
 import kotlinx.coroutines.runBlocking
 import name.alatushkin.api.vk.MethodExecutorImpl
-import name.alatushkin.api.vk.accessToken
+import name.alatushkin.api.vk.groupAccessToken
 import name.alatushkin.api.vk.withToken
 import name.alatushkin.httpclient.httpClient
 import org.junit.Test
@@ -13,7 +13,7 @@ class HelperMethodsKtTest {
         runBlocking {
             val timeOut = 95
             val httpClient = httpClient(readTimeout = timeOut * 1000)
-            val api = MethodExecutorImpl(httpClient).withToken(accessToken)
+            val api = MethodExecutorImpl(httpClient).withToken(groupAccessToken)
 
             val result = api
                 .uploadMessagePhoto(

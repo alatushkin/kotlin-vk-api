@@ -4,7 +4,8 @@ import java.io.FileInputStream
 import java.nio.file.Paths
 import java.util.*
 
-val accessToken = readConfigParam("accessToken")
+val groupAccessToken = readConfigParam("groupAccessToken")
+val userAccessToken = readConfigParam("userAccessToken")
 val groupId = readConfigParam("groupId")
 val peerId: Long = readConfigParam("peerId").toLong()
 

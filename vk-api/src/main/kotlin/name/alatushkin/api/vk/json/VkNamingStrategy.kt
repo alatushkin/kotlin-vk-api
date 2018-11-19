@@ -14,7 +14,7 @@ open class VkNameStrategy : PropertyNamingStrategy.PropertyNamingStrategyBase() 
             if (i > 0 || c != '_')
             // skip first starting underscore
             {
-                if (Character.isUpperCase(c) || c.isDigit()) {
+                if (Character.isUpperCase(c)) {
                     if (!wasPrevTranslated && resultLength > 0 && result[resultLength - 1] != '_') {
                         result.append('_')
                         resultLength++

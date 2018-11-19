@@ -128,7 +128,48 @@
         },
         {
           "$ref": "#/definitions/wall_wall_comment"
+        },
+        {
+          "$ref": "#/definitions/messages_audio_message"
         }
+      ]
+    },
+    "messages_audio_message": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "owner_id": {
+          "type": "integer"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "link_ogg": {
+          "type": "string"
+        },
+        "link_mp3": {
+          "type": "string"
+        },
+        "access_key": {
+          "type": "string"
+        },
+        "waveform": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "owner_id",
+        "duration",
+        "link_ogg",
+        "link_mp3",
+        "access_key",
+        "waveform"
       ]
     }
   }

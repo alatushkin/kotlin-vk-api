@@ -11,6 +11,7 @@ import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.gifts.Layout
 import name.alatushkin.api.vk.generated.market.MarketAlbum
 import name.alatushkin.api.vk.generated.market.MarketItem
+import name.alatushkin.api.vk.generated.messages.AudioMessage
 import name.alatushkin.api.vk.generated.messages.MessageAttachment
 import name.alatushkin.api.vk.generated.pages.WikipageFull
 import name.alatushkin.api.vk.generated.photos.Photo
@@ -86,6 +87,7 @@ class VkMessageAttachmentsDeserializer
         "sticker" to Sticker::class.java,
         "gift" to Layout::class.java,
         "wall" to WallpostAttached::class.java,
-        "wall_reply" to WallComment::class.java
+        "wall_reply" to WallComment::class.java,
+        "audio_message" to AudioMessage::class.java
     )
 )

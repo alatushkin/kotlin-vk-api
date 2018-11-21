@@ -7,6 +7,7 @@ import name.alatushkin.api.vk.generated.audio.Audio
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.market.MarketItem
 import name.alatushkin.api.vk.generated.messages.AudioMessage
+import name.alatushkin.api.vk.generated.messages.methods.MessagesSetActivityMethod
 import name.alatushkin.api.vk.generated.photos.Photo
 import name.alatushkin.api.vk.generated.photos.methods.PhotosGetMessagesUploadServerMethod
 import name.alatushkin.api.vk.generated.photos.methods.PhotosSaveMessagesPhotoMethod
@@ -75,5 +76,13 @@ fun Poll.fullId() = attachmentId("", id, ownerId)
 
 fun AudioMessage.fullId() = attachmentId("", id, ownerId)
 
-
+suspend fun MethodExecutor.sendTypings(groupId: Long, peerId: Long) {
+    this(
+        MessagesSetActivityMethod(
+            peerId = peerId,
+            type = "typing",
+            groupId = groupId
+        )
+    )
+}
 

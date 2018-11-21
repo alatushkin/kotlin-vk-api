@@ -16,6 +16,7 @@ interface MethodExecutorWithException {
     @Throws(VkErrorException::class)
     suspend operator fun <T> invoke(method: VkMethod<T>): T
 
+    fun asMethodExecutor(): MethodExecutor
     val httpClient: HttpClient
 }
 
@@ -33,6 +34,10 @@ fun MethodExecutor.withToken(accessToken: String): MethodExecutor {
 
 fun MethodExecutor.throwExceptionsOnError(): MethodExecutorWithException {
     return object : MethodExecutorWithException {
+        override fun asMethodExecutor(): MethodExecutor {
+            return this@throwExceptionsOnError
+        }
+
         override suspend fun <T> invoke(method: VkMethod<T>): T {
             val result = this@throwExceptionsOnError(method)
             if (result.error != null)

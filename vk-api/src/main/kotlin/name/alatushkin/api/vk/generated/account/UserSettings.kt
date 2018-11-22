@@ -1,5 +1,6 @@
 package name.alatushkin.api.vk.generated.account
 
+import name.alatushkin.api.vk.api.VkBirthDate
 import name.alatushkin.api.vk.generated.common.Country
 import name.alatushkin.api.vk.generated.common.Object
 import name.alatushkin.api.vk.generated.common.Sex
@@ -15,7 +16,7 @@ open class UserSettings(
     val relationPartner: UserMin? = null,
     val relationPending: Long? = null,
     val relationRequests: Array<UserMin>? = null,
-    val bdate: String? = null,
+    val bdate: VkBirthDate? = null,
     val bdateVisibility: Long? = null,
     val homeTown: String? = null,
     val country: Country? = null,

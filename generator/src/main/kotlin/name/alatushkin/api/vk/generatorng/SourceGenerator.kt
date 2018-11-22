@@ -335,6 +335,8 @@ class SourceGenerator {
 
             val finalType = if (name == "date" && typeId.typeName == "Long")
                 TypeId("name.alatushkin.api.vk.api", "VkDate")
+            else if (name == "bdate" && typeId.typeName == "String")
+                TypeId("name.alatushkin.api.vk.api", "VkBirthDate")
             else
                 typeId
 

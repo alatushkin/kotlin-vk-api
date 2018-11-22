@@ -1,5 +1,6 @@
 package name.alatushkin.api.vk.generated.users
 
+import name.alatushkin.api.vk.api.VkBirthDate
 import name.alatushkin.api.vk.generated.audio.AudioFull
 import name.alatushkin.api.vk.generated.common.Country
 import name.alatushkin.api.vk.generated.common.Object
@@ -9,7 +10,7 @@ open class UserFullImpl(
     override val nickname: String? = null,
     override val maidenName: String? = null,
     override val domain: String? = null,
-    override val bdate: String? = null,
+    override val bdate: VkBirthDate? = null,
     override val city: Object? = null,
     override val country: Country? = null,
     override val timezone: Long? = null,

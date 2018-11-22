@@ -1,5 +1,6 @@
 package name.alatushkin.api.vk.generated.users
 
+import name.alatushkin.api.vk.api.VkBirthDate
 import name.alatushkin.api.vk.generated.audio.AudioFull
 import name.alatushkin.api.vk.generated.common.Country
 import name.alatushkin.api.vk.generated.common.Object
@@ -9,7 +10,7 @@ interface UserFull : User {
     val nickname: String?
     val maidenName: String?
     val domain: String?
-    val bdate: String?
+    val bdate: VkBirthDate?
     val city: Object?
     val country: Country?
     val timezone: Long?

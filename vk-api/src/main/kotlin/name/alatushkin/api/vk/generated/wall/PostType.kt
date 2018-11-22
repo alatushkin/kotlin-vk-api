@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 enum class PostType(@JsonValue val jsonValue: String) {
     POST("post"), COPY("copy"), REPLY("reply"),
-    POSTPONE("postpone");
+    POSTPONE("postpone"), SUGGEST("suggest");
 
     override fun toString() = jsonValue
 

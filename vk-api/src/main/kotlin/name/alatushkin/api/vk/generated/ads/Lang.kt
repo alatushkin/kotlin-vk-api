@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Lang(@JsonValue val jsonValue: String) {
-    RUSSIAN("ru"), UKRAINIAN("ua");
+    RUSSIAN("ru"), UKRAINIAN("ua"), ENGLISH("en");
 
     override fun toString() = jsonValue
 

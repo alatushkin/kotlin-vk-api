@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Period(@JsonValue val jsonValue: String) {
-    DAY("day"), MONTH("month");
+    DAY("day"), MONTH("month"), OVERALL("overall");
 
     override fun toString() = jsonValue
 

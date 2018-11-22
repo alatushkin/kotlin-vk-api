@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 enum class HintSection(@JsonValue val jsonValue: String) {
     GROUPS("groups"), EVENTS("events"), PUBLICS("publics"),
     CORRESPONDENTS("correspondents"), PEOPLE("people"),
-    FRIENDS("friends");
+    FRIENDS("friends"), MUTUAL_FRIENDS("mutual_friends");
 
     override fun toString() = jsonValue
 

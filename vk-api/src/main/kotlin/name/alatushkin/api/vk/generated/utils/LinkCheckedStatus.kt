@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class LinkCheckedStatus(@JsonValue val jsonValue: String) {
-    NOT_BANNED("not_banned"), BANNED("banned");
+    NOT_BANNED("not_banned"), BANNED("banned"), PROCESSING("processing");
 
     override fun toString() = jsonValue
 

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 enum class IgnoreItemType(@JsonValue val jsonValue: String) {
     POST_ON_THE_WALL("wall"), TAG_ON_A_PHOTO("tag"), PROFILE_PHOTO("profilephoto"),
-    VIDEO("video");
+    VIDEO("video"), AUDIO("audio");
 
     override fun toString() = jsonValue
 

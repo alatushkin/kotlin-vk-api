@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 enum class UnsubscribeType(@JsonValue val jsonValue: String) {
     NOTE("note"), PHOTO("photo"), POST("post"),
-    TOPIC("topic");
+    TOPIC("topic"), VIDEO("video");
 
     override fun toString() = jsonValue
 

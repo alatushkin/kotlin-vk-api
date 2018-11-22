@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Filter(@JsonValue val jsonValue: String) {
     OWNER("owner"), OTHERS("others"), ALL("all"),
-    POSTPONED("postponed");
+    POSTPONED("postponed"), SUGGESTS("suggests");
 
     override fun toString() = jsonValue
 

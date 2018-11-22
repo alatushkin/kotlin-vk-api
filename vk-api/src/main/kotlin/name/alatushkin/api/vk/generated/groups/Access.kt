@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Access(@JsonValue val jsonValue: String) {
-    OPEN("0"), CLOSED("1");
+    OPEN("0"), CLOSED("1"), PRIVATE("2");
 
     override fun toString() = jsonValue
 

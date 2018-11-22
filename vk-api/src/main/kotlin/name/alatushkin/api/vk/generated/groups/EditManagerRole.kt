@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class EditManagerRole(@JsonValue val jsonValue: String) {
-    MODERATOR("moderator"), EDITOR("editor");
+    MODERATOR("moderator"), EDITOR("editor"), ADMINISTRATOR("administrator");
 
     override fun toString() = jsonValue
 

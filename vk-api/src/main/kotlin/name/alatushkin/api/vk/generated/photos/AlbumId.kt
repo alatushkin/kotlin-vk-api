@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class AlbumId(@JsonValue val jsonValue: String) {
-    PROFILE("profile"), WALL("wall");
+    PROFILE("profile"), WALL("wall"), SAVED("saved");
 
     override fun toString() = jsonValue
 

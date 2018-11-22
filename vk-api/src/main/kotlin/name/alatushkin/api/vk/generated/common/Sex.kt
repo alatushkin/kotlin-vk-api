@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Sex(@JsonValue val jsonValue: String) {
-    UNKNOWN("0"), FEMALE("1");
+    UNKNOWN("0"), FEMALE("1"), MALE("2");
 
     override fun toString() = jsonValue
 

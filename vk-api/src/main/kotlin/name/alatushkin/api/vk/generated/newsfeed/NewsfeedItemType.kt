@@ -8,7 +8,7 @@ enum class NewsfeedItemType(@JsonValue val jsonValue: String) {
     POST("post"), PHOTO("photo"), PHOTO_TAG("photo_tag"),
     WALL_PHOTO("wall_photo"), FRIEND("friend"),
     NOTE("note"), AUDIO("audio"),
-    VIDEO("video");
+    VIDEO("video"), TOPIC("topic");
 
     override fun toString() = jsonValue
 

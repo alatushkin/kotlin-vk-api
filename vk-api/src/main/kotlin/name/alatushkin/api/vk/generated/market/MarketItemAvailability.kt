@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class MarketItemAvailability(@JsonValue val jsonValue: String) {
-    AVAILABLE("0"), REMOVED("1");
+    AVAILABLE("0"), REMOVED("1"), UNAVAILABLE("2");
 
     override fun toString() = jsonValue
 

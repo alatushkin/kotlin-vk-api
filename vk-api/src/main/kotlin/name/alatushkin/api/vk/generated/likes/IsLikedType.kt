@@ -8,7 +8,7 @@ enum class IsLikedType(@JsonValue val jsonValue: String) {
     POST("post"), COMMENT("comment"), PHOTO("photo"),
     AUDIO("audio"), VIDEO("video"),
     NOTE("note"), PHOTO_COMMENT("photo_comment"),
-    VIDEO_COMMENT("video_comment");
+    VIDEO_COMMENT("video_comment"), TOPIC_COMMENT("topic_comment");
 
     override fun toString() = jsonValue
 

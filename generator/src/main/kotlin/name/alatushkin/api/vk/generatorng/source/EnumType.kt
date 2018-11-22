@@ -88,7 +88,7 @@ data class EnumType(
                 item.name,
                 item.value
             ) + if (idx > 0 && idx % 2 == 0) ",\n    " else ", "
-        }.joinToString("").substringBeforeLast(", ")).append(";\n")
+        }.joinToString("").substringBeforeLast(",")).append(";\n")
         result.append("\n")
 
         result.append("    override fun toString() = jsonValue\n\n")

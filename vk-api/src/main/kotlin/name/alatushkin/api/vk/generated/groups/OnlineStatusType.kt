@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class OnlineStatusType(@JsonValue val jsonValue: String) {
-    NONE("none"), ONLINE("online");
+    NONE("none"), ONLINE("online"), ANSWER_MARK("answer_mark");
 
     override fun toString() = jsonValue
 

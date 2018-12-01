@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.Coroutines
-
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -14,13 +13,8 @@ buildscript {
 }
 
 plugins {
-    kotlin("jvm") version "1.3.0" apply false
     java
-}
-
-
-allprojects {
-
+    kotlin("jvm") version "1.3.10"
 }
 
 tasks.withType(KotlinCompile::class.java).all {
@@ -31,6 +25,7 @@ tasks.withType(KotlinCompile::class.java).all {
 
 subprojects {
     version = "0.1"
+
     apply {
         plugin("org.jetbrains.kotlin.jvm")
     }

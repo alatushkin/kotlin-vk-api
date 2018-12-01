@@ -6,14 +6,10 @@ group = "name.alatushkin.utils"
 
 plugins {
     java
-    id("com.jfrog.bintray") version "1.8.1"
-    `maven-publish`
     kotlin("jvm")
+    `maven-publish`
+    id("com.jfrog.bintray") version "1.8.1"
 }
-kotlin {
-
-}
-
 
 repositories {
     mavenLocal()
@@ -23,12 +19,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.7")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.9.7")
+    val jacksonVersion = "2.9.7"
+    implementation("com.fasterxml.jackson.core:jackson-core:$jacksonVersion")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
     testImplementation("junit:junit:4.12")
-
-
 
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
@@ -43,13 +38,13 @@ val sourcesJar by tasks.creating(Jar::class) {
 }
 
 publishing {
-
     repositories {
         maven {
             // change to point to your repo, e.g. http://my.org/repo
             url = uri("$buildDir/repo")
         }
     }
+
     publications {
         create("mavenJava", MavenPublication::class.java) {
             from(components["java"])

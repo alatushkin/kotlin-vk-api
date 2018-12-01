@@ -18,11 +18,13 @@ class SimpleServerLongPollEventSourceTest {
         runBlocking {
             val timeOut = 95
             val httpClient = httpClient(readTimeout = timeOut * 1000)
-            val api = MethodExecutorImpl(httpClient).withToken(groupAccessToken).throwExceptionsOnError()
+            val api: MethodExecutor = SimpleMethodExecutor(httpClient, groupAccessToken)
             val source = SimpleServerLongPollEventSource(groupAccessToken, groupId.toLong(), httpClient, timeOut)
+
             while (true) {
                 val (next, events) = source.getEvents()
                 yield()
+
                 if (events.isNotEmpty()) {
                     println(next.dump())
                     println(events)

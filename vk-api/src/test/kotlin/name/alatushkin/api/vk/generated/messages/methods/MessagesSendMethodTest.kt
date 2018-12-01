@@ -10,7 +10,7 @@ class MessagesSendMethodTest {
     fun smoke1() = runBlocking {
         val timeOut = 95
         val httpClient = httpClient(readTimeout = timeOut * 1000)
-        val api = MethodExecutorImpl(httpClient).withToken(groupAccessToken).throwExceptionsOnError()
+        val api: MethodExecutor = SimpleMethodExecutor(httpClient, groupAccessToken)
 
         val result = api(
             MessagesSendMethod(

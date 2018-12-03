@@ -1,5 +1,6 @@
 package name.alatushkin.api.vk
 
+import name.alatushkin.httpclient.httpClient
 import java.io.FileInputStream
 import java.nio.file.Paths
 import java.util.*
@@ -32,3 +33,7 @@ private fun readPropsFrom(strPath: String): Properties? {
         return props
     }
 }
+
+private val timeOut = 95
+private val httpClient = httpClient(readTimeout = timeOut * 1000)
+val groupTokenTestApi = MethodExecutorImpl(httpClient).withToken(groupAccessToken).throwExceptionsOnError()

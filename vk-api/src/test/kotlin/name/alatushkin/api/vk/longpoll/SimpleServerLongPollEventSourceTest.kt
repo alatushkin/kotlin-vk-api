@@ -8,18 +8,17 @@ import name.alatushkin.api.vk.callback.MessageNew
 import name.alatushkin.api.vk.generated.messages.*
 import name.alatushkin.api.vk.generated.messages.methods.MessagesSendMethod
 import name.alatushkin.api.vk.generated.photos.Photo
-import name.alatushkin.api.vk.tokens.*
 import name.alatushkin.httpclient.httpClient
 import org.junit.Assert.assertTrue
+import org.junit.Ignore
 import org.junit.Test
 
 class SimpleServerLongPollEventSourceTest {
     @Test
+    @Ignore
     fun smokeTest1() = runBlocking {
         val timeOut = 95
         val httpClient = httpClient(readTimeout = timeOut * 1000)
-        val token = GroupToken(groupAccessToken, groupId.toLong())
-        val api: VkClient<GroupMethod> = SimpleMethodExecutor(httpClient).withToken(token)
         val source = SimpleServerLongPollEventSource(groupAccessToken, groupId.toLong(), httpClient, timeOut)
 
         while (true) {
@@ -35,29 +34,33 @@ class SimpleServerLongPollEventSourceTest {
                     println(first.attachment.fromId)
                 }
 
-                val keyboard = KeyboardImpl(
-                        oneTime = false,
-                        buttons = arrayOf(arrayOf(KeyboardButton(
-                                color = KeyboardButtonColor.DEFAULT,
-                                action = KeyboardButtonAction(
-                                        KeyboardButtonActionType.TEXT,
-                                        payload = "\"some_payload\"",
-                                        label = "Label"
-                                )
-
-                        )))
-                )
-
-                val result: Long = api(MessagesSendMethod(
-                        peerId = peerId,
-                        message = "msg${System.currentTimeMillis()}",
-                        randomId = System.currentTimeMillis(),
-                        keyboard = keyboard
-                ))
+                val result = groupTokenTestApi(makeMessageToSend())
                 println(result)
             }
         }
 
+    }
+
+    private fun makeMessageToSend(): MessagesSendMethod {
+        val keyboard = KeyboardImpl(
+                oneTime = false,
+                buttons = arrayOf(arrayOf(KeyboardButton(
+                        color = KeyboardButtonColor.DEFAULT,
+                        action = KeyboardButtonAction(
+                                KeyboardButtonActionType.TEXT,
+                                payload = "\"some_payload\"",
+                                label = "Label"
+                        )
+
+                )))
+        )
+
+        return MessagesSendMethod(
+                peerId = peerId,
+                message = "msg${System.currentTimeMillis()}",
+                randomId = System.currentTimeMillis(),
+                keyboard = keyboard
+        )
     }
 
     @Test

@@ -5,6 +5,5 @@ import name.alatushkin.httpclient.HttpClient
 
 interface MethodExecutor {
     suspend operator fun <T> invoke(method: VkMethod<T>): VkResponse<T>
-
     val httpClient: HttpClient
 }

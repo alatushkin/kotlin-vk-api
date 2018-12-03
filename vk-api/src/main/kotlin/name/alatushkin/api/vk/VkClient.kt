@@ -8,17 +8,19 @@ interface MethodExecutor {
     suspend operator fun <T> invoke(method: VkMethod<T>): T
 
     val httpClient: HttpClient
-    val accessToken: String
 }
 
-data class SimpleMethodExecutor(
-        override val httpClient: HttpClient,
-        override val accessToken: String
-) : MethodExecutor {
+data class VkClient(val executor: MethodExecutor, val accessToken: String) {
 
     @Throws(VkError::class)
-    override suspend operator fun <T> invoke(method: VkMethod<T>): T {
+    suspend operator fun <T> invoke(method: VkMethod<T>): T {
         method.presetProps["access_token"] = accessToken
-        return executeApiCall(httpClient, method).value()
+        return executor(method)
     }
+
+    val httpClient: HttpClient
+        get() = executor.httpClient
 }
+
+fun MethodExecutor.withToken(accessToken: String): VkClient =
+        VkClient(this, accessToken)

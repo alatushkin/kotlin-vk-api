@@ -1,6 +1,6 @@
 package name.alatushkin.api.vk.api
 
-import name.alatushkin.api.vk.MethodExecutor
+import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.generated.audio.Audio
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.market.MarketItem
@@ -42,7 +42,7 @@ fun Poll.fullId() = attachmentId("", id, ownerId)
 
 fun AudioMessage.fullId() = attachmentId("", id, ownerId)
 
-suspend fun MethodExecutor.sendTypings(groupId: Long, peerId: Long) {
+suspend fun VkClient.sendTypings(groupId: Long, peerId: Long) {
     this(
         MessagesSetActivityMethod(
             peerId = peerId,

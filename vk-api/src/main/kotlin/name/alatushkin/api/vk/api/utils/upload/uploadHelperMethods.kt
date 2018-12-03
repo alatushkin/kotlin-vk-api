@@ -1,8 +1,8 @@
 package name.alatushkin.api.vk.api.utils.upload
 
 import com.fasterxml.jackson.module.kotlin.readValue
-import name.alatushkin.api.vk.MethodExecutor
 import name.alatushkin.api.vk.VK_OBJECT_MAPPER
+import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.api.VkError
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.docs.GetMessagesUploadServerType
@@ -19,7 +19,7 @@ import java.nio.charset.Charset
 data class UploadPhotoResponse(val server: Long, val hash: String, val photo: String)
 
 @Throws(VkError::class)
-suspend fun MethodExecutor.uploadMessagePhoto(peerId: Long, byteArray: ByteArray): Photo {
+suspend fun VkClient.uploadMessagePhoto(peerId: Long, byteArray: ByteArray): Photo {
     val uploadUrl = this(PhotosGetMessagesUploadServerMethod(peerId)).uploadUrl
     val response = httpClient(
         HttpMethod.POST(
@@ -44,7 +44,7 @@ suspend fun MethodExecutor.uploadMessagePhoto(peerId: Long, byteArray: ByteArray
 data class UploadDocumentResponse(val file: String)
 
 @Throws(VkError::class)
-suspend fun MethodExecutor.uploadMessageDocument(
+suspend fun VkClient.uploadMessageDocument(
     peerId: Long,
     fileName: String,
     byteArray: ByteArray,

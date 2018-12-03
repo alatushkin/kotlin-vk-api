@@ -1,21 +1,27 @@
 package name.alatushkin.api.vk
 
+import name.alatushkin.api.vk.api.VkError
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.Keyboard
 import name.alatushkin.httpclient.HttpClient
 import name.alatushkin.httpclient.HttpMethod
 import name.alatushkin.httpclient.RequestBody
 
-suspend fun <T> executeApiCall(httpClient: HttpClient, method: VkMethod<T>): VkResponse<T> {
-    val params = method.props
-            .filterValuesNotNull()
-            .mapKeys { caseConvert(restorePropNames(it.key)) }
-            .mapValues { toStringRequestValue(it.value) }
-            .plus(method.presetProps + mapOf("v" to VERSION))
+data class SimpleMethodExecutor(override val httpClient: HttpClient) : MethodExecutor {
 
-    val httpRequest = HttpMethod.POST(url = methodUrl(method), body = RequestBody.FormUrlEncoded(params))
-    val response = httpClient(httpRequest)
-    return VK_OBJECT_MAPPER.readValue(response.data, method.classRef)
+    @Throws(VkError::class)
+    override suspend operator fun <T> invoke(method: VkMethod<T>): T {
+        val params = method.props
+                .filterValuesNotNull()
+                .mapKeys { caseConvert(restorePropNames(it.key)) }
+                .mapValues { toStringRequestValue(it.value) }
+                .plus(method.presetProps + mapOf("v" to VERSION))
+
+        val httpRequest = HttpMethod.POST(url = methodUrl(method), body = RequestBody.FormUrlEncoded(params))
+        val response = httpClient(httpRequest)
+        val vkResponse: VkResponse<T> = VK_OBJECT_MAPPER.readValue(response.data, method.classRef)
+        return vkResponse.value()
+    }
 }
 
 private const val URL_PREFIX = "https://api.vk.com/method/"

@@ -2,12 +2,13 @@ package name.alatushkin.api.vk.longpoll
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.yield
-import name.alatushkin.api.vk.MethodExecutor
 import name.alatushkin.api.vk.SimpleMethodExecutor
 import name.alatushkin.api.vk.VK_OBJECT_MAPPER
+import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.callback.CallbackEvent
 import name.alatushkin.api.vk.generated.groups.LongPollServer
 import name.alatushkin.api.vk.generated.groups.methods.GroupsGetLongPollServerMethod
+import name.alatushkin.api.vk.withToken
 import name.alatushkin.httpclient.HttpClient
 import name.alatushkin.httpclient.HttpMethod
 import org.slf4j.LoggerFactory
@@ -20,7 +21,7 @@ class SimpleServerLongPollEventSource(
     val httpClient: HttpClient,
     val timeOut: Int
 ) {
-    private val api: MethodExecutor = SimpleMethodExecutor(httpClient, vkToken)
+    private val api: VkClient = SimpleMethodExecutor(httpClient).withToken(vkToken)
 
     suspend fun getEvents(iterator: LongPollServer? = null): Pair<LongPollServer, List<CallbackEvent<*>>> {
 

@@ -2,20 +2,13 @@ package name.alatushkin.api.vk
 
 import kotlinx.coroutines.runBlocking
 import name.alatushkin.api.vk.generated.groups.methods.GroupsGetByIdMethod
-import name.alatushkin.httpclient.httpClient
 import org.junit.Test
 
 
 class MethodExecutorImplTest {
     @Test
-    fun smokeTest1() {
-
-        runBlocking {
-            val executor = MethodExecutorImpl(httpClient()).withToken(groupAccessToken)
-            val result = executor(GroupsGetByIdMethod().setGroupId(groupId))
-            println(result)
-
-        }
+    fun smokeTest1() = runBlocking {
+        val result = groupTokenTestApi(GroupsGetByIdMethod().setGroupId(groupId))
+        println(result)
     }
-
 }

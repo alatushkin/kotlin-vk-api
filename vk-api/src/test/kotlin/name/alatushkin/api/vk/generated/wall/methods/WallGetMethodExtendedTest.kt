@@ -1,41 +1,28 @@
 package name.alatushkin.api.vk.generated.wall.methods
 
 import kotlinx.coroutines.runBlocking
-import name.alatushkin.api.vk.MethodExecutorImpl
-import name.alatushkin.api.vk.userAccessToken
-import name.alatushkin.api.vk.withToken
-import name.alatushkin.httpclient.httpClient
+import name.alatushkin.api.vk.groupTokenTestApi
 import org.junit.Test
 
 class WallGetMethodExtendedTest {
     @Test
     fun smoke1() = runBlocking {
-        val timeOut = 95
-        val httpClient = httpClient(readTimeout = timeOut * 1000)
-        val api = MethodExecutorImpl(httpClient).withToken(userAccessToken)
-
-        val result = api(
+        val result = groupTokenTestApi(
             WallGetMethod(
                 domain = "departureMsk"
             )
         )
-        println(result.response)
-
+        println(result)
     }
 
     @Test
     fun smoke2() = runBlocking {
-        val timeOut = 95
-        val httpClient = httpClient(readTimeout = timeOut * 1000)
-        val api = MethodExecutorImpl(httpClient).withToken(userAccessToken)
-
-        val result = api(
+        val result = groupTokenTestApi(
             WallGetMethodExtended(
                 domain = "departureMsk"
             )
         )
-        println(result.response)
-
+        println(result)
     }
 
 }

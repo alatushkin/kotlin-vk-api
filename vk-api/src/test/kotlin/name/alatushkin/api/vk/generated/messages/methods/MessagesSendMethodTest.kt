@@ -1,22 +1,17 @@
 package name.alatushkin.api.vk.generated.messages.methods
 
 import kotlinx.coroutines.runBlocking
-import name.alatushkin.api.vk.*
-import name.alatushkin.httpclient.httpClient
+import name.alatushkin.api.vk.groupId
+import name.alatushkin.api.vk.groupTokenTestApi
+import name.alatushkin.api.vk.peerId
 import org.junit.Test
 
 class MessagesSendMethodTest {
     @Test
     fun smoke1() = runBlocking {
-        val timeOut = 95
-        val httpClient = httpClient(readTimeout = timeOut * 1000)
-        val api = MethodExecutorImpl(httpClient).withToken(groupAccessToken).throwExceptionsOnError()
-
-        val result = api(
+        val result = groupTokenTestApi(
             MessagesSendMethod(
-//                userId=peerId,
                 peerId = peerId,
-                //chatId = peerId,
                 groupId = groupId.toLong(),
                 message = "test"
             )

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Changes the status of a user as typing in a conversation.
@@ -58,6 +58,6 @@ class MessagesSetActivityMethod() : VkMethod<Boolean>(
     override val classRef = MessagesSetActivityMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Sets a counter which is shown to the user in bold in the left menu.
@@ -49,6 +49,6 @@ class SecureSetCounterMethod() : VkMethod<Boolean>(
     override val classRef = SecureSetCounterMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

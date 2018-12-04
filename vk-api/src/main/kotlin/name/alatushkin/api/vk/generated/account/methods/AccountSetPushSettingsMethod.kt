@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Change push settings.
@@ -58,6 +58,6 @@ class AccountSetPushSettingsMethod() : VkMethod<Boolean>(
     override val classRef = AccountSetPushSettingsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

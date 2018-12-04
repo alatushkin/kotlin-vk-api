@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.notes.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notes.NoteComment
 
 /**
@@ -51,6 +51,6 @@ class NotesGetCommentsMethod() : VkMethod<VkList<NoteComment>>(
     override val classRef = NotesGetCommentsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<NoteComment>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<NoteComment>>>() {}
     }
 }

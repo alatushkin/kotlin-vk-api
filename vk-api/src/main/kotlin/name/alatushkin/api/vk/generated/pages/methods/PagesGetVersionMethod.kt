@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.pages.WikipageFull
 
 /**
@@ -59,6 +59,6 @@ class PagesGetVersionMethod() : VkMethod<WikipageFull>(
     override val classRef = PagesGetVersionMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<WikipageFull>>() {}
+        val classRef = object : TypeReference<VkSuccess<WikipageFull>>() {}
     }
 }

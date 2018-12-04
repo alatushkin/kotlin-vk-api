@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.AlbumId
 import name.alatushkin.api.vk.generated.photos.PhotoFull
 
@@ -106,6 +106,6 @@ class PhotosGetMethodExtended() : VkMethod<VkList<PhotoFull>>(
     override val classRef = PhotosGetMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<PhotoFull>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<PhotoFull>>>() {}
     }
 }

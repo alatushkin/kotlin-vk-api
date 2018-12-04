@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.LastShortenedLink
 
 /**
@@ -42,6 +42,6 @@ class UtilsGetLastShortenedLinksMethod() : VkMethod<VkList<LastShortenedLink>>(
     override val classRef = UtilsGetLastShortenedLinksMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<LastShortenedLink>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<LastShortenedLink>>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.streaming.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.streaming.GetServerUrlResponse
 
 /**
@@ -18,6 +18,6 @@ class StreamingGetServerUrlMethod : VkMethod<GetServerUrlResponse>(
     override val classRef = StreamingGetServerUrlMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetServerUrlResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetServerUrlResponse>>() {}
     }
 }

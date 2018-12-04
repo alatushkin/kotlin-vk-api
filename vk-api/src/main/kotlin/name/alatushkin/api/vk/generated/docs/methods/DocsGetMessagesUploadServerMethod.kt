@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
 import name.alatushkin.api.vk.generated.docs.GetMessagesUploadServerType
 
@@ -42,6 +42,6 @@ class DocsGetMessagesUploadServerMethod() : VkMethod<UploadServer>(
     override val classRef = DocsGetMessagesUploadServerMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<UploadServer>>() {}
+        val classRef = object : TypeReference<VkSuccess<UploadServer>>() {}
     }
 }

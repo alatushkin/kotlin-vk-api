@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.newsfeed.GetBannedExtendedResponse
 
@@ -42,6 +42,6 @@ class NewsfeedGetBannedMethodExtended() : VkMethod<GetBannedExtendedResponse>(
     override val classRef = NewsfeedGetBannedMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetBannedExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetBannedExtendedResponse>>() {}
     }
 }

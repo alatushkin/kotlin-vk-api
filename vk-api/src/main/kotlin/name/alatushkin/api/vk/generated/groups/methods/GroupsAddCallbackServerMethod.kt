@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.AddCallbackServerResponse
 
 /**
@@ -59,6 +59,6 @@ class GroupsAddCallbackServerMethod() : VkMethod<AddCallbackServerResponse>(
     override val classRef = GroupsAddCallbackServerMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<AddCallbackServerResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<AddCallbackServerResponse>>() {}
     }
 }

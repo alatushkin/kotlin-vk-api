@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.FriendsList
 
 /**
@@ -42,6 +42,6 @@ class FriendsGetListsMethod() : VkMethod<VkList<FriendsList>>(
     override val classRef = FriendsGetListsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<FriendsList>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<FriendsList>>>() {}
     }
 }

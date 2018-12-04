@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.polls.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Adds the current user's vote to the selected answer in the poll.
@@ -58,6 +58,6 @@ class PollsAddVoteMethod() : VkMethod<Boolean>(
     override val classRef = PollsAddVoteMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

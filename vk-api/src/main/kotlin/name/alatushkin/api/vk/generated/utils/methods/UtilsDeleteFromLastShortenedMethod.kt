@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Deletes shortened link from user's list.
@@ -31,6 +31,6 @@ class UtilsDeleteFromLastShortenedMethod() : VkMethod<Boolean>(
     override val classRef = UtilsDeleteFromLastShortenedMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

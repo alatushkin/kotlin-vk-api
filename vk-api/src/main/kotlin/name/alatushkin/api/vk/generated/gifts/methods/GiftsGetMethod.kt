@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.gifts.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.gifts.Gift
 
 /**
@@ -51,6 +51,6 @@ class GiftsGetMethod() : VkMethod<VkList<Gift>>(
     override val classRef = GiftsGetMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Gift>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<Gift>>>() {}
     }
 }

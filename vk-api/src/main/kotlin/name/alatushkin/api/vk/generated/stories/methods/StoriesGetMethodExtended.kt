@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetExtendedResponse
 
 /**
@@ -32,6 +32,6 @@ class StoriesGetMethodExtended() : VkMethod<GetExtendedResponse>(
     override val classRef = StoriesGetMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetExtendedResponse>>() {}
     }
 }

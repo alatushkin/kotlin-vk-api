@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetHistoryAttachmentsMediaType
 import name.alatushkin.api.vk.generated.messages.GetHistoryAttachmentsResponse
 
@@ -87,6 +87,6 @@ class MessagesGetHistoryAttachmentsMethod() : VkMethod<GetHistoryAttachmentsResp
     override val classRef = MessagesGetHistoryAttachmentsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetHistoryAttachmentsResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetHistoryAttachmentsResponse>>() {}
     }
 }

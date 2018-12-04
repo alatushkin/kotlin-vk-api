@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerLinkText
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerResponse
 
@@ -78,6 +78,6 @@ class StoriesGetPhotoUploadServerMethod() : VkMethod<GetPhotoUploadServerRespons
     override val classRef = StoriesGetPhotoUploadServerMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetPhotoUploadServerResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetPhotoUploadServerResponse>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.search.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.search.GetHintsResponse
 
 /**
@@ -68,6 +68,6 @@ class SearchGetHintsMethod() : VkMethod<GetHintsResponse>(
     override val classRef = SearchGetHintsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetHintsResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetHintsResponse>>() {}
     }
 }

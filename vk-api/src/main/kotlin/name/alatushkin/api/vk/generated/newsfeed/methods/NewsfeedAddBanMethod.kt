@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Prevents news from specified users and communities from appearing in the current user's newsfeed.
@@ -40,6 +40,6 @@ class NewsfeedAddBanMethod() : VkMethod<Boolean>(
     override val classRef = NewsfeedAddBanMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

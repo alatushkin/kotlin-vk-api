@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Allows to clear the cache of particular 'external' pages which may be attached to VK posts.
@@ -31,6 +31,6 @@ class PagesClearCacheMethod() : VkMethod<Boolean>(
     override val classRef = PagesClearCacheMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

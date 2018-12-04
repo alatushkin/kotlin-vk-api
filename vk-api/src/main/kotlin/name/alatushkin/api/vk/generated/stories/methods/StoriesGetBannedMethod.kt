@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns list of sources hidden from current user's feed.
@@ -32,6 +32,6 @@ class StoriesGetBannedMethod() : VkMethod<VkList<Long>>(
     override val classRef = StoriesGetBannedMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<Long>>>() {}
     }
 }

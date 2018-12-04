@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.ChangePasswordResponse
 
 /**
@@ -59,6 +59,6 @@ class AccountChangePasswordMethod() : VkMethod<ChangePasswordResponse>(
     override val classRef = AccountChangePasswordMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<ChangePasswordResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<ChangePasswordResponse>>() {}
     }
 }

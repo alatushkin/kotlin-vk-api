@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.Interval
 import name.alatushkin.api.vk.generated.utils.LinkStatsExtended
 
@@ -60,6 +60,6 @@ class UtilsGetLinkStatsMethodExtended() : VkMethod<LinkStatsExtended>(
     override val classRef = UtilsGetLinkStatsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<LinkStatsExtended>>() {}
+        val classRef = object : TypeReference<VkSuccess<LinkStatsExtended>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.UnignoreItemType
 
 /**
@@ -50,6 +50,6 @@ class NewsfeedUnignoreItemMethod() : VkMethod<Boolean>(
     override val classRef = NewsfeedUnignoreItemMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

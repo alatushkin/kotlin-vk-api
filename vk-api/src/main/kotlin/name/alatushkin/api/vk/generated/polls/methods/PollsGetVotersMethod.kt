@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.polls.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.polls.Voters
 
@@ -105,6 +105,6 @@ class PollsGetVotersMethod() : VkMethod<Array<Voters>>(
     override val classRef = PollsGetVotersMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Voters>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Voters>>>() {}
     }
 }

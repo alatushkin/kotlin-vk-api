@@ -1,13 +1,13 @@
 package name.alatushkin.api.vk.generated.wall.methods
 
 import kotlinx.coroutines.runBlocking
-import name.alatushkin.api.vk.groupTokenTestApi
+import name.alatushkin.api.vk.userTokenTestApi
 import org.junit.Test
 
 class WallGetMethodExtendedTest {
     @Test
     fun smoke1() = runBlocking {
-        val result = groupTokenTestApi(
+        val result = userTokenTestApi(
             WallGetMethod(
                 domain = "departureMsk"
             )
@@ -17,7 +17,7 @@ class WallGetMethodExtendedTest {
 
     @Test
     fun smoke2() = runBlocking {
-        val result = groupTokenTestApi(
+        val result = userTokenTestApi(
             WallGetMethodExtended(
                 domain = "departureMsk"
             )

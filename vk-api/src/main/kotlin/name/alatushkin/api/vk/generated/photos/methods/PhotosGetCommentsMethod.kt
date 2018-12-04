@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.GetCommentsResponse
 import name.alatushkin.api.vk.generated.photos.Sort
 
@@ -105,6 +105,6 @@ class PhotosGetCommentsMethod() : VkMethod<GetCommentsResponse>(
     override val classRef = PhotosGetCommentsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetCommentsResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
     }
 }

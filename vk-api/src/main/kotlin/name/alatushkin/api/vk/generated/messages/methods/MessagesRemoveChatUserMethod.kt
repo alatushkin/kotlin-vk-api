@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove another user from the chat.
@@ -40,6 +40,6 @@ class MessagesRemoveChatUserMethod() : VkMethod<Boolean>(
     override val classRef = MessagesRemoveChatUserMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

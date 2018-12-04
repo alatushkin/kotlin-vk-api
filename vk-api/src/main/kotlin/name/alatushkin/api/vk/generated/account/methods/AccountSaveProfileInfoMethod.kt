@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoBdateVisibility
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoRelation
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoResponse
@@ -152,6 +152,6 @@ class AccountSaveProfileInfoMethod() : VkMethod<SaveProfileInfoResponse>(
     override val classRef = AccountSaveProfileInfoMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<SaveProfileInfoResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<SaveProfileInfoResponse>>() {}
     }
 }

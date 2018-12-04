@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Archives advertising campaigns.
@@ -40,6 +40,6 @@ class AdsDeleteCampaignsMethod() : VkMethod<Long>(
     override val classRef = AdsDeleteCampaignsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

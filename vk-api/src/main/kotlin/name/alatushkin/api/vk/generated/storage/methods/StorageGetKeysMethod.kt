@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.storage.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns the names of all variables.
@@ -40,6 +40,6 @@ class StorageGetKeysMethod() : VkMethod<Array<String>>(
     override val classRef = StorageGetKeysMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<String>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<String>>>() {}
     }
 }

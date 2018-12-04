@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.orders.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.orders.Order
 
 /**
@@ -50,6 +50,6 @@ class OrdersGetByIdMethod() : VkMethod<Array<Order>>(
     override val classRef = OrdersGetByIdMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Order>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Order>>>() {}
     }
 }

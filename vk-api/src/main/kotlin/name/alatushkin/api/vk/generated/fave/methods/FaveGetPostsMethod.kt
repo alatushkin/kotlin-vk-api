@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.fave.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.WallpostFull
 
 /**
@@ -51,6 +51,6 @@ class FaveGetPostsMethod() : VkMethod<VkList<WallpostFull>>(
     override val classRef = FaveGetPostsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<WallpostFull>>>() {}
     }
 }

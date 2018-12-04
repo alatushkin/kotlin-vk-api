@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Sends 'SMS' notification to a user's mobile device.
@@ -40,6 +40,6 @@ class SecureSendSMSNotificationMethod() : VkMethod<Boolean>(
     override val classRef = SecureSendSMSNotificationMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

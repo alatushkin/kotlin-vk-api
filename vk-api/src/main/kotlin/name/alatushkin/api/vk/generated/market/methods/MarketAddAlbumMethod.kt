@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.AddAlbumResponse
 
 /**
@@ -59,6 +59,6 @@ class MarketAddAlbumMethod() : VkMethod<AddAlbumResponse>(
     override val classRef = MarketAddAlbumMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<AddAlbumResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<AddAlbumResponse>>() {}
     }
 }

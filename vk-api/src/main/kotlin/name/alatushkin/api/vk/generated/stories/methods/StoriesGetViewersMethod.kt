@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns a list of story viewers.
@@ -59,6 +59,6 @@ class StoriesGetViewersMethod() : VkMethod<VkList<Long>>(
     override val classRef = StoriesGetViewersMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<Long>>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.apps.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns user score in app
@@ -31,6 +31,6 @@ class AppsGetScoreMethod() : VkMethod<Long>(
     override val classRef = AppsGetScoreMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

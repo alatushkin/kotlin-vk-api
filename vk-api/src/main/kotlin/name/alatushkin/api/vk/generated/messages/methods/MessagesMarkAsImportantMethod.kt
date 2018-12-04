@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Marks and unmarks messages as important (starred).
@@ -40,6 +40,6 @@ class MessagesMarkAsImportantMethod() : VkMethod<Array<Long>>(
     override val classRef = MessagesMarkAsImportantMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Long>>>() {}
     }
 }

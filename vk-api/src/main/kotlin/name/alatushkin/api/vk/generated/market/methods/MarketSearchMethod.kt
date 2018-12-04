@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketItem
 
 /**
@@ -97,6 +97,6 @@ class MarketSearchMethod() : VkMethod<VkList<MarketItem>>(
     override val classRef = MarketSearchMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<MarketItem>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<MarketItem>>>() {}
     }
 }

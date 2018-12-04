@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.likes.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.Filter
 import name.alatushkin.api.vk.generated.likes.GetListType
 
@@ -106,6 +106,6 @@ class LikesGetListMethod() : VkMethod<VkList<Long>>(
     override val classRef = LikesGetListMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<Long>>>() {}
     }
 }

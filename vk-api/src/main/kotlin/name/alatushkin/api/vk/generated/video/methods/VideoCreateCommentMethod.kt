@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Adds a new comment on a video.
@@ -94,6 +94,6 @@ class VideoCreateCommentMethod() : VkMethod<Long>(
     override val classRef = VideoCreateCommentMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

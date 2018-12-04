@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.fave.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Removes a profile from user faves.
@@ -31,6 +31,6 @@ class FaveRemoveUserMethod() : VkMethod<Boolean>(
     override val classRef = FaveRemoveUserMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

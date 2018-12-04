@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns a list of school classes specified for the country.
@@ -31,6 +31,6 @@ class DatabaseGetSchoolClassesMethod() : VkMethod<Array<Array<String>>>(
     override val classRef = DatabaseGetSchoolClassesMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Array<String>>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Array<String>>>>() {}
     }
 }

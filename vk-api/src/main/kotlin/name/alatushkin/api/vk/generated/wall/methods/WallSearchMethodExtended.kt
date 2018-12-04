@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.SearchExtendedResponse
 
 /**
@@ -86,6 +86,6 @@ class WallSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     override val classRef = WallSearchMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
     }
 }

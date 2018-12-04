@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.Filter
 import name.alatushkin.api.vk.generated.groups.Sort
 import name.alatushkin.api.vk.generated.groups.UserXtrRole
@@ -80,6 +80,6 @@ class GroupsGetMembersMethodWithFields() : VkMethod<VkList<UserXtrRole>>(
     override val classRef = GroupsGetMembersMethodWithFields.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<UserXtrRole>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<UserXtrRole>>>() {}
     }
 }

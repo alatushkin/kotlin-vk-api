@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.polls.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Edits created polls
@@ -76,6 +76,6 @@ class PollsEditMethod() : VkMethod<Boolean>(
     override val classRef = PollsEditMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

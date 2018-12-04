@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Allows to add a link to the community.
@@ -49,6 +49,6 @@ class GroupsAddLinkMethod() : VkMethod<Boolean>(
     override val classRef = GroupsAddLinkMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

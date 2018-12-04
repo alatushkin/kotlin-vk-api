@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Creates and edits user newsfeed lists
@@ -58,6 +58,6 @@ class NewsfeedSaveListMethod() : VkMethod<Long>(
     override val classRef = NewsfeedSaveListMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

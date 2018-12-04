@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.places.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.Types
 
 /**
@@ -18,6 +18,6 @@ class PlacesGetTypesMethod : VkMethod<Array<Types>>(
     override val classRef = PlacesGetTypesMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Types>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Types>>>() {}
     }
 }

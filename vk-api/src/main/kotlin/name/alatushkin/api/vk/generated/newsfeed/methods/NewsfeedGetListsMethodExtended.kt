@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.ListFull
 
 /**
@@ -33,6 +33,6 @@ class NewsfeedGetListsMethodExtended() : VkMethod<VkList<ListFull>>(
     override val classRef = NewsfeedGetListsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<ListFull>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<ListFull>>>() {}
     }
 }

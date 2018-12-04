@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.ShortLink
 
 /**
@@ -41,6 +41,6 @@ class UtilsGetShortLinkMethod() : VkMethod<ShortLink>(
     override val classRef = UtilsGetShortLinkMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<ShortLink>>() {}
+        val classRef = object : TypeReference<VkSuccess<ShortLink>>() {}
     }
 }

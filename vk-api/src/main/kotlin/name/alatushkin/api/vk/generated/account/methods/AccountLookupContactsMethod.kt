@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.LookupContactsService
 import name.alatushkin.api.vk.generated.account.LookupResult
 
@@ -69,6 +69,6 @@ class AccountLookupContactsMethod() : VkMethod<LookupResult>(
     override val classRef = AccountLookupContactsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<LookupResult>>() {}
+        val classRef = object : TypeReference<VkSuccess<LookupResult>>() {}
     }
 }

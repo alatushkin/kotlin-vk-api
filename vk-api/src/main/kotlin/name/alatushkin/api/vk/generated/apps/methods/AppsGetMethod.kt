@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.apps.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.apps.App
 import name.alatushkin.api.vk.generated.apps.GetPlatform
 import name.alatushkin.api.vk.generated.common.NameCase
@@ -71,6 +71,6 @@ class AppsGetMethod() : VkMethod<VkList<App>>(
     override val classRef = AppsGetMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<App>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<App>>>() {}
     }
 }

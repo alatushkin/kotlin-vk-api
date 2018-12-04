@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.DomainResolved
 
 /**
@@ -32,6 +32,6 @@ class UtilsResolveScreenNameMethod() : VkMethod<DomainResolved>(
     override val classRef = UtilsResolveScreenNameMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<DomainResolved>>() {}
+        val classRef = object : TypeReference<VkSuccess<DomainResolved>>() {}
     }
 }

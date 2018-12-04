@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns the current time of the VK server.
@@ -17,6 +17,6 @@ class UtilsGetServerTimeMethod : VkMethod<Long>(
     override val classRef = UtilsGetServerTimeMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

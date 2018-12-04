@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.video.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.VideoAlbumFull
 
 /**
@@ -51,6 +51,6 @@ class VideoGetAlbumsMethod() : VkMethod<VkList<VideoAlbumFull>>(
     override val classRef = VideoGetAlbumsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<VideoAlbumFull>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<VideoAlbumFull>>>() {}
     }
 }

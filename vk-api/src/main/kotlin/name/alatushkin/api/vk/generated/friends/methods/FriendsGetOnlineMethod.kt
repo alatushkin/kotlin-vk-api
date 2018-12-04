@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns a list of user IDs of a user's friends who are online.
@@ -67,6 +67,6 @@ class FriendsGetOnlineMethod() : VkMethod<Array<Long>>(
     override val classRef = FriendsGetOnlineMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Long>>>() {}
     }
 }

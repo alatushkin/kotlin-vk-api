@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Deletes an item.
@@ -40,6 +40,6 @@ class MarketDeleteMethod() : VkMethod<Boolean>(
     override val classRef = MarketDeleteMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

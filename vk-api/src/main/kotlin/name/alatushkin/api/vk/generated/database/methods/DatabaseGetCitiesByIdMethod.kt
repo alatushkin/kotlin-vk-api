@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Object
 
 /**
@@ -32,6 +32,6 @@ class DatabaseGetCitiesByIdMethod() : VkMethod<Array<Object>>(
     override val classRef = DatabaseGetCitiesByIdMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Object>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Object>>>() {}
     }
 }

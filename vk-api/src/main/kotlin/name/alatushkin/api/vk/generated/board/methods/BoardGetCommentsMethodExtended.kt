@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.board.GetCommentsExtendedResponse
 import name.alatushkin.api.vk.generated.common.Sort
 
@@ -87,6 +87,6 @@ class BoardGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
     override val classRef = BoardGetCommentsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetCommentsExtendedResponse>>() {}
     }
 }

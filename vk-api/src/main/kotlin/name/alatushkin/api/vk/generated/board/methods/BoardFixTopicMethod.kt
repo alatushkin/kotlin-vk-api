@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Pins a topic (fixes its place) to the top of a community's discussion board.
@@ -40,6 +40,6 @@ class BoardFixTopicMethod() : VkMethod<Boolean>(
     override val classRef = BoardFixTopicMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

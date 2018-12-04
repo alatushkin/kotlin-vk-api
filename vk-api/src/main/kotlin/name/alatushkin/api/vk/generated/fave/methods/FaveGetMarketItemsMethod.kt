@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.fave.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketItem
 
 /**
@@ -42,6 +42,6 @@ class FaveGetMarketItemsMethod() : VkMethod<VkList<MarketItem>>(
     override val classRef = FaveGetMarketItemsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<MarketItem>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<MarketItem>>>() {}
     }
 }

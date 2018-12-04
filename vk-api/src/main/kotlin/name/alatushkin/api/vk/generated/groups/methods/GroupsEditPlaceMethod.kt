@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.EditPlaceResponse
 
 /**
@@ -86,6 +86,6 @@ class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
     override val classRef = GroupsEditPlaceMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<EditPlaceResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<EditPlaceResponse>>() {}
     }
 }

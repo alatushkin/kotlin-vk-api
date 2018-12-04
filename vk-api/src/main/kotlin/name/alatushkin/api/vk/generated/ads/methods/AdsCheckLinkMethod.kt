@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.CheckLinkLinkType
 import name.alatushkin.api.vk.generated.ads.LinkStatus
 
@@ -60,6 +60,6 @@ class AdsCheckLinkMethod() : VkMethod<LinkStatus>(
     override val classRef = AdsCheckLinkMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<LinkStatus>>() {}
+        val classRef = object : TypeReference<VkSuccess<LinkStatus>>() {}
     }
 }

@@ -101,10 +101,11 @@ data class MethodType(
     ): String {
         sourceWriter.importType(TypeId("/com.fasterxml.jackson.core.type", "TypeReference"))
         sourceWriter.importType(TypeId("/name.alatushkin.api.vk.api", "VkResponse"))
+        sourceWriter.importType(TypeId("/name.alatushkin.api.vk.api", "VkSuccess"))
         return """    override val classRef = ${typeId.typeName}.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<${result.paramTypeIds.first().fullTypeName}>>() {}
+        val classRef = object : TypeReference<VkSuccess<${result.paramTypeIds.first().fullTypeName}>>() {}
     }"""
     }
 

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.GetTargetingStatsAdFormat
 import name.alatushkin.api.vk.generated.ads.TargStats
 
@@ -87,6 +87,6 @@ class AdsGetTargetingStatsMethod() : VkMethod<TargStats>(
     override val classRef = AdsGetTargetingStatsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<TargStats>>() {}
+        val classRef = object : TypeReference<VkSuccess<TargStats>>() {}
     }
 }

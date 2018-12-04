@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Denies sending message from community to the current user.
@@ -31,6 +31,6 @@ class MessagesDenyMessagesFromGroupMethod() : VkMethod<Boolean>(
     override val classRef = MessagesDenyMessagesFromGroupMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

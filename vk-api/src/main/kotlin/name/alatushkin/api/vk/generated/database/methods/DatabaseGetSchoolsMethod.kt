@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.database.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.database.School
 
 /**
@@ -60,6 +60,6 @@ class DatabaseGetSchoolsMethod() : VkMethod<VkList<School>>(
     override val classRef = DatabaseGetSchoolsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<School>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<School>>>() {}
     }
 }

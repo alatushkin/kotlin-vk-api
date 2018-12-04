@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetLongPollHistoryResponse
 
 /**
@@ -104,6 +104,6 @@ class MessagesGetLongPollHistoryMethod() : VkMethod<GetLongPollHistoryResponse>(
     override val classRef = MessagesGetLongPollHistoryMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetLongPollHistoryResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetLongPollHistoryResponse>>() {}
     }
 }

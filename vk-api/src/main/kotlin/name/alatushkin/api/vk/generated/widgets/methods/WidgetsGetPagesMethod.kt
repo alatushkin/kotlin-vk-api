@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.widgets.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.widgets.GetPagesResponse
 
 /**
@@ -59,6 +59,6 @@ class WidgetsGetPagesMethod() : VkMethod<GetPagesResponse>(
     override val classRef = WidgetsGetPagesMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetPagesResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetPagesResponse>>() {}
     }
 }

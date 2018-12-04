@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Allows to show stories from hidden sources in current user's feed.
@@ -31,6 +31,6 @@ class StoriesUnbanOwnerMethod() : VkMethod<Boolean>(
     override val classRef = StoriesUnbanOwnerMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

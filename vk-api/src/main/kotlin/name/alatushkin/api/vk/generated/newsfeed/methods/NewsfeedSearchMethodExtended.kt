@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.SearchExtendedResponse
 
 /**
@@ -95,6 +95,6 @@ class NewsfeedSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     override val classRef = NewsfeedSearchMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
     }
 }

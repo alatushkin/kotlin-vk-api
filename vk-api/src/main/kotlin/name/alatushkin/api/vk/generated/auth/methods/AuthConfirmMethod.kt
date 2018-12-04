@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.auth.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.auth.ConfirmResponse
 
 /**
@@ -86,6 +86,6 @@ class AuthConfirmMethod() : VkMethod<ConfirmResponse>(
     override val classRef = AuthConfirmMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<ConfirmResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<ConfirmResponse>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.stats.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stats.WallpostStat
 
 /**
@@ -41,6 +41,6 @@ class StatsGetPostReachMethod() : VkMethod<Array<WallpostStat>>(
     override val classRef = StatsGetPostReachMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<WallpostStat>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<WallpostStat>>>() {}
     }
 }

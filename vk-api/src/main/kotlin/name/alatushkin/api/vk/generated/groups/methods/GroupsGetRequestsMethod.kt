@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns a list of requests to the community.
@@ -50,6 +50,6 @@ class GroupsGetRequestsMethod() : VkMethod<VkList<Long>>(
     override val classRef = GroupsGetRequestsMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<Long>>>() {}
     }
 }

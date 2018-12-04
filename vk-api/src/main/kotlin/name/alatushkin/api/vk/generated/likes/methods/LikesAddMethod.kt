@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.likes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.AddResponse
 import name.alatushkin.api.vk.generated.likes.AddType
 
@@ -60,6 +60,6 @@ class LikesAddMethod() : VkMethod<AddResponse>(
     override val classRef = LikesAddMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<AddResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<AddResponse>>() {}
     }
 }

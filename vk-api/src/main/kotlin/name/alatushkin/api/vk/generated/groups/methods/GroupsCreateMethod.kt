@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.CreateSubtype
 import name.alatushkin.api.vk.generated.groups.CreateType
 import name.alatushkin.api.vk.generated.groups.Group
@@ -70,6 +70,6 @@ class GroupsCreateMethod() : VkMethod<Group>(
     override val classRef = GroupsCreateMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Group>>() {}
+        val classRef = object : TypeReference<VkSuccess<Group>>() {}
     }
 }

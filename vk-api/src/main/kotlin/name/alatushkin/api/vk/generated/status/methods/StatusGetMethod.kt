@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.status.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.status.Status
 
 /**
@@ -41,6 +41,6 @@ class StatusGetMethod() : VkMethod<Status>(
     override val classRef = StatusGetMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Status>>() {}
+        val classRef = object : TypeReference<VkSuccess<Status>>() {}
     }
 }

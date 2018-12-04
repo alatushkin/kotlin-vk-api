@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.video.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.Sort
 import name.alatushkin.api.vk.generated.wall.WallComment
 
@@ -88,6 +88,6 @@ class VideoGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
     override val classRef = VideoGetCommentsMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallComment>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<WallComment>>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Saves the text of a wiki page.
@@ -67,6 +67,6 @@ class PagesSaveMethod() : VkMethod<Long>(
     override val classRef = PagesSaveMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

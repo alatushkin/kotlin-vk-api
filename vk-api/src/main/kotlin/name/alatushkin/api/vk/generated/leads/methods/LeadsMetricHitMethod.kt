@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.MetricHitResponse
 
 /**
@@ -32,6 +32,6 @@ class LeadsMetricHitMethod() : VkMethod<MetricHitResponse>(
     override val classRef = LeadsMetricHitMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<MetricHitResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<MetricHitResponse>>() {}
     }
 }

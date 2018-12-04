@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Sets user game level in the application which can be seen by his/her friends.
@@ -49,6 +49,6 @@ class SecureSetUserLevelMethod() : VkMethod<Boolean>(
     override val classRef = SecureSetUserLevelMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

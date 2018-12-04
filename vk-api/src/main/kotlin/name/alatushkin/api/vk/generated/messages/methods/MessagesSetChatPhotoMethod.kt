@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.SetChatPhotoResponse
 
 /**
@@ -32,6 +32,6 @@ class MessagesSetChatPhotoMethod() : VkMethod<SetChatPhotoResponse>(
     override val classRef = MessagesSetChatPhotoMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<SetChatPhotoResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<SetChatPhotoResponse>>() {}
     }
 }

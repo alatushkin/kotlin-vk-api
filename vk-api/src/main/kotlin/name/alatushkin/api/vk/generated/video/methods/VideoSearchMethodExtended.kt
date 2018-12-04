@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.SearchExtendedResponse
 import name.alatushkin.api.vk.generated.video.Sort
 
@@ -114,6 +114,6 @@ class VideoSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     override val classRef = VideoSearchMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
     }
 }

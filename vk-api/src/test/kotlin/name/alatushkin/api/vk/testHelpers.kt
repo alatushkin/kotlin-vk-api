@@ -36,4 +36,6 @@ private fun readPropsFrom(strPath: String): Properties? {
 
 private val timeOut = 95
 private val httpClient = httpClient(readTimeout = timeOut * 1000)
-val groupTokenTestApi = MethodExecutorImpl(httpClient).withToken(groupAccessToken).throwExceptionsOnError()
+private val methodExecutor = MethodExecutorImpl(httpClient)
+val groupTokenTestApi = methodExecutor.withToken(groupAccessToken).throwExceptionsOnError()
+val userTokenTestApi = methodExecutor.withToken(userAccessToken).throwExceptionsOnError()

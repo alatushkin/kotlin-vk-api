@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.users.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.UserXtrCounters
 
@@ -51,6 +51,6 @@ class UsersGetMethod() : VkMethod<Array<UserXtrCounters>>(
     override val classRef = UsersGetMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<UserXtrCounters>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<UserXtrCounters>>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.Filter
 import name.alatushkin.api.vk.generated.wall.GetExtendedResponse
 
@@ -78,6 +78,6 @@ class WallGetMethodExtended() : VkMethod<GetExtendedResponse>(
     override val classRef = WallGetMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetExtendedResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetExtendedResponse>>() {}
     }
 }

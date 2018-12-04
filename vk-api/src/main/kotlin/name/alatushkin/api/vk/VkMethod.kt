@@ -1,14 +1,14 @@
 package name.alatushkin.api.vk
 
 import com.fasterxml.jackson.core.type.TypeReference
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.Keyboard
 
 abstract class VkMethod<T>(
     val apiMethodName: String,
     val presetProps: MutableMap<String, String>
 ) {
-    abstract val classRef: TypeReference<VkResponse<T>>
+    abstract val classRef: TypeReference<VkSuccess<T>>
     internal val props: MutableMap<String, Any?> = HashMap()
 
     fun toJsonObject(): Map<String, String> {

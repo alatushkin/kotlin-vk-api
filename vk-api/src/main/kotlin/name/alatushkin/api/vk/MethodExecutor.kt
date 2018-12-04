@@ -1,7 +1,9 @@
 package name.alatushkin.api.vk
 
 import name.alatushkin.api.vk.api.VkErrorException
+import name.alatushkin.api.vk.api.VkFail
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.httpclient.HttpClient
 
 interface MethodExecutor {
@@ -29,10 +31,10 @@ fun MethodExecutor.throwExceptionsOnError(): MethodExecutorWithException {
 
         override suspend fun <T> invoke(method: VkMethod<T>): T {
             val result = this@throwExceptionsOnError(method)
-            if (result.error != null)
-                throw VkErrorException(result.error)
-
-            return result.response!!
+            when (result) {
+                is VkSuccess -> return result.response
+                is VkFail -> throw VkErrorException(result.error)
+            }
         }
 
         override val httpClient: HttpClient

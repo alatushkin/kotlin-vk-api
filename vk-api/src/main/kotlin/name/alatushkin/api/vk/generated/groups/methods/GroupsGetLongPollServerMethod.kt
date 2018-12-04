@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.LongPollServer
 
 /**
@@ -32,6 +32,6 @@ class GroupsGetLongPollServerMethod() : VkMethod<LongPollServer>(
     override val classRef = GroupsGetLongPollServerMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<LongPollServer>>() {}
+        val classRef = object : TypeReference<VkSuccess<LongPollServer>>() {}
     }
 }

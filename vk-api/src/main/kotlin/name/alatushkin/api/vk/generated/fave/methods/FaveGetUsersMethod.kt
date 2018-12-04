@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.fave.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.UserMin
 
 /**
@@ -42,6 +42,6 @@ class FaveGetUsersMethod() : VkMethod<VkList<UserMin>>(
     override val classRef = FaveGetUsersMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<UserMin>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<UserMin>>>() {}
     }
 }

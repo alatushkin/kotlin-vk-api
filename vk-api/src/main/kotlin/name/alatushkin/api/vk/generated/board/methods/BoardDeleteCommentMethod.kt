@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Deletes a comment on a topic on a community's discussion board.
@@ -49,6 +49,6 @@ class BoardDeleteCommentMethod() : VkMethod<Boolean>(
     override val classRef = BoardDeleteCommentMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.status.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Sets a new status for the current user.
@@ -40,6 +40,6 @@ class StatusSetMethod() : VkMethod<Boolean>(
     override val classRef = StatusSetMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
+        val classRef = object : TypeReference<VkSuccess<Boolean>>() {}
     }
 }

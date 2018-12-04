@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Returns URL to upload an ad video to.
@@ -17,6 +17,6 @@ class AdsGetVideoUploadURLMethod : VkMethod<String>(
     override val classRef = AdsGetVideoUploadURLMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<String>>() {}
+        val classRef = object : TypeReference<VkSuccess<String>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.AccessLevel
 
 /**
@@ -68,6 +68,6 @@ class PagesSaveAccessMethod() : VkMethod<Long>(
     override val classRef = PagesSaveAccessMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

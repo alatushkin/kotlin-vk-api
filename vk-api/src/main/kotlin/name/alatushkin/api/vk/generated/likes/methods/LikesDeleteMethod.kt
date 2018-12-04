@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.likes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.DeleteResponse
 import name.alatushkin.api.vk.generated.likes.DeleteType
 
@@ -51,6 +51,6 @@ class LikesDeleteMethod() : VkMethod<DeleteResponse>(
     override val classRef = LikesDeleteMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<DeleteResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<DeleteResponse>>() {}
     }
 }

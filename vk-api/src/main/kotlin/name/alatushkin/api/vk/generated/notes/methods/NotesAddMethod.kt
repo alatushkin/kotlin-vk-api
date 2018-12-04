@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Creates a new note for the current user.
@@ -58,6 +58,6 @@ class NotesAddMethod() : VkMethod<Long>(
     override val classRef = NotesAddMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

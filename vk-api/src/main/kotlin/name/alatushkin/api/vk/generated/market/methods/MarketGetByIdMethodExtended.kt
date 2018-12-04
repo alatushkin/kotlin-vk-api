@@ -3,7 +3,7 @@ package name.alatushkin.api.vk.generated.market.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketItemFull
 
 /**
@@ -33,6 +33,6 @@ class MarketGetByIdMethodExtended() : VkMethod<VkList<MarketItemFull>>(
     override val classRef = MarketGetByIdMethodExtended.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<MarketItemFull>>>() {}
+        val classRef = object : TypeReference<VkSuccess<VkList<MarketItemFull>>>() {}
     }
 }

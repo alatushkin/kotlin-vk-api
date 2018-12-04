@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  *  Creates a new comment for an item.
@@ -94,6 +94,6 @@ class MarketCreateCommentMethod() : VkMethod<Long>(
     override val classRef = MarketCreateCommentMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
+        val classRef = object : TypeReference<VkSuccess<Long>>() {}
     }
 }

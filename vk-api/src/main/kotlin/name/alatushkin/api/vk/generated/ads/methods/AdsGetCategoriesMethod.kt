@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.GetCategoriesResponse
 
 /**
@@ -32,6 +32,6 @@ class AdsGetCategoriesMethod() : VkMethod<GetCategoriesResponse>(
     override val classRef = AdsGetCategoriesMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetCategoriesResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetCategoriesResponse>>() {}
     }
 }

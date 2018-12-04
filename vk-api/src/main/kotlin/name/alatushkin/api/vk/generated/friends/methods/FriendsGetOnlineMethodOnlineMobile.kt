@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.GetOnlineOnlineMobileResponse
 
 /**
@@ -68,6 +68,6 @@ class FriendsGetOnlineMethodOnlineMobile() : VkMethod<GetOnlineOnlineMobileRespo
     override val classRef = FriendsGetOnlineMethodOnlineMobile.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetOnlineOnlineMobileResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetOnlineOnlineMobileResponse>>() {}
     }
 }

@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.Doc
 
 /**
@@ -32,6 +32,6 @@ class DocsGetByIdMethod() : VkMethod<Array<Doc>>(
     override val classRef = DocsGetByIdMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Doc>>>() {}
+        val classRef = object : TypeReference<VkSuccess<Array<Doc>>>() {}
     }
 }

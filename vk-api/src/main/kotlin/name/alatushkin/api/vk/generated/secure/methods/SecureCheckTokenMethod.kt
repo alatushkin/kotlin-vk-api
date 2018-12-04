@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.secure.TokenChecked
 
 /**
@@ -41,6 +41,6 @@ class SecureCheckTokenMethod() : VkMethod<TokenChecked>(
     override val classRef = SecureCheckTokenMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<TokenChecked>>() {}
+        val classRef = object : TypeReference<VkSuccess<TokenChecked>>() {}
     }
 }

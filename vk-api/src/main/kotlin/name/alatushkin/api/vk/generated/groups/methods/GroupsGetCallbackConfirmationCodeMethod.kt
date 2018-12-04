@@ -2,7 +2,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GetCallbackConfirmationCodeResponse
 
 /**
@@ -32,6 +32,6 @@ class GroupsGetCallbackConfirmationCodeMethod() : VkMethod<GetCallbackConfirmati
     override val classRef = GroupsGetCallbackConfirmationCodeMethod.classRef
 
     companion object {
-        val classRef = object : TypeReference<VkResponse<GetCallbackConfirmationCodeResponse>>() {}
+        val classRef = object : TypeReference<VkSuccess<GetCallbackConfirmationCodeResponse>>() {}
     }
 }

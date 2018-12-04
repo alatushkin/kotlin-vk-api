@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,7 +21,7 @@ class PagesParseWikiMethod(
 ) : VkMethod<String>(
     "pages.parseWiki",
     mutableMapOf(),
-    object : TypeReference<VkResponse<String>>() {}
+    object : TypeReference<VkSuccess<String>>() {}
 ), UserMethod {
 
     var text: String by props

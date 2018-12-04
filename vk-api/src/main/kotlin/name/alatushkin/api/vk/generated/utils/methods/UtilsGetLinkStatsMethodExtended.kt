@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.Interval
 import name.alatushkin.api.vk.generated.utils.LinkStatsExtended
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
@@ -27,7 +27,7 @@ class UtilsGetLinkStatsMethodExtended(
 ) : VkMethod<LinkStatsExtended>(
     "utils.getLinkStats",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<LinkStatsExtended>>() {}
+    object : TypeReference<VkSuccess<LinkStatsExtended>>() {}
 ), UserGroupServiceMethod {
 
     var key: String by props

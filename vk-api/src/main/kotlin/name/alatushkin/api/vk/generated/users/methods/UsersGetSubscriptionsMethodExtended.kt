@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.users.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.GetSubscriptionsExtendedResponse
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -27,7 +27,7 @@ class UsersGetSubscriptionsMethodExtended(
 ) : VkMethod<VkList<GetSubscriptionsExtendedResponse>>(
     "users.getSubscriptions",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<VkList<GetSubscriptionsExtendedResponse>>>() {}
+    object : TypeReference<VkSuccess<VkList<GetSubscriptionsExtendedResponse>>>() {}
 ), UserServiceMethod {
 
     var userId: Long? by props

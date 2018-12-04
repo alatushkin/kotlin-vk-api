@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.video.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.Sort
 import name.alatushkin.api.vk.generated.video.Video
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -40,7 +40,7 @@ class VideoSearchMethod(
 ) : VkMethod<VkList<Video>>(
     "video.search",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Video>>>() {}
+    object : TypeReference<VkSuccess<VkList<Video>>>() {}
 ), UserMethod {
 
     var q: String by props

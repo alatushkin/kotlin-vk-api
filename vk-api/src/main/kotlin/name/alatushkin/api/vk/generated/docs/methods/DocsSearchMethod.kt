@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.docs.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -27,7 +27,7 @@ class DocsSearchMethod(
 ) : VkMethod<VkList<Doc>>(
     "docs.search",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Doc>>>() {}
+    object : TypeReference<VkSuccess<VkList<Doc>>>() {}
 ), UserGroupMethod {
 
     var q: String by props

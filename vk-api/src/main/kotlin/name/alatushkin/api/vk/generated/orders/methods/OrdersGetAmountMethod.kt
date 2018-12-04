@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.orders.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.orders.Amount
 
 /**
@@ -21,7 +21,7 @@ class OrdersGetAmountMethod(
 ) : VkMethod<Amount>(
     "orders.getAmount",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Amount>>() {}
+    object : TypeReference<VkSuccess<Amount>>() {}
 ) {
 
     var userId: Long by props

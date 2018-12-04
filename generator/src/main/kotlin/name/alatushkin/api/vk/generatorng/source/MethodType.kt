@@ -110,8 +110,8 @@ data class MethodType(
 
     private fun renderClassRef(sourceWriter: SourceWriter): String {
         sourceWriter.importType(TypeId("/com.fasterxml.jackson.core.type", "TypeReference"))
-        sourceWriter.importType(TypeId("/name.alatushkin.api.vk.api", "VkResponse"))
-        return "object : TypeReference<VkResponse<${result.paramTypeIds.first().fullTypeName}>>() {}"
+        sourceWriter.importType(TypeId("/name.alatushkin.api.vk.api", "VkSuccess"))
+        return "object : TypeReference<VkSuccess<${result.paramTypeIds.first().fullTypeName}>>() {}"
     }
 
     private fun renderMutableMap(map: Map<String, String?>): String {

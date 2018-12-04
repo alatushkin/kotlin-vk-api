@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.Entry
 import name.alatushkin.api.vk.generated.leads.GetUsersStatus
 import name.alatushkin.api.vk.tokens.UserServiceMethod
@@ -31,7 +31,7 @@ class LeadsGetUsersMethod(
 ) : VkMethod<Array<Entry>>(
     "leads.getUsers",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Entry>>>() {}
+    object : TypeReference<VkSuccess<Array<Entry>>>() {}
 ), UserServiceMethod {
 
     var offerId: Long by props

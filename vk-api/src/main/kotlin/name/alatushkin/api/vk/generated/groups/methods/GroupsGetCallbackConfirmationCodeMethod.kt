@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GetCallbackConfirmationCodeResponse
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -20,7 +20,7 @@ class GroupsGetCallbackConfirmationCodeMethod(
 ) : VkMethod<GetCallbackConfirmationCodeResponse>(
     "groups.getCallbackConfirmationCode",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetCallbackConfirmationCodeResponse>>() {}
+    object : TypeReference<VkSuccess<GetCallbackConfirmationCodeResponse>>() {}
 ), UserGroupMethod {
 
     var groupId: Long by props

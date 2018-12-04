@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.status.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.status.Status
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -22,7 +22,7 @@ class StatusGetMethod(
 ) : VkMethod<Status>(
     "status.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Status>>() {}
+    object : TypeReference<VkSuccess<Status>>() {}
 ), UserMethod {
 
     var userId: Long? by props

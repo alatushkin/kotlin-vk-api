@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GroupSettings
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -20,7 +20,7 @@ class GroupsGetSettingsMethod(
 ) : VkMethod<GroupSettings>(
     "groups.getSettings",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GroupSettings>>() {}
+    object : TypeReference<VkSuccess<GroupSettings>>() {}
 ), UserMethod {
 
     var groupId: Long by props

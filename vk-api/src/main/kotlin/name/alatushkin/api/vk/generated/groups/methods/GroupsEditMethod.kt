@@ -4,9 +4,13 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Mode
-import name.alatushkin.api.vk.generated.groups.*
+import name.alatushkin.api.vk.generated.groups.Access
+import name.alatushkin.api.vk.generated.groups.EditAgeLimits
+import name.alatushkin.api.vk.generated.groups.EditMarketCurrency
+import name.alatushkin.api.vk.generated.groups.EditSubject
+import name.alatushkin.api.vk.generated.groups.EditWall
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -97,7 +101,7 @@ class GroupsEditMethod(
 ) : VkMethod<Boolean>(
     "groups.edit",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), UserMethod {
 
     var groupId: Long by props

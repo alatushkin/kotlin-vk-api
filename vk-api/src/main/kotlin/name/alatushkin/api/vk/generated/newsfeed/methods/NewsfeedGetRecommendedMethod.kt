@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.GetRecommendedResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -30,7 +30,7 @@ class NewsfeedGetRecommendedMethod(
 ) : VkMethod<GetRecommendedResponse>(
     "newsfeed.getRecommended",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetRecommendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetRecommendedResponse>>() {}
 ), UserMethod {
 
     var startTime: Long? by props

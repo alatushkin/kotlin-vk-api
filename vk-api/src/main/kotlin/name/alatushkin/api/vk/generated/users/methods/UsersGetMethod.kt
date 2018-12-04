@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.users.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.UserXtrCounters
 import name.alatushkin.api.vk.tokens.UserServiceMethod
@@ -25,7 +25,7 @@ class UsersGetMethod(
 ) : VkMethod<Array<UserXtrCounters>>(
     "users.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<UserXtrCounters>>>() {}
+    object : TypeReference<VkSuccess<Array<UserXtrCounters>>>() {}
 ), UserServiceMethod {
 
     var userIds: Array<String>? by props

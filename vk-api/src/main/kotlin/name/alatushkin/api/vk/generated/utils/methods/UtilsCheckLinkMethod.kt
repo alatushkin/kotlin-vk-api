@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.LinkChecked
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
@@ -20,7 +20,7 @@ class UtilsCheckLinkMethod(
 ) : VkMethod<LinkChecked>(
     "utils.checkLink",
     mutableMapOf(),
-    object : TypeReference<VkResponse<LinkChecked>>() {}
+    object : TypeReference<VkSuccess<LinkChecked>>() {}
 ), UserGroupServiceMethod {
 
     var url: String by props

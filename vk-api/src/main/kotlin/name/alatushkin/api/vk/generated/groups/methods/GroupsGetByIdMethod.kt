@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GroupFull
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
@@ -24,7 +24,7 @@ class GroupsGetByIdMethod(
 ) : VkMethod<Array<GroupFull>>(
     "groups.getById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<GroupFull>>>() {}
+    object : TypeReference<VkSuccess<Array<GroupFull>>>() {}
 ), UserGroupServiceMethod {
 
     var groupIds: Array<String>? by props

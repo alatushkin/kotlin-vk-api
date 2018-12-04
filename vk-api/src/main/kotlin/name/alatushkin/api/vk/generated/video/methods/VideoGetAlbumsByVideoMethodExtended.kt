@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.video.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.VideoAlbumFull
 
 /**
@@ -24,7 +24,7 @@ class VideoGetAlbumsByVideoMethodExtended(
 ) : VkMethod<VkList<VideoAlbumFull>>(
     "video.getAlbumsByVideo",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<VkList<VideoAlbumFull>>>() {}
+    object : TypeReference<VkSuccess<VkList<VideoAlbumFull>>>() {}
 ) {
 
     var targetId: Long? by props

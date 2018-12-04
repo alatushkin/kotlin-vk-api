@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.callback.ServerInfo
 
 /**
@@ -20,7 +20,7 @@ class GroupsGetCallbackServersMethod(
 ) : VkMethod<VkList<ServerInfo>>(
     "groups.getCallbackServers",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<ServerInfo>>>() {}
+    object : TypeReference<VkSuccess<VkList<ServerInfo>>>() {}
 ) {
 
     var groupId: Long by props

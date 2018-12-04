@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.orders.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.orders.Order
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -24,7 +24,7 @@ class OrdersGetByIdMethod(
 ) : VkMethod<Array<Order>>(
     "orders.getById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Order>>>() {}
+    object : TypeReference<VkSuccess<Array<Order>>>() {}
 ), UserMethod {
 
     var orderId: Long? by props

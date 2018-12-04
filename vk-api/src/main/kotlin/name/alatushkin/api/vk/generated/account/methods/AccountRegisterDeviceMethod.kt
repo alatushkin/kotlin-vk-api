@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -29,7 +29,7 @@ class AccountRegisterDeviceMethod(
 ) : VkMethod<Boolean>(
     "account.registerDevice",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), UserMethod {
 
     var token: String by props

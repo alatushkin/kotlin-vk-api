@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.Lang
 import name.alatushkin.api.vk.generated.ads.TargSuggestions
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -23,7 +23,7 @@ class AdsGetSuggestionsMethodUserDevices(
 ) : VkMethod<Array<TargSuggestions>>(
     "ads.getSuggestions",
     mutableMapOf("section" to "user_devices"),
-    object : TypeReference<VkResponse<Array<TargSuggestions>>>() {}
+    object : TypeReference<VkSuccess<Array<TargSuggestions>>>() {}
 ), UserMethod {
 
     var q: String? by props

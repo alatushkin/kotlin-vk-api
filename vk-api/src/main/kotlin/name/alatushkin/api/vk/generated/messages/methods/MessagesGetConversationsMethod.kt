@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetConversationsFilter
 import name.alatushkin.api.vk.generated.messages.GetConversationsResponse
 import name.alatushkin.api.vk.tokens.UserGroupMethod
@@ -33,7 +33,7 @@ class MessagesGetConversationsMethod(
 ) : VkMethod<GetConversationsResponse>(
     "messages.getConversations",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetConversationsResponse>>() {}
+    object : TypeReference<VkSuccess<GetConversationsResponse>>() {}
 ), UserGroupMethod {
 
     var groupId: Long? by props

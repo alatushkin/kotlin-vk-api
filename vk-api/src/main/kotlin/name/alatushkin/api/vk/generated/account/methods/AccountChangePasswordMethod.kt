@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.ChangePasswordResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -26,7 +26,7 @@ class AccountChangePasswordMethod(
 ) : VkMethod<ChangePasswordResponse>(
     "account.changePassword",
     mutableMapOf(),
-    object : TypeReference<VkResponse<ChangePasswordResponse>>() {}
+    object : TypeReference<VkSuccess<ChangePasswordResponse>>() {}
 ), UserMethod {
 
     var restoreSid: String? by props

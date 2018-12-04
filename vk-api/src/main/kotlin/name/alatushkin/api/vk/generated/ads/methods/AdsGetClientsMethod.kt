@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.Client
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -20,7 +20,7 @@ class AdsGetClientsMethod(
 ) : VkMethod<Array<Client>>(
     "ads.getClients",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Client>>>() {}
+    object : TypeReference<VkSuccess<Array<Client>>>() {}
 ), UserMethod {
 
     var accountId: Long by props

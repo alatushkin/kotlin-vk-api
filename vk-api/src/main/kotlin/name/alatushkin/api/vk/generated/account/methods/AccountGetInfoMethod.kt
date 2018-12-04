@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.Info
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -20,7 +20,7 @@ class AccountGetInfoMethod(
 ) : VkMethod<Info>(
     "account.getInfo",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Info>>() {}
+    object : TypeReference<VkSuccess<Info>>() {}
 ), UserMethod {
 
     var fields: Array<String>? by props

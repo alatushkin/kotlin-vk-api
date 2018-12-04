@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.users.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -29,7 +29,7 @@ class UsersGetFollowersMethod(
 ) : VkMethod<VkList<Long>>(
     "users.getFollowers",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Long>>>() {}
+    object : TypeReference<VkSuccess<VkList<Long>>>() {}
 ), UserServiceMethod {
 
     var userId: Long? by props

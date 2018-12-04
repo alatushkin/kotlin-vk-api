@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GetInvitesExtendedResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -22,7 +22,7 @@ class GroupsGetInvitesMethodExtended(
 ) : VkMethod<GetInvitesExtendedResponse>(
     "groups.getInvites",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<GetInvitesExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetInvitesExtendedResponse>>() {}
 ), UserMethod {
 
     var offset: Long? by props

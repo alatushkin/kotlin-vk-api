@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.docs.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -25,7 +25,7 @@ class DocsGetMethod(
 ) : VkMethod<VkList<Doc>>(
     "docs.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Doc>>>() {}
+    object : TypeReference<VkSuccess<VkList<Doc>>>() {}
 ), UserMethod {
 
     var count: Long? by props

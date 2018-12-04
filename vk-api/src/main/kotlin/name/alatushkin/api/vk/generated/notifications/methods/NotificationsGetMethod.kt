@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.notifications.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notifications.GetResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -28,7 +28,7 @@ class NotificationsGetMethod(
 ) : VkMethod<GetResponse>(
     "notifications.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetResponse>>() {}
+    object : TypeReference<VkSuccess<GetResponse>>() {}
 ), UserMethod {
 
     var count: Long? by props

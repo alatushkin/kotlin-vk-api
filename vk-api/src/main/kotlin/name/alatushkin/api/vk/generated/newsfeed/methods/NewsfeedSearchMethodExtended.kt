@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.SearchExtendedResponse
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -34,7 +34,7 @@ class NewsfeedSearchMethodExtended(
 ) : VkMethod<SearchExtendedResponse>(
     "newsfeed.search",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
 ), UserServiceMethod {
 
     var q: String? by props

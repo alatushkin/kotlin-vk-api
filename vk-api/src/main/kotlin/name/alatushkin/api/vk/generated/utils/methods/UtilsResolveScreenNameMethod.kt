@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.DomainResolved
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
@@ -20,7 +20,7 @@ class UtilsResolveScreenNameMethod(
 ) : VkMethod<DomainResolved>(
     "utils.resolveScreenName",
     mutableMapOf(),
-    object : TypeReference<VkResponse<DomainResolved>>() {}
+    object : TypeReference<VkSuccess<DomainResolved>>() {}
 ), UserGroupServiceMethod {
 
     var screenName: String by props

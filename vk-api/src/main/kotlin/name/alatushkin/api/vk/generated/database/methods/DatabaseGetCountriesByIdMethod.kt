@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Country
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -20,7 +20,7 @@ class DatabaseGetCountriesByIdMethod(
 ) : VkMethod<Array<Country>>(
     "database.getCountriesById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Country>>>() {}
+    object : TypeReference<VkSuccess<Array<Country>>>() {}
 ), UserServiceMethod {
 
     var countryIds: Array<Long>? by props

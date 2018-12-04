@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.stats.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stats.Period
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -26,7 +26,7 @@ class StatsGetMethod(
 ) : VkMethod<Array<Period>>(
     "stats.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Period>>>() {}
+    object : TypeReference<VkSuccess<Array<Period>>>() {}
 ), UserMethod {
 
     var groupId: Long? by props

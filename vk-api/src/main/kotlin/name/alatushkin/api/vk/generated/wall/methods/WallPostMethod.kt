@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.PostResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -46,7 +46,7 @@ class WallPostMethod(
 ) : VkMethod<PostResponse>(
     "wall.post",
     mutableMapOf(),
-    object : TypeReference<VkResponse<PostResponse>>() {}
+    object : TypeReference<VkSuccess<PostResponse>>() {}
 ), UserMethod {
 
     var ownerId: Long? by props

@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.OwnerXtrBanInfo
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -29,7 +29,7 @@ class GroupsGetBannedMethod(
 ) : VkMethod<VkList<OwnerXtrBanInfo>>(
     "groups.getBanned",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<OwnerXtrBanInfo>>>() {}
+    object : TypeReference<VkSuccess<VkList<OwnerXtrBanInfo>>>() {}
 ), UserMethod {
 
     var groupId: Long by props

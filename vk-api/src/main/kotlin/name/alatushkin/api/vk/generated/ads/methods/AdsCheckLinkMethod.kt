@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.CheckLinkLinkType
 import name.alatushkin.api.vk.generated.ads.LinkStatus
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -27,7 +27,7 @@ class AdsCheckLinkMethod(
 ) : VkMethod<LinkStatus>(
     "ads.checkLink",
     mutableMapOf(),
-    object : TypeReference<VkResponse<LinkStatus>>() {}
+    object : TypeReference<VkSuccess<LinkStatus>>() {}
 ), UserMethod {
 
     var accountId: Long by props

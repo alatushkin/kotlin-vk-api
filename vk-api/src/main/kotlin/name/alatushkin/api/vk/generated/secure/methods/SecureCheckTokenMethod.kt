@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.secure.TokenChecked
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -22,7 +22,7 @@ class SecureCheckTokenMethod(
 ) : VkMethod<TokenChecked>(
     "secure.checkToken",
     mutableMapOf(),
-    object : TypeReference<VkResponse<TokenChecked>>() {}
+    object : TypeReference<VkSuccess<TokenChecked>>() {}
 ), UserMethod {
 
     var token: String? by props

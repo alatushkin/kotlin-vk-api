@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetHistoryResponse
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -37,7 +37,7 @@ class MessagesGetHistoryMethod(
 ) : VkMethod<GetHistoryResponse>(
     "messages.getHistory",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetHistoryResponse>>() {}
+    object : TypeReference<VkSuccess<GetHistoryResponse>>() {}
 ), UserGroupMethod {
 
     var offset: Long? by props

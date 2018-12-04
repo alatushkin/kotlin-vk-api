@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.auth.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -25,7 +25,7 @@ class AuthCheckPhoneMethod(
 ) : VkMethod<Boolean>(
     "auth.checkPhone",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), ServiceMethod {
 
     var phone: String by props

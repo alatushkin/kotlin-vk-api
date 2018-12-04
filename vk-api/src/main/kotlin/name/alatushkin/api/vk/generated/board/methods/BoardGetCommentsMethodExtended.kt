@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.board.GetCommentsExtendedResponse
 import name.alatushkin.api.vk.generated.common.Sort
 import name.alatushkin.api.vk.tokens.UserServiceMethod
@@ -33,7 +33,7 @@ class BoardGetCommentsMethodExtended(
 ) : VkMethod<GetCommentsExtendedResponse>(
     "board.getComments",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetCommentsExtendedResponse>>() {}
 ), UserServiceMethod {
 
     var groupId: Long by props

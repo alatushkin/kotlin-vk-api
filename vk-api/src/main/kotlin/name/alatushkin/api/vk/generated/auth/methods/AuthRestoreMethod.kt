@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.auth.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.auth.RestoreResponse
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
@@ -22,7 +22,7 @@ class AuthRestoreMethod(
 ) : VkMethod<RestoreResponse>(
     "auth.restore",
     mutableMapOf(),
-    object : TypeReference<VkResponse<RestoreResponse>>() {}
+    object : TypeReference<VkSuccess<RestoreResponse>>() {}
 ), ServiceMethod {
 
     var phone: String by props

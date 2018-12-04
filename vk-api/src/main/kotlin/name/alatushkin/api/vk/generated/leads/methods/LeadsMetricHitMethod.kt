@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.MetricHitResponse
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -20,7 +20,7 @@ class LeadsMetricHitMethod(
 ) : VkMethod<MetricHitResponse>(
     "leads.metricHit",
     mutableMapOf(),
-    object : TypeReference<VkResponse<MetricHitResponse>>() {}
+    object : TypeReference<VkSuccess<MetricHitResponse>>() {}
 ), UserServiceMethod {
 
     var data: String by props

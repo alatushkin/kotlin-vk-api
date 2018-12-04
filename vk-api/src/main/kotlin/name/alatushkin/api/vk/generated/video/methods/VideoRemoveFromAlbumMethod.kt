@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 
 /**
  * [https://vk.com/dev/video.removeFromAlbum]
@@ -26,7 +26,7 @@ class VideoRemoveFromAlbumMethod(
 ) : VkMethod<Boolean>(
     "video.removeFromAlbum",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ) {
 
     var targetId: Long? by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.widgets.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.widgets.GetPagesResponse
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -26,7 +26,7 @@ class WidgetsGetPagesMethod(
 ) : VkMethod<GetPagesResponse>(
     "widgets.getPages",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetPagesResponse>>() {}
+    object : TypeReference<VkSuccess<GetPagesResponse>>() {}
 ), UserServiceMethod {
 
     var widgetApiId: Long? by props

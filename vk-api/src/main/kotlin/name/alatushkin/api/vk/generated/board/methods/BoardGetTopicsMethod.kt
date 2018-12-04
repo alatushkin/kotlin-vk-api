@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.board.GetTopicsResponse
 import name.alatushkin.api.vk.generated.board.Order
 import name.alatushkin.api.vk.generated.board.Preview
@@ -34,7 +34,7 @@ class BoardGetTopicsMethod(
 ) : VkMethod<GetTopicsResponse>(
     "board.getTopics",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetTopicsResponse>>() {}
+    object : TypeReference<VkSuccess<GetTopicsResponse>>() {}
 ), UserServiceMethod {
 
     var groupId: Long by props

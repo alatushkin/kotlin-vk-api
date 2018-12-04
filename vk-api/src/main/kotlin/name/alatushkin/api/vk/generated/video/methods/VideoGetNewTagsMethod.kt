@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.video.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.VideoTagInfo
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -23,7 +23,7 @@ class VideoGetNewTagsMethod(
 ) : VkMethod<VkList<VideoTagInfo>>(
     "video.getNewTags",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<VideoTagInfo>>>() {}
+    object : TypeReference<VkSuccess<VkList<VideoTagInfo>>>() {}
 ), UserMethod {
 
     var offset: Long? by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.LongpollParams
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -24,7 +24,7 @@ class MessagesGetLongPollServerMethod(
 ) : VkMethod<LongpollParams>(
     "messages.getLongPollServer",
     mutableMapOf(),
-    object : TypeReference<VkResponse<LongpollParams>>() {}
+    object : TypeReference<VkSuccess<LongpollParams>>() {}
 ), UserGroupMethod {
 
     var lpVersion: Long? by props

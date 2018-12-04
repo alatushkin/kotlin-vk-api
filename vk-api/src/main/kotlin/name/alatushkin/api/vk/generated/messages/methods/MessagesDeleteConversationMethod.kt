@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -27,7 +27,7 @@ class MessagesDeleteConversationMethod(
 ) : VkMethod<Boolean>(
     "messages.deleteConversation",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), UserGroupMethod {
 
     var userId: String? by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.GetAllResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -32,7 +32,7 @@ class PhotosGetAllMethod(
 ) : VkMethod<GetAllResponse>(
     "photos.getAll",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetAllResponse>>() {}
+    object : TypeReference<VkSuccess<GetAllResponse>>() {}
 ), UserMethod {
 
     var ownerId: Long? by props

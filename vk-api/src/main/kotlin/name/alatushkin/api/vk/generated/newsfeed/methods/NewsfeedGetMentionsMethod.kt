@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.WallpostToId
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -29,7 +29,7 @@ class NewsfeedGetMentionsMethod(
 ) : VkMethod<VkList<WallpostToId>>(
     "newsfeed.getMentions",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<WallpostToId>>>() {}
+    object : TypeReference<VkSuccess<VkList<WallpostToId>>>() {}
 ), UserMethod {
 
     var ownerId: Long? by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.SearchExtendedResponse
 import name.alatushkin.api.vk.generated.video.Sort
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -39,7 +39,7 @@ class VideoSearchMethodExtended(
 ) : VkMethod<SearchExtendedResponse>(
     "video.search",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
 ), UserMethod {
 
     var q: String by props

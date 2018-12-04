@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.account.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.Offer
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -21,7 +21,7 @@ class AccountGetActiveOffersMethod(
 ) : VkMethod<VkList<Offer>>(
     "account.getActiveOffers",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Offer>>>() {}
+    object : TypeReference<VkSuccess<VkList<Offer>>>() {}
 ), UserMethod {
 
     var count: Long? by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -25,7 +25,7 @@ class MessagesMarkAsReadMethod(
 ) : VkMethod<Boolean>(
     "messages.markAsRead",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), UserGroupMethod {
 
     var messageIds: Array<Long>? by props

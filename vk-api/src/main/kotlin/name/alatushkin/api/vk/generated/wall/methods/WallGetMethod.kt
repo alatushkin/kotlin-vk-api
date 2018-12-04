@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.wall.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.Filter
 import name.alatushkin.api.vk.generated.wall.WallpostFull
 import name.alatushkin.api.vk.tokens.UserServiceMethod
@@ -32,7 +32,7 @@ class WallGetMethod(
 ) : VkMethod<VkList<WallpostFull>>(
     "wall.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
+    object : TypeReference<VkSuccess<VkList<WallpostFull>>>() {}
 ), UserServiceMethod {
 
     var ownerId: Long? by props

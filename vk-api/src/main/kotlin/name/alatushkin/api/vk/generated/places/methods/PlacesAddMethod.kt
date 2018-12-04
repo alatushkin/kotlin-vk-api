@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.places.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.AddResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -32,7 +32,7 @@ class PlacesAddMethod(
 ) : VkMethod<AddResponse>(
     "places.add",
     mutableMapOf(),
-    object : TypeReference<VkResponse<AddResponse>>() {}
+    object : TypeReference<VkSuccess<AddResponse>>() {}
 ), UserMethod {
 
     var type: Long? by props

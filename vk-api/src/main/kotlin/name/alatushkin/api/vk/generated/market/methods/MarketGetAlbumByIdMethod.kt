@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.market.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketAlbum
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -23,7 +23,7 @@ class MarketGetAlbumByIdMethod(
 ) : VkMethod<VkList<MarketAlbum>>(
     "market.getAlbumById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<MarketAlbum>>>() {}
+    object : TypeReference<VkSuccess<VkList<MarketAlbum>>>() {}
 ), UserMethod {
 
     var ownerId: Long by props

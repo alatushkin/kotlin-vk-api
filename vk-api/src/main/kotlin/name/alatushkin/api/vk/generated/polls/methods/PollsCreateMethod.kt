@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.polls.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.polls.Poll
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -26,7 +26,7 @@ class PollsCreateMethod(
 ) : VkMethod<Poll>(
     "polls.create",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Poll>>() {}
+    object : TypeReference<VkSuccess<Poll>>() {}
 ), UserMethod {
 
     var question: String? by props

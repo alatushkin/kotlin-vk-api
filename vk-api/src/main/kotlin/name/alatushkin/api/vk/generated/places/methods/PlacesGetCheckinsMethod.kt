@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.places.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.Checkin
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -37,7 +37,7 @@ class PlacesGetCheckinsMethod(
 ) : VkMethod<VkList<Checkin>>(
     "places.getCheckins",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Checkin>>>() {}
+    object : TypeReference<VkSuccess<VkList<Checkin>>>() {}
 ), UserMethod {
 
     var latitude: Double? by props

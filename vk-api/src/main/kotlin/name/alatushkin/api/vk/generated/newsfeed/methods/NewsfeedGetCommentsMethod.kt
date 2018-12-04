@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.GetCommentsResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -32,7 +32,7 @@ class NewsfeedGetCommentsMethod(
 ) : VkMethod<GetCommentsResponse>(
     "newsfeed.getComments",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetCommentsResponse>>() {}
+    object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
 ), UserMethod {
 
     var count: Long? by props

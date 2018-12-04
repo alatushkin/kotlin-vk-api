@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.apps.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.apps.GetLeaderboardType
 import name.alatushkin.api.vk.generated.apps.Leaderboard
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -24,7 +24,7 @@ class AppsGetLeaderboardMethod(
 ) : VkMethod<VkList<Leaderboard>>(
     "apps.getLeaderboard",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Leaderboard>>>() {}
+    object : TypeReference<VkSuccess<VkList<Leaderboard>>>() {}
 ), UserMethod {
 
     var type: GetLeaderboardType by props

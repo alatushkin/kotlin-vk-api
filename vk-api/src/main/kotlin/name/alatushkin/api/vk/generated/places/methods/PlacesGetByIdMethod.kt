@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.places.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.PlaceMin
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -20,7 +20,7 @@ class PlacesGetByIdMethod(
 ) : VkMethod<Array<PlaceMin>>(
     "places.getById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<PlaceMin>>>() {}
+    object : TypeReference<VkSuccess<Array<PlaceMin>>>() {}
 ), UserMethod {
 
     var places: Array<Long> by props

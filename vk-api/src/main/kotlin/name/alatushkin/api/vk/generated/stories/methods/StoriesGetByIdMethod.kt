@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.Story
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -23,7 +23,7 @@ class StoriesGetByIdMethod(
 ) : VkMethod<VkList<Story>>(
     "stories.getById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Story>>>() {}
+    object : TypeReference<VkSuccess<VkList<Story>>>() {}
 ), UserGroupMethod {
 
     var stories: Array<String>? by props

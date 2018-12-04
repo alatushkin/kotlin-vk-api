@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.ShortLink
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
@@ -22,7 +22,7 @@ class UtilsGetShortLinkMethod(
 ) : VkMethod<ShortLink>(
     "utils.getShortLink",
     mutableMapOf(),
-    object : TypeReference<VkResponse<ShortLink>>() {}
+    object : TypeReference<VkSuccess<ShortLink>>() {}
 ), UserGroupServiceMethod {
 
     var url: String by props

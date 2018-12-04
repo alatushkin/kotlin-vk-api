@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.users.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.ReportType
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -24,7 +24,7 @@ class UsersReportMethod(
 ) : VkMethod<Boolean>(
     "users.report",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), UserMethod {
 
     var userId: Long by props

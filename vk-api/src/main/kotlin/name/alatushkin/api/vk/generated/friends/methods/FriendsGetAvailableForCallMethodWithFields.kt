@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.UserFull
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -24,7 +24,7 @@ class FriendsGetAvailableForCallMethodWithFields(
 ) : VkMethod<VkList<UserFull>>(
     "friends.getAvailableForCall",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<UserFull>>>() {}
+    object : TypeReference<VkSuccess<VkList<UserFull>>>() {}
 ), UserMethod {
 
     var fields: Array<String>? by props

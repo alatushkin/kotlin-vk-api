@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.auth.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.auth.ConfirmResponse
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
@@ -32,7 +32,7 @@ class AuthConfirmMethod(
 ) : VkMethod<ConfirmResponse>(
     "auth.confirm",
     mutableMapOf(),
-    object : TypeReference<VkResponse<ConfirmResponse>>() {}
+    object : TypeReference<VkSuccess<ConfirmResponse>>() {}
 ), ServiceMethod {
 
     var clientId: Long by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.pages.WikipageFull
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -32,7 +32,7 @@ class PagesGetMethod(
 ) : VkMethod<WikipageFull>(
     "pages.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<WikipageFull>>() {}
+    object : TypeReference<VkSuccess<WikipageFull>>() {}
 ), UserMethod {
 
     var ownerId: Long? by props

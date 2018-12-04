@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.friends.Order
 import name.alatushkin.api.vk.generated.friends.UserXtrLists
@@ -35,7 +35,7 @@ class FriendsGetMethodWithFields(
 ) : VkMethod<VkList<UserXtrLists>>(
     "friends.get",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<UserXtrLists>>>() {}
+    object : TypeReference<VkSuccess<VkList<UserXtrLists>>>() {}
 ), UserServiceMethod {
 
     var userId: Long? by props

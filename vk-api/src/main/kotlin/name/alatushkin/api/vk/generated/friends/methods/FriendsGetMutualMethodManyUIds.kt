@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.MutualFriend
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -30,7 +30,7 @@ class FriendsGetMutualMethodManyUIds(
 ) : VkMethod<Array<MutualFriend>>(
     "friends.getMutual",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<MutualFriend>>>() {}
+    object : TypeReference<VkSuccess<Array<MutualFriend>>>() {}
 ), UserMethod {
 
     var sourceUid: Long? by props

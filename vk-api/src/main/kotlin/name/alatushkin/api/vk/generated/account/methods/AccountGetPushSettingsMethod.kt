@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.PushSettings
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -20,7 +20,7 @@ class AccountGetPushSettingsMethod(
 ) : VkMethod<PushSettings>(
     "account.getPushSettings",
     mutableMapOf(),
-    object : TypeReference<VkResponse<PushSettings>>() {}
+    object : TypeReference<VkSuccess<PushSettings>>() {}
 ), UserMethod {
 
     var deviceId: String? by props

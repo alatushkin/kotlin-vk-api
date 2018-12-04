@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,7 +23,7 @@ class BoardEditTopicMethod(
 ) : VkMethod<Boolean>(
     "board.editTopic",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), UserMethod {
 
     var groupId: Long by props

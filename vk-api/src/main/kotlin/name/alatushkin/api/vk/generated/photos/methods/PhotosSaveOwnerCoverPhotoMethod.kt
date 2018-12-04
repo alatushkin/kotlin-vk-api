@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Image
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -22,7 +22,7 @@ class PhotosSaveOwnerCoverPhotoMethod(
 ) : VkMethod<Array<Image>>(
     "photos.saveOwnerCoverPhoto",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Image>>>() {}
+    object : TypeReference<VkSuccess<Array<Image>>>() {}
 ), UserMethod {
 
     var photo: String by props

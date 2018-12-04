@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -21,7 +21,7 @@ class SecureSendSMSNotificationMethod(
 ) : VkMethod<Boolean>(
     "secure.sendSMSNotification",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Boolean>>() {}
+    object : TypeReference<VkSuccess<Boolean>>() {}
 ), ServiceMethod {
 
     var userId: Long by props

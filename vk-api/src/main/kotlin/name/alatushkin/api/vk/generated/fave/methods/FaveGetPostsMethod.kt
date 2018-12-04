@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.fave.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.WallpostFull
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -25,7 +25,7 @@ class FaveGetPostsMethod(
 ) : VkMethod<VkList<WallpostFull>>(
     "fave.getPosts",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
+    object : TypeReference<VkSuccess<VkList<WallpostFull>>>() {}
 ), UserMethod {
 
     var offset: Long? by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.SearchExtendedResponse
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -32,7 +32,7 @@ class WallSearchMethodExtended(
 ) : VkMethod<SearchExtendedResponse>(
     "wall.search",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
 ), UserServiceMethod {
 
     var ownerId: Long? by props

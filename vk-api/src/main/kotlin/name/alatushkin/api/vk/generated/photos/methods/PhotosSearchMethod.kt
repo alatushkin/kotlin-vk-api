@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.Photo
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -37,7 +37,7 @@ class PhotosSearchMethod(
 ) : VkMethod<VkList<Photo>>(
     "photos.search",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Photo>>>() {}
+    object : TypeReference<VkSuccess<VkList<Photo>>>() {}
 ), UserServiceMethod {
 
     var q: String? by props

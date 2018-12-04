@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.newsfeed.GetBannedExtendedResponse
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -23,7 +23,7 @@ class NewsfeedGetBannedMethodExtended(
 ) : VkMethod<GetBannedExtendedResponse>(
     "newsfeed.getBanned",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<GetBannedExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetBannedExtendedResponse>>() {}
 ), UserMethod {
 
     var fields: Array<String>? by props

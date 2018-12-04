@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.notes.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notes.NoteComment
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -25,7 +25,7 @@ class NotesGetCommentsMethod(
 ) : VkMethod<VkList<NoteComment>>(
     "notes.getComments",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<NoteComment>>>() {}
+    object : TypeReference<VkSuccess<VkList<NoteComment>>>() {}
 ), UserMethod {
 
     var noteId: Long by props

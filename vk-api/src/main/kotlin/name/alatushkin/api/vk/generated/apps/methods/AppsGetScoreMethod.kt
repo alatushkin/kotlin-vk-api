@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.apps.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,7 +19,7 @@ class AppsGetScoreMethod(
 ) : VkMethod<Long>(
     "apps.getScore",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Long>>() {}
+    object : TypeReference<VkSuccess<Long>>() {}
 ), UserMethod {
 
     var userId: Long by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.SaveResult
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -40,7 +40,7 @@ class VideoSaveMethod(
 ) : VkMethod<SaveResult>(
     "video.save",
     mutableMapOf(),
-    object : TypeReference<VkResponse<SaveResult>>() {}
+    object : TypeReference<VkSuccess<SaveResult>>() {}
 ), UserMethod {
 
     var name: String? by props

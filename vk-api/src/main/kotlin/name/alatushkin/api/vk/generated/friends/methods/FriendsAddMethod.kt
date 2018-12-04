@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.responses.AddResponseResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -24,7 +24,7 @@ class FriendsAddMethod(
 ) : VkMethod<AddResponseResponse>(
     "friends.add",
     mutableMapOf(),
-    object : TypeReference<VkResponse<AddResponseResponse>>() {}
+    object : TypeReference<VkSuccess<AddResponseResponse>>() {}
 ), UserMethod {
 
     var userId: Long by props

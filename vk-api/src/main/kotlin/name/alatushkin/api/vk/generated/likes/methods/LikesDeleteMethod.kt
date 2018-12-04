@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.likes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.DeleteResponse
 import name.alatushkin.api.vk.generated.likes.DeleteType
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -25,7 +25,7 @@ class LikesDeleteMethod(
 ) : VkMethod<DeleteResponse>(
     "likes.delete",
     mutableMapOf(),
-    object : TypeReference<VkResponse<DeleteResponse>>() {}
+    object : TypeReference<VkSuccess<DeleteResponse>>() {}
 ), UserMethod {
 
     var type: DeleteType by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.storage.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,7 +21,7 @@ class StorageGetKeysMethod(
 ) : VkMethod<Array<String>>(
     "storage.getKeys",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<String>>>() {}
+    object : TypeReference<VkSuccess<Array<String>>>() {}
 ), UserMethod {
 
     var userId: Long? by props

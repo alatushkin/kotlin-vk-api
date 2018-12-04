@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.docs.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.DocTypes
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -21,7 +21,7 @@ class DocsGetTypesMethod(
 ) : VkMethod<VkList<DocTypes>>(
     "docs.getTypes",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<DocTypes>>>() {}
+    object : TypeReference<VkSuccess<VkList<DocTypes>>>() {}
 ), UserMethod {
 
     var ownerId: Long by props

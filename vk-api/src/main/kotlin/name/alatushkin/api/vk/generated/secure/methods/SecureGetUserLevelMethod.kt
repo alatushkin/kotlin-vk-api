@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.secure.Level
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
@@ -20,7 +20,7 @@ class SecureGetUserLevelMethod(
 ) : VkMethod<Array<Level>>(
     "secure.getUserLevel",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Level>>>() {}
+    object : TypeReference<VkSuccess<Array<Level>>>() {}
 ), ServiceMethod {
 
     var userIds: Array<Long> by props

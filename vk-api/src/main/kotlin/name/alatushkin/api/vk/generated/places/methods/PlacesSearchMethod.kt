@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.places.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.PlaceFull
 import name.alatushkin.api.vk.generated.places.SearchRadius
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -34,7 +34,7 @@ class PlacesSearchMethod(
 ) : VkMethod<VkList<PlaceFull>>(
     "places.search",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<PlaceFull>>>() {}
+    object : TypeReference<VkSuccess<VkList<PlaceFull>>>() {}
 ), UserMethod {
 
     var q: String? by props

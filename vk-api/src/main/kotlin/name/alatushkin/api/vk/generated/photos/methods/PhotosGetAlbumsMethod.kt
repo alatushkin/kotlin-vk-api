@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.PhotoAlbumFull
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -33,7 +33,7 @@ class PhotosGetAlbumsMethod(
 ) : VkMethod<VkList<PhotoAlbumFull>>(
     "photos.getAlbums",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<PhotoAlbumFull>>>() {}
+    object : TypeReference<VkSuccess<VkList<PhotoAlbumFull>>>() {}
 ), UserServiceMethod {
 
     var ownerId: Long? by props

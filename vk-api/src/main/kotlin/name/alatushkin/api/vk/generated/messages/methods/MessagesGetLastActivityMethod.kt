@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.LastActivity
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -20,7 +20,7 @@ class MessagesGetLastActivityMethod(
 ) : VkMethod<LastActivity>(
     "messages.getLastActivity",
     mutableMapOf(),
-    object : TypeReference<VkResponse<LastActivity>>() {}
+    object : TypeReference<VkSuccess<LastActivity>>() {}
 ), UserMethod {
 
     var userId: Long by props

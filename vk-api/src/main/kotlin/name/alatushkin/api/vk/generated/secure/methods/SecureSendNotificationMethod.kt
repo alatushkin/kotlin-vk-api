@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -23,7 +23,7 @@ class SecureSendNotificationMethod(
 ) : VkMethod<Array<Long>>(
     "secure.sendNotification",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Long>>>() {}
+    object : TypeReference<VkSuccess<Array<Long>>>() {}
 ), ServiceMethod {
 
     var userIds: Array<Long>? by props

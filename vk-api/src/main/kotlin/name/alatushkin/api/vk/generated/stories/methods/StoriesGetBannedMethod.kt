@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,7 +20,7 @@ class StoriesGetBannedMethod(
 ) : VkMethod<VkList<Long>>(
     "stories.getBanned",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Long>>>() {}
+    object : TypeReference<VkSuccess<VkList<Long>>>() {}
 ), UserMethod {
 
     var fields: Array<String>? by props

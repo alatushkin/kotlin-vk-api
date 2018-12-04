@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.Group
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -23,7 +23,7 @@ class GroupsGetCatalogMethod(
 ) : VkMethod<VkList<Group>>(
     "groups.getCatalog",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<Group>>>() {}
+    object : TypeReference<VkSuccess<VkList<Group>>>() {}
 ), UserMethod {
 
     var categoryId: Long? by props

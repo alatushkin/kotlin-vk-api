@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.GetOnlineOnlineMobileResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -28,7 +28,7 @@ class FriendsGetOnlineMethodOnlineMobile(
 ) : VkMethod<GetOnlineOnlineMobileResponse>(
     "friends.getOnline",
     mutableMapOf("online_mobile" to "1"),
-    object : TypeReference<VkResponse<GetOnlineOnlineMobileResponse>>() {}
+    object : TypeReference<VkSuccess<GetOnlineOnlineMobileResponse>>() {}
 ), UserMethod {
 
     var userId: Long? by props

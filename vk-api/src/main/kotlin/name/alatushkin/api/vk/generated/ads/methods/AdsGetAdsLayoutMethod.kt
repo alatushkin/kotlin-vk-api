@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.AdLayout
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -32,7 +32,7 @@ class AdsGetAdsLayoutMethod(
 ) : VkMethod<Array<AdLayout>>(
     "ads.getAdsLayout",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<AdLayout>>>() {}
+    object : TypeReference<VkSuccess<Array<AdLayout>>>() {}
 ), UserMethod {
 
     var accountId: Long by props

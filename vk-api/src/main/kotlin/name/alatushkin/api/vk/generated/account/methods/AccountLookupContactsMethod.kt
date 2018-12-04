@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.LookupContactsService
 import name.alatushkin.api.vk.generated.account.LookupResult
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -29,7 +29,7 @@ class AccountLookupContactsMethod(
 ) : VkMethod<LookupResult>(
     "account.lookupContacts",
     mutableMapOf(),
-    object : TypeReference<VkResponse<LookupResult>>() {}
+    object : TypeReference<VkSuccess<LookupResult>>() {}
 ), UserMethod {
 
     var contacts: Array<String>? by props

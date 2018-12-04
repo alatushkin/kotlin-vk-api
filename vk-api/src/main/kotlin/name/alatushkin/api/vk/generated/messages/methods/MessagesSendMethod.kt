@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.Keyboard
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -48,7 +48,7 @@ class MessagesSendMethod(
 ) : VkMethod<Long>(
     "messages.send",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Long>>() {}
+    object : TypeReference<VkSuccess<Long>>() {}
 ), UserGroupMethod {
 
     var userId: Long? by props

@@ -5,7 +5,7 @@ package name.alatushkin.api.vk.generated.messages.methods
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.ConversationWithMessage
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -27,7 +27,7 @@ class MessagesGetConversationsByIdMethod(
 ) : VkMethod<VkList<ConversationWithMessage>>(
     "messages.getConversationsById",
     mutableMapOf(),
-    object : TypeReference<VkResponse<VkList<ConversationWithMessage>>>() {}
+    object : TypeReference<VkSuccess<VkList<ConversationWithMessage>>>() {}
 ), UserGroupMethod {
 
     var peerIds: Array<Long> by props

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerLinkText
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerResponse
 import name.alatushkin.api.vk.tokens.UserGroupMethod
@@ -31,7 +31,7 @@ class StoriesGetPhotoUploadServerMethod(
 ) : VkMethod<GetPhotoUploadServerResponse>(
     "stories.getPhotoUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetPhotoUploadServerResponse>>() {}
+    object : TypeReference<VkSuccess<GetPhotoUploadServerResponse>>() {}
 ), UserGroupMethod {
 
     var addToNews: Boolean? by props

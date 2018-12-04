@@ -5,7 +5,18 @@ import name.alatushkin.api.vk.generated.audio.AudioFull
 import name.alatushkin.api.vk.generated.common.Country
 import name.alatushkin.api.vk.generated.common.Object
 import name.alatushkin.api.vk.generated.common.Sex
-import name.alatushkin.api.vk.generated.users.*
+import name.alatushkin.api.vk.generated.users.Career
+import name.alatushkin.api.vk.generated.users.CropPhoto
+import name.alatushkin.api.vk.generated.users.Exports
+import name.alatushkin.api.vk.generated.users.LastSeen
+import name.alatushkin.api.vk.generated.users.Military
+import name.alatushkin.api.vk.generated.users.Occupation
+import name.alatushkin.api.vk.generated.users.Personal
+import name.alatushkin.api.vk.generated.users.Relative
+import name.alatushkin.api.vk.generated.users.School
+import name.alatushkin.api.vk.generated.users.University
+import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.generated.users.UserMin
 
 open class UserXtrContact(
     val contact: String? = null,

@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.search.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.search.GetHintsResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -28,7 +28,7 @@ class SearchGetHintsMethod(
 ) : VkMethod<GetHintsResponse>(
     "search.getHints",
     mutableMapOf(),
-    object : TypeReference<VkResponse<GetHintsResponse>>() {}
+    object : TypeReference<VkSuccess<GetHintsResponse>>() {}
 ), UserMethod {
 
     var q: String? by props

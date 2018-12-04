@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.GetCatalogSectionExtendedResponse
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
@@ -24,7 +24,7 @@ class VideoGetCatalogSectionMethodExtended(
 ) : VkMethod<GetCatalogSectionExtendedResponse>(
     "video.getCatalogSection",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<GetCatalogSectionExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetCatalogSectionExtendedResponse>>() {}
 ), UserServiceMethod {
 
     var sectionId: String by props

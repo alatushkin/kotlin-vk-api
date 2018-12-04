@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.GetUserVideosExtendedResponse
 import name.alatushkin.api.vk.tokens.UserMethod
 
@@ -24,7 +24,7 @@ class VideoGetUserVideosMethodExtended(
 ) : VkMethod<GetUserVideosExtendedResponse>(
     "video.getUserVideos",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<GetUserVideosExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetUserVideosExtendedResponse>>() {}
 ), UserMethod {
 
     var userId: Long? by props

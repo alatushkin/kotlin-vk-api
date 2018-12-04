@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
@@ -24,7 +24,7 @@ class DocsSaveMethod(
 ) : VkMethod<Array<Doc>>(
     "docs.save",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Array<Doc>>>() {}
+    object : TypeReference<VkSuccess<Array<Doc>>>() {}
 ), UserGroupMethod {
 
     var file: String by props

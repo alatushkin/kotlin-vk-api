@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.CreateSubtype
 import name.alatushkin.api.vk.generated.groups.CreateType
 import name.alatushkin.api.vk.generated.groups.Group
@@ -30,7 +30,7 @@ class GroupsCreateMethod(
 ) : VkMethod<Group>(
     "groups.create",
     mutableMapOf(),
-    object : TypeReference<VkResponse<Group>>() {}
+    object : TypeReference<VkSuccess<Group>>() {}
 ), UserMethod {
 
     var title: String by props

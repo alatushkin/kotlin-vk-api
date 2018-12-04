@@ -4,7 +4,7 @@ package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.GetCommentsExtendedResponse
 import name.alatushkin.api.vk.generated.photos.Sort
 import name.alatushkin.api.vk.tokens.UserMethod
@@ -37,7 +37,7 @@ class PhotosGetCommentsMethodExtended(
 ) : VkMethod<GetCommentsExtendedResponse>(
     "photos.getComments",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
+    object : TypeReference<VkSuccess<GetCommentsExtendedResponse>>() {}
 ), UserMethod {
 
     var ownerId: Long? by props

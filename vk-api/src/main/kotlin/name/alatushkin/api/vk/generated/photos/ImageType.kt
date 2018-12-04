@@ -13,7 +13,8 @@ enum class ImageType(@JsonValue val jsonValue: String) {
     R("r"),
     Y("y"),
     Z("z"),
-    W("w");
+    W("w"),
+    K("k");
 
     override fun toString() = jsonValue
 

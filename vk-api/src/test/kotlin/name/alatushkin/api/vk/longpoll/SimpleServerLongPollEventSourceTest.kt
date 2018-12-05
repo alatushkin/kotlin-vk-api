@@ -2,12 +2,14 @@ package name.alatushkin.api.vk.longpoll
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.yield
-import name.alatushkin.api.vk.*
+import name.alatushkin.api.vk.VK_OBJECT_MAPPER
 import name.alatushkin.api.vk.callback.MessageNew
 import name.alatushkin.api.vk.generated.messages.*
 import name.alatushkin.api.vk.generated.messages.methods.MessagesSendMethod
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.groupApi
+import name.alatushkin.api.vk.peerId
+import name.alatushkin.api.vk.tokens.invoke
 import name.alatushkin.httpclient.httpClient
 import org.junit.Assert.assertTrue
 import org.junit.Ignore
@@ -19,11 +21,10 @@ class SimpleServerLongPollEventSourceTest {
     fun smokeTest1() = runBlocking {
         val timeOut = 95
         val httpClient = httpClient(readTimeout = timeOut * 1000)
-        val source = SimpleServerLongPollEventSource(groupAccessToken, groupId.toLong(), httpClient, timeOut)
+        val source = SimpleServerLongPollEventSource(groupApi, httpClient, timeOut)
 
         while (true) {
             val (next, events) = source.getEvents()
-            yield()
 
             if (events.isNotEmpty()) {
                 println(next.dump())
@@ -34,11 +35,10 @@ class SimpleServerLongPollEventSourceTest {
                     println(first.attachment.fromId)
                 }
 
-                val result = groupTokenTestApi(makeMessageToSend())
+                val result = groupApi(makeMessageToSend())
                 println(result)
             }
         }
-
     }
 
     private fun makeMessageToSend(): MessagesSendMethod {

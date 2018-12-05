@@ -4,11 +4,12 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.yield
 import name.alatushkin.api.vk.SimpleMethodExecutor
 import name.alatushkin.api.vk.VK_OBJECT_MAPPER
-import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.callback.CallbackEvent
 import name.alatushkin.api.vk.generated.groups.LongPollServer
 import name.alatushkin.api.vk.generated.groups.methods.GroupsGetLongPollServerMethod
-import name.alatushkin.api.vk.withToken
+import name.alatushkin.api.vk.tokens.GroupToken
+import name.alatushkin.api.vk.tokens.invoke
+import name.alatushkin.api.vk.tokens.withToken
 import name.alatushkin.httpclient.HttpClient
 import name.alatushkin.httpclient.HttpMethod
 import org.slf4j.LoggerFactory
@@ -16,12 +17,13 @@ import java.net.SocketTimeoutException
 import java.nio.charset.Charset
 
 class SimpleServerLongPollEventSource(
-    vkToken: String,
-    val groupId: Long,
-    val httpClient: HttpClient,
-    val timeOut: Int
+        vkToken: String,
+        val groupId: Long,
+        val httpClient: HttpClient,
+        val timeOut: Int
 ) {
-    private val api: VkClient = SimpleMethodExecutor(httpClient).withToken(vkToken)
+    private val token = GroupToken(vkToken, groupId)
+    private val api = SimpleMethodExecutor(httpClient).withToken(token)
 
     suspend fun getEvents(iterator: LongPollServer? = null): Pair<LongPollServer, List<CallbackEvent<*>>> {
 
@@ -29,7 +31,7 @@ class SimpleServerLongPollEventSource(
 
         try {
             val vkJson = try {
-                this.httpClient(HttpMethod.GET(lpServer.toUrl(timeOut))).data.toString(Charset.forName("UTF-8"))
+                httpClient(HttpMethod.GET(lpServer.toUrl(timeOut))).data.toString(Charset.forName("UTF-8"))
             } catch (e: SocketTimeoutException) {
                 return lpServer to emptyList()
             } catch (e: Exception) {
@@ -69,7 +71,7 @@ class SimpleServerLongPollEventSource(
     }
 
     private suspend fun getLongPollServer(): LongPollServer {
-        return api(GroupsGetLongPollServerMethod().setGroupId(groupId))
+        return api(GroupsGetLongPollServerMethod(groupId))
     }
 
 

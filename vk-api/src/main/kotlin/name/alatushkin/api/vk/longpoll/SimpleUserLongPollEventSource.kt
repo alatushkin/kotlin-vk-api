@@ -4,10 +4,11 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import kotlinx.coroutines.yield
 import name.alatushkin.api.vk.SimpleMethodExecutor
 import name.alatushkin.api.vk.VK_OBJECT_MAPPER
-import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.generated.messages.LongpollParams
 import name.alatushkin.api.vk.generated.messages.methods.MessagesGetLongPollServerMethod
-import name.alatushkin.api.vk.withToken
+import name.alatushkin.api.vk.tokens.GroupToken
+import name.alatushkin.api.vk.tokens.invoke
+import name.alatushkin.api.vk.tokens.withToken
 import name.alatushkin.httpclient.HttpClient
 import name.alatushkin.httpclient.HttpMethod
 import org.slf4j.LoggerFactory
@@ -15,12 +16,13 @@ import java.net.SocketTimeoutException
 import java.nio.charset.Charset
 
 class SimpleUserLongPollEventSource(
-    vkToken: String,
-    val groupId: Long,
-    val httpClient: HttpClient,
-    val timeOut: Int
+        vkToken: String,
+        val groupId: Long,
+        val httpClient: HttpClient,
+        val timeOut: Int
 ) {
-    private val api: VkClient = SimpleMethodExecutor(httpClient).withToken(vkToken)
+    private val token = GroupToken(vkToken, groupId)
+    private val api = SimpleMethodExecutor(httpClient).withToken(token)
 
     suspend fun getEvents(iterator: LongpollParams? = null): Pair<LongpollParams, List<LongPollEvent>> {
 
@@ -28,7 +30,7 @@ class SimpleUserLongPollEventSource(
 
         try {
             val vkJson = try {
-                this.httpClient(HttpMethod.GET(lpServer.toUrl(timeOut))).data.toString(Charset.forName("UTF-8"))
+                httpClient(HttpMethod.GET(lpServer.toUrl(timeOut))).data.toString(Charset.forName("UTF-8"))
             } catch (e: SocketTimeoutException) {
                 return lpServer to emptyList()
             } catch (e: Exception) {
@@ -46,14 +48,14 @@ class SimpleUserLongPollEventSource(
                     return lpServer.copy(argTs = lpResponse.ts) to emptyList()
                 }
                 2 -> {
-                    val newServ = getLongPollServer()
-                    log.debug("Vk say failed:2. Old ts:{} new ts: {}", lpServer.ts, newServ.ts)
-                    return newServ to emptyList()
+                    val newServer = getLongPollServer()
+                    log.debug("Vk say failed:2. Old ts:{} new ts: {}", lpServer.ts, newServer.ts)
+                    return newServer to emptyList()
                 }
                 3 -> {
-                    val newServ = getLongPollServer()
-                    log.debug("Vk say failed:3. Old ts:{} new ts: {}", lpServer.ts, newServ.ts)
-                    return newServ to emptyList()
+                    val newServer = getLongPollServer()
+                    log.debug("Vk say failed:3. Old ts:{} new ts: {}", lpServer.ts, newServer.ts)
+                    return newServer to emptyList()
                 }
             }
 

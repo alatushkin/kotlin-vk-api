@@ -2,8 +2,6 @@ package name.alatushkin.api.vk.api.utils.upload
 
 import com.fasterxml.jackson.module.kotlin.readValue
 import name.alatushkin.api.vk.VK_OBJECT_MAPPER
-import name.alatushkin.api.vk.VkClient
-import name.alatushkin.api.vk.api.VkError
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.docs.GetMessagesUploadServerType
 import name.alatushkin.api.vk.generated.docs.methods.DocsGetMessagesUploadServerMethod
@@ -11,6 +9,9 @@ import name.alatushkin.api.vk.generated.docs.methods.DocsSaveMethod
 import name.alatushkin.api.vk.generated.photos.Photo
 import name.alatushkin.api.vk.generated.photos.methods.PhotosGetMessagesUploadServerMethod
 import name.alatushkin.api.vk.generated.photos.methods.PhotosSaveMessagesPhotoMethod
+import name.alatushkin.api.vk.tokens.UserGroupMethod
+import name.alatushkin.api.vk.tokens.VkClient
+import name.alatushkin.api.vk.tokens.invoke
 import name.alatushkin.httpclient.FilePart
 import name.alatushkin.httpclient.HttpMethod
 import name.alatushkin.httpclient.RequestBody
@@ -18,8 +19,7 @@ import java.nio.charset.Charset
 
 data class UploadPhotoResponse(val server: Long, val hash: String, val photo: String)
 
-@Throws(VkError::class)
-suspend fun VkClient.uploadMessagePhoto(peerId: Long, byteArray: ByteArray): Photo {
+suspend fun VkClient<UserGroupMethod>.uploadMessagePhoto(peerId: Long, byteArray: ByteArray): Photo {
     val uploadUrl = this(PhotosGetMessagesUploadServerMethod(peerId)).uploadUrl
     val response = httpClient(
         HttpMethod.POST(
@@ -43,8 +43,7 @@ suspend fun VkClient.uploadMessagePhoto(peerId: Long, byteArray: ByteArray): Pho
 
 data class UploadDocumentResponse(val file: String)
 
-@Throws(VkError::class)
-suspend fun VkClient.uploadMessageDocument(
+suspend fun VkClient<UserGroupMethod>.uploadMessageDocument(
     peerId: Long,
     fileName: String,
     byteArray: ByteArray,

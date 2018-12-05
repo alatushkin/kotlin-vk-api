@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.api
 
-import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.generated.audio.Audio
 import name.alatushkin.api.vk.generated.docs.Doc
 import name.alatushkin.api.vk.generated.market.MarketItem
@@ -11,6 +10,9 @@ import name.alatushkin.api.vk.generated.polls.Poll
 import name.alatushkin.api.vk.generated.video.Video
 import name.alatushkin.api.vk.generated.video.VideoFull
 import name.alatushkin.api.vk.generated.wall.Wallpost
+import name.alatushkin.api.vk.tokens.UserGroupMethod
+import name.alatushkin.api.vk.tokens.VkClient
+import name.alatushkin.api.vk.tokens.invoke
 
 private fun attachmentId(type: String, id: Long, ownerId: Long, accessKey: String? = null): String {
     return "$type${ownerId}_$id" + (accessKey?.let { "_$accessKey" } ?: "")
@@ -42,13 +44,10 @@ fun Poll.fullId() = attachmentId("", id, ownerId)
 
 fun AudioMessage.fullId() = attachmentId("", id, ownerId)
 
-suspend fun VkClient.sendTypings(groupId: Long, peerId: Long) {
-    this(
-        MessagesSetActivityMethod(
+suspend fun VkClient<UserGroupMethod>.sendTypings(groupId: Long, peerId: Long) {
+    this(MessagesSetActivityMethod(
             peerId = peerId,
             type = "typing",
             groupId = groupId
-        )
-    )
+    ))
 }
-

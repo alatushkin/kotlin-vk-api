@@ -13,7 +13,6 @@ import name.alatushkin.api.vk.json.VkCommentAttachmentsDeserializer
 import name.alatushkin.api.vk.json.VkMessageAttachmentsDeserializer
 import name.alatushkin.api.vk.json.VkWallPostAttachmentsDeserializer
 
-
 internal val VK_OBJECT_MAPPER = vkObjectMapper()
 
 private fun vkObjectMapper(): ObjectMapper {
@@ -33,9 +32,3 @@ private fun vkObjectMapper(): ObjectMapper {
 
     return mapper
 }
-
-//fun initTypeResolver(): SimpleAbstractTypeResolver {
-//    val resolver = SimpleAbstractTypeResolver()
-//    resolver.addMapping(Photo::class.java, PhotoImpl::class.java)
-//    return resolver
-//}

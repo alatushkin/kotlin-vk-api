@@ -12,11 +12,12 @@ data class VkClient<in M: MethodRequirement>(val executor: ThrowingMethodExecuto
             executor(method.attach(token))
 }
 
-fun <M: MethodRequirement> ThrowingMethodExecutor.withToken(token: Token<M>): VkClient<M> =
-        VkClient(this, token)
+fun <M : MethodRequirement> ThrowingMethodExecutor.withToken(token: Token<M>): VkClient<M> =
+    VkClient(this, token)
 
-fun <M: MethodRequirement> MethodExecutor.withToken(token: Token<M>): VkClient<M> =
-        VkClient(ThrowingMethodExecutor(this), token)
+fun <M : MethodRequirement> MethodExecutor.withToken(token: Token<M>): VkClient<M> =
+    VkClient(ThrowingMethodExecutor(this), token)
 
-suspend inline operator fun <T, M> VkClient<M>.invoke(method: M) where M: VkMethod<T>, M: MethodRequirement =
-        executeUnchecked(method)
+suspend inline operator fun <T, M> VkClient<M>.invoke(method: M): T
+        where M : VkMethod<T>, M : MethodRequirement =
+    executeUnchecked(method)

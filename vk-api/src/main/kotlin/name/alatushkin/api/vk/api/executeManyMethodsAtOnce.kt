@@ -1,30 +1,32 @@
 package name.alatushkin.api.vk.api
 
 import com.fasterxml.jackson.databind.JavaType
-import name.alatushkin.api.vk.MethodExecutor
-import name.alatushkin.api.vk.MethodExecutorWithException
+import name.alatushkin.api.vk.VK_OBJECT_MAPPER
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.methods.ExecuteMethod
+import name.alatushkin.api.vk.constructType
+import name.alatushkin.api.vk.tokens.MethodRequirement
+import name.alatushkin.api.vk.tokens.VkClient
 
-suspend inline operator fun <reified T, M : VkMethod<T>> MethodExecutor.invoke(methods: List<M>): VkResponse<Array<T>> {
-    val methodToCall = makeVkScriptToCall(methods)
-    return this(methodToCall)
-}
+suspend inline operator fun <reified T, M> VkClient<M>.invoke(methods: List<M>): Array<T>
+        where M : VkMethod<T>, M : MethodRequirement =
+    executeUnchecked(makeVkScriptToCall(methods, constructType<T>()))
 
-suspend inline operator fun <reified T, M : VkMethod<T>> MethodExecutorWithException.invoke(methods: List<M>): Array<T> {
-    val methodToCall = makeVkScriptToCall(methods)
-    return this(methodToCall)
-}
+suspend inline fun <reified T, M : VkMethod<T>> VkClient<*>.executeUnchecked(methods: List<M>): Array<T> =
+    executeUnchecked(makeVkScriptToCall(methods, constructType<T>()))
 
-inline fun <M : VkMethod<T>, reified T> makeVkScriptToCall(methods: List<M>): ExecuteMethod<Array<T>> {
-    assert(methods.size <= 25) { "Maximum 25 call at one allowed by api" }
-    val mapper = ExecuteMethod.mapper
+fun <T, M : VkMethod<T>> makeVkScriptToCall(methods: List<M>, singleType: JavaType): ExecuteMethod<T> {
 
-    val code = methods.joinToString(", ", prefix = "return [", postfix = "];")
-    { method ->
+    require(methods.size <= ExecuteMethod.MAX_CALLS) { "Attempted to make ${methods.size} batch calls" }
+
+    val mapper = VK_OBJECT_MAPPER
+    val typeFactory = mapper.typeFactory
+
+    val code = methods.joinToString(", ", prefix = "return [", postfix = "];") { method ->
         val argsJson = mapper.writeValueAsString(method.toJsonObject())
         "API." + method.apiMethodName + "($argsJson)"
     }
-    val arrayType: JavaType = mapper.typeFactory.constructArrayType(T::class.java)
+
+    val arrayType = typeFactory.constructArrayType(singleType)
     return ExecuteMethod(code, arrayType)
 }

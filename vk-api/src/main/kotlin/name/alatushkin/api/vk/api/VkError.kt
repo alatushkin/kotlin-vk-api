@@ -1,13 +1,11 @@
 package name.alatushkin.api.vk.api
 
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.databind.DeserializationContext
-import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import name.alatushkin.api.vk.json.VkErrorDeserializer
 import java.io.IOException
 
-//@JsonDeserialize(using = VkErrorDeserializer::class)
+@JsonDeserialize(using = VkErrorDeserializer::class)
 sealed class VkError
 
 data class VkSingleError(
@@ -40,19 +38,4 @@ data class VkMultiError(
     override fun toString(): String = executeErrors.joinToString()
 }
 
-
 class VkApiException(val vkError: VkError) : IOException(vkError.toString())
-
-class VkErrorDeserializer : StdDeserializer<VkError>(VkError::class.java) {
-
-    override fun deserialize(p: JsonParser, ctxt: DeserializationContext): VkError {
-        val oc = p.codec
-        val node: JsonNode = oc.readTree(p)
-        val subParser = node.traverse(oc)
-        subParser.nextToken()
-        return if (node.isArray)
-            VkMultiError(ctxt.readValue(subParser, VkMultiError::class.java))
-        else
-            ctxt.readValue(subParser, VkSingleError::class.java)
-    }
-}

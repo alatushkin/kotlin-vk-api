@@ -3,15 +3,15 @@ package name.alatushkin.api.vk.api
 import kotlinx.coroutines.runBlocking
 import name.alatushkin.api.vk.generated.wall.WallpostFull
 import name.alatushkin.api.vk.generated.wall.methods.WallGetMethod
-import name.alatushkin.api.vk.groupTokenTestApi
-import name.alatushkin.api.vk.userTokenTestApi
+import name.alatushkin.api.vk.groupApi
+import name.alatushkin.api.vk.userApi
 import org.junit.Assert.*
 import org.junit.Test
 
 class ExecuteManyMethodsTest {
     @Test
     fun smokeSuccess1() = runBlocking {
-        val methodFactory = { page: Long ->
+        val methods = (0..24L).map { page: Long ->
             WallGetMethod(
                 domain = "departureMsk",
                 offset = page,
@@ -19,18 +19,15 @@ class ExecuteManyMethodsTest {
             )
         }
 
-        val result: Array<VkList<WallpostFull>> = userTokenTestApi(
-            (0..24L).map(methodFactory)
-        )
-        result.forEach(::println)
+        val result: Array<VkList<WallpostFull>> = userApi(methods)
+        println(result.joinToString("\n"))
         assertEquals(25, result.size)
-
     }
 
     @Test
     fun smokeError1() = runBlocking {
         try {
-            val methodFactory = { page: Long ->
+            val methods = (0..24L).map { page: Long ->
                 WallGetMethod(
                     domain = "departureMsk",
                     offset = page,
@@ -38,12 +35,11 @@ class ExecuteManyMethodsTest {
                 )
             }
 
-            val result: Array<VkList<WallpostFull>> = groupTokenTestApi(
-                (0..24L).map(methodFactory)
-            )
+            val result: Array<VkList<WallpostFull>> = groupApi.executeUnchecked(methods)
+            println(result)
         } catch (e: Exception) {
-            assertTrue(e is VkErrorException)
-            val vkError = (e as VkErrorException).vkError
+            assertTrue(e is VkApiException)
+            val vkError = (e as VkApiException).vkError
             assertTrue(vkError is VkMultiError)
             assertEquals(25 + 1, (vkError as VkMultiError).size)
             return@runBlocking
@@ -54,7 +50,7 @@ class ExecuteManyMethodsTest {
     @Test
     fun smokeError2() = runBlocking {
         try {
-            groupTokenTestApi(
+            groupApi.executeUnchecked(
                 WallGetMethod(
                     domain = "departureMsk",
                     offset = 0,
@@ -62,8 +58,8 @@ class ExecuteManyMethodsTest {
                 )
             )
         } catch (e: Exception) {
-            assertTrue(e is VkErrorException)
-            val vkError = (e as VkErrorException).vkError
+            assertTrue(e is VkApiException)
+            val vkError = (e as VkApiException).vkError
             assertTrue(vkError is VkSingleError)
             return@runBlocking
         }

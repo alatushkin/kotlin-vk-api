@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows sending messages from community to the current user.
+ * [https://vk.com/dev/messages.allowMessagesFromGroup]
  *
- *  [https://vk.com/dev/messages.allowMessagesFromGroup]
- *  @property [group_id] Group ID.
+ * Allows sending messages from community to the current user.
+ *
+ * @property groupId Group ID.
  */
-class MessagesAllowMessagesFromGroupMethod() : VkMethod<Boolean>(
+class MessagesAllowMessagesFromGroupMethod(
+        groupId: Long
+) : VkMethod<Boolean>(
     "messages.allowMessagesFromGroup",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): MessagesAllowMessagesFromGroupMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = MessagesAllowMessagesFromGroupMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

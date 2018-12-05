@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.apps.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns user score in app
+ * [https://vk.com/dev/apps.getScore]
  *
- *  [https://vk.com/dev/apps.getScore]
- *  @property [user_id]
+ * Returns user score in app
+ *
+ * @property userId 
  */
-class AppsGetScoreMethod() : VkMethod<Long>(
+class AppsGetScoreMethod(
+        userId: Long
+) : VkMethod<Long>(
     "apps.getScore",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
 
-    constructor(
-        userId: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
     }
 
     fun setUserId(userId: Long): AppsGetScoreMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = AppsGetScoreMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

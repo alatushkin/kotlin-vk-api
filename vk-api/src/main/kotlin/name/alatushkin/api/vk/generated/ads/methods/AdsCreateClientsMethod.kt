@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates clients of an advertising agency.
+ * [https://vk.com/dev/ads.createClients]
  *
- *  [https://vk.com/dev/ads.createClients]
- *  @property [account_id] Advertising account ID.
- *  @property [data] Serialized JSON array of objects that describe created campaigns. Description of 'client_specification' objects see below.
+ * Creates clients of an advertising agency.
+ *
+ * @property accountId Advertising account ID.
+ * @property data Serialized JSON array of objects that describe created campaigns. Description of 'client_specification' objects see below.
  */
-class AdsCreateClientsMethod() : VkMethod<Array<Long>>(
+class AdsCreateClientsMethod(
+        accountId: Long,
+        data: String
+) : VkMethod<Array<Long>>(
     "ads.createClients",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Long>>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
-    var data: String? by props
+    var accountId: Long by props
+    var data: String by props
 
-    constructor(
-        accountId: Long? = null,
-        data: String? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.data = data
     }
@@ -35,11 +40,5 @@ class AdsCreateClientsMethod() : VkMethod<Array<Long>>(
     fun setData(data: String): AdsCreateClientsMethod {
         this.data = data
         return this
-    }
-
-    override val classRef = AdsCreateClientsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
     }
 }

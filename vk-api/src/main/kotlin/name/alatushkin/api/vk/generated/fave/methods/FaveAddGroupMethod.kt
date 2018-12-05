@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.fave.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a community to user faves.
+ * [https://vk.com/dev/fave.addGroup]
  *
- *  [https://vk.com/dev/fave.addGroup]
- *  @property [group_id] Community ID.
+ * Adds a community to user faves.
+ *
+ * @property groupId Community ID.
  */
-class FaveAddGroupMethod() : VkMethod<Boolean>(
+class FaveAddGroupMethod(
+        groupId: Long
+) : VkMethod<Boolean>(
     "fave.addGroup",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): FaveAddGroupMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = FaveAddGroupMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

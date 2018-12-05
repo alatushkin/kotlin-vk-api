@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes an item's comment
+ * [https://vk.com/dev/market.deleteComment]
  *
- *  [https://vk.com/dev/market.deleteComment]
- *  @property [owner_id] identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
- *  @property [comment_id] comment id
+ * Deletes an item's comment
+ *
+ * @property ownerId identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
+ * @property commentId comment id
  */
-class MarketDeleteCommentMethod() : VkMethod<Boolean>(
+class MarketDeleteCommentMethod(
+        ownerId: Long,
+        commentId: Long
+) : VkMethod<Boolean>(
     "market.deleteComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var commentId: Long? by props
+    var ownerId: Long by props
+    var commentId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
     }
@@ -35,11 +40,5 @@ class MarketDeleteCommentMethod() : VkMethod<Boolean>(
     fun setCommentId(commentId: Long): MarketDeleteCommentMethod {
         this.commentId = commentId
         return this
-    }
-
-    override val classRef = MarketDeleteCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

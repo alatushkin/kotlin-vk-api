@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Sets user game level in the application which can be seen by his/her friends.
+ * [https://vk.com/dev/secure.setUserLevel]
  *
- *  [https://vk.com/dev/secure.setUserLevel]
- *  @property [levels]
- *  @property [user_id]
- *  @property [level] level value.
+ * Sets user game level in the application which can be seen by his/her friends.
+ *
+ * @property levels 
+ * @property userId 
+ * @property level level value.
  */
-class SecureSetUserLevelMethod() : VkMethod<Boolean>(
+class SecureSetUserLevelMethod(
+        levels: Array<String>? = null,
+        userId: Long? = null,
+        level: Long? = null
+) : VkMethod<Boolean>(
     "secure.setUserLevel",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), ServiceMethod {
 
     var levels: Array<String>? by props
     var userId: Long? by props
     var level: Long? by props
 
-    constructor(
-        levels: Array<String>? = null,
-        userId: Long? = null,
-        level: Long? = null
-    ) : this() {
+    init {
         this.levels = levels
         this.userId = userId
         this.level = level
@@ -44,11 +49,5 @@ class SecureSetUserLevelMethod() : VkMethod<Boolean>(
     fun setLevel(level: Long): SecureSetUserLevelMethod {
         this.level = level
         return this
-    }
-
-    override val classRef = SecureSetUserLevelMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a comment on the photo.
+ * [https://vk.com/dev/photos.deleteComment]
  *
- *  [https://vk.com/dev/photos.deleteComment]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [comment_id] Comment ID.
+ * Deletes a comment on the photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property commentId Comment ID.
  */
-class PhotosDeleteCommentMethod() : VkMethod<Boolean>(
+class PhotosDeleteCommentMethod(
+        ownerId: Long? = null,
+        commentId: Long
+) : VkMethod<Boolean>(
     "photos.deleteComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var commentId: Long? by props
+    var commentId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
     }
@@ -35,11 +40,5 @@ class PhotosDeleteCommentMethod() : VkMethod<Boolean>(
     fun setCommentId(commentId: Long): PhotosDeleteCommentMethod {
         this.commentId = commentId
         return this
-    }
-
-    override val classRef = PhotosDeleteCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

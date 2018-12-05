@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -6,30 +8,32 @@ import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.AddCallbackServerResponse
 
 /**
- *  null
+ * [https://vk.com/dev/groups.addCallbackServer]
  *
- *  [https://vk.com/dev/groups.addCallbackServer]
- *  @property [group_id] Community ID.
- *  @property [url] Server URL.
- *  @property [title] Title
- *  @property [secret_key] Secret key
+ * null
+ *
+ * @property groupId Community ID.
+ * @property url Server URL.
+ * @property title Title
+ * @property secretKey Secret key
  */
-class GroupsAddCallbackServerMethod() : VkMethod<AddCallbackServerResponse>(
+class GroupsAddCallbackServerMethod(
+        groupId: Long,
+        url: String? = null,
+        title: String? = null,
+        secretKey: String? = null
+) : VkMethod<AddCallbackServerResponse>(
     "groups.addCallbackServer",
-    HashMap()
+    mutableMapOf(),
+    object : TypeReference<VkResponse<AddCallbackServerResponse>>() {}
 ) {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var url: String? by props
     var title: String? by props
     var secretKey: String? by props
 
-    constructor(
-        groupId: Long? = null,
-        url: String? = null,
-        title: String? = null,
-        secretKey: String? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.url = url
         this.title = title
@@ -54,11 +58,5 @@ class GroupsAddCallbackServerMethod() : VkMethod<AddCallbackServerResponse>(
     fun setSecretKey(secretKey: String): GroupsAddCallbackServerMethod {
         this.secretKey = secretKey
         return this
-    }
-
-    override val classRef = GroupsAddCallbackServerMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<AddCallbackServerResponse>>() {}
     }
 }

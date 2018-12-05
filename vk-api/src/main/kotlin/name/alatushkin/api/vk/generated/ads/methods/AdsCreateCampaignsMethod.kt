@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates advertising campaigns.
+ * [https://vk.com/dev/ads.createCampaigns]
  *
- *  [https://vk.com/dev/ads.createCampaigns]
- *  @property [account_id] Advertising account ID.
- *  @property [data] Serialized JSON array of objects that describe created campaigns. Description of 'campaign_specification' objects see below.
+ * Creates advertising campaigns.
+ *
+ * @property accountId Advertising account ID.
+ * @property data Serialized JSON array of objects that describe created campaigns. Description of 'campaign_specification' objects see below.
  */
-class AdsCreateCampaignsMethod() : VkMethod<Array<Long>>(
+class AdsCreateCampaignsMethod(
+        accountId: Long,
+        data: String
+) : VkMethod<Array<Long>>(
     "ads.createCampaigns",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Long>>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
-    var data: String? by props
+    var accountId: Long by props
+    var data: String by props
 
-    constructor(
-        accountId: Long? = null,
-        data: String? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.data = data
     }
@@ -35,11 +40,5 @@ class AdsCreateCampaignsMethod() : VkMethod<Array<Long>>(
     fun setData(data: String): AdsCreateCampaignsMethod {
         this.data = data
         return this
-    }
-
-    override val classRef = AdsCreateCampaignsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
     }
 }

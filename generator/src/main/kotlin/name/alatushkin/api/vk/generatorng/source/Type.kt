@@ -2,7 +2,6 @@ package name.alatushkin.api.vk.generatorng.source
 
 import name.alatushkin.api.vk.generatorng.source.writer.SourceWriter
 
-
 typealias JsonTypeRef = String
 
 data class TypeId(val packages: List<String>, val typeName: String, val paramTypeIds: List<TypeId> = emptyList()) {
@@ -14,10 +13,10 @@ data class TypeId(val packages: List<String>, val typeName: String, val paramTyp
 
     val fullTypeName: String
         get() {
-            if (paramTypeIds.isEmpty())
-                return typeName
+            return if (paramTypeIds.isEmpty())
+                typeName
             else
-                return typeName + "<${paramTypeIds.map { it.fullTypeName }.joinToString(", ")}>"
+                typeName + "<${paramTypeIds.joinToString(", ") { it.fullTypeName }}>"
         }
 
     val fullPackageName: String
@@ -28,8 +27,6 @@ data class TypeId(val packages: List<String>, val typeName: String, val paramTyp
     override fun toString(): String {
         return "TypeId(${packages.joinToString(".")}.$fullTypeName)"
     }
-
-
 }
 
 interface TypeDefinition {
@@ -53,17 +50,16 @@ object PrimitiveType : NotRenameableType {
     }
 }
 
-
 class ArrayType(val itemType: TypeId) : TypeDefinition {
     val makeTypeId: TypeId = TypeId("kotlin.collection", "Array", listOf(itemType))
 }
 
 class TypeAlias(val originalType: TypeId) : TypeDefinition {
     override fun generateSource(basePackage: String, typeId: TypeId, sourceWriter: SourceWriter): String {
-        return "tyealias ${typeId.typeName} = ${originalType.typeName}"
+        val packageClause = sourceWriter.packageClause(basePackage, typeId)
+        return "$packageClause\n\ntypealias ${typeId.typeName} = ${originalType.typeName}"
     }
 }
-
 
 private val CLASS_NAMES_ALTERATION = mapOf("OnoffOptions" to "OnOffOptions")
 fun alterClassName(className: String): String {

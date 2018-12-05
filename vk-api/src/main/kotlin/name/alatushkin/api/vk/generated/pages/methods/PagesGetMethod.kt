@@ -1,26 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.pages.WikipageFull
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns information about a wiki page.
+ * [https://vk.com/dev/pages.get]
  *
- *  [https://vk.com/dev/pages.get]
- *  @property [owner_id] Page owner ID.
- *  @property [page_id] Wiki page ID.
- *  @property [global] '1' — to return information about a global wiki page
- *  @property [site_preview] '1' — resulting wiki page is a preview for the attached link
- *  @property [title] Wiki page title.
- *  @property [need_source]
- *  @property [need_html] '1' — to return the page as HTML,
+ * Returns information about a wiki page.
+ *
+ * @property ownerId Page owner ID.
+ * @property pageId Wiki page ID.
+ * @property global '1' — to return information about a global wiki page
+ * @property sitePreview '1' — resulting wiki page is a preview for the attached link
+ * @property title Wiki page title.
+ * @property needSource 
+ * @property needHtml '1' — to return the page as HTML,
  */
-class PagesGetMethod() : VkMethod<WikipageFull>(
+class PagesGetMethod(
+        ownerId: Long? = null,
+        pageId: Long? = null,
+        global: Boolean? = null,
+        sitePreview: Boolean? = null,
+        title: String? = null,
+        needSource: Boolean? = null,
+        needHtml: Boolean? = null
+) : VkMethod<WikipageFull>(
     "pages.get",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<WikipageFull>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
     var pageId: Long? by props
@@ -30,15 +43,7 @@ class PagesGetMethod() : VkMethod<WikipageFull>(
     var needSource: Boolean? by props
     var needHtml: Boolean? by props
 
-    constructor(
-        ownerId: Long? = null,
-        pageId: Long? = null,
-        global: Boolean? = null,
-        sitePreview: Boolean? = null,
-        title: String? = null,
-        needSource: Boolean? = null,
-        needHtml: Boolean? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.pageId = pageId
         this.global = global
@@ -81,11 +86,5 @@ class PagesGetMethod() : VkMethod<WikipageFull>(
     fun setNeedHtml(needHtml: Boolean): PagesGetMethod {
         this.needHtml = needHtml
         return this
-    }
-
-    override val classRef = PagesGetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<WikipageFull>>() {}
     }
 }

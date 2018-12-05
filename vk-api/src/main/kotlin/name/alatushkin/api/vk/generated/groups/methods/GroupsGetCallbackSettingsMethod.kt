@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.CallbackSettings
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns [vk.com/dev/callback_api|Callback API] notifications settings.
+ * [https://vk.com/dev/groups.getCallbackSettings]
  *
- *  [https://vk.com/dev/groups.getCallbackSettings]
- *  @property [group_id] Community ID.
- *  @property [server_id] Server ID.
+ * Returns [vk.com/dev/callback_api|Callback API] notifications settings.
+ *
+ * @property groupId Community ID.
+ * @property serverId Server ID.
  */
-class GroupsGetCallbackSettingsMethod() : VkMethod<CallbackSettings>(
+class GroupsGetCallbackSettingsMethod(
+        groupId: Long,
+        serverId: Long? = null
+) : VkMethod<CallbackSettings>(
     "groups.getCallbackSettings",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<CallbackSettings>>() {}
+), UserGroupMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var serverId: Long? by props
 
-    constructor(
-        groupId: Long? = null,
-        serverId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.serverId = serverId
     }
@@ -36,11 +41,5 @@ class GroupsGetCallbackSettingsMethod() : VkMethod<CallbackSettings>(
     fun setServerId(serverId: Long): GroupsGetCallbackSettingsMethod {
         this.serverId = serverId
         return this
-    }
-
-    override val classRef = GroupsGetCallbackSettingsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<CallbackSettings>>() {}
     }
 }

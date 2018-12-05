@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.auth.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.auth.RestoreResponse
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
+ * [https://vk.com/dev/auth.restore]
  *
- *  [https://vk.com/dev/auth.restore]
- *  @property [phone] User phone number.
- *  @property [last_name] User last name.
+ * Allows to restore account access using a code received via SMS. " This method is only available for apps with [vk.com/dev/auth_direct|Direct authorization] access. "
+ *
+ * @property phone User phone number.
+ * @property lastName User last name.
  */
-class AuthRestoreMethod() : VkMethod<RestoreResponse>(
+class AuthRestoreMethod(
+        phone: String,
+        lastName: String
+) : VkMethod<RestoreResponse>(
     "auth.restore",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<RestoreResponse>>() {}
+), ServiceMethod {
 
-    var phone: String? by props
-    var lastName: String? by props
+    var phone: String by props
+    var lastName: String by props
 
-    constructor(
-        phone: String? = null,
-        lastName: String? = null
-    ) : this() {
+    init {
         this.phone = phone
         this.lastName = lastName
     }
@@ -36,11 +41,5 @@ class AuthRestoreMethod() : VkMethod<RestoreResponse>(
     fun setLastName(lastName: String): AuthRestoreMethod {
         this.lastName = lastName
         return this
-    }
-
-    override val classRef = AuthRestoreMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<RestoreResponse>>() {}
     }
 }

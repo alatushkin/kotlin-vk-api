@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a retarget group.
+ * [https://vk.com/dev/ads.deleteTargetGroup]
  *
- *  [https://vk.com/dev/ads.deleteTargetGroup]
- *  @property [account_id] Advertising account ID.
- *  @property [client_id] 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
- *  @property [target_group_id] Group ID.
+ * Deletes a retarget group.
+ *
+ * @property accountId Advertising account ID.
+ * @property clientId 'Only for advertising agencies.' , ID of the client with the advertising account where the group will be created.
+ * @property targetGroupId Group ID.
  */
-class AdsDeleteTargetGroupMethod() : VkMethod<Boolean>(
-    "ads.deleteTargetGroup",
-    HashMap()
-) {
-
-    var accountId: Long? by props
-    var clientId: Long? by props
-    var targetGroupId: Long? by props
-
-    constructor(
-        accountId: Long? = null,
+class AdsDeleteTargetGroupMethod(
+        accountId: Long,
         clientId: Long? = null,
-        targetGroupId: Long? = null
-    ) : this() {
+        targetGroupId: Long
+) : VkMethod<Boolean>(
+    "ads.deleteTargetGroup",
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
+
+    var accountId: Long by props
+    var clientId: Long? by props
+    var targetGroupId: Long by props
+
+    init {
         this.accountId = accountId
         this.clientId = clientId
         this.targetGroupId = targetGroupId
@@ -44,11 +49,5 @@ class AdsDeleteTargetGroupMethod() : VkMethod<Boolean>(
     fun setTargetGroupId(targetGroupId: Long): AdsDeleteTargetGroupMethod {
         this.targetGroupId = targetGroupId
         return this
-    }
-
-    override val classRef = AdsDeleteTargetGroupMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

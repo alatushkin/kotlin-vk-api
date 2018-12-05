@@ -1,40 +1,45 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Subscribes an iOS/Android/Windows Phone-based device to receive push notifications
+ * [https://vk.com/dev/account.registerDevice]
  *
- *  [https://vk.com/dev/account.registerDevice]
- *  @property [token] Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
- *  @property [device_model] String name of device model.
- *  @property [device_year] Device year.
- *  @property [device_id] Unique device ID.
- *  @property [system_version] String version of device operating system.
- *  @property [settings] Push settings in a [vk.com/dev/push_settings|special format].
+ * Subscribes an iOS/Android/Windows Phone-based device to receive push notifications
+ *
+ * @property token Device token used to send notifications. (for mpns, the token shall be URL for sending of notifications)
+ * @property deviceModel String name of device model.
+ * @property deviceYear Device year.
+ * @property deviceId Unique device ID.
+ * @property systemVersion String version of device operating system.
+ * @property settings Push settings in a [vk.com/dev/push_settings|special format].
  */
-class AccountRegisterDeviceMethod() : VkMethod<Boolean>(
+class AccountRegisterDeviceMethod(
+        token: String,
+        deviceModel: String? = null,
+        deviceYear: Long? = null,
+        deviceId: String,
+        systemVersion: String? = null,
+        settings: String? = null
+) : VkMethod<Boolean>(
     "account.registerDevice",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var token: String? by props
+    var token: String by props
     var deviceModel: String? by props
     var deviceYear: Long? by props
-    var deviceId: String? by props
+    var deviceId: String by props
     var systemVersion: String? by props
     var settings: String? by props
 
-    constructor(
-        token: String? = null,
-        deviceModel: String? = null,
-        deviceYear: Long? = null,
-        deviceId: String? = null,
-        systemVersion: String? = null,
-        settings: String? = null
-    ) : this() {
+    init {
         this.token = token
         this.deviceModel = deviceModel
         this.deviceYear = deviceYear
@@ -71,11 +76,5 @@ class AccountRegisterDeviceMethod() : VkMethod<Boolean>(
     fun setSettings(settings: String): AccountRegisterDeviceMethod {
         this.settings = settings
         return this
-    }
-
-    override val classRef = AccountRegisterDeviceMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

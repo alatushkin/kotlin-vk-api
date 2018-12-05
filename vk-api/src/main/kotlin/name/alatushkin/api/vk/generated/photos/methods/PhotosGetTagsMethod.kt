@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.PhotoTag
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of tags on a photo.
+ * [https://vk.com/dev/photos.getTags]
  *
- *  [https://vk.com/dev/photos.getTags]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [access_key]
+ * Returns a list of tags on a photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property accessKey 
  */
-class PhotosGetTagsMethod() : VkMethod<Array<PhotoTag>>(
+class PhotosGetTagsMethod(
+        ownerId: Long? = null,
+        photoId: Long,
+        accessKey: String? = null
+) : VkMethod<Array<PhotoTag>>(
     "photos.getTags",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<PhotoTag>>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
+    var photoId: Long by props
     var accessKey: String? by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        accessKey: String? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.accessKey = accessKey
@@ -45,11 +50,5 @@ class PhotosGetTagsMethod() : VkMethod<Array<PhotoTag>>(
     fun setAccessKey(accessKey: String): PhotosGetTagsMethod {
         this.accessKey = accessKey
         return this
-    }
-
-    override val classRef = PhotosGetTagsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<PhotoTag>>>() {}
     }
 }

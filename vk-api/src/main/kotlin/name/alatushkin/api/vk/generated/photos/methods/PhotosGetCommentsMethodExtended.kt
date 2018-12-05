@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,28 +7,41 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.GetCommentsExtendedResponse
 import name.alatushkin.api.vk.generated.photos.Sort
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of comments on a photo.
+ * [https://vk.com/dev/photos.getComments]
  *
- *  [https://vk.com/dev/photos.getComments]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [need_likes] '1' — to return an additional 'likes' field, '0' — (default)
- *  @property [start_comment_id]
- *  @property [offset] Offset needed to return a specific subset of comments. By default, '0'.
- *  @property [count] Number of comments to return.
- *  @property [sort] Sort order: 'asc' — old first, 'desc' — new first
- *  @property [access_key]
- *  @property [fields]
+ * Returns a list of comments on a photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property needLikes '1' — to return an additional 'likes' field, '0' — (default)
+ * @property startCommentId 
+ * @property offset Offset needed to return a specific subset of comments. By default, '0'.
+ * @property count Number of comments to return.
+ * @property sort Sort order: 'asc' — old first, 'desc' — new first
+ * @property accessKey 
+ * @property fields 
  */
-class PhotosGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
+class PhotosGetCommentsMethodExtended(
+        ownerId: Long? = null,
+        photoId: Long,
+        needLikes: Boolean? = null,
+        startCommentId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        sort: Sort? = null,
+        accessKey: String? = null,
+        fields: Array<String>? = null
+) : VkMethod<GetCommentsExtendedResponse>(
     "photos.getComments",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
+    var photoId: Long by props
     var needLikes: Boolean? by props
     var startCommentId: Long? by props
     var offset: Long? by props
@@ -35,17 +50,7 @@ class PhotosGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
     var accessKey: String? by props
     var fields: Array<String>? by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null,
-        accessKey: String? = null,
-        fields: Array<String>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.needLikes = needLikes
@@ -100,11 +105,5 @@ class PhotosGetCommentsMethodExtended() : VkMethod<GetCommentsExtendedResponse>(
     fun setFields(fields: Array<String>): PhotosGetCommentsMethodExtended {
         this.fields = fields
         return this
-    }
-
-    override val classRef = PhotosGetCommentsMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetCommentsExtendedResponse>>() {}
     }
 }

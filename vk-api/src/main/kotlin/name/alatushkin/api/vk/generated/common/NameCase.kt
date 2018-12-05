@@ -1,12 +1,14 @@
 package name.alatushkin.api.vk.generated.common
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class NameCase(@JsonValue val jsonValue: String) {
-    NOMINATIVE("nom"), GENITIVE("gen"), DATIVE("dat"),
-    ACCUSATIVE("acc"), INSTRUMENTAL("ins"),
+    NOMINATIVE("nom"),
+    GENITIVE("gen"),
+    DATIVE("dat"),
+    ACCUSATIVE("acc"),
+    INSTRUMENTAL("ins"),
     PREPOSITIONAL("abl");
 
     override fun toString() = jsonValue

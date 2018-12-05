@@ -1,11 +1,11 @@
 package name.alatushkin.api.vk.generated.likes
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Filter(@JsonValue val jsonValue: String) {
-    LIKES("likes"), COPIES("copies");
+    LIKES("likes"),
+    COPIES("copies");
 
     override fun toString() = jsonValue
 

@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.users.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.users.ReportType
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Reports (submits a complain about) a user.
+ * [https://vk.com/dev/users.report]
  *
- *  [https://vk.com/dev/users.report]
- *  @property [user_id] ID of the user about whom a complaint is being made.
- *  @property [type] Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisment' – disruptive advertisements
- *  @property [comment] Comment describing the complaint.
+ * Reports (submits a complain about) a user.
+ *
+ * @property userId ID of the user about whom a complaint is being made.
+ * @property type Type of complaint: 'porn' – pornography, 'spam' – spamming, 'insult' – abusive behavior, 'advertisment' – disruptive advertisements
+ * @property comment Comment describing the complaint.
  */
-class UsersReportMethod() : VkMethod<Boolean>(
+class UsersReportMethod(
+        userId: Long,
+        type: ReportType,
+        comment: String? = null
+) : VkMethod<Boolean>(
     "users.report",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var userId: Long? by props
-    var type: ReportType? by props
+    var userId: Long by props
+    var type: ReportType by props
     var comment: String? by props
 
-    constructor(
-        userId: Long? = null,
-        type: ReportType? = null,
-        comment: String? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.type = type
         this.comment = comment
@@ -45,11 +50,5 @@ class UsersReportMethod() : VkMethod<Boolean>(
     fun setComment(comment: String): UsersReportMethod {
         this.comment = comment
         return this
-    }
-
-    override val classRef = UsersReportMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

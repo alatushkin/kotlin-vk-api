@@ -1,12 +1,14 @@
 package name.alatushkin.api.vk.generated.wall
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class Filter(@JsonValue val jsonValue: String) {
-    OWNER("owner"), OTHERS("others"), ALL("all"),
-    POSTPONED("postponed"), SUGGESTS("suggests");
+    OWNER("owner"),
+    OTHERS("others"),
+    ALL("all"),
+    POSTPONED("postponed"),
+    SUGGESTS("suggests");
 
     override fun toString() = jsonValue
 

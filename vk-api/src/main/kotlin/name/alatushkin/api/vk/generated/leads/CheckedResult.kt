@@ -1,11 +1,11 @@
 package name.alatushkin.api.vk.generated.leads
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class CheckedResult(@JsonValue val jsonValue: String) {
-    TRUE("true"), FALSE("false");
+    TRUE("true"),
+    FALSE("false");
 
     override fun toString() = jsonValue
 

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,29 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.market.MarketAlbum
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns community's collections list.
+ * [https://vk.com/dev/market.getAlbums]
  *
- *  [https://vk.com/dev/market.getAlbums]
- *  @property [owner_id] ID of an items owner community.
- *  @property [offset] Offset needed to return a specific subset of results.
- *  @property [count] Number of items to return.
+ * Returns community's collections list.
+ *
+ * @property ownerId ID of an items owner community.
+ * @property offset Offset needed to return a specific subset of results.
+ * @property count Number of items to return.
  */
-class MarketGetAlbumsMethod() : VkMethod<VkList<MarketAlbum>>(
+class MarketGetAlbumsMethod(
+        ownerId: Long,
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<MarketAlbum>>(
     "market.getAlbums",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<MarketAlbum>>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
+    var ownerId: Long by props
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        ownerId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.offset = offset
         this.count = count
@@ -46,11 +51,5 @@ class MarketGetAlbumsMethod() : VkMethod<VkList<MarketAlbum>>(
     fun setCount(count: Long): MarketGetAlbumsMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = MarketGetAlbumsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<MarketAlbum>>>() {}
     }
 }

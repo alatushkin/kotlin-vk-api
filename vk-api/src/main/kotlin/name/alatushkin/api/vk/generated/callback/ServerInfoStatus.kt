@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.callback
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class ServerInfoStatus(@JsonValue val jsonValue: String) {
-    UNCONFIGURED("unconfigured"), FAIL("fail"), WAIT("wait"),
+    UNCONFIGURED("unconfigured"),
+    FAIL("fail"),
+    WAIT("wait"),
     OK("ok");
 
     override fun toString() = jsonValue

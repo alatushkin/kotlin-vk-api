@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits the friend lists of the selected user.
+ * [https://vk.com/dev/friends.edit]
  *
- *  [https://vk.com/dev/friends.edit]
- *  @property [user_id] ID of the user whose friend list is to be edited.
- *  @property [list_ids] IDs of the friend lists to which to add the user.
+ * Edits the friend lists of the selected user.
+ *
+ * @property userId ID of the user whose friend list is to be edited.
+ * @property listIds IDs of the friend lists to which to add the user.
  */
-class FriendsEditMethod() : VkMethod<Boolean>(
+class FriendsEditMethod(
+        userId: Long,
+        listIds: Array<Long>? = null
+) : VkMethod<Boolean>(
     "friends.edit",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
     var listIds: Array<Long>? by props
 
-    constructor(
-        userId: Long? = null,
-        listIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.listIds = listIds
     }
@@ -35,11 +40,5 @@ class FriendsEditMethod() : VkMethod<Boolean>(
     fun setListIds(listIds: Array<Long>): FriendsEditMethod {
         this.listIds = listIds
         return this
-    }
-
-    override val classRef = FriendsEditMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

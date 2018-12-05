@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Chages item comment's text
+ * [https://vk.com/dev/market.editComment]
  *
- *  [https://vk.com/dev/market.editComment]
- *  @property [owner_id] ID of an item owner community.
- *  @property [comment_id] Comment ID.
- *  @property [message] New comment text (required if 'attachments' are not specified), , 2048 symbols maximum.
- *  @property [attachments] Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
+ * Chages item comment's text
+ *
+ * @property ownerId ID of an item owner community.
+ * @property commentId Comment ID.
+ * @property message New comment text (required if 'attachments' are not specified), , 2048 symbols maximum.
+ * @property attachments Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
  */
-class MarketEditCommentMethod() : VkMethod<Boolean>(
+class MarketEditCommentMethod(
+        ownerId: Long,
+        commentId: Long,
+        message: String? = null,
+        attachments: Array<String>? = null
+) : VkMethod<Boolean>(
     "market.editComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var commentId: Long? by props
+    var ownerId: Long by props
+    var commentId: Long by props
     var message: String? by props
     var attachments: Array<String>? by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null,
-        message: String? = null,
-        attachments: Array<String>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
         this.message = message
@@ -53,11 +58,5 @@ class MarketEditCommentMethod() : VkMethod<Boolean>(
     fun setAttachments(attachments: Array<String>): MarketEditCommentMethod {
         this.attachments = attachments
         return this
-    }
-
-    override val classRef = MarketEditCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

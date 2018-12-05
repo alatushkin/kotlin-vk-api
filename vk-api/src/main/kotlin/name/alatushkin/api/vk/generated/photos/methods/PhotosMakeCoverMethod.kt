@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Makes a photo into an album cover.
+ * [https://vk.com/dev/photos.makeCover]
  *
- *  [https://vk.com/dev/photos.makeCover]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [album_id] Album ID.
+ * Makes a photo into an album cover.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property albumId Album ID.
  */
-class PhotosMakeCoverMethod() : VkMethod<Boolean>(
+class PhotosMakeCoverMethod(
+        ownerId: Long? = null,
+        photoId: Long,
+        albumId: Long? = null
+) : VkMethod<Boolean>(
     "photos.makeCover",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
+    var photoId: Long by props
     var albumId: Long? by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        albumId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.albumId = albumId
@@ -44,11 +49,5 @@ class PhotosMakeCoverMethod() : VkMethod<Boolean>(
     fun setAlbumId(albumId: Long): PhotosMakeCoverMethod {
         this.albumId = albumId
         return this
-    }
-
-    override val classRef = PhotosMakeCoverMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

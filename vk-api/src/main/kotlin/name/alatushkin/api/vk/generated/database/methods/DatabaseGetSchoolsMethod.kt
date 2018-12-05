@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,35 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.database.School
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns a list of schools.
+ * [https://vk.com/dev/database.getSchools]
  *
- *  [https://vk.com/dev/database.getSchools]
- *  @property [q] Search query.
- *  @property [city_id] City ID.
- *  @property [offset] Offset needed to return a specific subset of schools.
- *  @property [count] Number of schools to return.
+ * Returns a list of schools.
+ *
+ * @property q Search query.
+ * @property cityId City ID.
+ * @property offset Offset needed to return a specific subset of schools.
+ * @property count Number of schools to return.
  */
-class DatabaseGetSchoolsMethod() : VkMethod<VkList<School>>(
+class DatabaseGetSchoolsMethod(
+        q: String? = null,
+        cityId: Long,
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<School>>(
     "database.getSchools",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<School>>>() {}
+), UserServiceMethod {
 
     var q: String? by props
-    var cityId: Long? by props
+    var cityId: Long by props
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        q: String? = null,
-        cityId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.q = q
         this.cityId = cityId
         this.offset = offset
@@ -55,11 +60,5 @@ class DatabaseGetSchoolsMethod() : VkMethod<VkList<School>>(
     fun setCount(count: Long): DatabaseGetSchoolsMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = DatabaseGetSchoolsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<School>>>() {}
     }
 }

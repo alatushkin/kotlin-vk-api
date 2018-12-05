@@ -1,28 +1,41 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.ads.Ad
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns number of ads.
+ * [https://vk.com/dev/ads.getAds]
  *
- *  [https://vk.com/dev/ads.getAds]
- *  @property [account_id] Advertising account ID.
- *  @property [client_id] 'Available and required for advertising agencies.' ID of the client ads are retrieved from.
- *  @property [include_deleted] Flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
- *  @property [campaign_ids] Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
- *  @property [ad_ids] Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
- *  @property [limit] Limit of number of returned ads. Used only if ad_ids parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
- *  @property [offset] Offset. Used in the same cases as 'limit' parameter.
+ * Returns number of ads.
+ *
+ * @property accountId Advertising account ID.
+ * @property clientId 'Available and required for advertising agencies.' ID of the client ads are retrieved from.
+ * @property includeDeleted Flag that specifies whether archived ads shall be shown: *0 — show only active ads,, *1 — show all ads.
+ * @property campaignIds Filter by advertising campaigns. Serialized JSON array with campaign IDs. If the parameter is null, ads of all campaigns will be shown.
+ * @property adIds Filter by ads. Serialized JSON array with ad IDs. If the parameter is null, all ads will be shown.
+ * @property limit Limit of number of returned ads. Used only if ad_ids parameter is null, and 'campaign_ids' parameter contains ID of only one campaign.
+ * @property offset Offset. Used in the same cases as 'limit' parameter.
  */
-class AdsGetAdsMethod() : VkMethod<Array<Ad>>(
+class AdsGetAdsMethod(
+        accountId: Long,
+        clientId: Long? = null,
+        includeDeleted: Boolean? = null,
+        campaignIds: String? = null,
+        adIds: String? = null,
+        limit: Long? = null,
+        offset: Long? = null
+) : VkMethod<Array<Ad>>(
     "ads.getAds",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Ad>>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
+    var accountId: Long by props
     var clientId: Long? by props
     var includeDeleted: Boolean? by props
     var campaignIds: String? by props
@@ -30,15 +43,7 @@ class AdsGetAdsMethod() : VkMethod<Array<Ad>>(
     var limit: Long? by props
     var offset: Long? by props
 
-    constructor(
-        accountId: Long? = null,
-        clientId: Long? = null,
-        includeDeleted: Boolean? = null,
-        campaignIds: String? = null,
-        adIds: String? = null,
-        limit: Long? = null,
-        offset: Long? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.clientId = clientId
         this.includeDeleted = includeDeleted
@@ -81,11 +86,5 @@ class AdsGetAdsMethod() : VkMethod<Array<Ad>>(
     fun setOffset(offset: Long): AdsGetAdsMethod {
         this.offset = offset
         return this
-    }
-
-    override val classRef = AdsGetAdsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Ad>>>() {}
     }
 }

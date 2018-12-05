@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a friend list of the current user.
+ * [https://vk.com/dev/friends.deleteList]
  *
- *  [https://vk.com/dev/friends.deleteList]
- *  @property [list_id] ID of the friend list to delete.
+ * Deletes a friend list of the current user.
+ *
+ * @property listId ID of the friend list to delete.
  */
-class FriendsDeleteListMethod() : VkMethod<Boolean>(
+class FriendsDeleteListMethod(
+        listId: Long
+) : VkMethod<Boolean>(
     "friends.deleteList",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var listId: Long? by props
+    var listId: Long by props
 
-    constructor(
-        listId: Long? = null
-    ) : this() {
+    init {
         this.listId = listId
     }
 
     fun setListId(listId: Long): FriendsDeleteListMethod {
         this.listId = listId
         return this
-    }
-
-    override val classRef = FriendsDeleteListMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

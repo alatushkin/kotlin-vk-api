@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns the number of photo albums belonging to a user or community.
+ * [https://vk.com/dev/photos.getAlbumsCount]
  *
- *  [https://vk.com/dev/photos.getAlbumsCount]
- *  @property [user_id] User ID.
- *  @property [group_id] Community ID.
+ * Returns the number of photo albums belonging to a user or community.
+ *
+ * @property userId User ID.
+ * @property groupId Community ID.
  */
-class PhotosGetAlbumsCountMethod() : VkMethod<Long>(
+class PhotosGetAlbumsCountMethod(
+        userId: Long? = null,
+        groupId: Long? = null
+) : VkMethod<Long>(
     "photos.getAlbumsCount",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
     var userId: Long? by props
     var groupId: Long? by props
 
-    constructor(
-        userId: Long? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.groupId = groupId
     }
@@ -35,11 +40,5 @@ class PhotosGetAlbumsCountMethod() : VkMethod<Long>(
     fun setGroupId(groupId: Long): PhotosGetAlbumsCountMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = PhotosGetAlbumsCountMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

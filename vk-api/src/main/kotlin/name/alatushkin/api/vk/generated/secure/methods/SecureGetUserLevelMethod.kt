@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.secure.Level
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Returns one of the previously set game levels of one or more users in the application.
+ * [https://vk.com/dev/secure.getUserLevel]
  *
- *  [https://vk.com/dev/secure.getUserLevel]
- *  @property [user_ids]
+ * Returns one of the previously set game levels of one or more users in the application.
+ *
+ * @property userIds 
  */
-class SecureGetUserLevelMethod() : VkMethod<Array<Level>>(
+class SecureGetUserLevelMethod(
+        userIds: Array<Long>
+) : VkMethod<Array<Level>>(
     "secure.getUserLevel",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Level>>>() {}
+), ServiceMethod {
 
-    var userIds: Array<Long>? by props
+    var userIds: Array<Long> by props
 
-    constructor(
-        userIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.userIds = userIds
     }
 
     fun setUserIds(userIds: Array<Long>): SecureGetUserLevelMethod {
         this.userIds = userIds
         return this
-    }
-
-    override val classRef = SecureGetUserLevelMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Level>>>() {}
     }
 }

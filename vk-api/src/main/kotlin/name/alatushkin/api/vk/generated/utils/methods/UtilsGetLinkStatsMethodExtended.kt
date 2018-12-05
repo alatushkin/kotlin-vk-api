@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,35 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.utils.Interval
 import name.alatushkin.api.vk.generated.utils.LinkStatsExtended
+import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
- *  Returns stats data for shortened link.
+ * [https://vk.com/dev/utils.getLinkStats]
  *
- *  [https://vk.com/dev/utils.getLinkStats]
- *  @property [key] Link key (characters after vk.cc/).
- *  @property [access_key] Access key for private link stats.
- *  @property [interval] Interval.
- *  @property [intervals_count] Number of intervals to return.
+ * Returns stats data for shortened link.
+ *
+ * @property key Link key (characters after vk.cc/).
+ * @property accessKey Access key for private link stats.
+ * @property interval Interval.
+ * @property intervalsCount Number of intervals to return.
  */
-class UtilsGetLinkStatsMethodExtended() : VkMethod<LinkStatsExtended>(
+class UtilsGetLinkStatsMethodExtended(
+        key: String,
+        accessKey: String? = null,
+        interval: Interval? = null,
+        intervalsCount: Long? = null
+) : VkMethod<LinkStatsExtended>(
     "utils.getLinkStats",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<LinkStatsExtended>>() {}
+), UserGroupServiceMethod {
 
-    var key: String? by props
+    var key: String by props
     var accessKey: String? by props
     var interval: Interval? by props
     var intervalsCount: Long? by props
 
-    constructor(
-        key: String? = null,
-        accessKey: String? = null,
-        interval: Interval? = null,
-        intervalsCount: Long? = null
-    ) : this() {
+    init {
         this.key = key
         this.accessKey = accessKey
         this.interval = interval
@@ -55,11 +60,5 @@ class UtilsGetLinkStatsMethodExtended() : VkMethod<LinkStatsExtended>(
     fun setIntervalsCount(intervalsCount: Long): UtilsGetLinkStatsMethodExtended {
         this.intervalsCount = intervalsCount
         return this
-    }
-
-    override val classRef = UtilsGetLinkStatsMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<LinkStatsExtended>>() {}
     }
 }

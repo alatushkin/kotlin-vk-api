@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,29 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Object
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns list of chairs on a specified faculty.
+ * [https://vk.com/dev/database.getChairs]
  *
- *  [https://vk.com/dev/database.getChairs]
- *  @property [faculty_id] id of the faculty to get chairs from
- *  @property [offset] offset required to get a certain subset of chairs
- *  @property [count] amount of chairs to get
+ * Returns list of chairs on a specified faculty.
+ *
+ * @property facultyId id of the faculty to get chairs from
+ * @property offset offset required to get a certain subset of chairs
+ * @property count amount of chairs to get
  */
-class DatabaseGetChairsMethod() : VkMethod<VkList<Object>>(
+class DatabaseGetChairsMethod(
+        facultyId: Long,
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<Object>>(
     "database.getChairs",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Object>>>() {}
+), UserServiceMethod {
 
-    var facultyId: Long? by props
+    var facultyId: Long by props
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        facultyId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.facultyId = facultyId
         this.offset = offset
         this.count = count
@@ -46,11 +51,5 @@ class DatabaseGetChairsMethod() : VkMethod<VkList<Object>>(
     fun setCount(count: Long): DatabaseGetChairsMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = DatabaseGetChairsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Object>>>() {}
     }
 }

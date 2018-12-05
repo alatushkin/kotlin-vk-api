@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Restores recently deleted item
+ * [https://vk.com/dev/market.restore]
  *
- *  [https://vk.com/dev/market.restore]
- *  @property [owner_id] ID of an item owner community.
- *  @property [item_id] Deleted item ID.
+ * Restores recently deleted item
+ *
+ * @property ownerId ID of an item owner community.
+ * @property itemId Deleted item ID.
  */
-class MarketRestoreMethod() : VkMethod<Boolean>(
+class MarketRestoreMethod(
+        ownerId: Long,
+        itemId: Long
+) : VkMethod<Boolean>(
     "market.restore",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var itemId: Long? by props
+    var ownerId: Long by props
+    var itemId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        itemId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.itemId = itemId
     }
@@ -35,11 +40,5 @@ class MarketRestoreMethod() : VkMethod<Boolean>(
     fun setItemId(itemId: Long): MarketRestoreMethod {
         this.itemId = itemId
         return this
-    }
-
-    override val classRef = MarketRestoreMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

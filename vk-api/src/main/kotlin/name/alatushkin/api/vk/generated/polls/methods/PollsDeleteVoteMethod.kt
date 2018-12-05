@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.polls.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes the current user's vote from the selected answer in the poll.
+ * [https://vk.com/dev/polls.deleteVote]
  *
- *  [https://vk.com/dev/polls.deleteVote]
- *  @property [owner_id] ID of the user or community that owns the poll. Use a negative value to designate a community ID.
- *  @property [poll_id] Poll ID.
- *  @property [answer_id] Answer ID.
- *  @property [is_board]
+ * Deletes the current user's vote from the selected answer in the poll.
+ *
+ * @property ownerId ID of the user or community that owns the poll. Use a negative value to designate a community ID.
+ * @property pollId Poll ID.
+ * @property answerId Answer ID.
+ * @property isBoard 
  */
-class PollsDeleteVoteMethod() : VkMethod<Boolean>(
+class PollsDeleteVoteMethod(
+        ownerId: Long? = null,
+        pollId: Long,
+        answerId: Long,
+        isBoard: Boolean? = null
+) : VkMethod<Boolean>(
     "polls.deleteVote",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var pollId: Long? by props
-    var answerId: Long? by props
+    var pollId: Long by props
+    var answerId: Long by props
     var isBoard: Boolean? by props
 
-    constructor(
-        ownerId: Long? = null,
-        pollId: Long? = null,
-        answerId: Long? = null,
-        isBoard: Boolean? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.pollId = pollId
         this.answerId = answerId
@@ -53,11 +58,5 @@ class PollsDeleteVoteMethod() : VkMethod<Boolean>(
     fun setIsBoard(isBoard: Boolean): PollsDeleteVoteMethod {
         this.isBoard = isBoard
         return this
-    }
-
-    override val classRef = PollsDeleteVoteMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

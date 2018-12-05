@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.friends.AddListResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates a new friend list for the current user.
+ * [https://vk.com/dev/friends.addList]
  *
- *  [https://vk.com/dev/friends.addList]
- *  @property [name] Name of the friend list.
- *  @property [user_ids] IDs of users to be added to the friend list.
+ * Creates a new friend list for the current user.
+ *
+ * @property name Name of the friend list.
+ * @property userIds IDs of users to be added to the friend list.
  */
-class FriendsAddListMethod() : VkMethod<AddListResponse>(
+class FriendsAddListMethod(
+        name: String,
+        userIds: Array<Long>? = null
+) : VkMethod<AddListResponse>(
     "friends.addList",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<AddListResponse>>() {}
+), UserMethod {
 
-    var name: String? by props
+    var name: String by props
     var userIds: Array<Long>? by props
 
-    constructor(
-        name: String? = null,
-        userIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.name = name
         this.userIds = userIds
     }
@@ -36,11 +41,5 @@ class FriendsAddListMethod() : VkMethod<AddListResponse>(
     fun setUserIds(userIds: Array<Long>): FriendsAddListMethod {
         this.userIds = userIds
         return this
-    }
-
-    override val classRef = FriendsAddListMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<AddListResponse>>() {}
     }
 }

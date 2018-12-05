@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,29 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.notes.Note
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of notes created by a user.
+ * [https://vk.com/dev/notes.get]
  *
- *  [https://vk.com/dev/notes.get]
- *  @property [note_ids] Note IDs.
- *  @property [user_id] Note owner ID.
- *  @property [count] Number of notes to return.
+ * Returns a list of notes created by a user.
+ *
+ * @property noteIds Note IDs.
+ * @property userId Note owner ID.
+ * @property count Number of notes to return.
  */
-class NotesGetMethod() : VkMethod<VkList<Note>>(
+class NotesGetMethod(
+        noteIds: Array<Long>? = null,
+        userId: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<Note>>(
     "notes.get",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Note>>>() {}
+), UserMethod {
 
     var noteIds: Array<Long>? by props
     var userId: Long? by props
     var count: Long? by props
 
-    constructor(
-        noteIds: Array<Long>? = null,
-        userId: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.noteIds = noteIds
         this.userId = userId
         this.count = count
@@ -46,11 +51,5 @@ class NotesGetMethod() : VkMethod<VkList<Note>>(
     fun setCount(count: Long): NotesGetMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = NotesGetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Note>>>() {}
     }
 }

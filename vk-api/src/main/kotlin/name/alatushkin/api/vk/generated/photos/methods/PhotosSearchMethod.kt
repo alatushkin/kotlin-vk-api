@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,25 +7,38 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns a list of photos.
+ * [https://vk.com/dev/photos.search]
  *
- *  [https://vk.com/dev/photos.search]
- *  @property [q] Search query string.
- *  @property [lat] Geographical latitude, in degrees (from '-90' to '90').
- *  @property [long] Geographical longitude, in degrees (from '-180' to '180').
- *  @property [start_time] 
- *  @property [end_time] 
- *  @property [sort] Sort order:
- *  @property [offset] Offset needed to return a specific subset of photos.
- *  @property [count] Number of photos to return.
- *  @property [radius] Radius of search in meters (works very approximately). Available values: '10', '100', '800', '6000', '50000'.
+ * Returns a list of photos.
+ *
+ * @property q Search query string.
+ * @property lat Geographical latitude, in degrees (from '-90' to '90').
+ * @property long Geographical longitude, in degrees (from '-180' to '180').
+ * @property startTime 
+ * @property endTime 
+ * @property sort Sort order:
+ * @property offset Offset needed to return a specific subset of photos.
+ * @property count Number of photos to return.
+ * @property radius Radius of search in meters (works very approximately). Available values: '10', '100', '800', '6000', '50000'.
  */
-class PhotosSearchMethod() : VkMethod<VkList<Photo>>(
+class PhotosSearchMethod(
+        q: String? = null,
+        lat: Double? = null,
+        long: Double? = null,
+        startTime: Long? = null,
+        endTime: Long? = null,
+        sort: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        radius: Long? = null
+) : VkMethod<VkList<Photo>>(
     "photos.search",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Photo>>>() {}
+), UserServiceMethod {
 
     var q: String? by props
     var lat: Double? by props
@@ -35,17 +50,7 @@ class PhotosSearchMethod() : VkMethod<VkList<Photo>>(
     var count: Long? by props
     var radius: Long? by props
 
-    constructor(
-        q: String? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        startTime: Long? = null,
-        endTime: Long? = null,
-        sort: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        radius: Long? = null
-    ) : this() {
+    init {
         this.q = q
         this.lat = lat
         this.long = long
@@ -100,11 +105,5 @@ class PhotosSearchMethod() : VkMethod<VkList<Photo>>(
     fun setRadius(radius: Long): PhotosSearchMethod {
         this.radius = radius
         return this
-    }
-
-    override val classRef = PhotosSearchMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Photo>>>() {}
     }
 }

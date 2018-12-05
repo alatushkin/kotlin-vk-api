@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.notes.Note
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a note by its ID.
+ * [https://vk.com/dev/notes.getById]
  *
- *  [https://vk.com/dev/notes.getById]
- *  @property [note_id] Note ID.
- *  @property [owner_id] Note owner ID.
+ * Returns a note by its ID.
+ *
+ * @property noteId Note ID.
+ * @property ownerId Note owner ID.
  */
-class NotesGetByIdMethod() : VkMethod<Note>(
+class NotesGetByIdMethod(
+        noteId: Long,
+        ownerId: Long? = null
+) : VkMethod<Note>(
     "notes.getById",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Note>>() {}
+), UserMethod {
 
-    var noteId: Long? by props
+    var noteId: Long by props
     var ownerId: Long? by props
 
-    constructor(
-        noteId: Long? = null,
-        ownerId: Long? = null
-    ) : this() {
+    init {
         this.noteId = noteId
         this.ownerId = ownerId
     }
@@ -36,11 +41,5 @@ class NotesGetByIdMethod() : VkMethod<Note>(
     fun setOwnerId(ownerId: Long): NotesGetByIdMethod {
         this.ownerId = ownerId
         return this
-    }
-
-    override val classRef = NotesGetByIdMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Note>>() {}
     }
 }

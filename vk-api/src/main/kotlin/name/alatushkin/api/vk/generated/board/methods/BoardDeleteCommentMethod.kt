@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Deletes a comment on a topic on a community's discussion board.
+ * [https://vk.com/dev/board.deleteComment]
  *
- *  [https://vk.com/dev/board.deleteComment]
- *  @property [group_id] ID of the community that owns the discussion board.
- *  @property [topic_id] Topic ID.
- *  @property [comment_id] Comment ID.
+ * Deletes a comment on a topic on a community's discussion board.
+ *
+ * @property groupId ID of the community that owns the discussion board.
+ * @property topicId Topic ID.
+ * @property commentId Comment ID.
  */
-class BoardDeleteCommentMethod() : VkMethod<Boolean>(
+class BoardDeleteCommentMethod(
+        groupId: Long,
+        topicId: Long,
+        commentId: Long
+) : VkMethod<Boolean>(
     "board.deleteComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserGroupMethod {
 
-    var groupId: Long? by props
-    var topicId: Long? by props
-    var commentId: Long? by props
+    var groupId: Long by props
+    var topicId: Long by props
+    var commentId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        topicId: Long? = null,
-        commentId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.topicId = topicId
         this.commentId = commentId
@@ -44,11 +49,5 @@ class BoardDeleteCommentMethod() : VkMethod<Boolean>(
     fun setCommentId(commentId: Long): BoardDeleteCommentMethod {
         this.commentId = commentId
         return this
-    }
-
-    override val classRef = BoardDeleteCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

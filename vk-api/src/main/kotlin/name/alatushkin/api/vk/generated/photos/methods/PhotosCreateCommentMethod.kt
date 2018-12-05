@@ -1,30 +1,45 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a new comment on the photo.
+ * [https://vk.com/dev/photos.createComment]
  *
- *  [https://vk.com/dev/photos.createComment]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [message] Comment text.
- *  @property [attachments] (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
- *  @property [from_group] '1' — to post a comment from the community
- *  @property [reply_to_comment] 
- *  @property [sticker_id]
- *  @property [access_key]
- *  @property [guid]
+ * Adds a new comment on the photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property message Comment text.
+ * @property attachments (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+ * @property fromGroup '1' — to post a comment from the community
+ * @property replyToComment 
+ * @property stickerId 
+ * @property accessKey 
+ * @property guid 
  */
-class PhotosCreateCommentMethod() : VkMethod<Long>(
+class PhotosCreateCommentMethod(
+        ownerId: Long? = null,
+        photoId: Long,
+        message: String? = null,
+        attachments: Array<String>? = null,
+        fromGroup: Boolean? = null,
+        replyToComment: Long? = null,
+        stickerId: Long? = null,
+        accessKey: String? = null,
+        guid: String? = null
+) : VkMethod<Long>(
     "photos.createComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
+    var photoId: Long by props
     var message: String? by props
     var attachments: Array<String>? by props
     var fromGroup: Boolean? by props
@@ -33,17 +48,7 @@ class PhotosCreateCommentMethod() : VkMethod<Long>(
     var accessKey: String? by props
     var guid: String? by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        fromGroup: Boolean? = null,
-        replyToComment: Long? = null,
-        stickerId: Long? = null,
-        accessKey: String? = null,
-        guid: String? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.message = message
@@ -98,11 +103,5 @@ class PhotosCreateCommentMethod() : VkMethod<Long>(
     fun setGuid(guid: String): PhotosCreateCommentMethod {
         this.guid = guid
         return this
-    }
-
-    override val classRef = PhotosCreateCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

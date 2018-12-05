@@ -1,25 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.widgets.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.widgets.GetCommentsResponse
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
+ * [https://vk.com/dev/widgets.getComments]
  *
- *  [https://vk.com/dev/widgets.getComments]
- *  @property [widget_api_id]
- *  @property [url]
- *  @property [page_id]
- *  @property [order]
- *  @property [fields]
- *  @property [count]
+ * Gets a list of comments for the page added through the [vk.com/dev/Comments|Comments widget].
+ *
+ * @property widgetApiId 
+ * @property url 
+ * @property pageId 
+ * @property order 
+ * @property fields 
+ * @property count 
  */
-class WidgetsGetCommentsMethod() : VkMethod<GetCommentsResponse>(
+class WidgetsGetCommentsMethod(
+        widgetApiId: Long? = null,
+        url: String? = null,
+        pageId: String? = null,
+        order: String? = null,
+        fields: Array<String>? = null,
+        count: Long? = null
+) : VkMethod<GetCommentsResponse>(
     "widgets.getComments",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetCommentsResponse>>() {}
+), UserServiceMethod {
 
     var widgetApiId: Long? by props
     var url: String? by props
@@ -28,14 +40,7 @@ class WidgetsGetCommentsMethod() : VkMethod<GetCommentsResponse>(
     var fields: Array<String>? by props
     var count: Long? by props
 
-    constructor(
-        widgetApiId: Long? = null,
-        url: String? = null,
-        pageId: String? = null,
-        order: String? = null,
-        fields: Array<String>? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.widgetApiId = widgetApiId
         this.url = url
         this.pageId = pageId
@@ -72,11 +77,5 @@ class WidgetsGetCommentsMethod() : VkMethod<GetCommentsResponse>(
     fun setCount(count: Long): WidgetsGetCommentsMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = WidgetsGetCommentsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetCommentsResponse>>() {}
     }
 }

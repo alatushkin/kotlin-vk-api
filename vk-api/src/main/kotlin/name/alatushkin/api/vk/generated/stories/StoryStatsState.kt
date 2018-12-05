@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.stories
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class StoryStatsState(@JsonValue val jsonValue: String) {
-    ON("on"), OFF("off"), HIDDEN("hidden");
+    ON("on"),
+    OFF("off"),
+    HIDDEN("hidden");
 
     override fun toString() = jsonValue
 

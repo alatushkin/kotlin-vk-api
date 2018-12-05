@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.GetUserVideosExtendedResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns list of videos in which the user is tagged.
+ * [https://vk.com/dev/video.getUserVideos]
  *
- *  [https://vk.com/dev/video.getUserVideos]
- *  @property [user_id] User ID.
- *  @property [offset] Offset needed to return a specific subset of videos.
- *  @property [count] Number of videos to return.
+ * Returns list of videos in which the user is tagged.
+ *
+ * @property userId User ID.
+ * @property offset Offset needed to return a specific subset of videos.
+ * @property count Number of videos to return.
  */
-class VideoGetUserVideosMethodExtended() : VkMethod<GetUserVideosExtendedResponse>(
+class VideoGetUserVideosMethodExtended(
+        userId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<GetUserVideosExtendedResponse>(
     "video.getUserVideos",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<GetUserVideosExtendedResponse>>() {}
+), UserMethod {
 
     var userId: Long? by props
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        userId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.offset = offset
         this.count = count
@@ -45,11 +50,5 @@ class VideoGetUserVideosMethodExtended() : VkMethod<GetUserVideosExtendedRespons
     fun setCount(count: Long): VideoGetUserVideosMethodExtended {
         this.count = count
         return this
-    }
-
-    override val classRef = VideoGetUserVideosMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetUserVideosExtendedResponse>>() {}
     }
 }

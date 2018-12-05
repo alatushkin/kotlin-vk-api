@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Closes a topic on a community's discussion board so that comments cannot be posted.
+ * [https://vk.com/dev/board.closeTopic]
  *
- *  [https://vk.com/dev/board.closeTopic]
- *  @property [group_id] ID of the community that owns the discussion board.
- *  @property [topic_id] Topic ID.
+ * Closes a topic on a community's discussion board so that comments cannot be posted.
+ *
+ * @property groupId ID of the community that owns the discussion board.
+ * @property topicId Topic ID.
  */
-class BoardCloseTopicMethod() : VkMethod<Boolean>(
+class BoardCloseTopicMethod(
+        groupId: Long,
+        topicId: Long
+) : VkMethod<Boolean>(
     "board.closeTopic",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var topicId: Long? by props
+    var groupId: Long by props
+    var topicId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        topicId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.topicId = topicId
     }
@@ -35,11 +40,5 @@ class BoardCloseTopicMethod() : VkMethod<Boolean>(
     fun setTopicId(topicId: Long): BoardCloseTopicMethod {
         this.topicId = topicId
         return this
-    }
-
-    override val classRef = BoardCloseTopicMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

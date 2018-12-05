@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.storage.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Saves a value of variable with the name set by 'key' parameter.
+ * [https://vk.com/dev/storage.set]
  *
- *  [https://vk.com/dev/storage.set]
- *  @property [key]
- *  @property [value]
- *  @property [user_id]
+ * Saves a value of variable with the name set by 'key' parameter.
+ *
+ * @property key 
+ * @property value 
+ * @property userId 
  */
-class StorageSetMethod() : VkMethod<Boolean>(
+class StorageSetMethod(
+        key: String,
+        value: String? = null,
+        userId: Long? = null
+) : VkMethod<Boolean>(
     "storage.set",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var key: String? by props
+    var key: String by props
     var value: String? by props
     var userId: Long? by props
 
-    constructor(
-        key: String? = null,
-        value: String? = null,
-        userId: Long? = null
-    ) : this() {
+    init {
         this.key = key
         this.value = value
         this.userId = userId
@@ -44,11 +49,5 @@ class StorageSetMethod() : VkMethod<Boolean>(
     fun setUserId(userId: Long): StorageSetMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = StorageSetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,34 +1,55 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.Keyboard
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Sends a message.
+ * [https://vk.com/dev/messages.send]
  *
- *  [https://vk.com/dev/messages.send]
- *  @property [user_id] User ID (by default — current user).
- *  @property [random_id] Unique identifier to avoid resending the message.
- *  @property [peer_id] Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
- *  @property [domain] User's short address (for example, 'illarionov').
- *  @property [chat_id] ID of conversation the message will relate to.
- *  @property [user_ids] IDs of message recipients (if new conversation shall be started).
- *  @property [message] (Required if 'attachments' is not set.) Text of the message.
- *  @property [lat] Geographical latitude of a check-in, in degrees (from -90 to 90).
- *  @property [long] Geographical longitude of a check-in, in degrees (from -180 to 180).
- *  @property [attachment] (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
- *  @property [forward_messages] ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
- *  @property [sticker_id] Sticker id.
- *  @property [notification] '1' if the message is a notification (for community messages).
- *  @property [group_id] Group ID (for group messages with group access token)
- *  @property [keyboard] keyboard to message
+ * Sends a message.
+ *
+ * @property userId User ID (by default — current user).
+ * @property randomId Unique identifier to avoid resending the message.
+ * @property peerId Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'chat_id', e.g. '2000000001'. For community: '- community ID', e.g. '-12345'. "
+ * @property domain User's short address (for example, 'illarionov').
+ * @property chatId ID of conversation the message will relate to.
+ * @property userIds IDs of message recipients (if new conversation shall be started).
+ * @property message (Required if 'attachments' is not set.) Text of the message.
+ * @property lat Geographical latitude of a check-in, in degrees (from -90 to 90).
+ * @property long Geographical longitude of a check-in, in degrees (from -180 to 180).
+ * @property attachment (Required if 'message' is not set.) List of objects attached to the message, separated by commas, in the following format: "<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'wall' — wall post, '<owner_id>' — ID of the media attachment owner. '<media_id>' — media attachment ID. Example: "photo100172_166443618"
+ * @property forwardMessages ID of forwarded messages, separated with a comma. Listed messages of the sender will be shown in the message body at the recipient's. Example: "123,431,544"
+ * @property stickerId Sticker id.
+ * @property notification '1' if the message is a notification (for community messages).
+ * @property groupId Group ID (for group messages with group access token)
+ * @property keyboard keyboard to message
  */
-class MessagesSendMethod() : VkMethod<Long>(
+class MessagesSendMethod(
+        userId: Long? = null,
+        randomId: Long? = null,
+        peerId: Long? = null,
+        domain: String? = null,
+        chatId: Long? = null,
+        userIds: Array<Long>? = null,
+        message: String? = null,
+        lat: Double? = null,
+        long: Double? = null,
+        attachment: Array<String>? = null,
+        forwardMessages: String? = null,
+        stickerId: Long? = null,
+        notification: Boolean? = null,
+        groupId: Long? = null,
+        keyboard: Keyboard? = null
+) : VkMethod<Long>(
     "messages.send",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserGroupMethod {
 
     var userId: Long? by props
     var randomId: Long? by props
@@ -46,23 +67,7 @@ class MessagesSendMethod() : VkMethod<Long>(
     var groupId: Long? by props
     var keyboard: Keyboard? by props
 
-    constructor(
-        userId: Long? = null,
-        randomId: Long? = null,
-        peerId: Long? = null,
-        domain: String? = null,
-        chatId: Long? = null,
-        userIds: Array<Long>? = null,
-        message: String? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        attachment: Array<String>? = null,
-        forwardMessages: String? = null,
-        stickerId: Long? = null,
-        notification: Boolean? = null,
-        groupId: Long? = null,
-        keyboard: Keyboard? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.randomId = randomId
         this.peerId = peerId
@@ -153,11 +158,5 @@ class MessagesSendMethod() : VkMethod<Long>(
     fun setKeyboard(keyboard: Keyboard): MessagesSendMethod {
         this.keyboard = keyboard
         return this
-    }
-
-    override val classRef = MessagesSendMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

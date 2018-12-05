@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Prevents news from specified users and communities from appearing in the current user's newsfeed.
+ * [https://vk.com/dev/newsfeed.addBan]
  *
- *  [https://vk.com/dev/newsfeed.addBan]
- *  @property [user_ids]
- *  @property [group_ids]
+ * Prevents news from specified users and communities from appearing in the current user's newsfeed.
+ *
+ * @property userIds 
+ * @property groupIds 
  */
-class NewsfeedAddBanMethod() : VkMethod<Boolean>(
+class NewsfeedAddBanMethod(
+        userIds: Array<Long>? = null,
+        groupIds: Array<Long>? = null
+) : VkMethod<Boolean>(
     "newsfeed.addBan",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var userIds: Array<Long>? by props
     var groupIds: Array<Long>? by props
 
-    constructor(
-        userIds: Array<Long>? = null,
-        groupIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.userIds = userIds
         this.groupIds = groupIds
     }
@@ -35,11 +40,5 @@ class NewsfeedAddBanMethod() : VkMethod<Boolean>(
     fun setGroupIds(groupIds: Array<Long>): NewsfeedAddBanMethod {
         this.groupIds = groupIds
         return this
-    }
-
-    override val classRef = NewsfeedAddBanMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

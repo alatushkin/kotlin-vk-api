@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.users.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,21 +7,30 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.NameCase
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
+ * [https://vk.com/dev/users.getFollowers]
  *
- *  [https://vk.com/dev/users.getFollowers]
- *  @property [user_id] User ID.
- *  @property [offset] Offset needed to return a specific subset of followers.
- *  @property [count] Number of followers to return.
- *  @property [fields] Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
- *  @property [name_case] Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+ * Returns a list of IDs of followers of the user in question, sorted by date added, most recent first.
+ *
+ * @property userId User ID.
+ * @property offset Offset needed to return a specific subset of followers.
+ * @property count Number of followers to return.
+ * @property fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online'.
+ * @property nameCase Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
-class UsersGetFollowersMethod() : VkMethod<VkList<Long>>(
+class UsersGetFollowersMethod(
+        userId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        fields: Array<String>? = null,
+        nameCase: NameCase? = null
+) : VkMethod<VkList<Long>>(
     "users.getFollowers",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Long>>>() {}
+), UserServiceMethod {
 
     var userId: Long? by props
     var offset: Long? by props
@@ -27,13 +38,7 @@ class UsersGetFollowersMethod() : VkMethod<VkList<Long>>(
     var fields: Array<String>? by props
     var nameCase: NameCase? by props
 
-    constructor(
-        userId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.offset = offset
         this.count = count
@@ -64,11 +69,5 @@ class UsersGetFollowersMethod() : VkMethod<VkList<Long>>(
     fun setNameCase(nameCase: NameCase): UsersGetFollowersMethod {
         this.nameCase = nameCase
         return this
-    }
-
-    override val classRef = UsersGetFollowersMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
     }
 }

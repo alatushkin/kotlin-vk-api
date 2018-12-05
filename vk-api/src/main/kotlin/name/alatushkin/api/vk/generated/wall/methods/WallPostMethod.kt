@@ -1,33 +1,53 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.wall.PostResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a new post on a user wall or community wall. Can also be used to publish suggested or scheduled posts.
+ * [https://vk.com/dev/wall.post]
  *
- *  [https://vk.com/dev/wall.post]
- *  @property [owner_id] User ID or community ID. Use a negative value to designate a community ID.
- *  @property [friends_only] '1' — post will be available to friends only, '0' — post will be available to all users (default)
- *  @property [from_group] For a community: '1' — post will be published by the community, '0' — post will be published by the user (default)
- *  @property [message] (Required if 'attachments' is not set.) Text of the post.
- *  @property [attachments] (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
- *  @property [services] List of services or websites the update will be exported to, if the user has so requested. Sample values: 'twitter', 'facebook'.
- *  @property [signed] Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
- *  @property [publish_date] Publication date (in Unix time). If used, posting will be delayed until the set time.
- *  @property [lat] Geographical latitude of a check-in, in degrees (from -90 to 90).
- *  @property [long] Geographical longitude of a check-in, in degrees (from -180 to 180).
- *  @property [place_id] ID of the location where the user was tagged.
- *  @property [post_id] Post ID. Used for publishing of scheduled and suggested posts.
- *  @property [guid]
- *  @property [mark_as_ads]
+ * Adds a new post on a user wall or community wall. Can also be used to publish suggested or scheduled posts.
+ *
+ * @property ownerId User ID or community ID. Use a negative value to designate a community ID.
+ * @property friendsOnly '1' — post will be available to friends only, '0' — post will be available to all users (default)
+ * @property fromGroup For a community: '1' — post will be published by the community, '0' — post will be published by the user (default)
+ * @property message (Required if 'attachments' is not set.) Text of the post.
+ * @property attachments (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, 'page' — wiki-page, 'note' — note, 'poll' — poll, 'album' — photo album, '<owner_id>' — ID of the media application owner. '<media_id>' — Media application ID. Example: "photo100172_166443618,photo66748_265827614", May contain a link to an external page to include in the post. Example: "photo66748_265827614,http://habrahabr.ru", "NOTE: If more than one link is being attached, an error will be thrown."
+ * @property services List of services or websites the update will be exported to, if the user has so requested. Sample values: 'twitter', 'facebook'.
+ * @property signed Only for posts in communities with 'from_group' set to '1': '1' — post will be signed with the name of the posting user, '0' — post will not be signed (default)
+ * @property publishDate Publication date (in Unix time). If used, posting will be delayed until the set time.
+ * @property lat Geographical latitude of a check-in, in degrees (from -90 to 90).
+ * @property long Geographical longitude of a check-in, in degrees (from -180 to 180).
+ * @property placeId ID of the location where the user was tagged.
+ * @property postId Post ID. Used for publishing of scheduled and suggested posts.
+ * @property guid 
+ * @property markAsAds 
  */
-class WallPostMethod() : VkMethod<PostResponse>(
+class WallPostMethod(
+        ownerId: Long? = null,
+        friendsOnly: Boolean? = null,
+        fromGroup: Boolean? = null,
+        message: String? = null,
+        attachments: Array<String>? = null,
+        services: String? = null,
+        signed: Boolean? = null,
+        publishDate: Long? = null,
+        lat: Double? = null,
+        long: Double? = null,
+        placeId: Long? = null,
+        postId: Long? = null,
+        guid: String? = null,
+        markAsAds: Boolean? = null
+) : VkMethod<PostResponse>(
     "wall.post",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<PostResponse>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
     var friendsOnly: Boolean? by props
@@ -44,22 +64,7 @@ class WallPostMethod() : VkMethod<PostResponse>(
     var guid: String? by props
     var markAsAds: Boolean? by props
 
-    constructor(
-        ownerId: Long? = null,
-        friendsOnly: Boolean? = null,
-        fromGroup: Boolean? = null,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        services: String? = null,
-        signed: Boolean? = null,
-        publishDate: Long? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        placeId: Long? = null,
-        postId: Long? = null,
-        guid: String? = null,
-        markAsAds: Boolean? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.friendsOnly = friendsOnly
         this.fromGroup = fromGroup
@@ -144,11 +149,5 @@ class WallPostMethod() : VkMethod<PostResponse>(
     fun setMarkAsAds(markAsAds: Boolean): WallPostMethod {
         this.markAsAds = markAsAds
         return this
-    }
-
-    override val classRef = WallPostMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<PostResponse>>() {}
     }
 }

@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.ads.Client
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of advertising agency's clients.
+ * [https://vk.com/dev/ads.getClients]
  *
- *  [https://vk.com/dev/ads.getClients]
- *  @property [account_id] Advertising account ID.
+ * Returns a list of advertising agency's clients.
+ *
+ * @property accountId Advertising account ID.
  */
-class AdsGetClientsMethod() : VkMethod<Array<Client>>(
+class AdsGetClientsMethod(
+        accountId: Long
+) : VkMethod<Array<Client>>(
     "ads.getClients",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Client>>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
+    var accountId: Long by props
 
-    constructor(
-        accountId: Long? = null
-    ) : this() {
+    init {
         this.accountId = accountId
     }
 
     fun setAccountId(accountId: Long): AdsGetClientsMethod {
         this.accountId = accountId
         return this
-    }
-
-    override val classRef = AdsGetClientsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Client>>>() {}
     }
 }

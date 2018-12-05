@@ -1,23 +1,22 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.ads.Account
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of advertising accounts.
+ * [https://vk.com/dev/ads.getAccounts]
  *
- *  [https://vk.com/dev/ads.getAccounts]
+ * Returns a list of advertising accounts.
+ *
 
  */
 class AdsGetAccountsMethod : VkMethod<Array<Account>>(
     "ads.getAccounts",
-    HashMap()
-) {
-    override val classRef = AdsGetAccountsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Account>>>() {}
-    }
-}
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Account>>>() {}
+), UserMethod

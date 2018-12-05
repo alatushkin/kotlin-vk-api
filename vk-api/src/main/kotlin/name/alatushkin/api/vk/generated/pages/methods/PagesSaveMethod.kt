@@ -1,23 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Saves the text of a wiki page.
+ * [https://vk.com/dev/pages.save]
  *
- *  [https://vk.com/dev/pages.save]
- *  @property [text] Text of the wiki page in wiki-format.
- *  @property [page_id] Wiki page ID. The 'title' parameter can be passed instead of 'pid'.
- *  @property [group_id] ID of the community that owns the wiki page.
- *  @property [user_id] User ID
- *  @property [title] Wiki page title.
+ * Saves the text of a wiki page.
+ *
+ * @property text Text of the wiki page in wiki-format.
+ * @property pageId Wiki page ID. The 'title' parameter can be passed instead of 'pid'.
+ * @property groupId ID of the community that owns the wiki page.
+ * @property userId User ID
+ * @property title Wiki page title.
  */
-class PagesSaveMethod() : VkMethod<Long>(
+class PagesSaveMethod(
+        text: String? = null,
+        pageId: Long? = null,
+        groupId: Long? = null,
+        userId: Long? = null,
+        title: String? = null
+) : VkMethod<Long>(
     "pages.save",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
     var text: String? by props
     var pageId: Long? by props
@@ -25,13 +36,7 @@ class PagesSaveMethod() : VkMethod<Long>(
     var userId: Long? by props
     var title: String? by props
 
-    constructor(
-        text: String? = null,
-        pageId: Long? = null,
-        groupId: Long? = null,
-        userId: Long? = null,
-        title: String? = null
-    ) : this() {
+    init {
         this.text = text
         this.pageId = pageId
         this.groupId = groupId
@@ -62,11 +67,5 @@ class PagesSaveMethod() : VkMethod<Long>(
     fun setTitle(title: String): PagesSaveMethod {
         this.title = title
         return this
-    }
-
-    override val classRef = PagesSaveMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

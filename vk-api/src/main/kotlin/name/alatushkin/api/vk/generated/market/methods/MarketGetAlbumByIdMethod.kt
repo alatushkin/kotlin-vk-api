@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,26 +7,29 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.market.MarketAlbum
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns items album's data
+ * [https://vk.com/dev/market.getAlbumById]
  *
- *  [https://vk.com/dev/market.getAlbumById]
- *  @property [owner_id] identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
- *  @property [album_ids] collections identifiers to obtain data from
+ * Returns items album's data
+ *
+ * @property ownerId identifier of an album owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
+ * @property albumIds collections identifiers to obtain data from
  */
-class MarketGetAlbumByIdMethod() : VkMethod<VkList<MarketAlbum>>(
+class MarketGetAlbumByIdMethod(
+        ownerId: Long,
+        albumIds: Array<Long>
+) : VkMethod<VkList<MarketAlbum>>(
     "market.getAlbumById",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<MarketAlbum>>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var albumIds: Array<Long>? by props
+    var ownerId: Long by props
+    var albumIds: Array<Long> by props
 
-    constructor(
-        ownerId: Long? = null,
-        albumIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.albumIds = albumIds
     }
@@ -37,11 +42,5 @@ class MarketGetAlbumByIdMethod() : VkMethod<VkList<MarketAlbum>>(
     fun setAlbumIds(albumIds: Array<Long>): MarketGetAlbumByIdMethod {
         this.albumIds = albumIds
         return this
-    }
-
-    override val classRef = MarketGetAlbumByIdMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<MarketAlbum>>>() {}
     }
 }

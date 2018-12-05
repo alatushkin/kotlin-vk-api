@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a video from a user or community page.
+ * [https://vk.com/dev/video.delete]
  *
- *  [https://vk.com/dev/video.delete]
- *  @property [video_id] Video ID.
- *  @property [owner_id] ID of the user or community that owns the video.
- *  @property [target_id]
+ * Deletes a video from a user or community page.
+ *
+ * @property videoId Video ID.
+ * @property ownerId ID of the user or community that owns the video.
+ * @property targetId 
  */
-class VideoDeleteMethod() : VkMethod<Boolean>(
+class VideoDeleteMethod(
+        videoId: Long,
+        ownerId: Long? = null,
+        targetId: Long? = null
+) : VkMethod<Boolean>(
     "video.delete",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var videoId: Long? by props
+    var videoId: Long by props
     var ownerId: Long? by props
     var targetId: Long? by props
 
-    constructor(
-        videoId: Long? = null,
-        ownerId: Long? = null,
-        targetId: Long? = null
-    ) : this() {
+    init {
         this.videoId = videoId
         this.ownerId = ownerId
         this.targetId = targetId
@@ -44,11 +49,5 @@ class VideoDeleteMethod() : VkMethod<Boolean>(
     fun setTargetId(targetId: Long): VideoDeleteMethod {
         this.targetId = targetId
         return this
-    }
-
-    override val classRef = VideoDeleteMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

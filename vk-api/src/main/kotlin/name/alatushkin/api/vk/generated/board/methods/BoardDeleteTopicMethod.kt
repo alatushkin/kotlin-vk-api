@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.board.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a topic from a community's discussion board.
+ * [https://vk.com/dev/board.deleteTopic]
  *
- *  [https://vk.com/dev/board.deleteTopic]
- *  @property [group_id] ID of the community that owns the discussion board.
- *  @property [topic_id] Topic ID.
+ * Deletes a topic from a community's discussion board.
+ *
+ * @property groupId ID of the community that owns the discussion board.
+ * @property topicId Topic ID.
  */
-class BoardDeleteTopicMethod() : VkMethod<Boolean>(
+class BoardDeleteTopicMethod(
+        groupId: Long,
+        topicId: Long
+) : VkMethod<Boolean>(
     "board.deleteTopic",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var topicId: Long? by props
+    var groupId: Long by props
+    var topicId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        topicId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.topicId = topicId
     }
@@ -35,11 +40,5 @@ class BoardDeleteTopicMethod() : VkMethod<Boolean>(
     fun setTopicId(topicId: Long): BoardDeleteTopicMethod {
         this.topicId = topicId
         return this
-    }
-
-    override val classRef = BoardDeleteTopicMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

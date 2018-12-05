@@ -1,37 +1,42 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Changes item place in a collection.
+ * [https://vk.com/dev/market.reorderItems]
  *
- *  [https://vk.com/dev/market.reorderItems]
- *  @property [owner_id] ID of an item owner community.
- *  @property [album_id] ID of a collection to reorder items in. Set 0 to reorder full items list.
- *  @property [item_id] Item ID.
- *  @property [before] ID of an item to place current item before it.
- *  @property [after] ID of an item to place current item after it.
+ * Changes item place in a collection.
+ *
+ * @property ownerId ID of an item owner community.
+ * @property albumId ID of a collection to reorder items in. Set 0 to reorder full items list.
+ * @property itemId Item ID.
+ * @property before ID of an item to place current item before it.
+ * @property after ID of an item to place current item after it.
  */
-class MarketReorderItemsMethod() : VkMethod<Boolean>(
+class MarketReorderItemsMethod(
+        ownerId: Long,
+        albumId: Long? = null,
+        itemId: Long,
+        before: Long? = null,
+        after: Long? = null
+) : VkMethod<Boolean>(
     "market.reorderItems",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
+    var ownerId: Long by props
     var albumId: Long? by props
-    var itemId: Long? by props
+    var itemId: Long by props
     var before: Long? by props
     var after: Long? by props
 
-    constructor(
-        ownerId: Long? = null,
-        albumId: Long? = null,
-        itemId: Long? = null,
-        before: Long? = null,
-        after: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.albumId = albumId
         this.itemId = itemId
@@ -62,11 +67,5 @@ class MarketReorderItemsMethod() : VkMethod<Boolean>(
     fun setAfter(after: Long): MarketReorderItemsMethod {
         this.after = after
         return this
-    }
-
-    override val classRef = MarketReorderItemsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.gifts.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,29 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.gifts.Gift
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of user gifts.
+ * [https://vk.com/dev/gifts.get]
  *
- *  [https://vk.com/dev/gifts.get]
- *  @property [user_id] User ID.
- *  @property [count] Number of gifts to return.
- *  @property [offset] Offset needed to return a specific subset of results.
+ * Returns a list of user gifts.
+ *
+ * @property userId User ID.
+ * @property count Number of gifts to return.
+ * @property offset Offset needed to return a specific subset of results.
  */
-class GiftsGetMethod() : VkMethod<VkList<Gift>>(
+class GiftsGetMethod(
+        userId: Long? = null,
+        count: Long? = null,
+        offset: Long? = null
+) : VkMethod<VkList<Gift>>(
     "gifts.get",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Gift>>>() {}
+), UserMethod {
 
     var userId: Long? by props
     var count: Long? by props
     var offset: Long? by props
 
-    constructor(
-        userId: Long? = null,
-        count: Long? = null,
-        offset: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.count = count
         this.offset = offset
@@ -46,11 +51,5 @@ class GiftsGetMethod() : VkMethod<VkList<Gift>>(
     fun setOffset(offset: Long): GiftsGetMethod {
         this.offset = offset
         return this
-    }
-
-    override val classRef = GiftsGetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Gift>>>() {}
     }
 }

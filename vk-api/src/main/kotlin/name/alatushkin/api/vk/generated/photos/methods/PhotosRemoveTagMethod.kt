@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Removes a tag from a photo.
+ * [https://vk.com/dev/photos.removeTag]
  *
- *  [https://vk.com/dev/photos.removeTag]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [tag_id] Tag ID.
+ * Removes a tag from a photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property tagId Tag ID.
  */
-class PhotosRemoveTagMethod() : VkMethod<Boolean>(
+class PhotosRemoveTagMethod(
+        ownerId: Long? = null,
+        photoId: Long,
+        tagId: Long
+) : VkMethod<Boolean>(
     "photos.removeTag",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
-    var tagId: Long? by props
+    var photoId: Long by props
+    var tagId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        tagId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.tagId = tagId
@@ -44,11 +49,5 @@ class PhotosRemoveTagMethod() : VkMethod<Boolean>(
     fun setTagId(tagId: Long): PhotosRemoveTagMethod {
         this.tagId = tagId
         return this
-    }
-
-    override val classRef = PhotosRemoveTagMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

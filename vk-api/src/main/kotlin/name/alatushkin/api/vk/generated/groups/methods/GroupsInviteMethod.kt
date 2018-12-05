@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to invite friends to the community.
+ * [https://vk.com/dev/groups.invite]
  *
- *  [https://vk.com/dev/groups.invite]
- *  @property [group_id] Community ID.
- *  @property [user_id] User ID.
+ * Allows to invite friends to the community.
+ *
+ * @property groupId Community ID.
+ * @property userId User ID.
  */
-class GroupsInviteMethod() : VkMethod<Boolean>(
+class GroupsInviteMethod(
+        groupId: Long,
+        userId: Long
+) : VkMethod<Boolean>(
     "groups.invite",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var userId: Long? by props
+    var groupId: Long by props
+    var userId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        userId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.userId = userId
     }
@@ -35,11 +40,5 @@ class GroupsInviteMethod() : VkMethod<Boolean>(
     fun setUserId(userId: Long): GroupsInviteMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = GroupsInviteMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

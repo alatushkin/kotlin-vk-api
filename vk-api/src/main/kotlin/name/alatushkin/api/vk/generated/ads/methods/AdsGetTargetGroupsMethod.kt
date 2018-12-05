@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.ads.TargetGroup
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of target groups.
+ * [https://vk.com/dev/ads.getTargetGroups]
  *
- *  [https://vk.com/dev/ads.getTargetGroups]
- *  @property [account_id] Advertising account ID.
- *  @property [client_id] 'Only for advertising agencies.', ID of the client with the advertising account where the group will be created.
- *  @property [extended] '1' — to return pixel code.
+ * Returns a list of target groups.
+ *
+ * @property accountId Advertising account ID.
+ * @property clientId 'Only for advertising agencies.', ID of the client with the advertising account where the group will be created.
+ * @property extended '1' — to return pixel code.
  */
-class AdsGetTargetGroupsMethod() : VkMethod<Array<TargetGroup>>(
+class AdsGetTargetGroupsMethod(
+        accountId: Long,
+        clientId: Long? = null,
+        extended: Boolean? = null
+) : VkMethod<Array<TargetGroup>>(
     "ads.getTargetGroups",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<TargetGroup>>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
+    var accountId: Long by props
     var clientId: Long? by props
     var extended: Boolean? by props
 
-    constructor(
-        accountId: Long? = null,
-        clientId: Long? = null,
-        extended: Boolean? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.clientId = clientId
         this.extended = extended
@@ -45,11 +50,5 @@ class AdsGetTargetGroupsMethod() : VkMethod<Array<TargetGroup>>(
     fun setExtended(extended: Boolean): AdsGetTargetGroupsMethod {
         this.extended = extended
         return this
-    }
-
-    override val classRef = AdsGetTargetGroupsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<TargetGroup>>>() {}
     }
 }

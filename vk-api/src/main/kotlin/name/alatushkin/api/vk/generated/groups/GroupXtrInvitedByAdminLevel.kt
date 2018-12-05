@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.groups
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class GroupXtrInvitedByAdminLevel(@JsonValue val jsonValue: String) {
-    MODERATOR("1"), EDITOR("2"), ADMINISTRATOR("3");
+    MODERATOR("1"),
+    EDITOR("2"),
+    ADMINISTRATOR("3");
 
     override fun toString() = jsonValue
 

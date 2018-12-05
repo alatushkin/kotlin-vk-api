@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -6,41 +8,44 @@ import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.Sort
 import name.alatushkin.api.vk.generated.wall.WallComment
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of comments on a video.
+ * [https://vk.com/dev/video.getComments]
  *
- *  [https://vk.com/dev/video.getComments]
- *  @property [owner_id] ID of the user or community that owns the video.
- *  @property [video_id] Video ID.
- *  @property [need_likes] '1' — to return an additional 'likes' field
- *  @property [start_comment_id]
- *  @property [offset] Offset needed to return a specific subset of comments.
- *  @property [count] Number of comments to return.
- *  @property [sort] Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
+ * Returns a list of comments on a video.
+ *
+ * @property ownerId ID of the user or community that owns the video.
+ * @property videoId Video ID.
+ * @property needLikes '1' — to return an additional 'likes' field
+ * @property startCommentId 
+ * @property offset Offset needed to return a specific subset of comments.
+ * @property count Number of comments to return.
+ * @property sort Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
  */
-class VideoGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
+class VideoGetCommentsMethodExtended(
+        ownerId: Long? = null,
+        videoId: Long,
+        needLikes: Boolean? = null,
+        startCommentId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        sort: Sort? = null
+) : VkMethod<VkList<WallComment>>(
     "video.getComments",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<VkList<WallComment>>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var videoId: Long? by props
+    var videoId: Long by props
     var needLikes: Boolean? by props
     var startCommentId: Long? by props
     var offset: Long? by props
     var count: Long? by props
     var sort: Sort? by props
 
-    constructor(
-        ownerId: Long? = null,
-        videoId: Long? = null,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.videoId = videoId
         this.needLikes = needLikes
@@ -83,11 +88,5 @@ class VideoGetCommentsMethodExtended() : VkMethod<VkList<WallComment>>(
     fun setSort(sort: Sort): VideoGetCommentsMethodExtended {
         this.sort = sort
         return this
-    }
-
-    override val classRef = VideoGetCommentsMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallComment>>>() {}
     }
 }

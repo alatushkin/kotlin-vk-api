@@ -44,5 +44,5 @@ fun initTypeResolver(): SimpleAbstractTypeResolver {
     resolver.addMapping(User::class.java, UserImpl::class.java)
     resolver.addMapping(List::class.java, ListImpl::class.java)
     resolver.addMapping(WallpostStat::class.java, WallpostStatImpl::class.java)
-    return resolver
+return resolver
 }

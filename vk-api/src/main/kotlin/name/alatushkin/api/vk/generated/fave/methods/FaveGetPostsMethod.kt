@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.fave.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,29 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.wall.WallpostFull
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of wall posts that the current user has liked.
+ * [https://vk.com/dev/fave.getPosts]
  *
- *  [https://vk.com/dev/fave.getPosts]
- *  @property [offset] Offset needed to return a specific subset of posts.
- *  @property [count] Number of posts to return.
- *  @property [extended] '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
+ * Returns a list of wall posts that the current user has liked.
+ *
+ * @property offset Offset needed to return a specific subset of posts.
+ * @property count Number of posts to return.
+ * @property extended '1' — to return additional 'wall', 'profiles', and 'groups' fields. By default: '0'.
  */
-class FaveGetPostsMethod() : VkMethod<VkList<WallpostFull>>(
+class FaveGetPostsMethod(
+        offset: Long? = null,
+        count: Long? = null,
+        extended: Boolean? = null
+) : VkMethod<VkList<WallpostFull>>(
     "fave.getPosts",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
+), UserMethod {
 
     var offset: Long? by props
     var count: Long? by props
     var extended: Boolean? by props
 
-    constructor(
-        offset: Long? = null,
-        count: Long? = null,
-        extended: Boolean? = null
-    ) : this() {
+    init {
         this.offset = offset
         this.count = count
         this.extended = extended
@@ -46,11 +51,5 @@ class FaveGetPostsMethod() : VkMethod<VkList<WallpostFull>>(
     fun setExtended(extended: Boolean): FaveGetPostsMethod {
         this.extended = extended
         return this
-    }
-
-    override val classRef = FaveGetPostsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallpostFull>>>() {}
     }
 }

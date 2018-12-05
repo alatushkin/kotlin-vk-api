@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits a comment on a photo.
+ * [https://vk.com/dev/photos.editComment]
  *
- *  [https://vk.com/dev/photos.editComment]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [comment_id] Comment ID.
- *  @property [message] New text of the comment.
- *  @property [attachments] (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
+ * Edits a comment on a photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property commentId Comment ID.
+ * @property message New text of the comment.
+ * @property attachments (Required if 'message' is not set.) List of objects attached to the post, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — Media attachment owner ID. '<media_id>' — Media attachment ID. Example: "photo100172_166443618,photo66748_265827614"
  */
-class PhotosEditCommentMethod() : VkMethod<Boolean>(
+class PhotosEditCommentMethod(
+        ownerId: Long? = null,
+        commentId: Long,
+        message: String? = null,
+        attachments: Array<String>? = null
+) : VkMethod<Boolean>(
     "photos.editComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var commentId: Long? by props
+    var commentId: Long by props
     var message: String? by props
     var attachments: Array<String>? by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null,
-        message: String? = null,
-        attachments: Array<String>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
         this.message = message
@@ -53,11 +58,5 @@ class PhotosEditCommentMethod() : VkMethod<Boolean>(
     fun setAttachments(attachments: Array<String>): PhotosEditCommentMethod {
         this.attachments = attachments
         return this
-    }
-
-    override val classRef = PhotosEditCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

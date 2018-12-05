@@ -1,27 +1,41 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.newsfeed.SearchResponse
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns search results by statuses.
+ * [https://vk.com/dev/newsfeed.search]
  *
- *  [https://vk.com/dev/newsfeed.search]
- *  @property [q] Search query string (e.g., 'New Year').
- *  @property [count] Number of posts to return.
- *  @property [latitude] Geographical latitude point (in degrees, -90 to 90) within which to search.
- *  @property [longitude] Geographical longitude point (in degrees, -180 to 180) within which to search.
- *  @property [start_time] Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
- *  @property [end_time] Latest timestamp (in Unix time) of a news item to return. By default, the current time.
- *  @property [start_from]
- *  @property [fields] Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
+ * Returns search results by statuses.
+ *
+ * @property q Search query string (e.g., 'New Year').
+ * @property count Number of posts to return.
+ * @property latitude Geographical latitude point (in degrees, -90 to 90) within which to search.
+ * @property longitude Geographical longitude point (in degrees, -180 to 180) within which to search.
+ * @property startTime Earliest timestamp (in Unix time) of a news item to return. By default, 24 hours ago.
+ * @property endTime Latest timestamp (in Unix time) of a news item to return. By default, the current time.
+ * @property startFrom 
+ * @property fields Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
  */
-class NewsfeedSearchMethod() : VkMethod<SearchResponse>(
+class NewsfeedSearchMethod(
+        q: String? = null,
+        count: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null,
+        startTime: Long? = null,
+        endTime: Long? = null,
+        startFrom: String? = null,
+        fields: Array<String>? = null
+) : VkMethod<SearchResponse>(
     "newsfeed.search",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<SearchResponse>>() {}
+), UserServiceMethod {
 
     var q: String? by props
     var count: Long? by props
@@ -32,16 +46,7 @@ class NewsfeedSearchMethod() : VkMethod<SearchResponse>(
     var startFrom: String? by props
     var fields: Array<String>? by props
 
-    constructor(
-        q: String? = null,
-        count: Long? = null,
-        latitude: Double? = null,
-        longitude: Double? = null,
-        startTime: Long? = null,
-        endTime: Long? = null,
-        startFrom: String? = null,
-        fields: Array<String>? = null
-    ) : this() {
+    init {
         this.q = q
         this.count = count
         this.latitude = latitude
@@ -90,11 +95,5 @@ class NewsfeedSearchMethod() : VkMethod<SearchResponse>(
     fun setFields(fields: Array<String>): NewsfeedSearchMethod {
         this.fields = fields
         return this
-    }
-
-    override val classRef = NewsfeedSearchMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<SearchResponse>>() {}
     }
 }

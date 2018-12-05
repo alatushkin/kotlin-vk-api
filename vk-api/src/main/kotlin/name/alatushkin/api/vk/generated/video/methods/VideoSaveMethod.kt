@@ -1,30 +1,47 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.SaveResult
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a server address (required for upload) and video data.
+ * [https://vk.com/dev/video.save]
  *
- *  [https://vk.com/dev/video.save]
- *  @property [name] Name of the video.
- *  @property [description] Description of the video.
- *  @property [is_private] '1' — to designate the video as private (send it via a private message), the video will not appear on the user's video list and will not be available by ID for other users, '0' — not to designate the video as private
- *  @property [wallpost] '1' — to post the saved video on a user's wall, '0' — not to post the saved video on a user's wall
- *  @property [link] URL for embedding the video from an external website.
- *  @property [group_id] ID of the community in which the video will be saved. By default, the current user's page.
- *  @property [album_id] ID of the album to which the saved video will be added.
- *  @property [privacy_view]
- *  @property [privacy_comment]
- *  @property [no_comments]
- *  @property [repeat] '1' — to repeat the playback of the video, '0' — to play the video once,
+ * Returns a server address (required for upload) and video data.
+ *
+ * @property name Name of the video.
+ * @property description Description of the video.
+ * @property isPrivate '1' — to designate the video as private (send it via a private message), the video will not appear on the user's video list and will not be available by ID for other users, '0' — not to designate the video as private
+ * @property wallpost '1' — to post the saved video on a user's wall, '0' — not to post the saved video on a user's wall
+ * @property link URL for embedding the video from an external website.
+ * @property groupId ID of the community in which the video will be saved. By default, the current user's page.
+ * @property albumId ID of the album to which the saved video will be added.
+ * @property privacyView 
+ * @property privacyComment 
+ * @property noComments 
+ * @property repeat '1' — to repeat the playback of the video, '0' — to play the video once,
  */
-class VideoSaveMethod() : VkMethod<SaveResult>(
+class VideoSaveMethod(
+        name: String? = null,
+        description: String? = null,
+        isPrivate: Boolean? = null,
+        wallpost: Boolean? = null,
+        link: String? = null,
+        groupId: Long? = null,
+        albumId: Long? = null,
+        privacyView: Array<String>? = null,
+        privacyComment: Array<String>? = null,
+        noComments: Boolean? = null,
+        repeat: Boolean? = null
+) : VkMethod<SaveResult>(
     "video.save",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<SaveResult>>() {}
+), UserMethod {
 
     var name: String? by props
     var description: String? by props
@@ -38,19 +55,7 @@ class VideoSaveMethod() : VkMethod<SaveResult>(
     var noComments: Boolean? by props
     var repeat: Boolean? by props
 
-    constructor(
-        name: String? = null,
-        description: String? = null,
-        isPrivate: Boolean? = null,
-        wallpost: Boolean? = null,
-        link: String? = null,
-        groupId: Long? = null,
-        albumId: Long? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null,
-        noComments: Boolean? = null,
-        repeat: Boolean? = null
-    ) : this() {
+    init {
         this.name = name
         this.description = description
         this.isPrivate = isPrivate
@@ -117,11 +122,5 @@ class VideoSaveMethod() : VkMethod<SaveResult>(
     fun setRepeat(repeat: Boolean): VideoSaveMethod {
         this.repeat = repeat
         return this
-    }
-
-    override val classRef = VideoSaveMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<SaveResult>>() {}
     }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -6,27 +8,39 @@ import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Sort
 import name.alatushkin.api.vk.generated.wall.WallComment
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns a list of comments on a post on a user wall or community wall.
+ * [https://vk.com/dev/wall.getComments]
  *
- *  [https://vk.com/dev/wall.getComments]
- *  @property [owner_id] User ID or community ID. Use a negative value to designate a community ID.
- *  @property [post_id] Post ID.
- *  @property [need_likes] '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
- *  @property [start_comment_id]
- *  @property [offset] Offset needed to return a specific subset of comments.
- *  @property [count] Number of comments to return (maximum 100).
- *  @property [sort] Sort order: 'asc' — chronological, 'desc' — reverse chronological
- *  @property [preview_length] Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
+ * Returns a list of comments on a post on a user wall or community wall.
+ *
+ * @property ownerId User ID or community ID. Use a negative value to designate a community ID.
+ * @property postId Post ID.
+ * @property needLikes '1' — to return the 'likes' field, '0' — not to return the 'likes' field (default)
+ * @property startCommentId 
+ * @property offset Offset needed to return a specific subset of comments.
+ * @property count Number of comments to return (maximum 100).
+ * @property sort Sort order: 'asc' — chronological, 'desc' — reverse chronological
+ * @property previewLength Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
  */
-class WallGetCommentsMethod() : VkMethod<VkList<WallComment>>(
+class WallGetCommentsMethod(
+        ownerId: Long? = null,
+        postId: Long,
+        needLikes: Boolean? = null,
+        startCommentId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        sort: Sort? = null,
+        previewLength: Long? = null
+) : VkMethod<VkList<WallComment>>(
     "wall.getComments",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<WallComment>>>() {}
+), UserServiceMethod {
 
     var ownerId: Long? by props
-    var postId: Long? by props
+    var postId: Long by props
     var needLikes: Boolean? by props
     var startCommentId: Long? by props
     var offset: Long? by props
@@ -34,16 +48,7 @@ class WallGetCommentsMethod() : VkMethod<VkList<WallComment>>(
     var sort: Sort? by props
     var previewLength: Long? by props
 
-    constructor(
-        ownerId: Long? = null,
-        postId: Long? = null,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null,
-        previewLength: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.postId = postId
         this.needLikes = needLikes
@@ -92,11 +97,5 @@ class WallGetCommentsMethod() : VkMethod<VkList<WallComment>>(
     fun setPreviewLength(previewLength: Long): WallGetCommentsMethod {
         this.previewLength = previewLength
         return this
-    }
-
-    override val classRef = WallGetCommentsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<WallComment>>>() {}
     }
 }

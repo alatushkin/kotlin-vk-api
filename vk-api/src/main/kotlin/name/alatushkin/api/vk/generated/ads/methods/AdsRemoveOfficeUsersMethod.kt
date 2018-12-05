@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Removes managers and/or supervisors from advertising account.
+ * [https://vk.com/dev/ads.removeOfficeUsers]
  *
- *  [https://vk.com/dev/ads.removeOfficeUsers]
- *  @property [account_id] Advertising account ID.
- *  @property [ids] Serialized JSON array with IDs of deleted managers.
+ * Removes managers and/or supervisors from advertising account.
+ *
+ * @property accountId Advertising account ID.
+ * @property ids Serialized JSON array with IDs of deleted managers.
  */
-class AdsRemoveOfficeUsersMethod() : VkMethod<Boolean>(
+class AdsRemoveOfficeUsersMethod(
+        accountId: Long,
+        ids: String
+) : VkMethod<Boolean>(
     "ads.removeOfficeUsers",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
-    var ids: String? by props
+    var accountId: Long by props
+    var ids: String by props
 
-    constructor(
-        accountId: Long? = null,
-        ids: String? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.ids = ids
     }
@@ -35,11 +40,5 @@ class AdsRemoveOfficeUsersMethod() : VkMethod<Boolean>(
     fun setIds(ids: String): AdsRemoveOfficeUsersMethod {
         this.ids = ids
         return this
-    }
-
-    override val classRef = AdsRemoveOfficeUsersMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

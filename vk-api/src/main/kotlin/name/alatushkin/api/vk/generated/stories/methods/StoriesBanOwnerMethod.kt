@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to hide stories from chosen sources from current user's feed.
+ * [https://vk.com/dev/stories.banOwner]
  *
- *  [https://vk.com/dev/stories.banOwner]
- *  @property [owners_ids] List of sources IDs
+ * Allows to hide stories from chosen sources from current user's feed.
+ *
+ * @property ownersIds List of sources IDs
  */
-class StoriesBanOwnerMethod() : VkMethod<Boolean>(
+class StoriesBanOwnerMethod(
+        ownersIds: Array<Long>
+) : VkMethod<Boolean>(
     "stories.banOwner",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownersIds: Array<Long>? by props
+    var ownersIds: Array<Long> by props
 
-    constructor(
-        ownersIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.ownersIds = ownersIds
     }
 
     fun setOwnersIds(ownersIds: Array<Long>): StoriesBanOwnerMethod {
         this.ownersIds = ownersIds
         return this
-    }
-
-    override val classRef = StoriesBanOwnerMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

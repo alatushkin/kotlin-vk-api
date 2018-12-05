@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Restores a previously deleted video.
+ * [https://vk.com/dev/video.restore]
  *
- *  [https://vk.com/dev/video.restore]
- *  @property [video_id] Video ID.
- *  @property [owner_id] ID of the user or community that owns the video.
+ * Restores a previously deleted video.
+ *
+ * @property videoId Video ID.
+ * @property ownerId ID of the user or community that owns the video.
  */
-class VideoRestoreMethod() : VkMethod<Boolean>(
+class VideoRestoreMethod(
+        videoId: Long,
+        ownerId: Long? = null
+) : VkMethod<Boolean>(
     "video.restore",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var videoId: Long? by props
+    var videoId: Long by props
     var ownerId: Long? by props
 
-    constructor(
-        videoId: Long? = null,
-        ownerId: Long? = null
-    ) : this() {
+    init {
         this.videoId = videoId
         this.ownerId = ownerId
     }
@@ -35,11 +40,5 @@ class VideoRestoreMethod() : VkMethod<Boolean>(
     fun setOwnerId(ownerId: Long): VideoRestoreMethod {
         this.ownerId = ownerId
         return this
-    }
-
-    override val classRef = VideoRestoreMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

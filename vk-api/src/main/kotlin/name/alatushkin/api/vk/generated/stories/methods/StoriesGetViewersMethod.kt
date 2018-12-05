@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns a list of story viewers.
+ * [https://vk.com/dev/stories.getViewers]
  *
- *  [https://vk.com/dev/stories.getViewers]
- *  @property [owner_id] Story owner ID.
- *  @property [story_id] Story ID.
- *  @property [count] Maximum number of results.
- *  @property [offset] Offset needed to return a specific subset of results.
+ * Returns a list of story viewers.
+ *
+ * @property ownerId Story owner ID.
+ * @property storyId Story ID.
+ * @property count Maximum number of results.
+ * @property offset Offset needed to return a specific subset of results.
  */
-class StoriesGetViewersMethod() : VkMethod<VkList<Long>>(
+class StoriesGetViewersMethod(
+        ownerId: Long,
+        storyId: Long,
+        count: Long? = null,
+        offset: Long? = null
+) : VkMethod<VkList<Long>>(
     "stories.getViewers",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Long>>>() {}
+), UserGroupMethod {
 
-    var ownerId: Long? by props
-    var storyId: Long? by props
+    var ownerId: Long by props
+    var storyId: Long by props
     var count: Long? by props
     var offset: Long? by props
 
-    constructor(
-        ownerId: Long? = null,
-        storyId: Long? = null,
-        count: Long? = null,
-        offset: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.storyId = storyId
         this.count = count
@@ -54,11 +59,5 @@ class StoriesGetViewersMethod() : VkMethod<VkList<Long>>(
     fun setOffset(offset: Long): StoriesGetViewersMethod {
         this.offset = offset
         return this
-    }
-
-    override val classRef = StoriesGetViewersMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
     }
 }

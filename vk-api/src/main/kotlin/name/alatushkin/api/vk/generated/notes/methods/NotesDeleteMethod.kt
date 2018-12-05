@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a note of the current user.
+ * [https://vk.com/dev/notes.delete]
  *
- *  [https://vk.com/dev/notes.delete]
- *  @property [note_id] Note ID.
+ * Deletes a note of the current user.
+ *
+ * @property noteId Note ID.
  */
-class NotesDeleteMethod() : VkMethod<Boolean>(
+class NotesDeleteMethod(
+        noteId: Long
+) : VkMethod<Boolean>(
     "notes.delete",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var noteId: Long? by props
+    var noteId: Long by props
 
-    constructor(
-        noteId: Long? = null
-    ) : this() {
+    init {
         this.noteId = noteId
     }
 
     fun setNoteId(noteId: Long): NotesDeleteMethod {
         this.noteId = noteId
         return this
-    }
-
-    override val classRef = NotesDeleteMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

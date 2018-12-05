@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,22 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerLinkText
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns URL for uploading a story with photo.
+ * [https://vk.com/dev/stories.getPhotoUploadServer]
  *
- *  [https://vk.com/dev/stories.getPhotoUploadServer]
- *  @property [add_to_news] 1 — to add the story to friend's feed.
- *  @property [user_ids] List of users IDs who can see the story.
- *  @property [reply_to_story] ID of the story to reply with the current.
- *  @property [link_text] Link text (for community's stories only).
- *  @property [link_url] Link URL. Internal links on https://vk.com only.
- *  @property [group_id] ID of the community to upload the story (should be verified or with the "fire" icon).
+ * Returns URL for uploading a story with photo.
+ *
+ * @property addToNews 1 — to add the story to friend's feed.
+ * @property userIds List of users IDs who can see the story.
+ * @property replyToStory ID of the story to reply with the current.
+ * @property linkText Link text (for community's stories only).
+ * @property linkUrl Link URL. Internal links on https://vk.com only.
+ * @property groupId ID of the community to upload the story (should be verified or with the "fire" icon).
  */
-class StoriesGetPhotoUploadServerMethod() : VkMethod<GetPhotoUploadServerResponse>(
+class StoriesGetPhotoUploadServerMethod(
+        addToNews: Boolean? = null,
+        userIds: Array<Long>? = null,
+        replyToStory: String? = null,
+        linkText: GetPhotoUploadServerLinkText? = null,
+        linkUrl: String? = null,
+        groupId: Long? = null
+) : VkMethod<GetPhotoUploadServerResponse>(
     "stories.getPhotoUploadServer",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetPhotoUploadServerResponse>>() {}
+), UserGroupMethod {
 
     var addToNews: Boolean? by props
     var userIds: Array<Long>? by props
@@ -29,14 +41,7 @@ class StoriesGetPhotoUploadServerMethod() : VkMethod<GetPhotoUploadServerRespons
     var linkUrl: String? by props
     var groupId: Long? by props
 
-    constructor(
-        addToNews: Boolean? = null,
-        userIds: Array<Long>? = null,
-        replyToStory: String? = null,
-        linkText: GetPhotoUploadServerLinkText? = null,
-        linkUrl: String? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.addToNews = addToNews
         this.userIds = userIds
         this.replyToStory = replyToStory
@@ -73,11 +78,5 @@ class StoriesGetPhotoUploadServerMethod() : VkMethod<GetPhotoUploadServerRespons
     fun setGroupId(groupId: Long): StoriesGetPhotoUploadServerMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = StoriesGetPhotoUploadServerMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetPhotoUploadServerResponse>>() {}
     }
 }

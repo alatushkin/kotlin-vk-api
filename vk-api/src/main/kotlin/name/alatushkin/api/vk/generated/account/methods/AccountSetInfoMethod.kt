@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to edit the current account info.
+ * [https://vk.com/dev/account.setInfo]
  *
- *  [https://vk.com/dev/account.setInfo]
- *  @property [name] Setting name.
- *  @property [value] Setting value.
+ * Allows to edit the current account info.
+ *
+ * @property name Setting name.
+ * @property value Setting value.
  */
-class AccountSetInfoMethod() : VkMethod<Boolean>(
+class AccountSetInfoMethod(
+        name: String? = null,
+        value: String? = null
+) : VkMethod<Boolean>(
     "account.setInfo",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var name: String? by props
     var value: String? by props
 
-    constructor(
-        name: String? = null,
-        value: String? = null
-    ) : this() {
+    init {
         this.name = name
         this.value = value
     }
@@ -35,11 +40,5 @@ class AccountSetInfoMethod() : VkMethod<Boolean>(
     fun setValue(value: String): AccountSetInfoMethod {
         this.value = value
         return this
-    }
-
-    override val classRef = AccountSetInfoMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

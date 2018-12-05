@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.secure.SmsNotification
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
+ * [https://vk.com/dev/secure.getSMSHistory]
  *
- *  [https://vk.com/dev/secure.getSMSHistory]
- *  @property [user_id]
- *  @property [date_from] filter by start date. It is set as UNIX-time.
- *  @property [date_to] filter by end date. It is set as UNIX-time.
- *  @property [limit] number of returned posts. By default — 1000.
+ * Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
+ *
+ * @property userId 
+ * @property dateFrom filter by start date. It is set as UNIX-time.
+ * @property dateTo filter by end date. It is set as UNIX-time.
+ * @property limit number of returned posts. By default — 1000.
  */
-class SecureGetSMSHistoryMethod() : VkMethod<Array<SmsNotification>>(
+class SecureGetSMSHistoryMethod(
+        userId: Long? = null,
+        dateFrom: Long? = null,
+        dateTo: Long? = null,
+        limit: Long? = null
+) : VkMethod<Array<SmsNotification>>(
     "secure.getSMSHistory",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<SmsNotification>>>() {}
+), ServiceMethod {
 
     var userId: Long? by props
     var dateFrom: Long? by props
     var dateTo: Long? by props
     var limit: Long? by props
 
-    constructor(
-        userId: Long? = null,
-        dateFrom: Long? = null,
-        dateTo: Long? = null,
-        limit: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.dateFrom = dateFrom
         this.dateTo = dateTo
@@ -54,11 +59,5 @@ class SecureGetSMSHistoryMethod() : VkMethod<Array<SmsNotification>>(
     fun setLimit(limit: Long): SecureGetSMSHistoryMethod {
         this.limit = limit
         return this
-    }
-
-    override val classRef = SecureGetSMSHistoryMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<SmsNotification>>>() {}
     }
 }

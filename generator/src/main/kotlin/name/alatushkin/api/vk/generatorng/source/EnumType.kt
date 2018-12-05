@@ -9,15 +9,15 @@ data class EnumType(
     val items: Array<Item>,
     override val fixedName: Boolean = false
 ) : TypeDefinition {
-    data class Item(val name: String, val value: String)
 
+    data class Item(val name: String, val value: String)
 
     companion object {
         fun define(values: Map<String, String>): TypeDefinition {
-            val vals = values.entries.sortedBy { it.key }
+            val sortedValues = values.entries.sortedBy { it.key }
             return decodeTypeDefinitionInternal(
-                vals.map { it.key }.toTypedArray(),
-                vals.map { it.value }.toTypedArray(),
+                sortedValues.map { it.key }.toTypedArray(),
+                sortedValues.map { it.value }.toTypedArray(),
                 true
             )
         }
@@ -75,36 +75,39 @@ data class EnumType(
     }
 
     override fun generateSource(basePackage: String, typeId: TypeId, sourceWriter: SourceWriter): String {
-        val result = StringBuilder("")
-            .append("import com.fasterxml.jackson.annotation.JsonCreator\n\n")
-            .append("import com.fasterxml.jackson.annotation.JsonValue\n\n")
-            .append("enum class ")
-        result.append(typeId.typeName)
-        result.append("(@JsonValue val jsonValue: String)")
-        result.append(" {\n")
-        result.append("    ")
-        result.append(items.mapIndexed { idx, item ->
+
+        val packageClause = sourceWriter.packageClause(basePackage, typeId)
+
+        val result = StringBuilder()
+
+        result.append("""
+            |$packageClause
+            |
+            |import com.fasterxml.jackson.annotation.JsonCreator
+            |import com.fasterxml.jackson.annotation.JsonValue
+            |
+            |enum class ${typeId.typeName}(@JsonValue val jsonValue: String) {
+        """.trimMargin())
+
+        result.append(items.joinToString(",\n    ", prefix = "\n    ", postfix = ";\n\n") { item ->
             sourceWriter.enumItem(
-                item.name,
-                item.value
-            ) + if (idx > 0 && idx % 2 == 0) ",\n    " else ", "
-        }.joinToString("").substringBeforeLast(",")).append(";\n")
-        result.append("\n")
+                    item.name,
+                    item.value
+            )
+        })
 
-        result.append("    override fun toString() = jsonValue\n\n")
-
-
-        result.append(
-            """    companion object {
-        @JvmStatic
-        @JsonCreator
-        fun fromJsonValue(value: String): ${typeId.typeName} =
-            ${typeId.typeName}.values().find { it.jsonValue == value }!!
-    }"""
-        )
-        result.append("\n")
-
-        result.append("}\n")
+        result.append("""
+            |    override fun toString() = jsonValue
+            |
+            |    companion object {
+            |        @JvmStatic
+            |        @JsonCreator
+            |        fun fromJsonValue(value: String): ${typeId.typeName} =
+            |            ${typeId.typeName}.values().find { it.jsonValue == value }!!
+            |    }
+            |}
+            |
+        """.trimMargin())
         return result.toString()
     }
 }

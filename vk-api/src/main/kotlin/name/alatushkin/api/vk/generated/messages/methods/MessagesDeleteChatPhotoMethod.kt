@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.DeleteChatPhotoResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a chat's cover picture.
+ * [https://vk.com/dev/messages.deleteChatPhoto]
  *
- *  [https://vk.com/dev/messages.deleteChatPhoto]
- *  @property [chat_id] Chat ID.
+ * Deletes a chat's cover picture.
+ *
+ * @property chatId Chat ID.
  */
-class MessagesDeleteChatPhotoMethod() : VkMethod<DeleteChatPhotoResponse>(
+class MessagesDeleteChatPhotoMethod(
+        chatId: Long
+) : VkMethod<DeleteChatPhotoResponse>(
     "messages.deleteChatPhoto",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<DeleteChatPhotoResponse>>() {}
+), UserMethod {
 
-    var chatId: Long? by props
+    var chatId: Long by props
 
-    constructor(
-        chatId: Long? = null
-    ) : this() {
+    init {
         this.chatId = chatId
     }
 
     fun setChatId(chatId: Long): MessagesDeleteChatPhotoMethod {
         this.chatId = chatId
         return this
-    }
-
-    override val classRef = MessagesDeleteChatPhotoMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<DeleteChatPhotoResponse>>() {}
     }
 }

@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.fave.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Removes link from the user's faves.
+ * [https://vk.com/dev/fave.removeLink]
  *
- *  [https://vk.com/dev/fave.removeLink]
- *  @property [link_id] Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
+ * Removes link from the user's faves.
+ *
+ * @property linkId Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
  */
-class FaveRemoveLinkMethod() : VkMethod<Boolean>(
+class FaveRemoveLinkMethod(
+        linkId: String
+) : VkMethod<Boolean>(
     "fave.removeLink",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var linkId: String? by props
+    var linkId: String by props
 
-    constructor(
-        linkId: String? = null
-    ) : this() {
+    init {
         this.linkId = linkId
     }
 
     fun setLinkId(linkId: String): FaveRemoveLinkMethod {
         this.linkId = linkId
         return this
-    }
-
-    override val classRef = FaveRemoveLinkMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

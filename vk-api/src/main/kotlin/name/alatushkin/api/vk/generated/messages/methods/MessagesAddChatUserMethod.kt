@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a new user to a chat.
+ * [https://vk.com/dev/messages.addChatUser]
  *
- *  [https://vk.com/dev/messages.addChatUser]
- *  @property [chat_id] Chat ID.
- *  @property [user_id] ID of the user to be added to the chat.
+ * Adds a new user to a chat.
+ *
+ * @property chatId Chat ID.
+ * @property userId ID of the user to be added to the chat.
  */
-class MessagesAddChatUserMethod() : VkMethod<Boolean>(
+class MessagesAddChatUserMethod(
+        chatId: Long,
+        userId: Long
+) : VkMethod<Boolean>(
     "messages.addChatUser",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var chatId: Long? by props
-    var userId: Long? by props
+    var chatId: Long by props
+    var userId: Long by props
 
-    constructor(
-        chatId: Long? = null,
-        userId: Long? = null
-    ) : this() {
+    init {
         this.chatId = chatId
         this.userId = userId
     }
@@ -35,11 +40,5 @@ class MessagesAddChatUserMethod() : VkMethod<Boolean>(
     fun setUserId(userId: Long): MessagesAddChatUserMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = MessagesAddChatUserMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

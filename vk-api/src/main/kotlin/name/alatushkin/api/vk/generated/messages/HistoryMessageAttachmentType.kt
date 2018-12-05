@@ -1,13 +1,16 @@
 package name.alatushkin.api.vk.generated.messages
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class HistoryMessageAttachmentType(@JsonValue val jsonValue: String) {
-    PHOTO("photo"), VIDEO("video"), AUDIO("audio"),
-    DOC("doc"), LINK("link"),
-    MARKET("market"), WALL("wall"),
+    PHOTO("photo"),
+    VIDEO("video"),
+    AUDIO("audio"),
+    DOC("doc"),
+    LINK("link"),
+    MARKET("market"),
+    WALL("wall"),
     SHARE("share");
 
     override fun toString() = jsonValue

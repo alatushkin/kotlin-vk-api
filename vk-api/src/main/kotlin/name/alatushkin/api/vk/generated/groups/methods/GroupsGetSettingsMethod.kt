@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.GroupSettings
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns community settings.
+ * [https://vk.com/dev/groups.getSettings]
  *
- *  [https://vk.com/dev/groups.getSettings]
- *  @property [group_id] Community ID.
+ * Returns community settings.
+ *
+ * @property groupId Community ID.
  */
-class GroupsGetSettingsMethod() : VkMethod<GroupSettings>(
+class GroupsGetSettingsMethod(
+        groupId: Long
+) : VkMethod<GroupSettings>(
     "groups.getSettings",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GroupSettings>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): GroupsGetSettingsMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = GroupsGetSettingsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GroupSettings>>() {}
     }
 }

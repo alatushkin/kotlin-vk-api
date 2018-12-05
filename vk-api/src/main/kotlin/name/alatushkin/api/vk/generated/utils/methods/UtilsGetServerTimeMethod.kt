@@ -1,22 +1,21 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
- *  Returns the current time of the VK server.
+ * [https://vk.com/dev/utils.getServerTime]
  *
- *  [https://vk.com/dev/utils.getServerTime]
+ * Returns the current time of the VK server.
+ *
 
  */
 class UtilsGetServerTimeMethod : VkMethod<Long>(
     "utils.getServerTime",
-    HashMap()
-) {
-    override val classRef = UtilsGetServerTimeMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
-    }
-}
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserGroupServiceMethod

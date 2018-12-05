@@ -10,16 +10,16 @@ interface SourceWriter {
         type: TypeId,
         inherited: Boolean = false,
         final: Boolean = true,
-        nullable: Boolean = true,
-        defaultValue: String = "null",
-        delegateBy: String? = null
+        nullable: Boolean,
+        defaultValue: String?,
+        delegateBy: String?
     ): String
 
     fun argument(
         name: String,
         type: TypeId,
-        nullable: Boolean = true,
-        defaultValue: String = "null"
+        nullable: Boolean,
+        defaultValue: String?
     ): String
 
     fun parentType(type: TypeId): String
@@ -53,7 +53,7 @@ class KotlinSourceWriter(val typesSpace: TypesSpace) : SourceWriter {
         inherited: Boolean,
         final: Boolean,
         nullable: Boolean,
-        defaultValue: String,
+        defaultValue: String?,
         delegateBy: String?
     ): String {
         return "    " + inherited("override ") + final("val ", "var ") + argument(
@@ -64,13 +64,11 @@ class KotlinSourceWriter(val typesSpace: TypesSpace) : SourceWriter {
         ) + (delegateBy?.let { " by $it" } ?: "")
     }
 
-    override fun argument(name: String, type: TypeId, nullable: Boolean, defaultValue: String): String {
+    override fun argument(name: String, type: TypeId, nullable: Boolean, defaultValue: String?): String {
         val realType = typesSpace.resolveActualTypeId(type)
         importType(realType)
-        return "${fieldNameEscaped(name)}: ${realType.fullTypeName}${nullable("?")}${defaultValue.isNullOrEmpty()(
-            "",
-            " = "
-        )}$defaultValue"
+        return "${fieldNameEscaped(name)}: ${realType.fullTypeName}${nullable("?")}" +
+                defaultValue?.let { " = $it" }.orEmpty()
     }
 
     override fun fieldNameEscaped(name: String): String {
@@ -104,8 +102,7 @@ class KotlinSourceWriter(val typesSpace: TypesSpace) : SourceWriter {
             return "\n"
 
         return importsToDo.map { importLine(basePackage, it) }
-            .toSortedSet()
-            .map { "import $it" }.joinToString("\n", postfix = "\n\n")
+                .toSortedSet().joinToString("\n", postfix = "\n\n") { "import $it" }
 
     }
 
@@ -114,10 +111,7 @@ class KotlinSourceWriter(val typesSpace: TypesSpace) : SourceWriter {
     }
 
     override fun packageClause(basePackage: String, typeId: TypeId?): String {
-        if (typeId == null)
-            return "package $basePackage\n\n"
-        else
-            return "package $basePackage.${typeId.packages.joinToString(".")}\n\n"
+        return "package ${(listOf(basePackage) + typeId?.packages.orEmpty()).joinToString(".")}"
     }
 
     override fun enumItem(name: String, vararg values: String): String {

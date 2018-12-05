@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits the title of a chat.
+ * [https://vk.com/dev/messages.editChat]
  *
- *  [https://vk.com/dev/messages.editChat]
- *  @property [chat_id] Chat ID.
- *  @property [title] New title of the chat.
+ * Edits the title of a chat.
+ *
+ * @property chatId Chat ID.
+ * @property title New title of the chat.
  */
-class MessagesEditChatMethod() : VkMethod<Boolean>(
+class MessagesEditChatMethod(
+        chatId: Long,
+        title: String
+) : VkMethod<Boolean>(
     "messages.editChat",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var chatId: Long? by props
-    var title: String? by props
+    var chatId: Long by props
+    var title: String by props
 
-    constructor(
-        chatId: Long? = null,
-        title: String? = null
-    ) : this() {
+    init {
         this.chatId = chatId
         this.title = title
     }
@@ -35,11 +40,5 @@ class MessagesEditChatMethod() : VkMethod<Boolean>(
     fun setTitle(title: String): MessagesEditChatMethod {
         this.title = title
         return this
-    }
-
-    override val classRef = MessagesEditChatMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

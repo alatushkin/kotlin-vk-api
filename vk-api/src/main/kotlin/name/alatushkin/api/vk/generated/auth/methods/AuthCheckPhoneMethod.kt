@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.auth.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Checks a user's phone number for correctness.
+ * [https://vk.com/dev/auth.checkPhone]
  *
- *  [https://vk.com/dev/auth.checkPhone]
- *  @property [phone] Phone number.
- *  @property [client_id] User ID.
- *  @property [client_secret]
- *  @property [auth_by_phone]
+ * Checks a user's phone number for correctness.
+ *
+ * @property phone Phone number.
+ * @property clientId User ID.
+ * @property clientSecret 
+ * @property authByPhone 
  */
-class AuthCheckPhoneMethod() : VkMethod<Boolean>(
+class AuthCheckPhoneMethod(
+        phone: String,
+        clientId: Long? = null,
+        clientSecret: String,
+        authByPhone: Boolean? = null
+) : VkMethod<Boolean>(
     "auth.checkPhone",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), ServiceMethod {
 
-    var phone: String? by props
+    var phone: String by props
     var clientId: Long? by props
-    var clientSecret: String? by props
+    var clientSecret: String by props
     var authByPhone: Boolean? by props
 
-    constructor(
-        phone: String? = null,
-        clientId: Long? = null,
-        clientSecret: String? = null,
-        authByPhone: Boolean? = null
-    ) : this() {
+    init {
         this.phone = phone
         this.clientId = clientId
         this.clientSecret = clientSecret
@@ -53,11 +58,5 @@ class AuthCheckPhoneMethod() : VkMethod<Boolean>(
     fun setAuthByPhone(authByPhone: Boolean): AuthCheckPhoneMethod {
         this.authByPhone = authByPhone
         return this
-    }
-
-    override val classRef = AuthCheckPhoneMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

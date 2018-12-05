@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Gets settings of the user in this application.
+ * [https://vk.com/dev/account.getAppPermissions]
  *
- *  [https://vk.com/dev/account.getAppPermissions]
- *  @property [user_id] User ID whose settings information shall be got. By default: current user.
+ * Gets settings of the user in this application.
+ *
+ * @property userId User ID whose settings information shall be got. By default: current user.
  */
-class AccountGetAppPermissionsMethod() : VkMethod<Long>(
+class AccountGetAppPermissionsMethod(
+        userId: Long
+) : VkMethod<Long>(
     "account.getAppPermissions",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
 
-    constructor(
-        userId: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
     }
 
     fun setUserId(userId: Long): AccountGetAppPermissionsMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = AccountGetAppPermissionsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

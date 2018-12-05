@@ -1,43 +1,48 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a tag on the photo.
+ * [https://vk.com/dev/photos.putTag]
  *
- *  [https://vk.com/dev/photos.putTag]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [user_id] ID of the user to be tagged.
- *  @property [x] Upper left-corner coordinate of the tagged area (as a percentage of the photo's width).
- *  @property [y] Upper left-corner coordinate of the tagged area (as a percentage of the photo's height).
- *  @property [x2] Lower right-corner coordinate of the tagged area (as a percentage of the photo's width).
- *  @property [y2] Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
+ * Adds a tag on the photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property userId ID of the user to be tagged.
+ * @property x Upper left-corner coordinate of the tagged area (as a percentage of the photo's width).
+ * @property y Upper left-corner coordinate of the tagged area (as a percentage of the photo's height).
+ * @property x2 Lower right-corner coordinate of the tagged area (as a percentage of the photo's width).
+ * @property y2 Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
  */
-class PhotosPutTagMethod() : VkMethod<Long>(
+class PhotosPutTagMethod(
+        ownerId: Long? = null,
+        photoId: Long,
+        userId: Long,
+        x: Double? = null,
+        y: Double? = null,
+        x2: Double? = null,
+        y2: Double? = null
+) : VkMethod<Long>(
     "photos.putTag",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
-    var userId: Long? by props
+    var photoId: Long by props
+    var userId: Long by props
     var x: Double? by props
     var y: Double? by props
     var x2: Double? by props
     var y2: Double? by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        userId: Long? = null,
-        x: Double? = null,
-        y: Double? = null,
-        x2: Double? = null,
-        y2: Double? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.userId = userId
@@ -80,11 +85,5 @@ class PhotosPutTagMethod() : VkMethod<Long>(
     fun setY2(y2: Double): PhotosPutTagMethod {
         this.y2 = y2
         return this
-    }
-
-    override val classRef = PhotosPutTagMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

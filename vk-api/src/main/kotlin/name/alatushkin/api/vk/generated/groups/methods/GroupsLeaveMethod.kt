@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  With this method you can leave a group, public page, or event.
+ * [https://vk.com/dev/groups.leave]
  *
- *  [https://vk.com/dev/groups.leave]
- *  @property [group_id] ID or screen name of the community.
+ * With this method you can leave a group, public page, or event.
+ *
+ * @property groupId ID or screen name of the community.
  */
-class GroupsLeaveMethod() : VkMethod<Boolean>(
+class GroupsLeaveMethod(
+        groupId: Long
+) : VkMethod<Boolean>(
     "groups.leave",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): GroupsLeaveMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = GroupsLeaveMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

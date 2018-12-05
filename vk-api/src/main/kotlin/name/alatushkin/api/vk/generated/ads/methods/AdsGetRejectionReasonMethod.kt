@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.ads.RejectReason
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a reason of ad rejection for pre-moderation.
+ * [https://vk.com/dev/ads.getRejectionReason]
  *
- *  [https://vk.com/dev/ads.getRejectionReason]
- *  @property [account_id] Advertising account ID.
- *  @property [ad_id] Ad ID.
+ * Returns a reason of ad rejection for pre-moderation.
+ *
+ * @property accountId Advertising account ID.
+ * @property adId Ad ID.
  */
-class AdsGetRejectionReasonMethod() : VkMethod<RejectReason>(
+class AdsGetRejectionReasonMethod(
+        accountId: Long,
+        adId: Long
+) : VkMethod<RejectReason>(
     "ads.getRejectionReason",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<RejectReason>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
-    var adId: Long? by props
+    var accountId: Long by props
+    var adId: Long by props
 
-    constructor(
-        accountId: Long? = null,
-        adId: Long? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.adId = adId
     }
@@ -36,11 +41,5 @@ class AdsGetRejectionReasonMethod() : VkMethod<RejectReason>(
     fun setAdId(adId: Long): AdsGetRejectionReasonMethod {
         this.adId = adId
         return this
-    }
-
-    override val classRef = AdsGetRejectionReasonMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<RejectReason>>() {}
     }
 }

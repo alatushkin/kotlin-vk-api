@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Restores a recently deleted comment
+ * [https://vk.com/dev/market.restoreComment]
  *
- *  [https://vk.com/dev/market.restoreComment]
- *  @property [owner_id] identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
- *  @property [comment_id] deleted comment id
+ * Restores a recently deleted comment
+ *
+ * @property ownerId identifier of an item owner community, "Note that community id in the 'owner_id' parameter should be negative number. For example 'owner_id'=-1 matches the [vk.com/apiclub|VK API] community "
+ * @property commentId deleted comment id
  */
-class MarketRestoreCommentMethod() : VkMethod<Boolean>(
+class MarketRestoreCommentMethod(
+        ownerId: Long,
+        commentId: Long
+) : VkMethod<Boolean>(
     "market.restoreComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var commentId: Long? by props
+    var ownerId: Long by props
+    var commentId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
     }
@@ -35,11 +40,5 @@ class MarketRestoreCommentMethod() : VkMethod<Boolean>(
     fun setCommentId(commentId: Long): MarketRestoreCommentMethod {
         this.commentId = commentId
         return this
-    }
-
-    override val classRef = MarketRestoreCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

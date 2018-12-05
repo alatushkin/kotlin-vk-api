@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,21 +7,30 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of photos in which a user is tagged.
+ * [https://vk.com/dev/photos.getUserPhotos]
  *
- *  [https://vk.com/dev/photos.getUserPhotos]
- *  @property [user_id] User ID.
- *  @property [offset] Offset needed to return a specific subset of photos. By default, '0'.
- *  @property [count] Number of photos to return. Maximum value is 1000.
- *  @property [extended] '1' — to return an additional 'likes' field, '0' — (default)
- *  @property [sort] Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
+ * Returns a list of photos in which a user is tagged.
+ *
+ * @property userId User ID.
+ * @property offset Offset needed to return a specific subset of photos. By default, '0'.
+ * @property count Number of photos to return. Maximum value is 1000.
+ * @property extended '1' — to return an additional 'likes' field, '0' — (default)
+ * @property sort Sort order: '1' — by date the tag was added in ascending order, '0' — by date the tag was added in descending order
  */
-class PhotosGetUserPhotosMethod() : VkMethod<VkList<Photo>>(
+class PhotosGetUserPhotosMethod(
+        userId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        extended: Boolean? = null,
+        sort: String? = null
+) : VkMethod<VkList<Photo>>(
     "photos.getUserPhotos",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Photo>>>() {}
+), UserMethod {
 
     var userId: Long? by props
     var offset: Long? by props
@@ -27,13 +38,7 @@ class PhotosGetUserPhotosMethod() : VkMethod<VkList<Photo>>(
     var extended: Boolean? by props
     var sort: String? by props
 
-    constructor(
-        userId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        extended: Boolean? = null,
-        sort: String? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.offset = offset
         this.count = count
@@ -64,11 +69,5 @@ class PhotosGetUserPhotosMethod() : VkMethod<VkList<Photo>>(
     fun setSort(sort: String): PhotosGetUserPhotosMethod {
         this.sort = sort
         return this
-    }
-
-    override val classRef = PhotosGetUserPhotosMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Photo>>>() {}
     }
 }

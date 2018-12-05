@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Confirms a tag on a photo.
+ * [https://vk.com/dev/photos.confirmTag]
  *
- *  [https://vk.com/dev/photos.confirmTag]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
- *  @property [tag_id] Tag ID.
+ * Confirms a tag on a photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
+ * @property tagId Tag ID.
  */
-class PhotosConfirmTagMethod() : VkMethod<Boolean>(
+class PhotosConfirmTagMethod(
+        ownerId: Long? = null,
+        photoId: String,
+        tagId: Long
+) : VkMethod<Boolean>(
     "photos.confirmTag",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: String? by props
-    var tagId: Long? by props
+    var photoId: String by props
+    var tagId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: String? = null,
-        tagId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.tagId = tagId
@@ -44,11 +49,5 @@ class PhotosConfirmTagMethod() : VkMethod<Boolean>(
     fun setTagId(tagId: Long): PhotosConfirmTagMethod {
         this.tagId = tagId
         return this
-    }
-
-    override val classRef = PhotosConfirmTagMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.account.ChangePasswordResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore] method.
+ * [https://vk.com/dev/account.changePassword]
  *
- *  [https://vk.com/dev/account.changePassword]
- *  @property [restore_sid] Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
- *  @property [change_password_hash] Hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
- *  @property [old_password] Current user password.
- *  @property [new_password] New password that will be set as a current
+ * Changes a user password after access is successfully restored with the [vk.com/dev/auth.restore|auth.restore] method.
+ *
+ * @property restoreSid Session id received after the [vk.com/dev/auth.restore|auth.restore] method is executed. (If the password is changed right after the access was restored)
+ * @property changePasswordHash Hash received after a successful OAuth authorization with a code got by SMS. (If the password is changed right after the access was restored)
+ * @property oldPassword Current user password.
+ * @property newPassword New password that will be set as a current
  */
-class AccountChangePasswordMethod() : VkMethod<ChangePasswordResponse>(
+class AccountChangePasswordMethod(
+        restoreSid: String? = null,
+        changePasswordHash: String? = null,
+        oldPassword: String? = null,
+        newPassword: String
+) : VkMethod<ChangePasswordResponse>(
     "account.changePassword",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<ChangePasswordResponse>>() {}
+), UserMethod {
 
     var restoreSid: String? by props
     var changePasswordHash: String? by props
     var oldPassword: String? by props
-    var newPassword: String? by props
+    var newPassword: String by props
 
-    constructor(
-        restoreSid: String? = null,
-        changePasswordHash: String? = null,
-        oldPassword: String? = null,
-        newPassword: String? = null
-    ) : this() {
+    init {
         this.restoreSid = restoreSid
         this.changePasswordHash = changePasswordHash
         this.oldPassword = oldPassword
@@ -54,11 +59,5 @@ class AccountChangePasswordMethod() : VkMethod<ChangePasswordResponse>(
     fun setNewPassword(newPassword: String): AccountChangePasswordMethod {
         this.newPassword = newPassword
         return this
-    }
-
-    override val classRef = AccountChangePasswordMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<ChangePasswordResponse>>() {}
     }
 }

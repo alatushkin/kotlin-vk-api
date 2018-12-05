@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,28 +7,42 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.SearchExtendedResponse
 import name.alatushkin.api.vk.generated.video.Sort
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of videos under the set search criterion.
+ * [https://vk.com/dev/video.search]
  *
- *  [https://vk.com/dev/video.search]
- *  @property [q] Search query string (e.g., 'The Beatles').
- *  @property [sort] Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
- *  @property [hd] If not null, only searches for high-definition videos.
- *  @property [adult] '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
- *  @property [filters] Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
- *  @property [search_own] 
- *  @property [offset] Offset needed to return a specific subset of videos.
- *  @property [longer]
- *  @property [shorter]
- *  @property [count] Number of videos to return.
+ * Returns a list of videos under the set search criterion.
+ *
+ * @property q Search query string (e.g., 'The Beatles').
+ * @property sort Sort order: '1' — by duration, '2' — by relevance, '0' — by date added
+ * @property hd If not null, only searches for high-definition videos.
+ * @property adult '1' — to disable the Safe Search filter, '0' — to enable the Safe Search filter
+ * @property filters Filters to apply: 'youtube' — return YouTube videos only, 'vimeo' — return Vimeo videos only, 'short' — return short videos only, 'long' — return long videos only
+ * @property searchOwn 
+ * @property offset Offset needed to return a specific subset of videos.
+ * @property longer 
+ * @property shorter 
+ * @property count Number of videos to return.
  */
-class VideoSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
+class VideoSearchMethodExtended(
+        q: String,
+        sort: Sort? = null,
+        hd: Long? = null,
+        adult: Boolean? = null,
+        filters: Array<String>? = null,
+        searchOwn: Boolean? = null,
+        offset: Long? = null,
+        longer: Long? = null,
+        shorter: Long? = null,
+        count: Long? = null
+) : VkMethod<SearchExtendedResponse>(
     "video.search",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+), UserMethod {
 
-    var q: String? by props
+    var q: String by props
     var sort: Sort? by props
     var hd: Long? by props
     var adult: Boolean? by props
@@ -37,18 +53,7 @@ class VideoSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     var shorter: Long? by props
     var count: Long? by props
 
-    constructor(
-        q: String? = null,
-        sort: Sort? = null,
-        hd: Long? = null,
-        adult: Boolean? = null,
-        filters: Array<String>? = null,
-        searchOwn: Boolean? = null,
-        offset: Long? = null,
-        longer: Long? = null,
-        shorter: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.q = q
         this.sort = sort
         this.hd = hd
@@ -109,11 +114,5 @@ class VideoSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     fun setCount(count: Long): VideoSearchMethodExtended {
         this.count = count
         return this
-    }
-
-    override val classRef = VideoSearchMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
     }
 }

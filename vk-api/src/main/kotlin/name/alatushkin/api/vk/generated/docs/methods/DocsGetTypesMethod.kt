@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,34 +7,31 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.docs.DocTypes
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns documents types available for current user.
+ * [https://vk.com/dev/docs.getTypes]
  *
- *  [https://vk.com/dev/docs.getTypes]
- *  @property [owner_id] ID of the user or community that owns the documents. Use a negative value to designate a community ID.
+ * Returns documents types available for current user.
+ *
+ * @property ownerId ID of the user or community that owns the documents. Use a negative value to designate a community ID.
  */
-class DocsGetTypesMethod() : VkMethod<VkList<DocTypes>>(
+class DocsGetTypesMethod(
+        ownerId: Long
+) : VkMethod<VkList<DocTypes>>(
     "docs.getTypes",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<DocTypes>>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
+    var ownerId: Long by props
 
-    constructor(
-        ownerId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
     }
 
     fun setOwnerId(ownerId: Long): DocsGetTypesMethod {
         this.ownerId = ownerId
         return this
-    }
-
-    override val classRef = DocsGetTypesMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<DocTypes>>>() {}
     }
 }

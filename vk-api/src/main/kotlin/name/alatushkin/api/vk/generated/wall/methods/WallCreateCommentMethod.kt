@@ -1,30 +1,44 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.wall.CreateCommentResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a comment to a post on a user wall or community wall.
+ * [https://vk.com/dev/wall.createComment]
  *
- *  [https://vk.com/dev/wall.createComment]
- *  @property [owner_id] User ID or community ID. Use a negative value to designate a community ID.
- *  @property [post_id] Post ID.
- *  @property [from_group] Group ID.
- *  @property [message] (Required if 'attachments' is not set.) Text of the comment.
- *  @property [reply_to_comment] ID of comment to reply.
- *  @property [attachments] (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
- *  @property [sticker_id] Sticker ID.
- *  @property [guid] Unique identifier to avoid repeated comments.
+ * Adds a comment to a post on a user wall or community wall.
+ *
+ * @property ownerId User ID or community ID. Use a negative value to designate a community ID.
+ * @property postId Post ID.
+ * @property fromGroup Group ID.
+ * @property message (Required if 'attachments' is not set.) Text of the comment.
+ * @property replyToComment ID of comment to reply.
+ * @property attachments (Required if 'message' is not set.) List of media objects attached to the comment, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media ojbect: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. For example: "photo100172_166443618,photo66748_265827614"
+ * @property stickerId Sticker ID.
+ * @property guid Unique identifier to avoid repeated comments.
  */
-class WallCreateCommentMethod() : VkMethod<CreateCommentResponse>(
+class WallCreateCommentMethod(
+        ownerId: Long? = null,
+        postId: Long,
+        fromGroup: Long? = null,
+        message: String? = null,
+        replyToComment: Long? = null,
+        attachments: Array<String>? = null,
+        stickerId: Long? = null,
+        guid: String? = null
+) : VkMethod<CreateCommentResponse>(
     "wall.createComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<CreateCommentResponse>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var postId: Long? by props
+    var postId: Long by props
     var fromGroup: Long? by props
     var message: String? by props
     var replyToComment: Long? by props
@@ -32,16 +46,7 @@ class WallCreateCommentMethod() : VkMethod<CreateCommentResponse>(
     var stickerId: Long? by props
     var guid: String? by props
 
-    constructor(
-        ownerId: Long? = null,
-        postId: Long? = null,
-        fromGroup: Long? = null,
-        message: String? = null,
-        replyToComment: Long? = null,
-        attachments: Array<String>? = null,
-        stickerId: Long? = null,
-        guid: String? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.postId = postId
         this.fromGroup = fromGroup
@@ -90,11 +95,5 @@ class WallCreateCommentMethod() : VkMethod<CreateCommentResponse>(
     fun setGuid(guid: String): WallCreateCommentMethod {
         this.guid = guid
         return this
-    }
-
-    override val classRef = WallCreateCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<CreateCommentResponse>>() {}
     }
 }

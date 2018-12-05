@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.friends.responses
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class AddResponseResponse(@JsonValue val jsonValue: String) {
-    SEND("1"), APPROVED("2"), RESEND("4");
+    SEND("1"),
+    APPROVED("2"),
+    RESEND("4");
 
     override fun toString() = jsonValue
 

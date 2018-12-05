@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates a new note for the current user.
+ * [https://vk.com/dev/notes.add]
  *
- *  [https://vk.com/dev/notes.add]
- *  @property [title] Note title.
- *  @property [text] Note text.
- *  @property [privacy_view]
- *  @property [privacy_comment]
+ * Creates a new note for the current user.
+ *
+ * @property title Note title.
+ * @property text Note text.
+ * @property privacyView 
+ * @property privacyComment 
  */
-class NotesAddMethod() : VkMethod<Long>(
+class NotesAddMethod(
+        title: String,
+        text: String,
+        privacyView: Array<String>? = null,
+        privacyComment: Array<String>? = null
+) : VkMethod<Long>(
     "notes.add",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var title: String? by props
-    var text: String? by props
+    var title: String by props
+    var text: String by props
     var privacyView: Array<String>? by props
     var privacyComment: Array<String>? by props
 
-    constructor(
-        title: String? = null,
-        text: String? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null
-    ) : this() {
+    init {
         this.title = title
         this.text = text
         this.privacyView = privacyView
@@ -53,11 +58,5 @@ class NotesAddMethod() : VkMethod<Long>(
     fun setPrivacyComment(privacyComment: Array<String>): NotesAddMethod {
         this.privacyComment = privacyComment
         return this
-    }
-
-    override val classRef = NotesAddMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

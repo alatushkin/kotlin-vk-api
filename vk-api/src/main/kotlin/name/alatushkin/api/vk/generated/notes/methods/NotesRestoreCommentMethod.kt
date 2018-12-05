@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Restores a deleted comment on a note.
+ * [https://vk.com/dev/notes.restoreComment]
  *
- *  [https://vk.com/dev/notes.restoreComment]
- *  @property [comment_id] Comment ID.
- *  @property [owner_id] Note owner ID.
+ * Restores a deleted comment on a note.
+ *
+ * @property commentId Comment ID.
+ * @property ownerId Note owner ID.
  */
-class NotesRestoreCommentMethod() : VkMethod<Boolean>(
+class NotesRestoreCommentMethod(
+        commentId: Long,
+        ownerId: Long? = null
+) : VkMethod<Boolean>(
     "notes.restoreComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var commentId: Long? by props
+    var commentId: Long by props
     var ownerId: Long? by props
 
-    constructor(
-        commentId: Long? = null,
-        ownerId: Long? = null
-    ) : this() {
+    init {
         this.commentId = commentId
         this.ownerId = ownerId
     }
@@ -35,11 +40,5 @@ class NotesRestoreCommentMethod() : VkMethod<Boolean>(
     fun setOwnerId(ownerId: Long): NotesRestoreCommentMethod {
         this.ownerId = ownerId
         return this
-    }
-
-    override val classRef = NotesRestoreCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

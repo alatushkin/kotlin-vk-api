@@ -1,12 +1,14 @@
 package name.alatushkin.api.vk.generated.newsfeed
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class UnsubscribeType(@JsonValue val jsonValue: String) {
-    NOTE("note"), PHOTO("photo"), POST("post"),
-    TOPIC("topic"), VIDEO("video");
+    NOTE("note"),
+    PHOTO("photo"),
+    POST("post"),
+    TOPIC("topic"),
+    VIDEO("video");
 
     override fun toString() = jsonValue
 

@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.places.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.places.PlaceMin
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns information about locations by their IDs.
+ * [https://vk.com/dev/places.getById]
  *
- *  [https://vk.com/dev/places.getById]
- *  @property [places] Location IDs.
+ * Returns information about locations by their IDs.
+ *
+ * @property places Location IDs.
  */
-class PlacesGetByIdMethod() : VkMethod<Array<PlaceMin>>(
+class PlacesGetByIdMethod(
+        places: Array<Long>
+) : VkMethod<Array<PlaceMin>>(
     "places.getById",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<PlaceMin>>>() {}
+), UserMethod {
 
-    var places: Array<Long>? by props
+    var places: Array<Long> by props
 
-    constructor(
-        places: Array<Long>? = null
-    ) : this() {
+    init {
         this.places = places
     }
 
     fun setPlaces(places: Array<Long>): PlacesGetByIdMethod {
         this.places = places
         return this
-    }
-
-    override val classRef = PlacesGetByIdMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<PlaceMin>>>() {}
     }
 }

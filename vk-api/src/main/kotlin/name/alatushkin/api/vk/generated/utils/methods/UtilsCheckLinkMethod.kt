@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.utils.LinkChecked
+import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
- *  Checks whether a link is blocked in VK.
+ * [https://vk.com/dev/utils.checkLink]
  *
- *  [https://vk.com/dev/utils.checkLink]
- *  @property [url] Link to check (e.g., 'http://google.com').
+ * Checks whether a link is blocked in VK.
+ *
+ * @property url Link to check (e.g., 'http://google.com').
  */
-class UtilsCheckLinkMethod() : VkMethod<LinkChecked>(
+class UtilsCheckLinkMethod(
+        url: String
+) : VkMethod<LinkChecked>(
     "utils.checkLink",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<LinkChecked>>() {}
+), UserGroupServiceMethod {
 
-    var url: String? by props
+    var url: String by props
 
-    constructor(
-        url: String? = null
-    ) : this() {
+    init {
         this.url = url
     }
 
     fun setUrl(url: String): UtilsCheckLinkMethod {
         this.url = url
         return this
-    }
-
-    override val classRef = UtilsCheckLinkMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<LinkChecked>>() {}
     }
 }

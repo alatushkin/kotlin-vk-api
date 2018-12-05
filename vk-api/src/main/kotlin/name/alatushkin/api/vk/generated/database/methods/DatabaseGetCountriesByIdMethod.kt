@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Country
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns information about countries by their IDs.
+ * [https://vk.com/dev/database.getCountriesById]
  *
- *  [https://vk.com/dev/database.getCountriesById]
- *  @property [country_ids] Country IDs.
+ * Returns information about countries by their IDs.
+ *
+ * @property countryIds Country IDs.
  */
-class DatabaseGetCountriesByIdMethod() : VkMethod<Array<Country>>(
+class DatabaseGetCountriesByIdMethod(
+        countryIds: Array<Long>? = null
+) : VkMethod<Array<Country>>(
     "database.getCountriesById",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Country>>>() {}
+), UserServiceMethod {
 
     var countryIds: Array<Long>? by props
 
-    constructor(
-        countryIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.countryIds = countryIds
     }
 
     fun setCountryIds(countryIds: Array<Long>): DatabaseGetCountriesByIdMethod {
         this.countryIds = countryIds
         return this
-    }
-
-    override val classRef = DatabaseGetCountriesByIdMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Country>>>() {}
     }
 }

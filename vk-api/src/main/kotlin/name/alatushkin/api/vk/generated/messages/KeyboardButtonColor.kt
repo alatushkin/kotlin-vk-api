@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.messages
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class KeyboardButtonColor(@JsonValue val jsonValue: String) {
-    DEFAULT("default"), POSITIVE("positive"), NEGATIVE("negative"),
+    DEFAULT("default"),
+    POSITIVE("positive"),
+    NEGATIVE("negative"),
     PRIMARY("primary");
 
     override fun toString() = jsonValue

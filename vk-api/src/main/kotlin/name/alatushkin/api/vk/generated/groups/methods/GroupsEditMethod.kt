@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,57 +7,100 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Mode
 import name.alatushkin.api.vk.generated.groups.*
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits a community.
+ * [https://vk.com/dev/groups.edit]
  *
- *  [https://vk.com/dev/groups.edit]
- *  @property [group_id] Community ID.
- *  @property [title] Community title.
- *  @property [description] Community description.
- *  @property [screen_name] Community screen name.
- *  @property [access] Community type. Possible values: *'0' – open,, *'1' – closed,, *'2' – private.
- *  @property [website] Website that will be displayed in the community information field.
- *  @property [subject] Community subject. Possible values: , *'1' – auto/moto,, *'2' – activity holidays,, *'3' – business,, *'4' – pets,, *'5' – health,, *'6' – dating and communication, , *'7' – games,, *'8' – IT (computers and software),, *'9' – cinema,, *'10' – beauty and fashion,, *'11' – cooking,, *'12' – art and culture,, *'13' – literature,, *'14' – mobile services and internet,, *'15' – music,, *'16' – science and technology,, *'17' – real estate,, *'18' – news and media,, *'19' – security,, *'20' – education,, *'21' – home and renovations,, *'22' – politics,, *'23' – food,, *'24' – industry,, *'25' – travel,, *'26' – work,, *'27' – entertainment,, *'28' – religion,, *'29' – family,, *'30' – sports,, *'31' – insurance,, *'32' – television,, *'33' – goods and services,, *'34' – hobbies,, *'35' – finance,, *'36' – photo,, *'37' – esoterics,, *'38' – electronics and appliances,, *'39' – erotic,, *'40' – humor,, *'41' – society, humanities,, *'42' – design and graphics.
- *  @property [email] Organizer email (for events).
- *  @property [phone] Organizer phone number (for events).
- *  @property [rss] RSS feed address for import (available only to communities with special permission. Contact vk.com/support to get it.
- *  @property [event_start_date] Event start date in Unixtime format.
- *  @property [event_finish_date] Event finish date in Unixtime format.
- *  @property [event_group_id] Organizer community ID (for events only).
- *  @property [public_category] Public page category ID.
- *  @property [public_subcategory] Public page subcategory ID.
- *  @property [public_date] Founding date of a company or organization owning the community in "dd.mm.YYYY" format.
- *  @property [wall] Wall settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (groups and events only),, *'3' – closed (groups and events only).
- *  @property [topics] Board topics settings. Possbile values: , *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
- *  @property [photos] Photos settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
- *  @property [video] Video settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
- *  @property [audio] Audio settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
- *  @property [links] Links settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
- *  @property [events] Events settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
- *  @property [places] Places settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
- *  @property [contacts] Contacts settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
- *  @property [docs] Documents settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
- *  @property [wiki] Wiki pages settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
- *  @property [messages] Community messages. Possible values: *'0' — disabled,, *'1' — enabled.
- *  @property [age_limits] Community age limits. Possible values: *'1' — no limits,, *'2' — 16+,, *'3' — 18+.
- *  @property [market] Market settings. Possible values: *'0' – disabled,, *'1' – enabled.
- *  @property [market_comments] market comments settings. Possible values: *'0' – disabled,, *'1' – enabled.
- *  @property [market_country] Market delivery countries.
- *  @property [market_city] Market delivery cities (if only one country is specified).
- *  @property [market_currency] Market currency settings. Possbile values: , *'643' – Russian rubles,, *'980' – Ukrainian hryvnia,, *'398' – Kazakh tenge,, *'978' – Euro,, *'840' – US dollars
- *  @property [market_contact] Seller contact for market. Set '0' for community messages.
- *  @property [market_wiki] ID of a wiki page with market description.
- *  @property [obscene_filter] Obscene expressions filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
- *  @property [obscene_stopwords] Stopwords filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
- *  @property [obscene_words] Keywords for stopwords filter.
+ * Edits a community.
+ *
+ * @property groupId Community ID.
+ * @property title Community title.
+ * @property description Community description.
+ * @property screenName Community screen name.
+ * @property access Community type. Possible values: *'0' – open,, *'1' – closed,, *'2' – private.
+ * @property website Website that will be displayed in the community information field.
+ * @property subject Community subject. Possible values: , *'1' – auto/moto,, *'2' – activity holidays,, *'3' – business,, *'4' – pets,, *'5' – health,, *'6' – dating and communication, , *'7' – games,, *'8' – IT (computers and software),, *'9' – cinema,, *'10' – beauty and fashion,, *'11' – cooking,, *'12' – art and culture,, *'13' – literature,, *'14' – mobile services and internet,, *'15' – music,, *'16' – science and technology,, *'17' – real estate,, *'18' – news and media,, *'19' – security,, *'20' – education,, *'21' – home and renovations,, *'22' – politics,, *'23' – food,, *'24' – industry,, *'25' – travel,, *'26' – work,, *'27' – entertainment,, *'28' – religion,, *'29' – family,, *'30' – sports,, *'31' – insurance,, *'32' – television,, *'33' – goods and services,, *'34' – hobbies,, *'35' – finance,, *'36' – photo,, *'37' – esoterics,, *'38' – electronics and appliances,, *'39' – erotic,, *'40' – humor,, *'41' – society, humanities,, *'42' – design and graphics.
+ * @property email Organizer email (for events).
+ * @property phone Organizer phone number (for events).
+ * @property rss RSS feed address for import (available only to communities with special permission. Contact vk.com/support to get it.
+ * @property eventStartDate Event start date in Unixtime format.
+ * @property eventFinishDate Event finish date in Unixtime format.
+ * @property eventGroupId Organizer community ID (for events only).
+ * @property publicCategory Public page category ID.
+ * @property publicSubcategory Public page subcategory ID.
+ * @property publicDate Founding date of a company or organization owning the community in "dd.mm.YYYY" format.
+ * @property wall Wall settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (groups and events only),, *'3' – closed (groups and events only).
+ * @property topics Board topics settings. Possbile values: , *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+ * @property photos Photos settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+ * @property video Video settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+ * @property audio Audio settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+ * @property links Links settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+ * @property events Events settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+ * @property places Places settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+ * @property contacts Contacts settings (for public pages only). Possible values: *'0' – disabled,, *'1' – enabled.
+ * @property docs Documents settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+ * @property wiki Wiki pages settings. Possible values: *'0' – disabled,, *'1' – open,, *'2' – limited (for groups and events only).
+ * @property messages Community messages. Possible values: *'0' — disabled,, *'1' — enabled.
+ * @property ageLimits Community age limits. Possible values: *'1' — no limits,, *'2' — 16+,, *'3' — 18+.
+ * @property market Market settings. Possible values: *'0' – disabled,, *'1' – enabled.
+ * @property marketComments market comments settings. Possible values: *'0' – disabled,, *'1' – enabled.
+ * @property marketCountry Market delivery countries.
+ * @property marketCity Market delivery cities (if only one country is specified).
+ * @property marketCurrency Market currency settings. Possbile values: , *'643' – Russian rubles,, *'980' – Ukrainian hryvnia,, *'398' – Kazakh tenge,, *'978' – Euro,, *'840' – US dollars
+ * @property marketContact Seller contact for market. Set '0' for community messages.
+ * @property marketWiki ID of a wiki page with market description.
+ * @property obsceneFilter Obscene expressions filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
+ * @property obsceneStopwords Stopwords filter in comments. Possible values: , *'0' – disabled,, *'1' – enabled.
+ * @property obsceneWords Keywords for stopwords filter.
  */
-class GroupsEditMethod() : VkMethod<Boolean>(
+class GroupsEditMethod(
+        groupId: Long,
+        title: String? = null,
+        description: String? = null,
+        screenName: String? = null,
+        access: Access? = null,
+        website: String? = null,
+        subject: EditSubject? = null,
+        email: String? = null,
+        phone: String? = null,
+        rss: String? = null,
+        eventStartDate: Long? = null,
+        eventFinishDate: Long? = null,
+        eventGroupId: Long? = null,
+        publicCategory: Long? = null,
+        publicSubcategory: Long? = null,
+        publicDate: String? = null,
+        wall: EditWall? = null,
+        topics: Mode? = null,
+        photos: Mode? = null,
+        video: Mode? = null,
+        audio: Mode? = null,
+        links: Boolean? = null,
+        events: Boolean? = null,
+        places: Boolean? = null,
+        contacts: Boolean? = null,
+        docs: Mode? = null,
+        wiki: Mode? = null,
+        messages: Boolean? = null,
+        ageLimits: EditAgeLimits? = null,
+        market: Boolean? = null,
+        marketComments: Boolean? = null,
+        marketCountry: Array<Long>? = null,
+        marketCity: Array<Long>? = null,
+        marketCurrency: EditMarketCurrency? = null,
+        marketContact: Long? = null,
+        marketWiki: Long? = null,
+        obsceneFilter: Boolean? = null,
+        obsceneStopwords: Boolean? = null,
+        obsceneWords: Array<String>? = null
+) : VkMethod<Boolean>(
     "groups.edit",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var title: String? by props
     var description: String? by props
     var screenName: String? by props
@@ -95,47 +140,7 @@ class GroupsEditMethod() : VkMethod<Boolean>(
     var obsceneStopwords: Boolean? by props
     var obsceneWords: Array<String>? by props
 
-    constructor(
-        groupId: Long? = null,
-        title: String? = null,
-        description: String? = null,
-        screenName: String? = null,
-        access: Access? = null,
-        website: String? = null,
-        subject: EditSubject? = null,
-        email: String? = null,
-        phone: String? = null,
-        rss: String? = null,
-        eventStartDate: Long? = null,
-        eventFinishDate: Long? = null,
-        eventGroupId: Long? = null,
-        publicCategory: Long? = null,
-        publicSubcategory: Long? = null,
-        publicDate: String? = null,
-        wall: EditWall? = null,
-        topics: Mode? = null,
-        photos: Mode? = null,
-        video: Mode? = null,
-        audio: Mode? = null,
-        links: Boolean? = null,
-        events: Boolean? = null,
-        places: Boolean? = null,
-        contacts: Boolean? = null,
-        docs: Mode? = null,
-        wiki: Mode? = null,
-        messages: Boolean? = null,
-        ageLimits: EditAgeLimits? = null,
-        market: Boolean? = null,
-        marketComments: Boolean? = null,
-        marketCountry: Array<Long>? = null,
-        marketCity: Array<Long>? = null,
-        marketCurrency: EditMarketCurrency? = null,
-        marketContact: Long? = null,
-        marketWiki: Long? = null,
-        obsceneFilter: Boolean? = null,
-        obsceneStopwords: Boolean? = null,
-        obsceneWords: Array<String>? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.title = title
         this.description = description
@@ -370,11 +375,5 @@ class GroupsEditMethod() : VkMethod<Boolean>(
     fun setObsceneWords(obsceneWords: Array<String>): GroupsEditMethod {
         this.obsceneWords = obsceneWords
         return this
-    }
-
-    override val classRef = GroupsEditMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

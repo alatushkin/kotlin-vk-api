@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,26 +7,29 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.utils.LastShortenedLink
+import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
- *  Returns a list of user's shortened links.
+ * [https://vk.com/dev/utils.getLastShortenedLinks]
  *
- *  [https://vk.com/dev/utils.getLastShortenedLinks]
- *  @property [count] Number of links to return.
- *  @property [offset] Offset needed to return a specific subset of links.
+ * Returns a list of user's shortened links.
+ *
+ * @property count Number of links to return.
+ * @property offset Offset needed to return a specific subset of links.
  */
-class UtilsGetLastShortenedLinksMethod() : VkMethod<VkList<LastShortenedLink>>(
+class UtilsGetLastShortenedLinksMethod(
+        count: Long? = null,
+        offset: Long? = null
+) : VkMethod<VkList<LastShortenedLink>>(
     "utils.getLastShortenedLinks",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<LastShortenedLink>>>() {}
+), UserGroupServiceMethod {
 
     var count: Long? by props
     var offset: Long? by props
 
-    constructor(
-        count: Long? = null,
-        offset: Long? = null
-    ) : this() {
+    init {
         this.count = count
         this.offset = offset
     }
@@ -37,11 +42,5 @@ class UtilsGetLastShortenedLinksMethod() : VkMethod<VkList<LastShortenedLink>>(
     fun setOffset(offset: Long): UtilsGetLastShortenedLinksMethod {
         this.offset = offset
         return this
-    }
-
-    override val classRef = UtilsGetLastShortenedLinksMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<LastShortenedLink>>>() {}
     }
 }

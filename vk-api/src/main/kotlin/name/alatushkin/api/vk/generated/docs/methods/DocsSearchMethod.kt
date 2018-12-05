@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,35 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.docs.Doc
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns a list of documents matching the search criteria.
+ * [https://vk.com/dev/docs.search]
  *
- *  [https://vk.com/dev/docs.search]
- *  @property [q] Search query string.
- *  @property [search_own]
- *  @property [count] Number of results to return.
- *  @property [offset] Offset needed to return a specific subset of results.
+ * Returns a list of documents matching the search criteria.
+ *
+ * @property q Search query string.
+ * @property searchOwn 
+ * @property count Number of results to return.
+ * @property offset Offset needed to return a specific subset of results.
  */
-class DocsSearchMethod() : VkMethod<VkList<Doc>>(
+class DocsSearchMethod(
+        q: String,
+        searchOwn: Boolean? = null,
+        count: Long? = null,
+        offset: Long? = null
+) : VkMethod<VkList<Doc>>(
     "docs.search",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Doc>>>() {}
+), UserGroupMethod {
 
-    var q: String? by props
+    var q: String by props
     var searchOwn: Boolean? by props
     var count: Long? by props
     var offset: Long? by props
 
-    constructor(
-        q: String? = null,
-        searchOwn: Boolean? = null,
-        count: Long? = null,
-        offset: Long? = null
-    ) : this() {
+    init {
         this.q = q
         this.searchOwn = searchOwn
         this.count = count
@@ -55,11 +60,5 @@ class DocsSearchMethod() : VkMethod<VkList<Doc>>(
     fun setOffset(offset: Long): DocsSearchMethod {
         this.offset = offset
         return this
-    }
-
-    override val classRef = DocsSearchMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Doc>>>() {}
     }
 }

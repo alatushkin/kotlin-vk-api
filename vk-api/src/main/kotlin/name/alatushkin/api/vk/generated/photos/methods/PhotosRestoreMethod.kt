@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Restores a deleted photo.
+ * [https://vk.com/dev/photos.restore]
  *
- *  [https://vk.com/dev/photos.restore]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [photo_id] Photo ID.
+ * Restores a deleted photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property photoId Photo ID.
  */
-class PhotosRestoreMethod() : VkMethod<Boolean>(
+class PhotosRestoreMethod(
+        ownerId: Long? = null,
+        photoId: Long
+) : VkMethod<Boolean>(
     "photos.restore",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var photoId: Long? by props
+    var photoId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
     }
@@ -35,11 +40,5 @@ class PhotosRestoreMethod() : VkMethod<Boolean>(
     fun setPhotoId(photoId: Long): PhotosRestoreMethod {
         this.photoId = photoId
         return this
-    }
-
-    override val classRef = PhotosRestoreMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

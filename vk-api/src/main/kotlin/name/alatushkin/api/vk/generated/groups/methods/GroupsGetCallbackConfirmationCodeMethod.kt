@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.GetCallbackConfirmationCodeResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns Callback API confirmation code for the community.
+ * [https://vk.com/dev/groups.getCallbackConfirmationCode]
  *
- *  [https://vk.com/dev/groups.getCallbackConfirmationCode]
- *  @property [group_id] Community ID.
+ * Returns Callback API confirmation code for the community.
+ *
+ * @property groupId Community ID.
  */
-class GroupsGetCallbackConfirmationCodeMethod() : VkMethod<GetCallbackConfirmationCodeResponse>(
+class GroupsGetCallbackConfirmationCodeMethod(
+        groupId: Long
+) : VkMethod<GetCallbackConfirmationCodeResponse>(
     "groups.getCallbackConfirmationCode",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetCallbackConfirmationCodeResponse>>() {}
+), UserGroupMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): GroupsGetCallbackConfirmationCodeMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = GroupsGetCallbackConfirmationCodeMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetCallbackConfirmationCodeResponse>>() {}
     }
 }

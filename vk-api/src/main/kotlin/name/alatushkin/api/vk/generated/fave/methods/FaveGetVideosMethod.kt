@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.fave.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,29 +7,32 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.Video
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of videos that the current user has liked.
+ * [https://vk.com/dev/fave.getVideos]
  *
- *  [https://vk.com/dev/fave.getVideos]
- *  @property [offset] Offset needed to return a specific subset of videos.
- *  @property [count] Number of videos to return.
- *  @property [extended] Return an additional information about videos. Also returns all owners profiles and groups.
+ * Returns a list of videos that the current user has liked.
+ *
+ * @property offset Offset needed to return a specific subset of videos.
+ * @property count Number of videos to return.
+ * @property extended Return an additional information about videos. Also returns all owners profiles and groups.
  */
-class FaveGetVideosMethod() : VkMethod<VkList<Video>>(
+class FaveGetVideosMethod(
+        offset: Long? = null,
+        count: Long? = null,
+        extended: Boolean? = null
+) : VkMethod<VkList<Video>>(
     "fave.getVideos",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Video>>>() {}
+), UserMethod {
 
     var offset: Long? by props
     var count: Long? by props
     var extended: Boolean? by props
 
-    constructor(
-        offset: Long? = null,
-        count: Long? = null,
-        extended: Boolean? = null
-    ) : this() {
+    init {
         this.offset = offset
         this.count = count
         this.extended = extended
@@ -46,11 +51,5 @@ class FaveGetVideosMethod() : VkMethod<VkList<Video>>(
     fun setExtended(extended: Boolean): FaveGetVideosMethod {
         this.extended = extended
         return this
-    }
-
-    override val classRef = FaveGetVideosMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Video>>>() {}
     }
 }

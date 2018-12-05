@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.stories.StoryStats
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns stories available for current user.
+ * [https://vk.com/dev/stories.getStats]
  *
- *  [https://vk.com/dev/stories.getStats]
- *  @property [owner_id] Story owner ID.
- *  @property [story_id] Story ID.
+ * Returns stories available for current user.
+ *
+ * @property ownerId Story owner ID.
+ * @property storyId Story ID.
  */
-class StoriesGetStatsMethod() : VkMethod<StoryStats>(
+class StoriesGetStatsMethod(
+        ownerId: Long,
+        storyId: Long
+) : VkMethod<StoryStats>(
     "stories.getStats",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<StoryStats>>() {}
+), UserGroupMethod {
 
-    var ownerId: Long? by props
-    var storyId: Long? by props
+    var ownerId: Long by props
+    var storyId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        storyId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.storyId = storyId
     }
@@ -36,11 +41,5 @@ class StoriesGetStatsMethod() : VkMethod<StoryStats>(
     fun setStoryId(storyId: Long): StoriesGetStatsMethod {
         this.storyId = storyId
         return this
-    }
-
-    override val classRef = StoriesGetStatsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<StoryStats>>() {}
     }
 }

@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.leads.Complete
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Completes the lead started by user.
+ * [https://vk.com/dev/leads.complete]
  *
- *  [https://vk.com/dev/leads.complete]
- *  @property [vk_sid] Session obtained as GET parameter when session started.
- *  @property [secret] Secret key from the lead testing interface.
- *  @property [comment] Comment text.
+ * Completes the lead started by user.
+ *
+ * @property vkSid Session obtained as GET parameter when session started.
+ * @property secret Secret key from the lead testing interface.
+ * @property comment Comment text.
  */
-class LeadsCompleteMethod() : VkMethod<Complete>(
+class LeadsCompleteMethod(
+        vkSid: String,
+        secret: String,
+        comment: String? = null
+) : VkMethod<Complete>(
     "leads.complete",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Complete>>() {}
+), UserServiceMethod {
 
-    var vkSid: String? by props
-    var secret: String? by props
+    var vkSid: String by props
+    var secret: String by props
     var comment: String? by props
 
-    constructor(
-        vkSid: String? = null,
-        secret: String? = null,
-        comment: String? = null
-    ) : this() {
+    init {
         this.vkSid = vkSid
         this.secret = secret
         this.comment = comment
@@ -45,11 +50,5 @@ class LeadsCompleteMethod() : VkMethod<Complete>(
     fun setComment(comment: String): LeadsCompleteMethod {
         this.comment = comment
         return this
-    }
-
-    override val classRef = LeadsCompleteMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Complete>>() {}
     }
 }

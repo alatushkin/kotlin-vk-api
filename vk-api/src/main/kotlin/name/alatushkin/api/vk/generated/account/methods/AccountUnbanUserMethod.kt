@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes user from the blacklist.
+ * [https://vk.com/dev/account.unbanUser]
  *
- *  [https://vk.com/dev/account.unbanUser]
- *  @property [user_id] User ID.
+ * Deletes user from the blacklist.
+ *
+ * @property userId User ID.
  */
-class AccountUnbanUserMethod() : VkMethod<Boolean>(
+class AccountUnbanUserMethod(
+        userId: Long
+) : VkMethod<Boolean>(
     "account.unbanUser",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
 
-    constructor(
-        userId: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
     }
 
     fun setUserId(userId: Long): AccountUnbanUserMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = AccountUnbanUserMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

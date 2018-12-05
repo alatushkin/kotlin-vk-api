@@ -1,38 +1,43 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Reason
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Reports (submits a complaint about) a video.
+ * [https://vk.com/dev/video.report]
  *
- *  [https://vk.com/dev/video.report]
- *  @property [owner_id] ID of the user or community that owns the video.
- *  @property [video_id] Video ID.
- *  @property [reason] Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
- *  @property [comment] Comment describing the complaint.
- *  @property [search_query] (If the video was found in search results.) Search query string.
+ * Reports (submits a complaint about) a video.
+ *
+ * @property ownerId ID of the user or community that owns the video.
+ * @property videoId Video ID.
+ * @property reason Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+ * @property comment Comment describing the complaint.
+ * @property searchQuery (If the video was found in search results.) Search query string.
  */
-class VideoReportMethod() : VkMethod<Boolean>(
+class VideoReportMethod(
+        ownerId: Long,
+        videoId: Long,
+        reason: Reason? = null,
+        comment: String? = null,
+        searchQuery: String? = null
+) : VkMethod<Boolean>(
     "video.report",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var videoId: Long? by props
+    var ownerId: Long by props
+    var videoId: Long by props
     var reason: Reason? by props
     var comment: String? by props
     var searchQuery: String? by props
 
-    constructor(
-        ownerId: Long? = null,
-        videoId: Long? = null,
-        reason: Reason? = null,
-        comment: String? = null,
-        searchQuery: String? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.videoId = videoId
         this.reason = reason
@@ -63,11 +68,5 @@ class VideoReportMethod() : VkMethod<Boolean>(
     fun setSearchQuery(searchQuery: String): VideoReportMethod {
         this.searchQuery = searchQuery
         return this
-    }
-
-    override val classRef = VideoReportMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

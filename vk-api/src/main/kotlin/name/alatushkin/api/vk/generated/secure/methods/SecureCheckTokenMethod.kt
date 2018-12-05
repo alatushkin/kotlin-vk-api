@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.secure.TokenChecked
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Checks the user authentication in 'IFrame' and 'Flash' apps using the 'access_token' parameter.
+ * [https://vk.com/dev/secure.checkToken]
  *
- *  [https://vk.com/dev/secure.checkToken]
- *  @property [token] client 'access_token'
- *  @property [ip] user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
+ * Checks the user authentication in 'IFrame' and 'Flash' apps using the 'access_token' parameter.
+ *
+ * @property token client 'access_token'
+ * @property ip user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
  */
-class SecureCheckTokenMethod() : VkMethod<TokenChecked>(
+class SecureCheckTokenMethod(
+        token: String? = null,
+        ip: String? = null
+) : VkMethod<TokenChecked>(
     "secure.checkToken",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<TokenChecked>>() {}
+), UserMethod {
 
     var token: String? by props
     var ip: String? by props
 
-    constructor(
-        token: String? = null,
-        ip: String? = null
-    ) : this() {
+    init {
         this.token = token
         this.ip = ip
     }
@@ -36,11 +41,5 @@ class SecureCheckTokenMethod() : VkMethod<TokenChecked>(
     fun setIp(ip: String): SecureCheckTokenMethod {
         this.ip = ip
         return this
-    }
-
-    override val classRef = SecureCheckTokenMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<TokenChecked>>() {}
     }
 }

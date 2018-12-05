@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,26 +7,29 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.newsfeed.GetBannedResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of users and communities banned from the current user's newsfeed.
+ * [https://vk.com/dev/newsfeed.getBanned]
  *
- *  [https://vk.com/dev/newsfeed.getBanned]
- *  @property [fields] Profile fields to return.
- *  @property [name_case] Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+ * Returns a list of users and communities banned from the current user's newsfeed.
+ *
+ * @property fields Profile fields to return.
+ * @property nameCase Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
-class NewsfeedGetBannedMethod() : VkMethod<GetBannedResponse>(
+class NewsfeedGetBannedMethod(
+        fields: Array<String>? = null,
+        nameCase: NameCase? = null
+) : VkMethod<GetBannedResponse>(
     "newsfeed.getBanned",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetBannedResponse>>() {}
+), UserMethod {
 
     var fields: Array<String>? by props
     var nameCase: NameCase? by props
 
-    constructor(
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
-    ) : this() {
+    init {
         this.fields = fields
         this.nameCase = nameCase
     }
@@ -37,11 +42,5 @@ class NewsfeedGetBannedMethod() : VkMethod<GetBannedResponse>(
     fun setNameCase(nameCase: NameCase): NewsfeedGetBannedMethod {
         this.nameCase = nameCase
         return this
-    }
-
-    override val classRef = NewsfeedGetBannedMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetBannedResponse>>() {}
     }
 }

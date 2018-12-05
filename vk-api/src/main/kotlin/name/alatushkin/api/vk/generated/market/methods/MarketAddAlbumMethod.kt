@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.market.AddAlbumResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates new collection of items
+ * [https://vk.com/dev/market.addAlbum]
  *
- *  [https://vk.com/dev/market.addAlbum]
- *  @property [owner_id] ID of an item owner community.
- *  @property [title] Collection title.
- *  @property [photo_id] Cover photo ID.
- *  @property [main_album] Set as main ('1' – set, '0' – no).
+ * Creates new collection of items
+ *
+ * @property ownerId ID of an item owner community.
+ * @property title Collection title.
+ * @property photoId Cover photo ID.
+ * @property mainAlbum Set as main ('1' – set, '0' – no).
  */
-class MarketAddAlbumMethod() : VkMethod<AddAlbumResponse>(
+class MarketAddAlbumMethod(
+        ownerId: Long,
+        title: String,
+        photoId: Long? = null,
+        mainAlbum: Boolean? = null
+) : VkMethod<AddAlbumResponse>(
     "market.addAlbum",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<AddAlbumResponse>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var title: String? by props
+    var ownerId: Long by props
+    var title: String by props
     var photoId: Long? by props
     var mainAlbum: Boolean? by props
 
-    constructor(
-        ownerId: Long? = null,
-        title: String? = null,
-        photoId: Long? = null,
-        mainAlbum: Boolean? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.title = title
         this.photoId = photoId
@@ -54,11 +59,5 @@ class MarketAddAlbumMethod() : VkMethod<AddAlbumResponse>(
     fun setMainAlbum(mainAlbum: Boolean): MarketAddAlbumMethod {
         this.mainAlbum = mainAlbum
         return this
-    }
-
-    override val classRef = MarketAddAlbumMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<AddAlbumResponse>>() {}
     }
 }

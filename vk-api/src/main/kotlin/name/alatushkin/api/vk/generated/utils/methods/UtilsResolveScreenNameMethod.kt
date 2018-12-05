@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.utils.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.utils.DomainResolved
+import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
- *  Detects a type of object (e.g., user, community, application) and its ID by screen name.
+ * [https://vk.com/dev/utils.resolveScreenName]
  *
- *  [https://vk.com/dev/utils.resolveScreenName]
- *  @property [screen_name] Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
+ * Detects a type of object (e.g., user, community, application) and its ID by screen name.
+ *
+ * @property screenName Screen name of the user, community (e.g., 'apiclub,' 'andrew', or 'rules_of_war'), or application.
  */
-class UtilsResolveScreenNameMethod() : VkMethod<DomainResolved>(
+class UtilsResolveScreenNameMethod(
+        screenName: String
+) : VkMethod<DomainResolved>(
     "utils.resolveScreenName",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<DomainResolved>>() {}
+), UserGroupServiceMethod {
 
-    var screenName: String? by props
+    var screenName: String by props
 
-    constructor(
-        screenName: String? = null
-    ) : this() {
+    init {
         this.screenName = screenName
     }
 
     fun setScreenName(screenName: String): UtilsResolveScreenNameMethod {
         this.screenName = screenName
         return this
-    }
-
-    override val classRef = UtilsResolveScreenNameMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<DomainResolved>>() {}
     }
 }

@@ -1,24 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.search.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.search.GetHintsResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows the programmer to do a quick search for any substring.
+ * [https://vk.com/dev/search.getHints]
  *
- *  [https://vk.com/dev/search.getHints]
- *  @property [q] Search query string.
- *  @property [offset] Offset for querying specific result subset
- *  @property [limit] Maximum number of results to return.
- *  @property [filters] 
- *  @property [search_global] 
+ * Allows the programmer to do a quick search for any substring.
+ *
+ * @property q Search query string.
+ * @property offset Offset for querying specific result subset
+ * @property limit Maximum number of results to return.
+ * @property filters 
+ * @property searchGlobal 
  */
-class SearchGetHintsMethod() : VkMethod<GetHintsResponse>(
+class SearchGetHintsMethod(
+        q: String? = null,
+        offset: Long? = null,
+        limit: Long? = null,
+        filters: Array<String>? = null,
+        searchGlobal: Boolean? = null
+) : VkMethod<GetHintsResponse>(
     "search.getHints",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetHintsResponse>>() {}
+), UserMethod {
 
     var q: String? by props
     var offset: Long? by props
@@ -26,13 +37,7 @@ class SearchGetHintsMethod() : VkMethod<GetHintsResponse>(
     var filters: Array<String>? by props
     var searchGlobal: Boolean? by props
 
-    constructor(
-        q: String? = null,
-        offset: Long? = null,
-        limit: Long? = null,
-        filters: Array<String>? = null,
-        searchGlobal: Boolean? = null
-    ) : this() {
+    init {
         this.q = q
         this.offset = offset
         this.limit = limit
@@ -63,11 +68,5 @@ class SearchGetHintsMethod() : VkMethod<GetHintsResponse>(
     fun setSearchGlobal(searchGlobal: Boolean): SearchGetHintsMethod {
         this.searchGlobal = searchGlobal
         return this
-    }
-
-    override val classRef = SearchGetHintsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetHintsResponse>>() {}
     }
 }

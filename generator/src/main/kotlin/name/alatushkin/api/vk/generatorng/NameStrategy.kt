@@ -4,7 +4,7 @@ import name.alatushkin.api.vk.generatorng.source.JsonTypeRef
 import name.alatushkin.api.vk.generatorng.source.TypeId
 import name.alatushkin.api.vk.generatorng.source.alterClassName
 
-typealias NameStartegy = (str: String) -> TypeId
+typealias NameStrategy = (str: String) -> TypeId
 
 fun nameMethod(jsonTypeRef: JsonTypeRef): TypeId {
     //notes.edit -> notes.methods.NotesEdit

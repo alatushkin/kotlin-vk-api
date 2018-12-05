@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -7,27 +9,29 @@ import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.VideoAlbumFull
 
 /**
- *  null
+ * [https://vk.com/dev/video.getAlbumsByVideo]
  *
- *  [https://vk.com/dev/video.getAlbumsByVideo]
- *  @property [target_id]
- *  @property [owner_id]
- *  @property [video_id]
+ * null
+ *
+ * @property targetId 
+ * @property ownerId 
+ * @property videoId 
  */
-class VideoGetAlbumsByVideoMethodExtended() : VkMethod<VkList<VideoAlbumFull>>(
+class VideoGetAlbumsByVideoMethodExtended(
+        targetId: Long? = null,
+        ownerId: Long,
+        videoId: Long
+) : VkMethod<VkList<VideoAlbumFull>>(
     "video.getAlbumsByVideo",
-    mutableMapOf("extended" to "1")
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<VkList<VideoAlbumFull>>>() {}
 ) {
 
     var targetId: Long? by props
-    var ownerId: Long? by props
-    var videoId: Long? by props
+    var ownerId: Long by props
+    var videoId: Long by props
 
-    constructor(
-        targetId: Long? = null,
-        ownerId: Long? = null,
-        videoId: Long? = null
-    ) : this() {
+    init {
         this.targetId = targetId
         this.ownerId = ownerId
         this.videoId = videoId
@@ -46,11 +50,5 @@ class VideoGetAlbumsByVideoMethodExtended() : VkMethod<VkList<VideoAlbumFull>>(
     fun setVideoId(videoId: Long): VideoGetAlbumsByVideoMethodExtended {
         this.videoId = videoId
         return this
-    }
-
-    override val classRef = VideoGetAlbumsByVideoMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<VideoAlbumFull>>>() {}
     }
 }

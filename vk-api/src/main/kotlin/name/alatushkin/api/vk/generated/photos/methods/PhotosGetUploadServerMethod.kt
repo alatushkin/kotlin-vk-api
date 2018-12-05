@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.PhotoUpload
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns the server address for photo upload.
+ * [https://vk.com/dev/photos.getUploadServer]
  *
- *  [https://vk.com/dev/photos.getUploadServer]
- *  @property [album_id] Album ID.
- *  @property [group_id] ID of community that owns the album (if the photo will be uploaded to a community album).
+ * Returns the server address for photo upload.
+ *
+ * @property albumId Album ID.
+ * @property groupId ID of community that owns the album (if the photo will be uploaded to a community album).
  */
-class PhotosGetUploadServerMethod() : VkMethod<PhotoUpload>(
+class PhotosGetUploadServerMethod(
+        albumId: Long? = null,
+        groupId: Long? = null
+) : VkMethod<PhotoUpload>(
     "photos.getUploadServer",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<PhotoUpload>>() {}
+), UserMethod {
 
     var albumId: Long? by props
     var groupId: Long? by props
 
-    constructor(
-        albumId: Long? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.albumId = albumId
         this.groupId = groupId
     }
@@ -36,11 +41,5 @@ class PhotosGetUploadServerMethod() : VkMethod<PhotoUpload>(
     fun setGroupId(groupId: Long): PhotosGetUploadServerMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = PhotosGetUploadServerMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<PhotoUpload>>() {}
     }
 }

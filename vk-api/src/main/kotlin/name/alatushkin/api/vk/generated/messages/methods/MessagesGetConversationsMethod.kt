@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,23 +7,34 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.GetConversationsFilter
 import name.alatushkin.api.vk.generated.messages.GetConversationsResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns a list of the current user's conversations.
+ * [https://vk.com/dev/messages.getConversations]
  *
- *  [https://vk.com/dev/messages.getConversations]
- *  @property [group_id] Group ID (for group messages with group access token)
- *  @property [offset] Offset needed to return a specific subset of conversations.
- *  @property [count] Number of conversations to return.
- *  @property [filter] Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
- *  @property [extended] '1' — return extra information about users and communities
- *  @property [start_message_id] ID of the message from what to return dialogs.
- *  @property [fields] Profile and communities fields to return.
+ * Returns a list of the current user's conversations.
+ *
+ * @property groupId Group ID (for group messages with group access token)
+ * @property offset Offset needed to return a specific subset of conversations.
+ * @property count Number of conversations to return.
+ * @property filter Filter to apply: 'all' — all conversations, 'unread' — conversations with unread messages, 'important' — conversations, marked as important (only for community messages), 'unanswered' — conversations, marked as unanswered (only for community messages)
+ * @property extended '1' — return extra information about users and communities
+ * @property startMessageId ID of the message from what to return dialogs.
+ * @property fields Profile and communities fields to return.
  */
-class MessagesGetConversationsMethod() : VkMethod<GetConversationsResponse>(
+class MessagesGetConversationsMethod(
+        groupId: Long? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        filter: GetConversationsFilter? = null,
+        extended: Boolean? = null,
+        startMessageId: Long? = null,
+        fields: Array<String>? = null
+) : VkMethod<GetConversationsResponse>(
     "messages.getConversations",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetConversationsResponse>>() {}
+), UserGroupMethod {
 
     var groupId: Long? by props
     var offset: Long? by props
@@ -31,15 +44,7 @@ class MessagesGetConversationsMethod() : VkMethod<GetConversationsResponse>(
     var startMessageId: Long? by props
     var fields: Array<String>? by props
 
-    constructor(
-        groupId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        filter: GetConversationsFilter? = null,
-        extended: Boolean? = null,
-        startMessageId: Long? = null,
-        fields: Array<String>? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.offset = offset
         this.count = count
@@ -82,11 +87,5 @@ class MessagesGetConversationsMethod() : VkMethod<GetConversationsResponse>(
     fun setFields(fields: Array<String>): MessagesGetConversationsMethod {
         this.fields = fields
         return this
-    }
-
-    override val classRef = MessagesGetConversationsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetConversationsResponse>>() {}
     }
 }

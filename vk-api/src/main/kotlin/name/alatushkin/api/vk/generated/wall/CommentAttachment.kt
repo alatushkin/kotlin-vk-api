@@ -1,4 +1,6 @@
 package name.alatushkin.api.vk.generated.wall
 
 
-interface CommentAttachment
+interface CommentAttachment {
+
+}

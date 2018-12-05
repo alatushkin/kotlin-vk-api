@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to reorder links in the community.
+ * [https://vk.com/dev/groups.reorderLink]
  *
- *  [https://vk.com/dev/groups.reorderLink]
- *  @property [group_id] Community ID.
- *  @property [link_id] Link ID.
- *  @property [after] ID of the link after which to place the link with 'link_id'.
+ * Allows to reorder links in the community.
+ *
+ * @property groupId Community ID.
+ * @property linkId Link ID.
+ * @property after ID of the link after which to place the link with 'link_id'.
  */
-class GroupsReorderLinkMethod() : VkMethod<Boolean>(
+class GroupsReorderLinkMethod(
+        groupId: Long,
+        linkId: Long,
+        after: Long? = null
+) : VkMethod<Boolean>(
     "groups.reorderLink",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var linkId: Long? by props
+    var groupId: Long by props
+    var linkId: Long by props
     var after: Long? by props
 
-    constructor(
-        groupId: Long? = null,
-        linkId: Long? = null,
-        after: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.linkId = linkId
         this.after = after
@@ -44,11 +49,5 @@ class GroupsReorderLinkMethod() : VkMethod<Boolean>(
     fun setAfter(after: Long): GroupsReorderLinkMethod {
         this.after = after
         return this
-    }
-
-    override val classRef = GroupsReorderLinkMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

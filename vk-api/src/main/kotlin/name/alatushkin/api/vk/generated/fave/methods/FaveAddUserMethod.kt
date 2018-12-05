@@ -1,36 +1,35 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.fave.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a profile to user faves.
+ * [https://vk.com/dev/fave.addUser]
  *
- *  [https://vk.com/dev/fave.addUser]
- *  @property [user_id] Profile ID.
+ * Adds a profile to user faves.
+ *
+ * @property userId Profile ID.
  */
-class FaveAddUserMethod() : VkMethod<Boolean>(
+class FaveAddUserMethod(
+        userId: Long
+) : VkMethod<Boolean>(
     "fave.addUser",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
 
-    constructor(
-        userId: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
     }
 
     fun setUserId(userId: Long): FaveAddUserMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = FaveAddUserMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

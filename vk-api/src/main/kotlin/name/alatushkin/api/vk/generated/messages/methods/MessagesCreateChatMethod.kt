@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates a chat with several participants.
+ * [https://vk.com/dev/messages.createChat]
  *
- *  [https://vk.com/dev/messages.createChat]
- *  @property [user_ids] IDs of the users to be added to the chat.
- *  @property [title] Chat title.
+ * Creates a chat with several participants.
+ *
+ * @property userIds IDs of the users to be added to the chat.
+ * @property title Chat title.
  */
-class MessagesCreateChatMethod() : VkMethod<Long>(
+class MessagesCreateChatMethod(
+        userIds: Array<Long>,
+        title: String? = null
+) : VkMethod<Long>(
     "messages.createChat",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var userIds: Array<Long>? by props
+    var userIds: Array<Long> by props
     var title: String? by props
 
-    constructor(
-        userIds: Array<Long>? = null,
-        title: String? = null
-    ) : this() {
+    init {
         this.userIds = userIds
         this.title = title
     }
@@ -35,11 +40,5 @@ class MessagesCreateChatMethod() : VkMethod<Long>(
     fun setTitle(title: String): MessagesCreateChatMethod {
         this.title = title
         return this
-    }
-
-    override val classRef = MessagesCreateChatMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

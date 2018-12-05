@@ -8,59 +8,56 @@ import name.alatushkin.api.vk.callback.MessageNew
 import name.alatushkin.api.vk.generated.messages.*
 import name.alatushkin.api.vk.generated.messages.methods.MessagesSendMethod
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.tokens.*
 import name.alatushkin.httpclient.httpClient
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SimpleServerLongPollEventSourceTest {
     @Test
-    fun smokeTest1() {
-        runBlocking {
-            val timeOut = 95
-            val httpClient = httpClient(readTimeout = timeOut * 1000)
-            val api: VkClient = SimpleMethodExecutor(httpClient).withToken(groupAccessToken)
-            val source = SimpleServerLongPollEventSource(groupAccessToken, groupId.toLong(), httpClient, timeOut)
+    fun smokeTest1() = runBlocking {
+        val timeOut = 95
+        val httpClient = httpClient(readTimeout = timeOut * 1000)
+        val token = GroupToken(groupAccessToken, groupId.toLong())
+        val api: VkClient<GroupMethod> = SimpleMethodExecutor(httpClient).withToken(token)
+        val source = SimpleServerLongPollEventSource(groupAccessToken, groupId.toLong(), httpClient, timeOut)
 
-            while (true) {
-                val (next, events) = source.getEvents()
-                yield()
+        while (true) {
+            val (next, events) = source.getEvents()
+            yield()
 
-                if (events.isNotEmpty()) {
-                    println(next.dump())
-                    println(events)
-                    val first = events.first()
-                    if (first is MessageNew) {
-                        println(first.attachment.peerId)
-                        println(first.attachment.fromId)
-                    }
-
-                    val result = api(
-                        MessagesSendMethod().setPeerId(peerId)
-                            .setMessage("msg" + System.currentTimeMillis())
-                            .setRandomId(System.currentTimeMillis())
-                            .setKeyboard(
-                                KeyboardImpl(
-                                    oneTime = false, buttons = arrayOf(
-                                        arrayOf(
-                                            KeyboardButton(
-                                                color = KeyboardButtonColor.DEFAULT,
-                                                action = KeyboardButtonAction(
-                                                    KeyboardButtonActionType.TEXT,
-                                                    payload = "\"some_payload\"",
-                                                    label = "Lable"
-                                                )
-
-                                            )
-                                        )
-                                    )
-                                )
-                            )
-
-                    )
+            if (events.isNotEmpty()) {
+                println(next.dump())
+                println(events)
+                val first = events.first()
+                if (first is MessageNew) {
+                    println(first.attachment.peerId)
+                    println(first.attachment.fromId)
                 }
-            }
 
+                val keyboard = KeyboardImpl(
+                        oneTime = false,
+                        buttons = arrayOf(arrayOf(KeyboardButton(
+                                color = KeyboardButtonColor.DEFAULT,
+                                action = KeyboardButtonAction(
+                                        KeyboardButtonActionType.TEXT,
+                                        payload = "\"some_payload\"",
+                                        label = "Label"
+                                )
+
+                        )))
+                )
+
+                val result: Long = api(MessagesSendMethod(
+                        peerId = peerId,
+                        message = "msg${System.currentTimeMillis()}",
+                        randomId = System.currentTimeMillis(),
+                        keyboard = keyboard
+                ))
+                println(result)
+            }
         }
+
     }
 
     @Test
@@ -86,6 +83,7 @@ class SimpleServerLongPollEventSourceTest {
         val json =
             "{\"ts\":\"263\",\"updates\":[{\"type\":\"message_new\",\"object\":{\"date\":1542645031,\"from_id\":5518788,\"id\":2853,\"out\":0,\"peer_id\":5518788,\"text\":\"\",\"conversation_message_id\":2741,\"fwd_messages\":[],\"important\":false,\"random_id\":0,\"attachments\":[{\"type\":\"audio_message\",\"audio_message\":{\"id\":481421346,\"owner_id\":5518788,\"duration\":4,\"waveform\":[0,0,0,0,21,31,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,2,5,28,0,9,3,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"link_ogg\":\"https:\\/\\/psv4.userapi.com\\/c852736\\/\\/u5518788\\/audiomsg\\/d8\\/8147a0e04c.ogg\",\"link_mp3\":\"https:\\/\\/psv4.userapi.com\\/c852736\\/\\/u5518788\\/audiomsg\\/d8\\/8147a0e04c.mp3\",\"access_key\":\"03a54d08fab1b17a78\"}}],\"is_hidden\":false},\"group_id\":27640201}]}\n"
         val lpResponse: GroupLongPollResponse = VK_OBJECT_MAPPER.readValue(json)
+        println(lpResponse)
     }
 
 }

@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a user or community document.
+ * [https://vk.com/dev/docs.delete]
  *
- *  [https://vk.com/dev/docs.delete]
- *  @property [owner_id] ID of the user or community that owns the document. Use a negative value to designate a community ID.
- *  @property [doc_id] Document ID.
+ * Deletes a user or community document.
+ *
+ * @property ownerId ID of the user or community that owns the document. Use a negative value to designate a community ID.
+ * @property docId Document ID.
  */
-class DocsDeleteMethod() : VkMethod<Boolean>(
+class DocsDeleteMethod(
+        ownerId: Long,
+        docId: Long
+) : VkMethod<Boolean>(
     "docs.delete",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var docId: Long? by props
+    var ownerId: Long by props
+    var docId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        docId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.docId = docId
     }
@@ -35,11 +40,5 @@ class DocsDeleteMethod() : VkMethod<Boolean>(
     fun setDocId(docId: Long): DocsDeleteMethod {
         this.docId = docId
         return this
-    }
-
-    override val classRef = DocsDeleteMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

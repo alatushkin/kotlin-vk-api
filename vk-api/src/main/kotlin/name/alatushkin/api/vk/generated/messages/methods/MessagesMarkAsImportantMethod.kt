@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Marks and unmarks messages as important (starred).
+ * [https://vk.com/dev/messages.markAsImportant]
  *
- *  [https://vk.com/dev/messages.markAsImportant]
- *  @property [message_ids] IDs of messages to mark as important.
- *  @property [important] '1' — to add a star (mark as important), '0' — to remove the star
+ * Marks and unmarks messages as important (starred).
+ *
+ * @property messageIds IDs of messages to mark as important.
+ * @property important '1' — to add a star (mark as important), '0' — to remove the star
  */
-class MessagesMarkAsImportantMethod() : VkMethod<Array<Long>>(
+class MessagesMarkAsImportantMethod(
+        messageIds: Array<Long>? = null,
+        important: Boolean? = null
+) : VkMethod<Array<Long>>(
     "messages.markAsImportant",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Long>>>() {}
+), UserGroupMethod {
 
     var messageIds: Array<Long>? by props
     var important: Boolean? by props
 
-    constructor(
-        messageIds: Array<Long>? = null,
-        important: Boolean? = null
-    ) : this() {
+    init {
         this.messageIds = messageIds
         this.important = important
     }
@@ -35,11 +40,5 @@ class MessagesMarkAsImportantMethod() : VkMethod<Array<Long>>(
     fun setImportant(important: Boolean): MessagesMarkAsImportantMethod {
         this.important = important
         return this
-    }
-
-    override val classRef = MessagesMarkAsImportantMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
     }
 }

@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.pages.WikipageVersion
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of all previous versions of a wiki page.
+ * [https://vk.com/dev/pages.getHistory]
  *
- *  [https://vk.com/dev/pages.getHistory]
- *  @property [page_id] Wiki page ID.
- *  @property [group_id] ID of the community that owns the wiki page.
- *  @property [user_id] 
+ * Returns a list of all previous versions of a wiki page.
+ *
+ * @property pageId Wiki page ID.
+ * @property groupId ID of the community that owns the wiki page.
+ * @property userId 
  */
-class PagesGetHistoryMethod() : VkMethod<Array<WikipageVersion>>(
+class PagesGetHistoryMethod(
+        pageId: Long,
+        groupId: Long? = null,
+        userId: Long? = null
+) : VkMethod<Array<WikipageVersion>>(
     "pages.getHistory",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<WikipageVersion>>>() {}
+), UserMethod {
 
-    var pageId: Long? by props
+    var pageId: Long by props
     var groupId: Long? by props
     var userId: Long? by props
 
-    constructor(
-        pageId: Long? = null,
-        groupId: Long? = null,
-        userId: Long? = null
-    ) : this() {
+    init {
         this.pageId = pageId
         this.groupId = groupId
         this.userId = userId
@@ -45,11 +50,5 @@ class PagesGetHistoryMethod() : VkMethod<Array<WikipageVersion>>(
     fun setUserId(userId: Long): PagesGetHistoryMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = PagesGetHistoryMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<WikipageVersion>>>() {}
     }
 }

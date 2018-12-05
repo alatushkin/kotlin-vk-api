@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.pages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns HTML representation of the wiki markup.
+ * [https://vk.com/dev/pages.parseWiki]
  *
- *  [https://vk.com/dev/pages.parseWiki]
- *  @property [text] Text of the wiki page.
- *  @property [group_id] ID of the group in the context of which this markup is interpreted.
+ * Returns HTML representation of the wiki markup.
+ *
+ * @property text Text of the wiki page.
+ * @property groupId ID of the group in the context of which this markup is interpreted.
  */
-class PagesParseWikiMethod() : VkMethod<String>(
+class PagesParseWikiMethod(
+        text: String,
+        groupId: Long? = null
+) : VkMethod<String>(
     "pages.parseWiki",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<String>>() {}
+), UserMethod {
 
-    var text: String? by props
+    var text: String by props
     var groupId: Long? by props
 
-    constructor(
-        text: String? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.text = text
         this.groupId = groupId
     }
@@ -35,11 +40,5 @@ class PagesParseWikiMethod() : VkMethod<String>(
     fun setGroupId(groupId: Long): PagesParseWikiMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = PagesParseWikiMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<String>>() {}
     }
 }

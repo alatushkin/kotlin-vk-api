@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Sets an application screen name (up to 17 characters), that is shown to the user in the left menu.
+ * [https://vk.com/dev/account.setNameInMenu]
  *
- *  [https://vk.com/dev/account.setNameInMenu]
- *  @property [user_id] User ID.
- *  @property [name] Application screen name.
+ * Sets an application screen name (up to 17 characters), that is shown to the user in the left menu.
+ *
+ * @property userId User ID.
+ * @property name Application screen name.
  */
-class AccountSetNameInMenuMethod() : VkMethod<Boolean>(
+class AccountSetNameInMenuMethod(
+        userId: Long,
+        name: String? = null
+) : VkMethod<Boolean>(
     "account.setNameInMenu",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
     var name: String? by props
 
-    constructor(
-        userId: Long? = null,
-        name: String? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.name = name
     }
@@ -35,11 +40,5 @@ class AccountSetNameInMenuMethod() : VkMethod<Boolean>(
     fun setName(name: String): AccountSetNameInMenuMethod {
         this.name = name
         return this
-    }
-
-    override val classRef = AccountSetNameInMenuMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

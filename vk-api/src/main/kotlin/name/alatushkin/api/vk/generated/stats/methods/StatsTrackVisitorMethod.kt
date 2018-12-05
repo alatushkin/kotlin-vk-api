@@ -1,22 +1,21 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.stats.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  null
+ * [https://vk.com/dev/stats.trackVisitor]
  *
- *  [https://vk.com/dev/stats.trackVisitor]
+ * null
+ *
 
  */
 class StatsTrackVisitorMethod : VkMethod<Boolean>(
     "stats.trackVisitor",
-    HashMap()
-) {
-    override val classRef = StatsTrackVisitorMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
-    }
-}
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod

@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Sends 'SMS' notification to a user's mobile device.
+ * [https://vk.com/dev/secure.sendSMSNotification]
  *
- *  [https://vk.com/dev/secure.sendSMSNotification]
- *  @property [user_id] ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
- *  @property [message] 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
+ * Sends 'SMS' notification to a user's mobile device.
+ *
+ * @property userId ID of the user to whom SMS notification is sent. The user shall allow the application to send him/her notifications (, +1).
+ * @property message 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
  */
-class SecureSendSMSNotificationMethod() : VkMethod<Boolean>(
+class SecureSendSMSNotificationMethod(
+        userId: Long,
+        message: String
+) : VkMethod<Boolean>(
     "secure.sendSMSNotification",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), ServiceMethod {
 
-    var userId: Long? by props
-    var message: String? by props
+    var userId: Long by props
+    var message: String by props
 
-    constructor(
-        userId: Long? = null,
-        message: String? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.message = message
     }
@@ -35,11 +40,5 @@ class SecureSendSMSNotificationMethod() : VkMethod<Boolean>(
     fun setMessage(message: String): SecureSendSMSNotificationMethod {
         this.message = message
         return this
-    }
-
-    override val classRef = SecureSendSMSNotificationMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.PhotoFull
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns information about photos by their IDs.
+ * [https://vk.com/dev/photos.getById]
  *
- *  [https://vk.com/dev/photos.getById]
- *  @property [photos] IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
- *  @property [photo_sizes] '1' — to return photo sizes in a
+ * Returns information about photos by their IDs.
+ *
+ * @property photos IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: "1_129207899,6492_135055734, , -20629724_271945303"
+ * @property photoSizes '1' — to return photo sizes in a
  */
-class PhotosGetByIdMethodExtended() : VkMethod<Array<PhotoFull>>(
+class PhotosGetByIdMethodExtended(
+        photos: Array<String>,
+        photoSizes: Boolean? = null
+) : VkMethod<Array<PhotoFull>>(
     "photos.getById",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<Array<PhotoFull>>>() {}
+), UserServiceMethod {
 
-    var photos: Array<String>? by props
+    var photos: Array<String> by props
     var photoSizes: Boolean? by props
 
-    constructor(
-        photos: Array<String>? = null,
-        photoSizes: Boolean? = null
-    ) : this() {
+    init {
         this.photos = photos
         this.photoSizes = photoSizes
     }
@@ -36,11 +41,5 @@ class PhotosGetByIdMethodExtended() : VkMethod<Array<PhotoFull>>(
     fun setPhotoSizes(photoSizes: Boolean): PhotosGetByIdMethodExtended {
         this.photoSizes = photoSizes
         return this
-    }
-
-    override val classRef = PhotosGetByIdMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<PhotoFull>>>() {}
     }
 }

@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Sends notification to the user.
+ * [https://vk.com/dev/secure.sendNotification]
  *
- *  [https://vk.com/dev/secure.sendNotification]
- *  @property [user_ids]
- *  @property [user_id]
- *  @property [message] notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
+ * Sends notification to the user.
+ *
+ * @property userIds 
+ * @property userId 
+ * @property message notification text which should be sent in 'UTF-8' encoding ('254' characters maximum).
  */
-class SecureSendNotificationMethod() : VkMethod<Array<Long>>(
+class SecureSendNotificationMethod(
+        userIds: Array<Long>? = null,
+        userId: Long? = null,
+        message: String
+) : VkMethod<Array<Long>>(
     "secure.sendNotification",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Long>>>() {}
+), ServiceMethod {
 
     var userIds: Array<Long>? by props
     var userId: Long? by props
-    var message: String? by props
+    var message: String by props
 
-    constructor(
-        userIds: Array<Long>? = null,
-        userId: Long? = null,
-        message: String? = null
-    ) : this() {
+    init {
         this.userIds = userIds
         this.userId = userId
         this.message = message
@@ -44,11 +49,5 @@ class SecureSendNotificationMethod() : VkMethod<Array<Long>>(
     fun setMessage(message: String): SecureSendNotificationMethod {
         this.message = message
         return this
-    }
-
-    override val classRef = SecureSendNotificationMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
     }
 }

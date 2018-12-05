@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a tag on a video.
+ * [https://vk.com/dev/video.putTag]
  *
- *  [https://vk.com/dev/video.putTag]
- *  @property [user_id] ID of the user to be tagged.
- *  @property [owner_id] ID of the user or community that owns the video.
- *  @property [video_id] Video ID.
- *  @property [tagged_name] Tag text.
+ * Adds a tag on a video.
+ *
+ * @property userId ID of the user to be tagged.
+ * @property ownerId ID of the user or community that owns the video.
+ * @property videoId Video ID.
+ * @property taggedName Tag text.
  */
-class VideoPutTagMethod() : VkMethod<Long>(
+class VideoPutTagMethod(
+        userId: Long,
+        ownerId: Long? = null,
+        videoId: Long,
+        taggedName: String? = null
+) : VkMethod<Long>(
     "video.putTag",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
     var ownerId: Long? by props
-    var videoId: Long? by props
+    var videoId: Long by props
     var taggedName: String? by props
 
-    constructor(
-        userId: Long? = null,
-        ownerId: Long? = null,
-        videoId: Long? = null,
-        taggedName: String? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.ownerId = ownerId
         this.videoId = videoId
@@ -53,11 +58,5 @@ class VideoPutTagMethod() : VkMethod<Long>(
     fun setTaggedName(taggedName: String): VideoPutTagMethod {
         this.taggedName = taggedName
         return this
-    }
-
-    override val classRef = VideoPutTagMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

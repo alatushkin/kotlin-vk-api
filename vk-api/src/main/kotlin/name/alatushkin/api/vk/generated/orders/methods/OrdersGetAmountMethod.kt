@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.orders.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -6,24 +8,26 @@ import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.orders.Amount
 
 /**
- *  null
+ * [https://vk.com/dev/orders.getAmount]
  *
- *  [https://vk.com/dev/orders.getAmount]
- *  @property [user_id]
- *  @property [votes]
+ * null
+ *
+ * @property userId 
+ * @property votes 
  */
-class OrdersGetAmountMethod() : VkMethod<Amount>(
+class OrdersGetAmountMethod(
+        userId: Long,
+        votes: Array<String>
+) : VkMethod<Amount>(
     "orders.getAmount",
-    HashMap()
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Amount>>() {}
 ) {
 
-    var userId: Long? by props
-    var votes: Array<String>? by props
+    var userId: Long by props
+    var votes: Array<String> by props
 
-    constructor(
-        userId: Long? = null,
-        votes: Array<String>? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.votes = votes
     }
@@ -36,11 +40,5 @@ class OrdersGetAmountMethod() : VkMethod<Amount>(
     fun setVotes(votes: Array<String>): OrdersGetAmountMethod {
         this.votes = votes
         return this
-    }
-
-    override val classRef = OrdersGetAmountMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Amount>>() {}
     }
 }

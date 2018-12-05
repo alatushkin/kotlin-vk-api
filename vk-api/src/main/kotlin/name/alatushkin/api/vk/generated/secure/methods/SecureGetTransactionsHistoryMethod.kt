@@ -1,23 +1,22 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.secure.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.secure.Transaction
+import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
- *  Shows history of votes transaction between users and the application.
+ * [https://vk.com/dev/secure.getTransactionsHistory]
  *
- *  [https://vk.com/dev/secure.getTransactionsHistory]
+ * Shows history of votes transaction between users and the application.
+ *
 
  */
 class SecureGetTransactionsHistoryMethod : VkMethod<Array<Transaction>>(
     "secure.getTransactionsHistory",
-    HashMap()
-) {
-    override val classRef = SecureGetTransactionsHistoryMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Transaction>>>() {}
-    }
-}
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Transaction>>>() {}
+), ServiceMethod

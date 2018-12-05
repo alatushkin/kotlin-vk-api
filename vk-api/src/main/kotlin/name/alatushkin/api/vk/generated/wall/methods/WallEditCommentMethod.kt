@@ -1,34 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits a comment on a user wall or community wall.
+ * [https://vk.com/dev/wall.editComment]
  *
- *  [https://vk.com/dev/wall.editComment]
- *  @property [owner_id] User ID or community ID. Use a negative value to designate a community ID.
- *  @property [comment_id] Comment ID.
- *  @property [message] New comment text.
- *  @property [attachments] List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
+ * Edits a comment on a user wall or community wall.
+ *
+ * @property ownerId User ID or community ID. Use a negative value to designate a community ID.
+ * @property commentId Comment ID.
+ * @property message New comment text.
+ * @property attachments List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
  */
-class WallEditCommentMethod() : VkMethod<Boolean>(
+class WallEditCommentMethod(
+        ownerId: Long? = null,
+        commentId: Long,
+        message: String? = null,
+        attachments: Array<String>? = null
+) : VkMethod<Boolean>(
     "wall.editComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var commentId: Long? by props
+    var commentId: Long by props
     var message: String? by props
     var attachments: Array<String>? by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null,
-        message: String? = null,
-        attachments: Array<String>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
         this.message = message
@@ -53,11 +58,5 @@ class WallEditCommentMethod() : VkMethod<Boolean>(
     fun setAttachments(attachments: Array<String>): WallEditCommentMethod {
         this.attachments = attachments
         return this
-    }
-
-    override val classRef = WallEditCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

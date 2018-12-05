@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.users
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class SearchSex(@JsonValue val jsonValue: String) {
-    ANY("0"), FEMALE("1"), MALE("2");
+    ANY("0"),
+    FEMALE("1"),
+    MALE("2");
 
     override fun toString() = jsonValue
 

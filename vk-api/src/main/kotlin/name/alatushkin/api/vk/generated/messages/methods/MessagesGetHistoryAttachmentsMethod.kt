@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,25 +7,36 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.GetHistoryAttachmentsMediaType
 import name.alatushkin.api.vk.generated.messages.GetHistoryAttachmentsResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns media files from the dialog or group chat.
+ * [https://vk.com/dev/messages.getHistoryAttachments]
  *
- *  [https://vk.com/dev/messages.getHistoryAttachments]
- *  @property [peer_id] Peer ID. ", For group chat: '2000000000 + chat ID' , , For community: '-community ID'"
- *  @property [media_type] Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
- *  @property [start_from] Message ID to start return results from.
- *  @property [count] Number of objects to return.
- *  @property [photo_sizes] '1' — to return photo sizes in a
- *  @property [fields] Additional profile [vk.com/dev/fields|fields] to return.
- *  @property [group_id] Group ID (for group messages with group access token)
+ * Returns media files from the dialog or group chat.
+ *
+ * @property peerId Peer ID. ", For group chat: '2000000000 + chat ID' , , For community: '-community ID'"
+ * @property mediaType Type of media files to return: *'photo',, *'video',, *'audio',, *'doc',, *'link'.,*'market'.,*'wall'.,*'share'
+ * @property startFrom Message ID to start return results from.
+ * @property count Number of objects to return.
+ * @property photoSizes '1' — to return photo sizes in a
+ * @property fields Additional profile [vk.com/dev/fields|fields] to return.
+ * @property groupId Group ID (for group messages with group access token)
  */
-class MessagesGetHistoryAttachmentsMethod() : VkMethod<GetHistoryAttachmentsResponse>(
+class MessagesGetHistoryAttachmentsMethod(
+        peerId: Long,
+        mediaType: GetHistoryAttachmentsMediaType? = null,
+        startFrom: String? = null,
+        count: Long? = null,
+        photoSizes: Boolean? = null,
+        fields: Array<String>? = null,
+        groupId: Long? = null
+) : VkMethod<GetHistoryAttachmentsResponse>(
     "messages.getHistoryAttachments",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetHistoryAttachmentsResponse>>() {}
+), UserGroupMethod {
 
-    var peerId: Long? by props
+    var peerId: Long by props
     var mediaType: GetHistoryAttachmentsMediaType? by props
     var startFrom: String? by props
     var count: Long? by props
@@ -31,15 +44,7 @@ class MessagesGetHistoryAttachmentsMethod() : VkMethod<GetHistoryAttachmentsResp
     var fields: Array<String>? by props
     var groupId: Long? by props
 
-    constructor(
-        peerId: Long? = null,
-        mediaType: GetHistoryAttachmentsMediaType? = null,
-        startFrom: String? = null,
-        count: Long? = null,
-        photoSizes: Boolean? = null,
-        fields: Array<String>? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.peerId = peerId
         this.mediaType = mediaType
         this.startFrom = startFrom
@@ -82,11 +87,5 @@ class MessagesGetHistoryAttachmentsMethod() : VkMethod<GetHistoryAttachmentsResp
     fun setGroupId(groupId: Long): MessagesGetHistoryAttachmentsMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = MessagesGetHistoryAttachmentsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetHistoryAttachmentsResponse>>() {}
     }
 }

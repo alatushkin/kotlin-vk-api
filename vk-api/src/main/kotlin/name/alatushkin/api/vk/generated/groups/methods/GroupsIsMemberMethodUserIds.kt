@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
- *  Returns information specifying whether a user is a member of a community.
+ * [https://vk.com/dev/groups.isMember]
  *
- *  [https://vk.com/dev/groups.isMember]
- *  @property [group_id] ID or screen name of the community.
- *  @property [user_ids] User IDs.
+ * Returns information specifying whether a user is a member of a community.
+ *
+ * @property groupId ID or screen name of the community.
+ * @property userIds User IDs.
  */
-class GroupsIsMemberMethodUserIds() : VkMethod<Boolean>(
+class GroupsIsMemberMethodUserIds(
+        groupId: String,
+        userIds: Array<Long>? = null
+) : VkMethod<Boolean>(
     "groups.isMember",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserGroupServiceMethod {
 
-    var groupId: String? by props
+    var groupId: String by props
     var userIds: Array<Long>? by props
 
-    constructor(
-        groupId: String? = null,
-        userIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.userIds = userIds
     }
@@ -35,11 +40,5 @@ class GroupsIsMemberMethodUserIds() : VkMethod<Boolean>(
     fun setUserIds(userIds: Array<Long>): GroupsIsMemberMethodUserIds {
         this.userIds = userIds
         return this
-    }
-
-    override val classRef = GroupsIsMemberMethodUserIds.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

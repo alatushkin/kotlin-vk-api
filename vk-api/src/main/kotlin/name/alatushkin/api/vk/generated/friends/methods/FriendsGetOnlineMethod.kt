@@ -1,23 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of user IDs of a user's friends who are online.
+ * [https://vk.com/dev/friends.getOnline]
  *
- *  [https://vk.com/dev/friends.getOnline]
- *  @property [user_id] User ID.
- *  @property [list_id] Friend list ID. If this parameter is not set, information about all online friends is returned.
- *  @property [order] Sort order: 'random' — random order
- *  @property [count] Number of friends to return.
- *  @property [offset] Offset needed to return a specific subset of friends.
+ * Returns a list of user IDs of a user's friends who are online.
+ *
+ * @property userId User ID.
+ * @property listId Friend list ID. If this parameter is not set, information about all online friends is returned.
+ * @property order Sort order: 'random' — random order
+ * @property count Number of friends to return.
+ * @property offset Offset needed to return a specific subset of friends.
  */
-class FriendsGetOnlineMethod() : VkMethod<Array<Long>>(
+class FriendsGetOnlineMethod(
+        userId: Long? = null,
+        listId: Long? = null,
+        order: String? = null,
+        count: Long? = null,
+        offset: Long? = null
+) : VkMethod<Array<Long>>(
     "friends.getOnline",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Long>>>() {}
+), UserMethod {
 
     var userId: Long? by props
     var listId: Long? by props
@@ -25,13 +36,7 @@ class FriendsGetOnlineMethod() : VkMethod<Array<Long>>(
     var count: Long? by props
     var offset: Long? by props
 
-    constructor(
-        userId: Long? = null,
-        listId: Long? = null,
-        order: String? = null,
-        count: Long? = null,
-        offset: Long? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.listId = listId
         this.order = order
@@ -62,11 +67,5 @@ class FriendsGetOnlineMethod() : VkMethod<Array<Long>>(
     fun setOffset(offset: Long): FriendsGetOnlineMethod {
         this.offset = offset
         return this
-    }
-
-    override val classRef = FriendsGetOnlineMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Long>>>() {}
     }
 }

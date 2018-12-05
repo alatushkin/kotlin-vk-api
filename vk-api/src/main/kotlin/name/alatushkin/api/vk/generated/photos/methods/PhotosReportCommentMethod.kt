@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Reason
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Reports (submits a complaint about) a comment on a photo.
+ * [https://vk.com/dev/photos.reportComment]
  *
- *  [https://vk.com/dev/photos.reportComment]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [comment_id] ID of the comment being reported.
- *  @property [reason] Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
+ * Reports (submits a complaint about) a comment on a photo.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property commentId ID of the comment being reported.
+ * @property reason Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
  */
-class PhotosReportCommentMethod() : VkMethod<Boolean>(
+class PhotosReportCommentMethod(
+        ownerId: Long,
+        commentId: Long,
+        reason: Reason? = null
+) : VkMethod<Boolean>(
     "photos.reportComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var commentId: Long? by props
+    var ownerId: Long by props
+    var commentId: Long by props
     var reason: Reason? by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null,
-        reason: Reason? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
         this.reason = reason
@@ -45,11 +50,5 @@ class PhotosReportCommentMethod() : VkMethod<Boolean>(
     fun setReason(reason: Reason): PhotosReportCommentMethod {
         this.reason = reason
         return this
-    }
-
-    override val classRef = PhotosReportCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,57 +1,100 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Allow to set notifications settings for group.
+ * [https://vk.com/dev/groups.setCallbackSettings]
  *
- *  [https://vk.com/dev/groups.setCallbackSettings]
- *  @property [group_id] Community ID.
- *  @property [server_id] Server ID.
- *  @property [message_new] A new incoming message has been received ('0' — disabled, '1' — enabled).
- *  @property [message_reply] A new outcoming message has been received ('0' — disabled, '1' — enabled).
- *  @property [message_allow] Allowed messages notifications ('0' — disabled, '1' — enabled).
- *  @property [message_deny] Denied messages notifications ('0' — disabled, '1' — enabled).
- *  @property [photo_new] New photos notifications ('0' — disabled, '1' — enabled).
- *  @property [audio_new] New audios notifications ('0' — disabled, '1' — enabled).
- *  @property [video_new] New videos notifications ('0' — disabled, '1' — enabled).
- *  @property [wall_reply_new] New wall replies notifications ('0' — disabled, '1' — enabled).
- *  @property [wall_reply_edit] Wall replies edited notifications ('0' — disabled, '1' — enabled).
- *  @property [wall_reply_delete] A wall comment has been deleted ('0' — disabled, '1' — enabled).
- *  @property [wall_reply_restore] A wall comment has been restored ('0' — disabled, '1' — enabled).
- *  @property [wall_post_new] New wall posts notifications ('0' — disabled, '1' — enabled).
- *  @property [wall_repost] New wall posts notifications ('0' — disabled, '1' — enabled).
- *  @property [board_post_new] New board posts notifications ('0' — disabled, '1' — enabled).
- *  @property [board_post_edit] Board posts edited notifications ('0' — disabled, '1' — enabled).
- *  @property [board_post_restore] Board posts restored notifications ('0' — disabled, '1' — enabled).
- *  @property [board_post_delete] Board posts deleted notifications ('0' — disabled, '1' — enabled).
- *  @property [photo_comment_new] New comment to photo notifications ('0' — disabled, '1' — enabled).
- *  @property [photo_comment_edit] A photo comment has been edited ('0' — disabled, '1' — enabled).
- *  @property [photo_comment_delete] A photo comment has been deleted ('0' — disabled, '1' — enabled).
- *  @property [photo_comment_restore] A photo comment has been restored ('0' — disabled, '1' — enabled).
- *  @property [video_comment_new] New comment to video notifications ('0' — disabled, '1' — enabled).
- *  @property [video_comment_edit] A video comment has been edited ('0' — disabled, '1' — enabled).
- *  @property [video_comment_delete] A video comment has been deleted ('0' — disabled, '1' — enabled).
- *  @property [video_comment_restore] A video comment has been restored ('0' — disabled, '1' — enabled).
- *  @property [market_comment_new] New comment to market item notifications ('0' — disabled, '1' — enabled).
- *  @property [market_comment_edit] A market comment has been edited ('0' — disabled, '1' — enabled).
- *  @property [market_comment_delete] A market comment has been deleted ('0' — disabled, '1' — enabled).
- *  @property [market_comment_restore] A market comment has been restored ('0' — disabled, '1' — enabled).
- *  @property [poll_vote_new] A vote in a public poll has been added ('0' — disabled, '1' — enabled).
- *  @property [group_join] Joined community notifications ('0' — disabled, '1' — enabled).
- *  @property [group_leave] Left community notifications ('0' — disabled, '1' — enabled).
- *  @property [user_block] User added to community blacklist
- *  @property [user_unblock] User removed from community blacklist
- *  @property [lead_forms_new] New form in lead forms
+ * Allow to set notifications settings for group.
+ *
+ * @property groupId Community ID.
+ * @property serverId Server ID.
+ * @property messageNew A new incoming message has been received ('0' — disabled, '1' — enabled).
+ * @property messageReply A new outcoming message has been received ('0' — disabled, '1' — enabled).
+ * @property messageAllow Allowed messages notifications ('0' — disabled, '1' — enabled).
+ * @property messageDeny Denied messages notifications ('0' — disabled, '1' — enabled).
+ * @property photoNew New photos notifications ('0' — disabled, '1' — enabled).
+ * @property audioNew New audios notifications ('0' — disabled, '1' — enabled).
+ * @property videoNew New videos notifications ('0' — disabled, '1' — enabled).
+ * @property wallReplyNew New wall replies notifications ('0' — disabled, '1' — enabled).
+ * @property wallReplyEdit Wall replies edited notifications ('0' — disabled, '1' — enabled).
+ * @property wallReplyDelete A wall comment has been deleted ('0' — disabled, '1' — enabled).
+ * @property wallReplyRestore A wall comment has been restored ('0' — disabled, '1' — enabled).
+ * @property wallPostNew New wall posts notifications ('0' — disabled, '1' — enabled).
+ * @property wallRepost New wall posts notifications ('0' — disabled, '1' — enabled).
+ * @property boardPostNew New board posts notifications ('0' — disabled, '1' — enabled).
+ * @property boardPostEdit Board posts edited notifications ('0' — disabled, '1' — enabled).
+ * @property boardPostRestore Board posts restored notifications ('0' — disabled, '1' — enabled).
+ * @property boardPostDelete Board posts deleted notifications ('0' — disabled, '1' — enabled).
+ * @property photoCommentNew New comment to photo notifications ('0' — disabled, '1' — enabled).
+ * @property photoCommentEdit A photo comment has been edited ('0' — disabled, '1' — enabled).
+ * @property photoCommentDelete A photo comment has been deleted ('0' — disabled, '1' — enabled).
+ * @property photoCommentRestore A photo comment has been restored ('0' — disabled, '1' — enabled).
+ * @property videoCommentNew New comment to video notifications ('0' — disabled, '1' — enabled).
+ * @property videoCommentEdit A video comment has been edited ('0' — disabled, '1' — enabled).
+ * @property videoCommentDelete A video comment has been deleted ('0' — disabled, '1' — enabled).
+ * @property videoCommentRestore A video comment has been restored ('0' — disabled, '1' — enabled).
+ * @property marketCommentNew New comment to market item notifications ('0' — disabled, '1' — enabled).
+ * @property marketCommentEdit A market comment has been edited ('0' — disabled, '1' — enabled).
+ * @property marketCommentDelete A market comment has been deleted ('0' — disabled, '1' — enabled).
+ * @property marketCommentRestore A market comment has been restored ('0' — disabled, '1' — enabled).
+ * @property pollVoteNew A vote in a public poll has been added ('0' — disabled, '1' — enabled).
+ * @property groupJoin Joined community notifications ('0' — disabled, '1' — enabled).
+ * @property groupLeave Left community notifications ('0' — disabled, '1' — enabled).
+ * @property userBlock User added to community blacklist
+ * @property userUnblock User removed from community blacklist
+ * @property leadFormsNew New form in lead forms
  */
-class GroupsSetCallbackSettingsMethod() : VkMethod<Boolean>(
+class GroupsSetCallbackSettingsMethod(
+        groupId: Long,
+        serverId: Long? = null,
+        messageNew: Boolean? = null,
+        messageReply: Boolean? = null,
+        messageAllow: Boolean? = null,
+        messageDeny: Boolean? = null,
+        photoNew: Boolean? = null,
+        audioNew: Boolean? = null,
+        videoNew: Boolean? = null,
+        wallReplyNew: Boolean? = null,
+        wallReplyEdit: Boolean? = null,
+        wallReplyDelete: Boolean? = null,
+        wallReplyRestore: Boolean? = null,
+        wallPostNew: Boolean? = null,
+        wallRepost: Boolean? = null,
+        boardPostNew: Boolean? = null,
+        boardPostEdit: Boolean? = null,
+        boardPostRestore: Boolean? = null,
+        boardPostDelete: Boolean? = null,
+        photoCommentNew: Boolean? = null,
+        photoCommentEdit: Boolean? = null,
+        photoCommentDelete: Boolean? = null,
+        photoCommentRestore: Boolean? = null,
+        videoCommentNew: Boolean? = null,
+        videoCommentEdit: Boolean? = null,
+        videoCommentDelete: Boolean? = null,
+        videoCommentRestore: Boolean? = null,
+        marketCommentNew: Boolean? = null,
+        marketCommentEdit: Boolean? = null,
+        marketCommentDelete: Boolean? = null,
+        marketCommentRestore: Boolean? = null,
+        pollVoteNew: Boolean? = null,
+        groupJoin: Boolean? = null,
+        groupLeave: Boolean? = null,
+        userBlock: Boolean? = null,
+        userUnblock: Boolean? = null,
+        leadFormsNew: Boolean? = null
+) : VkMethod<Boolean>(
     "groups.setCallbackSettings",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserGroupMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var serverId: Long? by props
     var messageNew: Boolean? by props
     var messageReply: Boolean? by props
@@ -89,45 +132,7 @@ class GroupsSetCallbackSettingsMethod() : VkMethod<Boolean>(
     var userUnblock: Boolean? by props
     var leadFormsNew: Boolean? by props
 
-    constructor(
-        groupId: Long? = null,
-        serverId: Long? = null,
-        messageNew: Boolean? = null,
-        messageReply: Boolean? = null,
-        messageAllow: Boolean? = null,
-        messageDeny: Boolean? = null,
-        photoNew: Boolean? = null,
-        audioNew: Boolean? = null,
-        videoNew: Boolean? = null,
-        wallReplyNew: Boolean? = null,
-        wallReplyEdit: Boolean? = null,
-        wallReplyDelete: Boolean? = null,
-        wallReplyRestore: Boolean? = null,
-        wallPostNew: Boolean? = null,
-        wallRepost: Boolean? = null,
-        boardPostNew: Boolean? = null,
-        boardPostEdit: Boolean? = null,
-        boardPostRestore: Boolean? = null,
-        boardPostDelete: Boolean? = null,
-        photoCommentNew: Boolean? = null,
-        photoCommentEdit: Boolean? = null,
-        photoCommentDelete: Boolean? = null,
-        photoCommentRestore: Boolean? = null,
-        videoCommentNew: Boolean? = null,
-        videoCommentEdit: Boolean? = null,
-        videoCommentDelete: Boolean? = null,
-        videoCommentRestore: Boolean? = null,
-        marketCommentNew: Boolean? = null,
-        marketCommentEdit: Boolean? = null,
-        marketCommentDelete: Boolean? = null,
-        marketCommentRestore: Boolean? = null,
-        pollVoteNew: Boolean? = null,
-        groupJoin: Boolean? = null,
-        groupLeave: Boolean? = null,
-        userBlock: Boolean? = null,
-        userUnblock: Boolean? = null,
-        leadFormsNew: Boolean? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.serverId = serverId
         this.messageNew = messageNew
@@ -350,11 +355,5 @@ class GroupsSetCallbackSettingsMethod() : VkMethod<Boolean>(
     fun setLeadFormsNew(leadFormsNew: Boolean): GroupsSetCallbackSettingsMethod {
         this.leadFormsNew = leadFormsNew
         return this
-    }
-
-    override val classRef = GroupsSetCallbackSettingsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

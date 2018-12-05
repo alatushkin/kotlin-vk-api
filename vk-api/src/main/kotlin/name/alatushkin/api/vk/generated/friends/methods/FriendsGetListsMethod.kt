@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,26 +7,29 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.friends.FriendsList
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of the user's friend lists.
+ * [https://vk.com/dev/friends.getLists]
  *
- *  [https://vk.com/dev/friends.getLists]
- *  @property [user_id] User ID.
- *  @property [return_system] '1' — to return system friend lists. By default: '0'.
+ * Returns a list of the user's friend lists.
+ *
+ * @property userId User ID.
+ * @property returnSystem '1' — to return system friend lists. By default: '0'.
  */
-class FriendsGetListsMethod() : VkMethod<VkList<FriendsList>>(
+class FriendsGetListsMethod(
+        userId: Long? = null,
+        returnSystem: Boolean? = null
+) : VkMethod<VkList<FriendsList>>(
     "friends.getLists",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<FriendsList>>>() {}
+), UserMethod {
 
     var userId: Long? by props
     var returnSystem: Boolean? by props
 
-    constructor(
-        userId: Long? = null,
-        returnSystem: Boolean? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.returnSystem = returnSystem
     }
@@ -37,11 +42,5 @@ class FriendsGetListsMethod() : VkMethod<VkList<FriendsList>>(
     fun setReturnSystem(returnSystem: Boolean): FriendsGetListsMethod {
         this.returnSystem = returnSystem
         return this
-    }
-
-    override val classRef = FriendsGetListsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<FriendsList>>>() {}
     }
 }

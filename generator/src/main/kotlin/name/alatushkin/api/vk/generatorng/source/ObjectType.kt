@@ -3,8 +3,12 @@ package name.alatushkin.api.vk.generatorng.source
 import name.alatushkin.api.vk.generatorng.source.writer.SourceWriter
 import name.alatushkin.api.vk.generatorng.source.writer.invoke
 
-data class ObjectType(val props: List<Prop>, val kind: Kind = Kind.CLASS, val parents: Set<TypeId> = emptySet()) :
-    TypeDefinition {
+data class ObjectType(
+        val props: List<Prop>,
+        val kind: Kind = Kind.CLASS,
+        val parents: Set<TypeId> = emptySet()
+) : TypeDefinition {
+
     enum class Kind {
         CLASS, INTERFACE
     }
@@ -41,18 +45,19 @@ data class ObjectType(val props: List<Prop>, val kind: Kind = Kind.CLASS, val pa
         get() = (kind == Kind.CLASS && props.isNotEmpty()) || kind == Kind.INTERFACE
 
     override fun generateSource(basePackage: String, typeId: TypeId, sourceWriter: SourceWriter): String {
-        val defaultValue = if (kind == Kind.INTERFACE) "" else "null"
+        val defaultValue = if (kind == Kind.INTERFACE) null else "null"
 
-        val delimChar = if (kind == Kind.INTERFACE) "\n" else ",\n"
+        val delimiter = if (kind == Kind.INTERFACE) "\n" else ",\n"
 
-        val constructorArgs = props.joinToString(delimChar) { arg ->
+        val constructorArgs = props.joinToString(delimiter) { arg ->
             sourceWriter.constructorField(
-                name = arg.name,
-                type = arg.typeId,
-                inherited = arg.inherited,
-                nullable = arg.nullable,
-                final = true,
-                defaultValue = (arg.nullable)(defaultValue)
+                    name = arg.name,
+                    type = arg.typeId,
+                    inherited = arg.inherited,
+                    nullable = arg.nullable,
+                    final = true,
+                    defaultValue = defaultValue.takeIf { arg.nullable },
+                    delegateBy = null
             )
         }
 
@@ -60,9 +65,13 @@ data class ObjectType(val props: List<Prop>, val kind: Kind = Kind.CLASS, val pa
             sourceWriter.parentType(arg)
         }
 
+        val packageClause = sourceWriter.packageClause(basePackage, typeId)
         val importClause = sourceWriter.importClause(basePackage, typeId)
+
         val builder = StringBuilder()
-            .append(importClause)
+        builder.append(packageClause)
+        builder.append("\n\n")
+        builder.append(importClause)
 
         if (kind == Kind.INTERFACE) {
             builder.append("interface")

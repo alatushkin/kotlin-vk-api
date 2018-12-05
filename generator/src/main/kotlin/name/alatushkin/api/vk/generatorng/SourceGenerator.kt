@@ -17,7 +17,7 @@ import java.nio.file.Paths
 class SourceGenerator {
     lateinit var methodsSchema: MethodsSchema
     lateinit var objectsSchema: ObjectsSchema
-    lateinit var responcesSchema: ResponcesSchema
+    lateinit var responsesSchema: ResponcesSchema
 
     val jsonObjects = HashMap<JsonTypeRef, Object>()
 
@@ -39,8 +39,8 @@ class SourceGenerator {
 
     fun loadResponsesDefinitionsFrom(fileName: String) {
         val jsonString = readSchemaTextFromFile(fileName)
-        responcesSchema = OBJECT_MAPPER.readValue(jsonString)
-        responcesSchema.definitions.forEach { ref, obj ->
+        responsesSchema = OBJECT_MAPPER.readValue(jsonString)
+        responsesSchema.definitions.forEach { ref, obj ->
             jsonObjects[ref] = obj.properties.response!!
         }
 
@@ -70,7 +70,7 @@ class SourceGenerator {
     }
 
     private fun responseSchemaIsDefined(ref: SchemaFileRef): Boolean {
-        val result = responcesSchema.definitions.containsKey(ref.toJsonRef())
+        val result = responsesSchema.definitions.containsKey(ref.toJsonRef())
         if (!result)
             println("WARN: no response type defined $ref")
         return result
@@ -91,17 +91,19 @@ class SourceGenerator {
             println("[WARN]: cant define method ${methodsSchema.name} cause of problems with result")
         else {
             val methodType = MethodType(
-                description = methodsSchema.description,
                 methodUrl = methodsSchema.name,
                 arguments = methodsSchema.parameters.map {
                     MethodArgument(
-                        typeId = resolveMethodParamToTypeId(methodsSchema.name, it),
-                        name = it.name,
-                        description = it.description
+                            typeId = resolveMethodParamToTypeId(methodsSchema.name, it),
+                            name = it.name,
+                            required = it.required ?: false,
+                            description = it.description
                     )
                 }.map { it.name to it }.toMap().values.toList(),
                 result = methodResultType,
-                defailtParams = methodsSchema.fixedParams
+                defaultParams = methodsSchema.fixedParams,
+                methodAccessType = makeMethodAccessType(methodsSchema),
+                description = methodsSchema.description
             )
             val typeId = nameMethod(methodsSchema.name).copy(typeName = methodsSchema.className)
             typesSpace.registerTypeImplementation(typeId, methodType)
@@ -110,7 +112,7 @@ class SourceGenerator {
 
     private fun makeMethodResultType(methodSchema: MethodSchema): TypeId? {
         val responseRef = methodSchema.responses.response.toJsonRef()
-        val responseObject = responcesSchema.definitions[responseRef]!!.properties.response!!
+        val responseObject = responsesSchema.definitions[responseRef]!!.properties.response!!
 
         return when {
             responseObject is GeneralObject &&
@@ -163,8 +165,20 @@ class SourceGenerator {
         }
     }
 
+    private fun makeMethodAccessType(methodSchema: MethodSchema): MethodAccessType? {
+        val interfacePackage = "/name.alatushkin.api.vk.tokens"
 
-    private fun makeType(nameStategy: NameStartegy, responseRef: JsonTypeRef, typeObject: Object?): TypeId? {
+        val tokenTypes = methodSchema.accessTokenType.toSet()
+        val filteredTokenTypes = listOf("user", "group", "service").filter { tokenTypes.contains(it) }
+        if (filteredTokenTypes.isEmpty()) return null
+
+        val interfaceName = filteredTokenTypes.joinToString("", postfix = "Method") { it.capitalize() }
+
+        return MethodAccessType(interfaceName, interfacePackage)
+    }
+
+
+    private fun makeType(nameStategy: NameStrategy, responseRef: JsonTypeRef, typeObject: Object?): TypeId? {
         if (typeObject == null) {
             println("Type $responseRef is undefined")
             return null
@@ -192,14 +206,14 @@ class SourceGenerator {
                 PrimitiveType.typeId("Array").copy(paramTypeIds = listOf(it))
             }
             is GeneralObject -> makeTypeFromGeneralObject(nameStategy, responseRef, typeObject)
-            is ObjectWithPatternProperties -> makeMapResultType(responseRef, typeObject)
+            is ObjectWithPatternProperties -> makeMapResultType()
         }
     }
 
     private fun makeEnumType(
-        nameStategy: NameStartegy,
-        responseRef: JsonTypeRef,
-        typeObject: EnumObject
+            nameStategy: NameStrategy,
+            responseRef: JsonTypeRef,
+            typeObject: EnumObject
     ): TypeId {
         val typeIdByRef =
             typesSpace.resolveTypeIdByJsonRefOrNull(responseRef)?.let { typesSpace.resolveActualTypeId(it) }
@@ -211,15 +225,14 @@ class SourceGenerator {
             return typeId
 
         val type = EnumType.decodeTypeDefinition(typeObject.enum, typeObject.enumNames)
-        if (type == PrimitiveType)
-            return PrimitiveType.typeId("Boolean")
+
+        return if (type == PrimitiveType)
+            PrimitiveType.typeId("Boolean")
         else
-            return typesSpace.registerTypeImplementation(typeId, type)
-
-
+            typesSpace.registerTypeImplementation(typeId, type)
     }
 
-    private fun makeOneOfType(nameStategy: NameStartegy, responseRef: JsonTypeRef, typeObject: OneOfObject): TypeId? {
+    private fun makeOneOfType(nameStategy: NameStrategy, responseRef: JsonTypeRef, typeObject: OneOfObject): TypeId? {
         //для каждго ref - делаем сплит и родительскому интерфйесу добавляем в родители пустой маркер-интерфейс этого объекта
         assert(typeObject.oneOf.all { it is RefObject }) { "can only translate oneOff made of references" }
         val rootTypeId = nameStategy(responseRef)
@@ -246,9 +259,9 @@ class SourceGenerator {
     }
 
     private fun makeAllOfType(
-        nameStategy: NameStartegy,
-        responseRef: JsonTypeRef,
-        typeObject: AllOfObject
+            nameStategy: NameStrategy,
+            responseRef: JsonTypeRef,
+            typeObject: AllOfObject
     ): TypeId? {
         //OneOf - игнорируем
         //для каждго ref - делаем сплит и добавляем свойства из него
@@ -299,9 +312,9 @@ class SourceGenerator {
     }
 
     private fun makeTypeFromGeneralObject(
-        nameStategy: NameStartegy,
-        responseRef: JsonTypeRef,
-        typeObject: GeneralObject
+            nameStategy: NameStrategy,
+            responseRef: JsonTypeRef,
+            typeObject: GeneralObject
     ): TypeId? {
         val result = typesSpace.resolveTypeIdByJsonRefOrNull(responseRef)
         if (result != null)
@@ -321,13 +334,13 @@ class SourceGenerator {
     }
 
     private fun objectPropsToClassProps(
-        properties: Map<String, Object>,
-        nameStategy: NameStartegy,
-        responseRef: JsonTypeRef,
-        required: Array<String> = emptyArray()
+            properties: Map<String, Object>,
+            nameStrategy: NameStrategy,
+            responseRef: JsonTypeRef,
+            required: Array<String> = emptyArray()
     ): List<ObjectType.Prop> {
         return properties.mapNotNull { (name, propObj) ->
-            val typeId = makeType(nameStategy, responseRef + "_" + name, propObj)
+            val typeId = makeType(nameStrategy, responseRef + "_" + name, propObj)
             if (typeId == null) {
                 println("[WARN]:cant resolve $responseRef > $name")
                 return@mapNotNull null
@@ -347,9 +360,12 @@ class SourceGenerator {
     }
 
 
-    private fun makeMapResultType(responseRef: JsonTypeRef, responseObject: ObjectWithPatternProperties): TypeId {
-        val typeId =
-            TypeId("kotlin.collection", "Map", listOf(PrimitiveType.typeId("Long"), PrimitiveType.typeId("Boolean")))
+    private fun makeMapResultType(): TypeId {
+        val typeId = TypeId(
+                "kotlin.collection",
+                "Map",
+                listOf(PrimitiveType.typeId("Long"), PrimitiveType.typeId("Boolean"))
+        )
 
         return typesSpace.registerTypeImplementation(typeId, PrimitiveType)
     }
@@ -388,19 +404,18 @@ class SourceGenerator {
                 return oldDefinedType.first
             } else {
                 //если они оба в одном неймспейсе - не перевозим их в common
-                val newPacages = if (oldDefinedType.first.packages.containsAll(expectedTypeId.packages))
+                val newPackages = if (oldDefinedType.first.packages.containsAll(expectedTypeId.packages))
                     oldDefinedType.first.packages
                 else
                     listOf("common")
 
+                val newTypeName = if (simpleName.contains("xtr")) {
+                    oldDefinedType.first
+                } else {
+                    nameObject("base_$simpleName")
+                }
 
-                if (simpleName.contains("xtr")) {
-                    return typesSpace.renameType(oldDefinedType.first, oldDefinedType.first.copy(packages = newPacages))
-                } else
-                    return typesSpace.renameType(
-                        oldDefinedType.first,
-                        nameObject("base_" + simpleName).copy(packages = newPacages)
-                    )
+                return typesSpace.renameType(oldDefinedType.first, newTypeName.copy(packages = newPackages))
             }
         } else {
             typesSpace.registerTypeImplementation(expectedTypeId, type)
@@ -424,9 +439,6 @@ class SourceGenerator {
         typesSpace.registerPredefined("name.alatushkin.api.vk.api.VkList")
         typesSpace.registerPredefined("name.alatushkin.api.vk.api.VkIterator")
         typesSpace.registerPredefined("kotlin.collection.List")
-
-
-
 
         typesSpace.registerType(
             "base_mode",
@@ -466,7 +478,6 @@ class SourceGenerator {
 
         makeType(::nameObject, refId, objectsSchema.definitions[refId]!!)
 
-        //resolveObjects(objectsSchema.definitions)
         println("Defined ${typesSpace.typesDefined} types")
     }
 
@@ -479,17 +490,28 @@ class SourceGenerator {
         normalizedMethods.forEach(this::makeMethod)
     }
 
-    fun loadPatchesFrom(vararg pathcFileNames: String) {
+    private fun concatenatePackage(packagePath: String, fileName: String): String {
+        return if (packagePath.last() == '/') "$packagePath$fileName" else "$packagePath/$fileName"
+    }
 
-        pathcFileNames.forEach { fileName ->
-            val jsonString = readTextFromFile("/patch/$fileName")
+    fun loadPatchesFrom(vararg patchFileNames: String, patchPackage: String) {
+        patchFileNames.forEach { fileName ->
+            val jsonString = readTextFromFile(concatenatePackage(patchPackage, fileName))
             val patch: Patch = OBJECT_MAPPER.readValue(jsonString)
             methodsSchema.methods.removeIf { patch.methods.any { p -> p.name == it.name } }
             methodsSchema.methods += patch.methods
 
-            responcesSchema.definitions.putAll(patch.responses)
+            responsesSchema.definitions.putAll(patch.responses)
             objectsSchema.definitions.putAll(patch.objects)
         }
+    }
+
+    fun loadPatchesFromPackage(patchPackage: String) {
+        val packageWithSlash = concatenatePackage(patchPackage, "")
+        val packageResource = Thread.currentThread().contextClassLoader.getResourceAsStream(packageWithSlash)
+                ?: String::class.java.getResourceAsStream(packageWithSlash) ?: error("Package $patchPackage not found")
+        val fileNames = packageResource.use { it.reader().buffered().readLines() }
+        loadPatchesFrom(*fileNames.toTypedArray(), patchPackage = patchPackage)
     }
 
     fun writeSourceTo(path: Path, basePackage: String) {
@@ -503,14 +525,13 @@ class SourceGenerator {
                 val filePath: Path =
                     Paths.get(absPath.toString(), *(typeId.packages.toTypedArray() + (typeId.typeName + ".kt")))
                 Files.createDirectories(filePath.parent)
-                Files.write(filePath, (sourceWriter.packageClause(basePackage, typeId) + source).toByteArray())
+                Files.write(filePath, source.toByteArray())
             }
 
         }
     }
 
     fun writeTypeResolver(path: Path, basePackage: String) {
-        val sourceWriter = KotlinSourceWriter(typesSpace)
         val absPath = Paths.get(path.toAbsolutePath().normalize().toString(), *basePackage.split(".").toTypedArray())
 
         val filePath: Path =
@@ -546,17 +567,3 @@ class SourceGenerator {
 }
 
 private val OBJECT_MAPPER = ObjectMapper().registerModule(KotlinModule())
-
-
-fun <ACC, T> Array<T>.reduce(acc: ACC, transform: (ACC, T) -> ACC): ACC =
-    this.toList().reduce(acc, transform)
-
-
-fun <ACC, T> List<T>.reduce(acc: ACC, transform: (ACC, T) -> ACC): ACC {
-    var workAcc: ACC = acc
-    this.forEach { item ->
-        workAcc = transform(workAcc, item)
-    }
-    return workAcc
-}
-

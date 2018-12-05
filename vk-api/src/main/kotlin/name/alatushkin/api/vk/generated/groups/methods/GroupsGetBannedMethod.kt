@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,35 +7,38 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.OwnerXtrBanInfo
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of users on a community blacklist.
+ * [https://vk.com/dev/groups.getBanned]
  *
- *  [https://vk.com/dev/groups.getBanned]
- *  @property [group_id] Community ID.
- *  @property [offset] Offset needed to return a specific subset of users.
- *  @property [count] Number of users to return.
- *  @property [fields]
- *  @property [user_id]
+ * Returns a list of users on a community blacklist.
+ *
+ * @property groupId Community ID.
+ * @property offset Offset needed to return a specific subset of users.
+ * @property count Number of users to return.
+ * @property fields 
+ * @property userId 
  */
-class GroupsGetBannedMethod() : VkMethod<VkList<OwnerXtrBanInfo>>(
+class GroupsGetBannedMethod(
+        groupId: Long,
+        offset: Long? = null,
+        count: Long? = null,
+        fields: Array<String>? = null,
+        userId: Long? = null
+) : VkMethod<VkList<OwnerXtrBanInfo>>(
     "groups.getBanned",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<OwnerXtrBanInfo>>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var offset: Long? by props
     var count: Long? by props
     var fields: Array<String>? by props
     var userId: Long? by props
 
-    constructor(
-        groupId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        userId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.offset = offset
         this.count = count
@@ -64,11 +69,5 @@ class GroupsGetBannedMethod() : VkMethod<VkList<OwnerXtrBanInfo>>(
     fun setUserId(userId: Long): GroupsGetBannedMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = GroupsGetBannedMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<OwnerXtrBanInfo>>>() {}
     }
 }

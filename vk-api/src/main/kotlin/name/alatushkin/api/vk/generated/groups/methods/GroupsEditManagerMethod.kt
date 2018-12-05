@@ -1,44 +1,49 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.EditManagerRole
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to add, remove or edit the community manager.
+ * [https://vk.com/dev/groups.editManager]
  *
- *  [https://vk.com/dev/groups.editManager]
- *  @property [group_id] Community ID.
- *  @property [user_id] User ID.
- *  @property [role] Manager role. Possible values: *'moderator',, *'editor',, *'administrator'.
- *  @property [is_contact] '1' — to show the manager in Contacts block of the community.
- *  @property [contact_position] Position to show in Contacts block.
- *  @property [contact_phone] Contact phone.
- *  @property [contact_email] Contact e-mail.
+ * Allows to add, remove or edit the community manager.
+ *
+ * @property groupId Community ID.
+ * @property userId User ID.
+ * @property role Manager role. Possible values: *'moderator',, *'editor',, *'administrator'.
+ * @property isContact '1' — to show the manager in Contacts block of the community.
+ * @property contactPosition Position to show in Contacts block.
+ * @property contactPhone Contact phone.
+ * @property contactEmail Contact e-mail.
  */
-class GroupsEditManagerMethod() : VkMethod<Boolean>(
+class GroupsEditManagerMethod(
+        groupId: Long,
+        userId: Long,
+        role: EditManagerRole? = null,
+        isContact: Boolean? = null,
+        contactPosition: String? = null,
+        contactPhone: String? = null,
+        contactEmail: String? = null
+) : VkMethod<Boolean>(
     "groups.editManager",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var userId: Long? by props
+    var groupId: Long by props
+    var userId: Long by props
     var role: EditManagerRole? by props
     var isContact: Boolean? by props
     var contactPosition: String? by props
     var contactPhone: String? by props
     var contactEmail: String? by props
 
-    constructor(
-        groupId: Long? = null,
-        userId: Long? = null,
-        role: EditManagerRole? = null,
-        isContact: Boolean? = null,
-        contactPosition: String? = null,
-        contactPhone: String? = null,
-        contactEmail: String? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.userId = userId
         this.role = role
@@ -81,11 +86,5 @@ class GroupsEditManagerMethod() : VkMethod<Boolean>(
     fun setContactEmail(contactEmail: String): GroupsEditManagerMethod {
         this.contactEmail = contactEmail
         return this
-    }
-
-    override val classRef = GroupsEditManagerMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

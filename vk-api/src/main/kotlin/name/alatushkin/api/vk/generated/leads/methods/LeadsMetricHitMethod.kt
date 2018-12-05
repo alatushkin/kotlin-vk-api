@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.leads.MetricHitResponse
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Counts the metric event.
+ * [https://vk.com/dev/leads.metricHit]
  *
- *  [https://vk.com/dev/leads.metricHit]
- *  @property [data] Metric data obtained in the lead interface.
+ * Counts the metric event.
+ *
+ * @property data Metric data obtained in the lead interface.
  */
-class LeadsMetricHitMethod() : VkMethod<MetricHitResponse>(
+class LeadsMetricHitMethod(
+        data: String
+) : VkMethod<MetricHitResponse>(
     "leads.metricHit",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<MetricHitResponse>>() {}
+), UserServiceMethod {
 
-    var data: String? by props
+    var data: String by props
 
-    constructor(
-        data: String? = null
-    ) : this() {
+    init {
         this.data = data
     }
 
     fun setData(data: String): LeadsMetricHitMethod {
         this.data = data
         return this
-    }
-
-    override val classRef = LeadsMetricHitMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<MetricHitResponse>>() {}
     }
 }

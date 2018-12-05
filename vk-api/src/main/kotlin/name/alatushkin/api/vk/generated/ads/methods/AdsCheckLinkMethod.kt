@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,35 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.ads.CheckLinkLinkType
 import name.alatushkin.api.vk.generated.ads.LinkStatus
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to check the ad link.
+ * [https://vk.com/dev/ads.checkLink]
  *
- *  [https://vk.com/dev/ads.checkLink]
- *  @property [account_id] Advertising account ID.
- *  @property [link_type] Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
- *  @property [link_url] Object URL.
- *  @property [campaign_id] Campaign ID
+ * Allows to check the ad link.
+ *
+ * @property accountId Advertising account ID.
+ * @property linkType Object type: *'community' — community,, *'post' — community post,, *'application' — VK application,, *'video' — video,, *'site' — external site.
+ * @property linkUrl Object URL.
+ * @property campaignId Campaign ID
  */
-class AdsCheckLinkMethod() : VkMethod<LinkStatus>(
+class AdsCheckLinkMethod(
+        accountId: Long,
+        linkType: CheckLinkLinkType,
+        linkUrl: String,
+        campaignId: Long? = null
+) : VkMethod<LinkStatus>(
     "ads.checkLink",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<LinkStatus>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
-    var linkType: CheckLinkLinkType? by props
-    var linkUrl: String? by props
+    var accountId: Long by props
+    var linkType: CheckLinkLinkType by props
+    var linkUrl: String by props
     var campaignId: Long? by props
 
-    constructor(
-        accountId: Long? = null,
-        linkType: CheckLinkLinkType? = null,
-        linkUrl: String? = null,
-        campaignId: Long? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.linkType = linkType
         this.linkUrl = linkUrl
@@ -55,11 +60,5 @@ class AdsCheckLinkMethod() : VkMethod<LinkStatus>(
     fun setCampaignId(campaignId: Long): AdsCheckLinkMethod {
         this.campaignId = campaignId
         return this
-    }
-
-    override val classRef = AdsCheckLinkMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<LinkStatus>>() {}
     }
 }

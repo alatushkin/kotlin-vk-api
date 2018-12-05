@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,28 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 
 /**
- *  null
+ * [https://vk.com/dev/newsfeed.deleteList]
  *
- *  [https://vk.com/dev/newsfeed.deleteList]
- *  @property [list_id]
+ * null
+ *
+ * @property listId 
  */
-class NewsfeedDeleteListMethod() : VkMethod<Boolean>(
+class NewsfeedDeleteListMethod(
+        listId: Long
+) : VkMethod<Boolean>(
     "newsfeed.deleteList",
-    HashMap()
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
 ) {
 
-    var listId: Long? by props
+    var listId: Long by props
 
-    constructor(
-        listId: Long? = null
-    ) : this() {
+    init {
         this.listId = listId
     }
 
     fun setListId(listId: Long): NewsfeedDeleteListMethod {
         this.listId = listId
         return this
-    }
-
-    override val classRef = NewsfeedDeleteListMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

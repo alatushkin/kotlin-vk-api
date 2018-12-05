@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to copy a photo to the "Saved photos" album
+ * [https://vk.com/dev/photos.copy]
  *
- *  [https://vk.com/dev/photos.copy]
- *  @property [owner_id] photo's owner ID
- *  @property [photo_id] photo ID
- *  @property [access_key] for private photos
+ * Allows to copy a photo to the "Saved photos" album
+ *
+ * @property ownerId photo's owner ID
+ * @property photoId photo ID
+ * @property accessKey for private photos
  */
-class PhotosCopyMethod() : VkMethod<Long>(
+class PhotosCopyMethod(
+        ownerId: Long,
+        photoId: Long,
+        accessKey: String? = null
+) : VkMethod<Long>(
     "photos.copy",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var photoId: Long? by props
+    var ownerId: Long by props
+    var photoId: Long by props
     var accessKey: String? by props
 
-    constructor(
-        ownerId: Long? = null,
-        photoId: Long? = null,
-        accessKey: String? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.photoId = photoId
         this.accessKey = accessKey
@@ -44,11 +49,5 @@ class PhotosCopyMethod() : VkMethod<Long>(
     fun setAccessKey(accessKey: String): PhotosCopyMethod {
         this.accessKey = accessKey
         return this
-    }
-
-    override val classRef = PhotosCopyMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

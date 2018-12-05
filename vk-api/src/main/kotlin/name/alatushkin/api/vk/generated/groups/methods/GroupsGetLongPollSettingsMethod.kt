@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.LongPollSettings
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns Long Poll notification settings
+ * [https://vk.com/dev/groups.getLongPollSettings]
  *
- *  [https://vk.com/dev/groups.getLongPollSettings]
- *  @property [group_id] Community ID.
+ * Returns Long Poll notification settings
+ *
+ * @property groupId Community ID.
  */
-class GroupsGetLongPollSettingsMethod() : VkMethod<LongPollSettings>(
+class GroupsGetLongPollSettingsMethod(
+        groupId: Long
+) : VkMethod<LongPollSettings>(
     "groups.getLongPollSettings",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<LongPollSettings>>() {}
+), UserGroupMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): GroupsGetLongPollSettingsMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = GroupsGetLongPollSettingsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<LongPollSettings>>() {}
     }
 }

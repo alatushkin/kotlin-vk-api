@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Removes a tag from a video.
+ * [https://vk.com/dev/video.removeTag]
  *
- *  [https://vk.com/dev/video.removeTag]
- *  @property [tag_id] Tag ID.
- *  @property [owner_id] ID of the user or community that owns the video.
- *  @property [video_id] Video ID.
+ * Removes a tag from a video.
+ *
+ * @property tagId Tag ID.
+ * @property ownerId ID of the user or community that owns the video.
+ * @property videoId Video ID.
  */
-class VideoRemoveTagMethod() : VkMethod<Boolean>(
-    "video.removeTag",
-    HashMap()
-) {
-
-    var tagId: Long? by props
-    var ownerId: Long? by props
-    var videoId: Long? by props
-
-    constructor(
-        tagId: Long? = null,
+class VideoRemoveTagMethod(
+        tagId: Long,
         ownerId: Long? = null,
-        videoId: Long? = null
-    ) : this() {
+        videoId: Long
+) : VkMethod<Boolean>(
+    "video.removeTag",
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
+
+    var tagId: Long by props
+    var ownerId: Long? by props
+    var videoId: Long by props
+
+    init {
         this.tagId = tagId
         this.ownerId = ownerId
         this.videoId = videoId
@@ -44,11 +49,5 @@ class VideoRemoveTagMethod() : VkMethod<Boolean>(
     fun setVideoId(videoId: Long): VideoRemoveTagMethod {
         this.videoId = videoId
         return this
-    }
-
-    override val classRef = VideoRemoveTagMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

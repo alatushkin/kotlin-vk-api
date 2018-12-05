@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.users.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -7,49 +9,86 @@ import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.users.SearchSex
 import name.alatushkin.api.vk.generated.users.SearchStatus
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of users matching the search criteria.
+ * [https://vk.com/dev/users.search]
  *
- *  [https://vk.com/dev/users.search]
- *  @property [q] Search query string (e.g., 'Vasya Babich').
- *  @property [sort] Sort order: '1' — by date registered, '0' — by rating
- *  @property [offset] Offset needed to return a specific subset of users.
- *  @property [count] Number of users to return.
- *  @property [fields] Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online',
- *  @property [city] City ID.
- *  @property [country] Country ID.
- *  @property [hometown] City name in a string.
- *  @property [university_country] ID of the country where the user graduated.
- *  @property [university] ID of the institution of higher education.
- *  @property [university_year] Year of graduation from an institution of higher education.
- *  @property [university_faculty] Faculty ID.
- *  @property [university_chair] Chair ID.
- *  @property [sex] '1' — female, '2' — male, '0' — any (default)
- *  @property [status] Relationship status: '1' — Not married, '2' — In a relationship, '3' — Engaged, '4' — Married, '5' — It's complicated, '6' — Actively searching, '7' — In love
- *  @property [age_from] Minimum age.
- *  @property [age_to] Maximum age.
- *  @property [birth_day] Day of birth.
- *  @property [birth_month] Month of birth.
- *  @property [birth_year] Year of birth.
- *  @property [online] '1' — online only, '0' — all users
- *  @property [has_photo] '1' — with photo only, '0' — all users
- *  @property [school_country] ID of the country where users finished school.
- *  @property [school_city] ID of the city where users finished school.
- *  @property [school_class]
- *  @property [school] ID of the school.
- *  @property [school_year] School graduation year.
- *  @property [religion] Users' religious affiliation.
- *  @property [interests] Users' interests.
- *  @property [company] Name of the company where users work.
- *  @property [position] Job position.
- *  @property [group_id] ID of a community to search in communities.
- *  @property [from_list]
+ * Returns a list of users matching the search criteria.
+ *
+ * @property q Search query string (e.g., 'Vasya Babich').
+ * @property sort Sort order: '1' — by date registered, '0' — by rating
+ * @property offset Offset needed to return a specific subset of users.
+ * @property count Number of users to return.
+ * @property fields Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate' (birthdate), 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online',
+ * @property city City ID.
+ * @property country Country ID.
+ * @property hometown City name in a string.
+ * @property universityCountry ID of the country where the user graduated.
+ * @property university ID of the institution of higher education.
+ * @property universityYear Year of graduation from an institution of higher education.
+ * @property universityFaculty Faculty ID.
+ * @property universityChair Chair ID.
+ * @property sex '1' — female, '2' — male, '0' — any (default)
+ * @property status Relationship status: '1' — Not married, '2' — In a relationship, '3' — Engaged, '4' — Married, '5' — It's complicated, '6' — Actively searching, '7' — In love
+ * @property ageFrom Minimum age.
+ * @property ageTo Maximum age.
+ * @property birthDay Day of birth.
+ * @property birthMonth Month of birth.
+ * @property birthYear Year of birth.
+ * @property online '1' — online only, '0' — all users
+ * @property hasPhoto '1' — with photo only, '0' — all users
+ * @property schoolCountry ID of the country where users finished school.
+ * @property schoolCity ID of the city where users finished school.
+ * @property schoolClass 
+ * @property school ID of the school.
+ * @property schoolYear School graduation year.
+ * @property religion Users' religious affiliation.
+ * @property interests Users' interests.
+ * @property company Name of the company where users work.
+ * @property position Job position.
+ * @property groupId ID of a community to search in communities.
+ * @property fromList 
  */
-class UsersSearchMethod() : VkMethod<VkList<UserFull>>(
+class UsersSearchMethod(
+        q: String? = null,
+        sort: String? = null,
+        offset: Long? = null,
+        count: Long? = null,
+        fields: Array<String>? = null,
+        city: Long? = null,
+        country: Long? = null,
+        hometown: String? = null,
+        universityCountry: Long? = null,
+        university: Long? = null,
+        universityYear: Long? = null,
+        universityFaculty: Long? = null,
+        universityChair: Long? = null,
+        sex: SearchSex? = null,
+        status: SearchStatus? = null,
+        ageFrom: Long? = null,
+        ageTo: Long? = null,
+        birthDay: Long? = null,
+        birthMonth: Long? = null,
+        birthYear: Long? = null,
+        online: Boolean? = null,
+        hasPhoto: Boolean? = null,
+        schoolCountry: Long? = null,
+        schoolCity: Long? = null,
+        schoolClass: Long? = null,
+        school: Long? = null,
+        schoolYear: Long? = null,
+        religion: String? = null,
+        interests: String? = null,
+        company: String? = null,
+        position: String? = null,
+        groupId: Long? = null,
+        fromList: Array<String>? = null
+) : VkMethod<VkList<UserFull>>(
     "users.search",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<UserFull>>>() {}
+), UserMethod {
 
     var q: String? by props
     var sort: String? by props
@@ -85,41 +124,7 @@ class UsersSearchMethod() : VkMethod<VkList<UserFull>>(
     var groupId: Long? by props
     var fromList: Array<String>? by props
 
-    constructor(
-        q: String? = null,
-        sort: String? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        city: Long? = null,
-        country: Long? = null,
-        hometown: String? = null,
-        universityCountry: Long? = null,
-        university: Long? = null,
-        universityYear: Long? = null,
-        universityFaculty: Long? = null,
-        universityChair: Long? = null,
-        sex: SearchSex? = null,
-        status: SearchStatus? = null,
-        ageFrom: Long? = null,
-        ageTo: Long? = null,
-        birthDay: Long? = null,
-        birthMonth: Long? = null,
-        birthYear: Long? = null,
-        online: Boolean? = null,
-        hasPhoto: Boolean? = null,
-        schoolCountry: Long? = null,
-        schoolCity: Long? = null,
-        schoolClass: Long? = null,
-        school: Long? = null,
-        schoolYear: Long? = null,
-        religion: String? = null,
-        interests: String? = null,
-        company: String? = null,
-        position: String? = null,
-        groupId: Long? = null,
-        fromList: Array<String>? = null
-    ) : this() {
+    init {
         this.q = q
         this.sort = sort
         this.offset = offset
@@ -318,11 +323,5 @@ class UsersSearchMethod() : VkMethod<VkList<UserFull>>(
     fun setFromList(fromList: Array<String>): UsersSearchMethod {
         this.fromList = fromList
         return this
-    }
-
-    override val classRef = UsersSearchMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<UserFull>>>() {}
     }
 }

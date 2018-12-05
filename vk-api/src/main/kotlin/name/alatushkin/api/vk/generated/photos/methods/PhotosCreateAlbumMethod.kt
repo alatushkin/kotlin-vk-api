@@ -1,28 +1,41 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.PhotoAlbumFull
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates an empty photo album.
+ * [https://vk.com/dev/photos.createAlbum]
  *
- *  [https://vk.com/dev/photos.createAlbum]
- *  @property [title] Album title.
- *  @property [group_id] ID of the community in which the album will be created.
- *  @property [description] Album description.
- *  @property [privacy_view]
- *  @property [privacy_comment]
- *  @property [upload_by_admins_only]
- *  @property [comments_disabled]
+ * Creates an empty photo album.
+ *
+ * @property title Album title.
+ * @property groupId ID of the community in which the album will be created.
+ * @property description Album description.
+ * @property privacyView 
+ * @property privacyComment 
+ * @property uploadByAdminsOnly 
+ * @property commentsDisabled 
  */
-class PhotosCreateAlbumMethod() : VkMethod<PhotoAlbumFull>(
+class PhotosCreateAlbumMethod(
+        title: String,
+        groupId: Long? = null,
+        description: String? = null,
+        privacyView: Array<String>? = null,
+        privacyComment: Array<String>? = null,
+        uploadByAdminsOnly: Boolean? = null,
+        commentsDisabled: Boolean? = null
+) : VkMethod<PhotoAlbumFull>(
     "photos.createAlbum",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<PhotoAlbumFull>>() {}
+), UserMethod {
 
-    var title: String? by props
+    var title: String by props
     var groupId: Long? by props
     var description: String? by props
     var privacyView: Array<String>? by props
@@ -30,15 +43,7 @@ class PhotosCreateAlbumMethod() : VkMethod<PhotoAlbumFull>(
     var uploadByAdminsOnly: Boolean? by props
     var commentsDisabled: Boolean? by props
 
-    constructor(
-        title: String? = null,
-        groupId: Long? = null,
-        description: String? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null,
-        uploadByAdminsOnly: Boolean? = null,
-        commentsDisabled: Boolean? = null
-    ) : this() {
+    init {
         this.title = title
         this.groupId = groupId
         this.description = description
@@ -81,11 +86,5 @@ class PhotosCreateAlbumMethod() : VkMethod<PhotoAlbumFull>(
     fun setCommentsDisabled(commentsDisabled: Boolean): PhotosCreateAlbumMethod {
         this.commentsDisabled = commentsDisabled
         return this
-    }
-
-    override val classRef = PhotosCreateAlbumMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<PhotoAlbumFull>>() {}
     }
 }

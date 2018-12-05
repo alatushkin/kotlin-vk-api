@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,26 +7,29 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.GroupXtrInvitedBy
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of invitations to join communities and events.
+ * [https://vk.com/dev/groups.getInvites]
  *
- *  [https://vk.com/dev/groups.getInvites]
- *  @property [offset] Offset needed to return a specific subset of invitations.
- *  @property [count] Number of invitations to return.
+ * Returns a list of invitations to join communities and events.
+ *
+ * @property offset Offset needed to return a specific subset of invitations.
+ * @property count Number of invitations to return.
  */
-class GroupsGetInvitesMethod() : VkMethod<VkList<GroupXtrInvitedBy>>(
+class GroupsGetInvitesMethod(
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<GroupXtrInvitedBy>>(
     "groups.getInvites",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<GroupXtrInvitedBy>>>() {}
+), UserMethod {
 
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.offset = offset
         this.count = count
     }
@@ -37,11 +42,5 @@ class GroupsGetInvitesMethod() : VkMethod<VkList<GroupXtrInvitedBy>>(
     fun setCount(count: Long): GroupsGetInvitesMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = GroupsGetInvitesMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<GroupXtrInvitedBy>>>() {}
     }
 }

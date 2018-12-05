@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.orders.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.orders.Order
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of orders.
+ * [https://vk.com/dev/orders.get]
  *
- *  [https://vk.com/dev/orders.get]
- *  @property [count] number of returned orders.
- *  @property [test_mode] if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
+ * Returns a list of orders.
+ *
+ * @property count number of returned orders.
+ * @property testMode if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
  */
-class OrdersGetMethod() : VkMethod<Array<Order>>(
+class OrdersGetMethod(
+        count: Long? = null,
+        testMode: Boolean? = null
+) : VkMethod<Array<Order>>(
     "orders.get",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Order>>>() {}
+), UserMethod {
 
     var count: Long? by props
     var testMode: Boolean? by props
 
-    constructor(
-        count: Long? = null,
-        testMode: Boolean? = null
-    ) : this() {
+    init {
         this.count = count
         this.testMode = testMode
     }
@@ -36,11 +41,5 @@ class OrdersGetMethod() : VkMethod<Array<Order>>(
     fun setTestMode(testMode: Boolean): OrdersGetMethod {
         this.testMode = testMode
         return this
-    }
-
-    override val classRef = OrdersGetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Order>>>() {}
     }
 }

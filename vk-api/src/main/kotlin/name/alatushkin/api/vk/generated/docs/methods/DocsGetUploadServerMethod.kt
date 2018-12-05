@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.docs.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.UploadServer
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns the server address for document upload.
+ * [https://vk.com/dev/docs.getUploadServer]
  *
- *  [https://vk.com/dev/docs.getUploadServer]
- *  @property [group_id] Community ID (if the document will be uploaded to the community).
+ * Returns the server address for document upload.
+ *
+ * @property groupId Community ID (if the document will be uploaded to the community).
  */
-class DocsGetUploadServerMethod() : VkMethod<UploadServer>(
+class DocsGetUploadServerMethod(
+        groupId: Long? = null
+) : VkMethod<UploadServer>(
     "docs.getUploadServer",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<UploadServer>>() {}
+), UserMethod {
 
     var groupId: Long? by props
 
-    constructor(
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
     }
 
     fun setGroupId(groupId: Long): DocsGetUploadServerMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = DocsGetUploadServerMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<UploadServer>>() {}
     }
 }

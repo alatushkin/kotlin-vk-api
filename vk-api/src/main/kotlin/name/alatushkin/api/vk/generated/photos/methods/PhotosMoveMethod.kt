@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Moves a photo from one album to another.
+ * [https://vk.com/dev/photos.move]
  *
- *  [https://vk.com/dev/photos.move]
- *  @property [owner_id] ID of the user or community that owns the photo.
- *  @property [target_album_id] ID of the album to which the photo will be moved.
- *  @property [photo_id] Photo ID.
+ * Moves a photo from one album to another.
+ *
+ * @property ownerId ID of the user or community that owns the photo.
+ * @property targetAlbumId ID of the album to which the photo will be moved.
+ * @property photoId Photo ID.
  */
-class PhotosMoveMethod() : VkMethod<Boolean>(
+class PhotosMoveMethod(
+        ownerId: Long? = null,
+        targetAlbumId: Long,
+        photoId: Long
+) : VkMethod<Boolean>(
     "photos.move",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var targetAlbumId: Long? by props
-    var photoId: Long? by props
+    var targetAlbumId: Long by props
+    var photoId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        targetAlbumId: Long? = null,
-        photoId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.targetAlbumId = targetAlbumId
         this.photoId = photoId
@@ -44,11 +49,5 @@ class PhotosMoveMethod() : VkMethod<Boolean>(
     fun setPhotoId(photoId: Long): PhotosMoveMethod {
         this.photoId = photoId
         return this
-    }
-
-    override val classRef = PhotosMoveMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

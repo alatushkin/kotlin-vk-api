@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Restores a comment deleted from a user wall or community wall.
+ * [https://vk.com/dev/wall.restoreComment]
  *
- *  [https://vk.com/dev/wall.restoreComment]
- *  @property [owner_id] User ID or community ID. Use a negative value to designate a community ID.
- *  @property [comment_id] Comment ID.
+ * Restores a comment deleted from a user wall or community wall.
+ *
+ * @property ownerId User ID or community ID. Use a negative value to designate a community ID.
+ * @property commentId Comment ID.
  */
-class WallRestoreCommentMethod() : VkMethod<Boolean>(
+class WallRestoreCommentMethod(
+        ownerId: Long? = null,
+        commentId: Long
+) : VkMethod<Boolean>(
     "wall.restoreComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var ownerId: Long? by props
-    var commentId: Long? by props
+    var commentId: Long by props
 
-    constructor(
-        ownerId: Long? = null,
-        commentId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.commentId = commentId
     }
@@ -35,11 +40,5 @@ class WallRestoreCommentMethod() : VkMethod<Boolean>(
     fun setCommentId(commentId: Long): WallRestoreCommentMethod {
         this.commentId = commentId
         return this
-    }
-
-    override val classRef = WallRestoreCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Restores a deleted message.
+ * [https://vk.com/dev/messages.restore]
  *
- *  [https://vk.com/dev/messages.restore]
- *  @property [message_id] ID of a previously-deleted message to restore.
- *  @property [group_id] Group ID (for group messages with user access token)
+ * Restores a deleted message.
+ *
+ * @property messageId ID of a previously-deleted message to restore.
+ * @property groupId Group ID (for group messages with user access token)
  */
-class MessagesRestoreMethod() : VkMethod<Boolean>(
+class MessagesRestoreMethod(
+        messageId: Long,
+        groupId: Long? = null
+) : VkMethod<Boolean>(
     "messages.restore",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserGroupMethod {
 
-    var messageId: Long? by props
+    var messageId: Long by props
     var groupId: Long? by props
 
-    constructor(
-        messageId: Long? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.messageId = messageId
         this.groupId = groupId
     }
@@ -35,11 +40,5 @@ class MessagesRestoreMethod() : VkMethod<Boolean>(
     fun setGroupId(groupId: Long): MessagesRestoreMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = MessagesRestoreMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

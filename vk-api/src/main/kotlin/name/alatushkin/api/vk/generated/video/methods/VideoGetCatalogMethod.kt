@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.GetCatalogResponse
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns video catalog
+ * [https://vk.com/dev/video.getCatalog]
  *
- *  [https://vk.com/dev/video.getCatalog]
- *  @property [count] number of catalog blocks to return.
- *  @property [items_count] number of videos in each block.
- *  @property [from] parameter for requesting the next results page. Value for transmitting here is returned in the 'next' field in a reply.
- *  @property [filters] list of requested catalog sections
+ * Returns video catalog
+ *
+ * @property count number of catalog blocks to return.
+ * @property itemsCount number of videos in each block.
+ * @property from parameter for requesting the next results page. Value for transmitting here is returned in the 'next' field in a reply.
+ * @property filters list of requested catalog sections
  */
-class VideoGetCatalogMethod() : VkMethod<GetCatalogResponse>(
+class VideoGetCatalogMethod(
+        count: Long? = null,
+        itemsCount: Long? = null,
+        from: String? = null,
+        filters: Array<String>? = null
+) : VkMethod<GetCatalogResponse>(
     "video.getCatalog",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetCatalogResponse>>() {}
+), UserServiceMethod {
 
     var count: Long? by props
     var itemsCount: Long? by props
     var from: String? by props
     var filters: Array<String>? by props
 
-    constructor(
-        count: Long? = null,
-        itemsCount: Long? = null,
-        from: String? = null,
-        filters: Array<String>? = null
-    ) : this() {
+    init {
         this.count = count
         this.itemsCount = itemsCount
         this.from = from
@@ -54,11 +59,5 @@ class VideoGetCatalogMethod() : VkMethod<GetCatalogResponse>(
     fun setFilters(filters: Array<String>): VideoGetCatalogMethod {
         this.filters = filters
         return this
-    }
-
-    override val classRef = VideoGetCatalogMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetCatalogResponse>>() {}
     }
 }

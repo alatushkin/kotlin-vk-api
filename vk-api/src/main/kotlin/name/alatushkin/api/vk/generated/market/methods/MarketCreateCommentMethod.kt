@@ -1,29 +1,43 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Creates a new comment for an item.
+ * [https://vk.com/dev/market.createComment]
  *
- *  [https://vk.com/dev/market.createComment]
- *  @property [owner_id] ID of an item owner community.
- *  @property [item_id] Item ID.
- *  @property [message] Comment text (required if 'attachments' parameter is not specified)
- *  @property [attachments] Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
- *  @property [from_group] '1' - comment will be published on behalf of a community, '0' - on behalf of a user (by default).
- *  @property [reply_to_comment] ID of a comment to reply with current comment to.
- *  @property [sticker_id] Sticker ID.
- *  @property [guid] Random value to avoid resending one comment.
+ * Creates a new comment for an item.
+ *
+ * @property ownerId ID of an item owner community.
+ * @property itemId Item ID.
+ * @property message Comment text (required if 'attachments' parameter is not specified)
+ * @property attachments Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
+ * @property fromGroup '1' - comment will be published on behalf of a community, '0' - on behalf of a user (by default).
+ * @property replyToComment ID of a comment to reply with current comment to.
+ * @property stickerId Sticker ID.
+ * @property guid Random value to avoid resending one comment.
  */
-class MarketCreateCommentMethod() : VkMethod<Long>(
+class MarketCreateCommentMethod(
+        ownerId: Long,
+        itemId: Long,
+        message: String? = null,
+        attachments: Array<String>? = null,
+        fromGroup: Boolean? = null,
+        replyToComment: Long? = null,
+        stickerId: Long? = null,
+        guid: String? = null
+) : VkMethod<Long>(
     "market.createComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var itemId: Long? by props
+    var ownerId: Long by props
+    var itemId: Long by props
     var message: String? by props
     var attachments: Array<String>? by props
     var fromGroup: Boolean? by props
@@ -31,16 +45,7 @@ class MarketCreateCommentMethod() : VkMethod<Long>(
     var stickerId: Long? by props
     var guid: String? by props
 
-    constructor(
-        ownerId: Long? = null,
-        itemId: Long? = null,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        fromGroup: Boolean? = null,
-        replyToComment: Long? = null,
-        stickerId: Long? = null,
-        guid: String? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.itemId = itemId
         this.message = message
@@ -89,11 +94,5 @@ class MarketCreateCommentMethod() : VkMethod<Long>(
     fun setGuid(guid: String): MarketCreateCommentMethod {
         this.guid = guid
         return this
-    }
-
-    override val classRef = MarketCreateCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

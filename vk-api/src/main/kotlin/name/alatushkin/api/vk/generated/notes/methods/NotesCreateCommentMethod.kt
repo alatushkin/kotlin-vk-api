@@ -1,37 +1,42 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a new comment on a note.
+ * [https://vk.com/dev/notes.createComment]
  *
- *  [https://vk.com/dev/notes.createComment]
- *  @property [note_id] Note ID.
- *  @property [owner_id] Note owner ID.
- *  @property [reply_to] ID of the user to whom the reply is addressed (if the comment is a reply to another comment).
- *  @property [message] Comment text.
- *  @property [guid]
+ * Adds a new comment on a note.
+ *
+ * @property noteId Note ID.
+ * @property ownerId Note owner ID.
+ * @property replyTo ID of the user to whom the reply is addressed (if the comment is a reply to another comment).
+ * @property message Comment text.
+ * @property guid 
  */
-class NotesCreateCommentMethod() : VkMethod<Long>(
-    "notes.createComment",
-    HashMap()
-) {
-
-    var noteId: Long? by props
-    var ownerId: Long? by props
-    var replyTo: Long? by props
-    var message: String? by props
-    var guid: String? by props
-
-    constructor(
-        noteId: Long? = null,
+class NotesCreateCommentMethod(
+        noteId: Long,
         ownerId: Long? = null,
         replyTo: Long? = null,
-        message: String? = null,
+        message: String,
         guid: String? = null
-    ) : this() {
+) : VkMethod<Long>(
+    "notes.createComment",
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
+
+    var noteId: Long by props
+    var ownerId: Long? by props
+    var replyTo: Long? by props
+    var message: String by props
+    var guid: String? by props
+
+    init {
         this.noteId = noteId
         this.ownerId = ownerId
         this.replyTo = replyTo
@@ -62,11 +67,5 @@ class NotesCreateCommentMethod() : VkMethod<Long>(
     fun setGuid(guid: String): NotesCreateCommentMethod {
         this.guid = guid
         return this
-    }
-
-    override val classRef = NotesCreateCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

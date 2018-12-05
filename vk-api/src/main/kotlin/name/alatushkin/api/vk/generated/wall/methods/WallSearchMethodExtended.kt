@@ -1,26 +1,39 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.wall.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.wall.SearchExtendedResponse
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Allows to search posts on user or community walls.
+ * [https://vk.com/dev/wall.search]
  *
- *  [https://vk.com/dev/wall.search]
- *  @property [owner_id] user or community id. "Remember that for a community 'owner_id' must be negative."
- *  @property [domain] user or community screen name.
- *  @property [query] search query string.
- *  @property [owners_only] '1' – returns only page owner's posts.
- *  @property [count] count of posts to return.
- *  @property [offset] Offset needed to return a specific subset of posts.
- *  @property [fields]
+ * Allows to search posts on user or community walls.
+ *
+ * @property ownerId user or community id. "Remember that for a community 'owner_id' must be negative."
+ * @property domain user or community screen name.
+ * @property query search query string.
+ * @property ownersOnly '1' – returns only page owner's posts.
+ * @property count count of posts to return.
+ * @property offset Offset needed to return a specific subset of posts.
+ * @property fields 
  */
-class WallSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
+class WallSearchMethodExtended(
+        ownerId: Long? = null,
+        domain: String? = null,
+        query: String? = null,
+        ownersOnly: Boolean? = null,
+        count: Long? = null,
+        offset: Long? = null,
+        fields: Array<String>? = null
+) : VkMethod<SearchExtendedResponse>(
     "wall.search",
-    mutableMapOf("extended" to "1")
-) {
+    mutableMapOf("extended" to "1"),
+    object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
+), UserServiceMethod {
 
     var ownerId: Long? by props
     var domain: String? by props
@@ -30,15 +43,7 @@ class WallSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     var offset: Long? by props
     var fields: Array<String>? by props
 
-    constructor(
-        ownerId: Long? = null,
-        domain: String? = null,
-        query: String? = null,
-        ownersOnly: Boolean? = null,
-        count: Long? = null,
-        offset: Long? = null,
-        fields: Array<String>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.domain = domain
         this.query = query
@@ -81,11 +86,5 @@ class WallSearchMethodExtended() : VkMethod<SearchExtendedResponse>(
     fun setFields(fields: Array<String>): WallSearchMethodExtended {
         this.fields = fields
         return this
-    }
-
-    override val classRef = WallSearchMethodExtended.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<SearchExtendedResponse>>() {}
     }
 }

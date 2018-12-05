@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,26 +7,29 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.video.VideoTagInfo
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of videos with tags that have not been viewed.
+ * [https://vk.com/dev/video.getNewTags]
  *
- *  [https://vk.com/dev/video.getNewTags]
- *  @property [offset] Offset needed to return a specific subset of videos.
- *  @property [count] Number of videos to return.
+ * Returns a list of videos with tags that have not been viewed.
+ *
+ * @property offset Offset needed to return a specific subset of videos.
+ * @property count Number of videos to return.
  */
-class VideoGetNewTagsMethod() : VkMethod<VkList<VideoTagInfo>>(
+class VideoGetNewTagsMethod(
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<VideoTagInfo>>(
     "video.getNewTags",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<VideoTagInfo>>>() {}
+), UserMethod {
 
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.offset = offset
         this.count = count
     }
@@ -37,11 +42,5 @@ class VideoGetNewTagsMethod() : VkMethod<VkList<VideoTagInfo>>(
     fun setCount(count: Long): VideoGetNewTagsMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = VideoGetNewTagsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<VideoTagInfo>>>() {}
     }
 }

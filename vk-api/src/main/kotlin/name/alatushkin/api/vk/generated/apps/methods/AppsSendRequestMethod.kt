@@ -1,41 +1,46 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.apps.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.apps.SendRequestType
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Sends a request to another user in an app that uses VK authorization.
+ * [https://vk.com/dev/apps.sendRequest]
  *
- *  [https://vk.com/dev/apps.sendRequest]
- *  @property [user_id] id of the user to send a request
- *  @property [text] request text
- *  @property [type] request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
- *  @property [name]
- *  @property [key] special string key to be sent with the request
- *  @property [separate]
+ * Sends a request to another user in an app that uses VK authorization.
+ *
+ * @property userId id of the user to send a request
+ * @property text request text
+ * @property type request type. Values: 'invite' – if the request is sent to a user who does not have the app installed,, 'request' – if a user has already installed the app
+ * @property name 
+ * @property key special string key to be sent with the request
+ * @property separate 
  */
-class AppsSendRequestMethod() : VkMethod<Long>(
+class AppsSendRequestMethod(
+        userId: Long,
+        text: String? = null,
+        type: SendRequestType? = null,
+        name: String? = null,
+        key: String? = null,
+        separate: Boolean? = null
+) : VkMethod<Long>(
     "apps.sendRequest",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var userId: Long? by props
+    var userId: Long by props
     var text: String? by props
     var type: SendRequestType? by props
     var name: String? by props
     var key: String? by props
     var separate: Boolean? by props
 
-    constructor(
-        userId: Long? = null,
-        text: String? = null,
-        type: SendRequestType? = null,
-        name: String? = null,
-        key: String? = null,
-        separate: Boolean? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.text = text
         this.type = type
@@ -72,11 +77,5 @@ class AppsSendRequestMethod() : VkMethod<Long>(
     fun setSeparate(separate: Boolean): AppsSendRequestMethod {
         this.separate = separate
         return this
-    }
-
-    override val classRef = AppsSendRequestMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

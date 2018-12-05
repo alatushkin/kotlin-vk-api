@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Object
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns information about cities by their IDs.
+ * [https://vk.com/dev/database.getCitiesById]
  *
- *  [https://vk.com/dev/database.getCitiesById]
- *  @property [city_ids] City IDs.
+ * Returns information about cities by their IDs.
+ *
+ * @property cityIds City IDs.
  */
-class DatabaseGetCitiesByIdMethod() : VkMethod<Array<Object>>(
+class DatabaseGetCitiesByIdMethod(
+        cityIds: Array<Long>? = null
+) : VkMethod<Array<Object>>(
     "database.getCitiesById",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Object>>>() {}
+), UserServiceMethod {
 
     var cityIds: Array<Long>? by props
 
-    constructor(
-        cityIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.cityIds = cityIds
     }
 
     fun setCityIds(cityIds: Array<Long>): DatabaseGetCitiesByIdMethod {
         this.cityIds = cityIds
         return this
-    }
-
-    override val classRef = DatabaseGetCitiesByIdMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Object>>>() {}
     }
 }

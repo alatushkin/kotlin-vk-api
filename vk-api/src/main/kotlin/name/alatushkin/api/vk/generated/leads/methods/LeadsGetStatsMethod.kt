@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.leads.Lead
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns lead stats data.
+ * [https://vk.com/dev/leads.getStats]
  *
- *  [https://vk.com/dev/leads.getStats]
- *  @property [lead_id] Lead ID.
- *  @property [secret] Secret key obtained from the lead testing interface.
- *  @property [date_start] Day to start stats from (YYYY_MM_DD, e.g.2011-09-17).
- *  @property [date_end] Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
+ * Returns lead stats data.
+ *
+ * @property leadId Lead ID.
+ * @property secret Secret key obtained from the lead testing interface.
+ * @property dateStart Day to start stats from (YYYY_MM_DD, e.g.2011-09-17).
+ * @property dateEnd Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
  */
-class LeadsGetStatsMethod() : VkMethod<Lead>(
+class LeadsGetStatsMethod(
+        leadId: Long,
+        secret: String? = null,
+        dateStart: String? = null,
+        dateEnd: String? = null
+) : VkMethod<Lead>(
     "leads.getStats",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Lead>>() {}
+), UserMethod {
 
-    var leadId: Long? by props
+    var leadId: Long by props
     var secret: String? by props
     var dateStart: String? by props
     var dateEnd: String? by props
 
-    constructor(
-        leadId: Long? = null,
-        secret: String? = null,
-        dateStart: String? = null,
-        dateEnd: String? = null
-    ) : this() {
+    init {
         this.leadId = leadId
         this.secret = secret
         this.dateStart = dateStart
@@ -54,11 +59,5 @@ class LeadsGetStatsMethod() : VkMethod<Lead>(
     fun setDateEnd(dateEnd: String): LeadsGetStatsMethod {
         this.dateEnd = dateEnd
         return this
-    }
-
-    override val classRef = LeadsGetStatsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Lead>>() {}
     }
 }

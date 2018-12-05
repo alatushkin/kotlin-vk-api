@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.ads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits clients of an advertising agency.
+ * [https://vk.com/dev/ads.updateClients]
  *
- *  [https://vk.com/dev/ads.updateClients]
- *  @property [account_id] Advertising account ID.
- *  @property [data] Serialized JSON array of objects that describe changes in clients. Description of 'client_mod' objects see below.
+ * Edits clients of an advertising agency.
+ *
+ * @property accountId Advertising account ID.
+ * @property data Serialized JSON array of objects that describe changes in clients. Description of 'client_mod' objects see below.
  */
-class AdsUpdateClientsMethod() : VkMethod<Long>(
+class AdsUpdateClientsMethod(
+        accountId: Long,
+        data: String
+) : VkMethod<Long>(
     "ads.updateClients",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Long>>() {}
+), UserMethod {
 
-    var accountId: Long? by props
-    var data: String? by props
+    var accountId: Long by props
+    var data: String by props
 
-    constructor(
-        accountId: Long? = null,
-        data: String? = null
-    ) : this() {
+    init {
         this.accountId = accountId
         this.data = data
     }
@@ -35,11 +40,5 @@ class AdsUpdateClientsMethod() : VkMethod<Long>(
     fun setData(data: String): AdsUpdateClientsMethod {
         this.data = data
         return this
-    }
-
-    override val classRef = AdsUpdateClientsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Long>>() {}
     }
 }

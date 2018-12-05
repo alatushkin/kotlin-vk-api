@@ -1,37 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.account.PushSettings
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Gets settings of push notifications.
+ * [https://vk.com/dev/account.getPushSettings]
  *
- *  [https://vk.com/dev/account.getPushSettings]
- *  @property [device_id] Unique device ID.
+ * Gets settings of push notifications.
+ *
+ * @property deviceId Unique device ID.
  */
-class AccountGetPushSettingsMethod() : VkMethod<PushSettings>(
+class AccountGetPushSettingsMethod(
+        deviceId: String? = null
+) : VkMethod<PushSettings>(
     "account.getPushSettings",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<PushSettings>>() {}
+), UserMethod {
 
     var deviceId: String? by props
 
-    constructor(
-        deviceId: String? = null
-    ) : this() {
+    init {
         this.deviceId = deviceId
     }
 
     fun setDeviceId(deviceId: String): AccountGetPushSettingsMethod {
         this.deviceId = deviceId
         return this
-    }
-
-    override val classRef = AccountGetPushSettingsMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<PushSettings>>() {}
     }
 }

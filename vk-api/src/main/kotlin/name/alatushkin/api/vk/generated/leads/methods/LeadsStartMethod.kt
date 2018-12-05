@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.leads.Start
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Creates new session for the user passing the offer.
+ * [https://vk.com/dev/leads.start]
  *
- *  [https://vk.com/dev/leads.start]
- *  @property [lead_id] Lead ID.
- *  @property [secret] Secret key from the lead testing interface.
+ * Creates new session for the user passing the offer.
+ *
+ * @property leadId Lead ID.
+ * @property secret Secret key from the lead testing interface.
  */
-class LeadsStartMethod() : VkMethod<Start>(
+class LeadsStartMethod(
+        leadId: Long,
+        secret: String
+) : VkMethod<Start>(
     "leads.start",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Start>>() {}
+), UserServiceMethod {
 
-    var leadId: Long? by props
-    var secret: String? by props
+    var leadId: Long by props
+    var secret: String by props
 
-    constructor(
-        leadId: Long? = null,
-        secret: String? = null
-    ) : this() {
+    init {
         this.leadId = leadId
         this.secret = secret
     }
@@ -36,11 +41,5 @@ class LeadsStartMethod() : VkMethod<Start>(
     fun setSecret(secret: String): LeadsStartMethod {
         this.secret = secret
         return this
-    }
-
-    override val classRef = LeadsStartMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Start>>() {}
     }
 }

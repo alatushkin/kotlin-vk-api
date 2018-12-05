@@ -1,28 +1,41 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.EditPlaceResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits the place in community.
+ * [https://vk.com/dev/groups.editPlace]
  *
- *  [https://vk.com/dev/groups.editPlace]
- *  @property [group_id] Community ID.
- *  @property [title] Place title.
- *  @property [address] Place address.
- *  @property [country_id] Country ID.
- *  @property [city_id] City ID.
- *  @property [latitude] Geographical latitude.
- *  @property [longitude] Geographical longitude.
+ * Edits the place in community.
+ *
+ * @property groupId Community ID.
+ * @property title Place title.
+ * @property address Place address.
+ * @property countryId Country ID.
+ * @property cityId City ID.
+ * @property latitude Geographical latitude.
+ * @property longitude Geographical longitude.
  */
-class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
+class GroupsEditPlaceMethod(
+        groupId: Long,
+        title: String? = null,
+        address: String? = null,
+        countryId: Long? = null,
+        cityId: Long? = null,
+        latitude: Double? = null,
+        longitude: Double? = null
+) : VkMethod<EditPlaceResponse>(
     "groups.editPlace",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<EditPlaceResponse>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var title: String? by props
     var address: String? by props
     var countryId: Long? by props
@@ -30,15 +43,7 @@ class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
     var latitude: Double? by props
     var longitude: Double? by props
 
-    constructor(
-        groupId: Long? = null,
-        title: String? = null,
-        address: String? = null,
-        countryId: Long? = null,
-        cityId: Long? = null,
-        latitude: Double? = null,
-        longitude: Double? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.title = title
         this.address = address
@@ -81,11 +86,5 @@ class GroupsEditPlaceMethod() : VkMethod<EditPlaceResponse>(
     fun setLongitude(longitude: Double): GroupsEditPlaceMethod {
         this.longitude = longitude
         return this
-    }
-
-    override val classRef = GroupsEditPlaceMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<EditPlaceResponse>>() {}
     }
 }

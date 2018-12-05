@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.market.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds an item to one or multiple collections.
+ * [https://vk.com/dev/market.addToAlbum]
  *
- *  [https://vk.com/dev/market.addToAlbum]
- *  @property [owner_id] ID of an item owner community.
- *  @property [item_id] Item ID.
- *  @property [album_ids] Collections IDs to add item to.
+ * Adds an item to one or multiple collections.
+ *
+ * @property ownerId ID of an item owner community.
+ * @property itemId Item ID.
+ * @property albumIds Collections IDs to add item to.
  */
-class MarketAddToAlbumMethod() : VkMethod<Boolean>(
+class MarketAddToAlbumMethod(
+        ownerId: Long,
+        itemId: Long,
+        albumIds: Array<Long>
+) : VkMethod<Boolean>(
     "market.addToAlbum",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var ownerId: Long? by props
-    var itemId: Long? by props
-    var albumIds: Array<Long>? by props
+    var ownerId: Long by props
+    var itemId: Long by props
+    var albumIds: Array<Long> by props
 
-    constructor(
-        ownerId: Long? = null,
-        itemId: Long? = null,
-        albumIds: Array<Long>? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
         this.itemId = itemId
         this.albumIds = albumIds
@@ -44,11 +49,5 @@ class MarketAddToAlbumMethod() : VkMethod<Boolean>(
     fun setAlbumIds(albumIds: Array<Long>): MarketAddToAlbumMethod {
         this.albumIds = albumIds
         return this
-    }
-
-    override val classRef = MarketAddToAlbumMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

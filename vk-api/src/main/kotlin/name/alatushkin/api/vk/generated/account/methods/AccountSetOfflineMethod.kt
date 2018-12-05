@@ -1,22 +1,21 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.account.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Marks a current user as offline.
+ * [https://vk.com/dev/account.setOffline]
  *
- *  [https://vk.com/dev/account.setOffline]
+ * Marks a current user as offline.
+ *
 
  */
 class AccountSetOfflineMethod : VkMethod<Boolean>(
     "account.setOffline",
-    HashMap()
-) {
-    override val classRef = AccountSetOfflineMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
-    }
-}
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod

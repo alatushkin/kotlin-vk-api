@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a video album.
+ * [https://vk.com/dev/video.deleteAlbum]
  *
- *  [https://vk.com/dev/video.deleteAlbum]
- *  @property [group_id] Community ID (if the album is owned by a community).
- *  @property [album_id] Album ID.
+ * Deletes a video album.
+ *
+ * @property groupId Community ID (if the album is owned by a community).
+ * @property albumId Album ID.
  */
-class VideoDeleteAlbumMethod() : VkMethod<Boolean>(
+class VideoDeleteAlbumMethod(
+        groupId: Long? = null,
+        albumId: Long
+) : VkMethod<Boolean>(
     "video.deleteAlbum",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var groupId: Long? by props
-    var albumId: Long? by props
+    var albumId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        albumId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.albumId = albumId
     }
@@ -35,11 +40,5 @@ class VideoDeleteAlbumMethod() : VkMethod<Boolean>(
     fun setAlbumId(albumId: Long): VideoDeleteAlbumMethod {
         this.albumId = albumId
         return this
-    }
-
-    override val classRef = VideoDeleteAlbumMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

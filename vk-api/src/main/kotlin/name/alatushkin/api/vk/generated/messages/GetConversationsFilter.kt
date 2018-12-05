@@ -1,11 +1,12 @@
 package name.alatushkin.api.vk.generated.messages
 
 import com.fasterxml.jackson.annotation.JsonCreator
-
 import com.fasterxml.jackson.annotation.JsonValue
 
 enum class GetConversationsFilter(@JsonValue val jsonValue: String) {
-    ALL("all"), UNREAD("unread"), IMPORTANT("important"),
+    ALL("all"),
+    UNREAD("unread"),
+    IMPORTANT("important"),
     UNANSWERED("unanswered");
 
     override fun toString() = jsonValue

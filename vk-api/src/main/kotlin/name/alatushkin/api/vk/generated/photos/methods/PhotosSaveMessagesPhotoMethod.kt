@@ -1,32 +1,37 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
+ * [https://vk.com/dev/photos.saveMessagesPhoto]
  *
- *  [https://vk.com/dev/photos.saveMessagesPhoto]
- *  @property [photo] Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
- *  @property [server]
- *  @property [hash]
+ * Saves a photo after being successfully uploaded. URL obtained with [vk.com/dev/photos.getMessagesUploadServer|photos.getMessagesUploadServer] method.
+ *
+ * @property photo Parameter returned when the photo is [vk.com/dev/upload_files|uploaded to the server].
+ * @property server 
+ * @property hash 
  */
-class PhotosSaveMessagesPhotoMethod() : VkMethod<Array<Photo>>(
+class PhotosSaveMessagesPhotoMethod(
+        photo: String,
+        server: Long? = null,
+        hash: String? = null
+) : VkMethod<Array<Photo>>(
     "photos.saveMessagesPhoto",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Array<Photo>>>() {}
+), UserGroupMethod {
 
-    var photo: String? by props
+    var photo: String by props
     var server: Long? by props
     var hash: String? by props
 
-    constructor(
-        photo: String? = null,
-        server: Long? = null,
-        hash: String? = null
-    ) : this() {
+    init {
         this.photo = photo
         this.server = server
         this.hash = hash
@@ -45,11 +50,5 @@ class PhotosSaveMessagesPhotoMethod() : VkMethod<Array<Photo>>(
     fun setHash(hash: String): PhotosSaveMessagesPhotoMethod {
         this.hash = hash
         return this
-    }
-
-    override val classRef = PhotosSaveMessagesPhotoMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Array<Photo>>>() {}
     }
 }

@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.friends.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -6,22 +8,32 @@ import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.friends.Order
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns a list of user IDs or detailed information about a user's friends.
+ * [https://vk.com/dev/friends.get]
  *
- *  [https://vk.com/dev/friends.get]
- *  @property [user_id] User ID. By default, the current user ID.
- *  @property [order] Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
- *  @property [list_id] ID of the friend list returned by the [vk.com/dev/friends.getLists|friends.getLists] method to be used as the source. This parameter is taken into account only when the uid parameter is set to the current user ID. This parameter is available only for [vk.com/dev/standalone|desktop applications].
- *  @property [count] Number of friends to return.
- *  @property [offset] Offset needed to return a specific subset of friends.
- *  @property [name_case] Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
+ * Returns a list of user IDs or detailed information about a user's friends.
+ *
+ * @property userId User ID. By default, the current user ID.
+ * @property order Sort order: , 'name' — by name (enabled only if the 'fields' parameter is used), 'hints' — by rating, similar to how friends are sorted in My friends section, , This parameter is available only for [vk.com/dev/standalone|desktop applications].
+ * @property listId ID of the friend list returned by the [vk.com/dev/friends.getLists|friends.getLists] method to be used as the source. This parameter is taken into account only when the uid parameter is set to the current user ID. This parameter is available only for [vk.com/dev/standalone|desktop applications].
+ * @property count Number of friends to return.
+ * @property offset Offset needed to return a specific subset of friends.
+ * @property nameCase Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
-class FriendsGetMethod() : VkMethod<VkList<Long>>(
+class FriendsGetMethod(
+        userId: Long? = null,
+        order: Order? = null,
+        listId: Long? = null,
+        count: Long? = null,
+        offset: Long? = null,
+        nameCase: NameCase? = null
+) : VkMethod<VkList<Long>>(
     "friends.get",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Long>>>() {}
+), UserServiceMethod {
 
     var userId: Long? by props
     var order: Order? by props
@@ -30,14 +42,7 @@ class FriendsGetMethod() : VkMethod<VkList<Long>>(
     var offset: Long? by props
     var nameCase: NameCase? by props
 
-    constructor(
-        userId: Long? = null,
-        order: Order? = null,
-        listId: Long? = null,
-        count: Long? = null,
-        offset: Long? = null,
-        nameCase: NameCase? = null
-    ) : this() {
+    init {
         this.userId = userId
         this.order = order
         this.listId = listId
@@ -74,11 +79,5 @@ class FriendsGetMethod() : VkMethod<VkList<Long>>(
     fun setNameCase(nameCase: NameCase): FriendsGetMethod {
         this.nameCase = nameCase
         return this
-    }
-
-    override val classRef = FriendsGetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Long>>>() {}
     }
 }

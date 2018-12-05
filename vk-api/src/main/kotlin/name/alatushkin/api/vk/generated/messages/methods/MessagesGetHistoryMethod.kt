@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,25 +7,38 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.GetHistoryResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns message history for the specified user or group chat.
+ * [https://vk.com/dev/messages.getHistory]
  *
- *  [https://vk.com/dev/messages.getHistory]
- *  @property [offset] Offset needed to return a specific subset of messages.
- *  @property [count] Number of messages to return.
- *  @property [user_id] ID of the user whose message history you want to return.
- *  @property [peer_id]
- *  @property [start_message_id] Starting message ID from which to return history.
- *  @property [extended] Information whether the response should be extended
- *  @property [fields] Profile fields to return.
- *  @property [group_id] Group ID (for group messages with group access token)
- *  @property [rev] Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
+ * Returns message history for the specified user or group chat.
+ *
+ * @property offset Offset needed to return a specific subset of messages.
+ * @property count Number of messages to return.
+ * @property userId ID of the user whose message history you want to return.
+ * @property peerId 
+ * @property startMessageId Starting message ID from which to return history.
+ * @property extended Information whether the response should be extended
+ * @property fields Profile fields to return.
+ * @property groupId Group ID (for group messages with group access token)
+ * @property rev Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
  */
-class MessagesGetHistoryMethod() : VkMethod<GetHistoryResponse>(
+class MessagesGetHistoryMethod(
+        offset: Long? = null,
+        count: Long? = null,
+        userId: Long? = null,
+        peerId: Long? = null,
+        startMessageId: Long? = null,
+        extended: Boolean? = null,
+        fields: Array<String>? = null,
+        groupId: Long? = null,
+        rev: VkDate? = null
+) : VkMethod<GetHistoryResponse>(
     "messages.getHistory",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<GetHistoryResponse>>() {}
+), UserGroupMethod {
 
     var offset: Long? by props
     var count: Long? by props
@@ -35,17 +50,7 @@ class MessagesGetHistoryMethod() : VkMethod<GetHistoryResponse>(
     var groupId: Long? by props
     var rev: VkDate? by props
 
-    constructor(
-        offset: Long? = null,
-        count: Long? = null,
-        userId: Long? = null,
-        peerId: Long? = null,
-        startMessageId: Long? = null,
-        extended: Boolean? = null,
-        fields: Array<String>? = null,
-        groupId: Long? = null,
-        rev: VkDate? = null
-    ) : this() {
+    init {
         this.offset = offset
         this.count = count
         this.userId = userId
@@ -100,11 +105,5 @@ class MessagesGetHistoryMethod() : VkMethod<GetHistoryResponse>(
     fun setRev(rev: VkDate): MessagesGetHistoryMethod {
         this.rev = rev
         return this
-    }
-
-    override val classRef = MessagesGetHistoryMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<GetHistoryResponse>>() {}
     }
 }

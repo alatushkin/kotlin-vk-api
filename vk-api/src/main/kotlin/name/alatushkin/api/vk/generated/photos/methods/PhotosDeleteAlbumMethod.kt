@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.photos.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Deletes a photo album belonging to the current user.
+ * [https://vk.com/dev/photos.deleteAlbum]
  *
- *  [https://vk.com/dev/photos.deleteAlbum]
- *  @property [album_id] Album ID.
- *  @property [group_id] ID of the community that owns the album.
+ * Deletes a photo album belonging to the current user.
+ *
+ * @property albumId Album ID.
+ * @property groupId ID of the community that owns the album.
  */
-class PhotosDeleteAlbumMethod() : VkMethod<Boolean>(
+class PhotosDeleteAlbumMethod(
+        albumId: Long,
+        groupId: Long? = null
+) : VkMethod<Boolean>(
     "photos.deleteAlbum",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var albumId: Long? by props
+    var albumId: Long by props
     var groupId: Long? by props
 
-    constructor(
-        albumId: Long? = null,
-        groupId: Long? = null
-    ) : this() {
+    init {
         this.albumId = albumId
         this.groupId = groupId
     }
@@ -35,11 +40,5 @@ class PhotosDeleteAlbumMethod() : VkMethod<Boolean>(
     fun setGroupId(groupId: Long): PhotosDeleteAlbumMethod {
         this.groupId = groupId
         return this
-    }
-
-    override val classRef = PhotosDeleteAlbumMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

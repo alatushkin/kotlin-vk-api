@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.notes.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Edits a comment on a note.
+ * [https://vk.com/dev/notes.editComment]
  *
- *  [https://vk.com/dev/notes.editComment]
- *  @property [comment_id] Comment ID.
- *  @property [owner_id] Note owner ID.
- *  @property [message] New comment text.
+ * Edits a comment on a note.
+ *
+ * @property commentId Comment ID.
+ * @property ownerId Note owner ID.
+ * @property message New comment text.
  */
-class NotesEditCommentMethod() : VkMethod<Boolean>(
+class NotesEditCommentMethod(
+        commentId: Long,
+        ownerId: Long? = null,
+        message: String? = null
+) : VkMethod<Boolean>(
     "notes.editComment",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var commentId: Long? by props
+    var commentId: Long by props
     var ownerId: Long? by props
     var message: String? by props
 
-    constructor(
-        commentId: Long? = null,
-        ownerId: Long? = null,
-        message: String? = null
-    ) : this() {
+    init {
         this.commentId = commentId
         this.ownerId = ownerId
         this.message = message
@@ -44,11 +49,5 @@ class NotesEditCommentMethod() : VkMethod<Boolean>(
     fun setMessage(message: String): NotesEditCommentMethod {
         this.message = message
         return this
-    }
-
-    override val classRef = NotesEditCommentMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

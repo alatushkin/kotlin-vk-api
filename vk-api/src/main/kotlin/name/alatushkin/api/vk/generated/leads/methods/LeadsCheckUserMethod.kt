@@ -1,35 +1,40 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.leads.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.leads.Checked
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Checks if the user can start the lead.
+ * [https://vk.com/dev/leads.checkUser]
  *
- *  [https://vk.com/dev/leads.checkUser]
- *  @property [lead_id] Lead ID.
- *  @property [test_result] Value to be return in 'result' field when test mode is used.
- *  @property [age] User age.
- *  @property [country] User country code.
+ * Checks if the user can start the lead.
+ *
+ * @property leadId Lead ID.
+ * @property testResult Value to be return in 'result' field when test mode is used.
+ * @property age User age.
+ * @property country User country code.
  */
-class LeadsCheckUserMethod() : VkMethod<Checked>(
+class LeadsCheckUserMethod(
+        leadId: Long,
+        testResult: Long? = null,
+        age: Long? = null,
+        country: String? = null
+) : VkMethod<Checked>(
     "leads.checkUser",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Checked>>() {}
+), UserMethod {
 
-    var leadId: Long? by props
+    var leadId: Long by props
     var testResult: Long? by props
     var age: Long? by props
     var country: String? by props
 
-    constructor(
-        leadId: Long? = null,
-        testResult: Long? = null,
-        age: Long? = null,
-        country: String? = null
-    ) : this() {
+    init {
         this.leadId = leadId
         this.testResult = testResult
         this.age = age
@@ -54,11 +59,5 @@ class LeadsCheckUserMethod() : VkMethod<Checked>(
     fun setCountry(country: String): LeadsCheckUserMethod {
         this.country = country
         return this
-    }
-
-    override val classRef = LeadsCheckUserMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Checked>>() {}
     }
 }

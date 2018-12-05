@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.video.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Adds a video to a user or community page.
+ * [https://vk.com/dev/video.add]
  *
- *  [https://vk.com/dev/video.add]
- *  @property [target_id] identifier of a user or community to add a video to. Use a negative value to designate a community ID.
- *  @property [video_id] Video ID.
- *  @property [owner_id] ID of the user or community that owns the video. Use a negative value to designate a community ID.
+ * Adds a video to a user or community page.
+ *
+ * @property targetId identifier of a user or community to add a video to. Use a negative value to designate a community ID.
+ * @property videoId Video ID.
+ * @property ownerId ID of the user or community that owns the video. Use a negative value to designate a community ID.
  */
-class VideoAddMethod() : VkMethod<Boolean>(
+class VideoAddMethod(
+        targetId: Long? = null,
+        videoId: Long,
+        ownerId: Long
+) : VkMethod<Boolean>(
     "video.add",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
     var targetId: Long? by props
-    var videoId: Long? by props
-    var ownerId: Long? by props
+    var videoId: Long by props
+    var ownerId: Long by props
 
-    constructor(
-        targetId: Long? = null,
-        videoId: Long? = null,
-        ownerId: Long? = null
-    ) : this() {
+    init {
         this.targetId = targetId
         this.videoId = videoId
         this.ownerId = ownerId
@@ -44,11 +49,5 @@ class VideoAddMethod() : VkMethod<Boolean>(
     fun setOwnerId(ownerId: Long): VideoAddMethod {
         this.ownerId = ownerId
         return this
-    }
-
-    override val classRef = VideoAddMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

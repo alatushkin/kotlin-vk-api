@@ -1,28 +1,33 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to delete a link from the community.
+ * [https://vk.com/dev/groups.deleteLink]
  *
- *  [https://vk.com/dev/groups.deleteLink]
- *  @property [group_id] Community ID.
- *  @property [link_id] Link ID.
+ * Allows to delete a link from the community.
+ *
+ * @property groupId Community ID.
+ * @property linkId Link ID.
  */
-class GroupsDeleteLinkMethod() : VkMethod<Boolean>(
+class GroupsDeleteLinkMethod(
+        groupId: Long,
+        linkId: Long
+) : VkMethod<Boolean>(
     "groups.deleteLink",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var linkId: Long? by props
+    var groupId: Long by props
+    var linkId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        linkId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.linkId = linkId
     }
@@ -35,11 +40,5 @@ class GroupsDeleteLinkMethod() : VkMethod<Boolean>(
     fun setLinkId(linkId: Long): GroupsDeleteLinkMethod {
         this.linkId = linkId
         return this
-    }
-
-    override val classRef = GroupsDeleteLinkMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

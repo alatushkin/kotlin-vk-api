@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -7,27 +9,40 @@ import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.groups.Group
 import name.alatushkin.api.vk.generated.groups.SearchSort
 import name.alatushkin.api.vk.generated.groups.SearchType
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of communities matching the search criteria.
+ * [https://vk.com/dev/groups.search]
  *
- *  [https://vk.com/dev/groups.search]
- *  @property [q] Search query string.
- *  @property [type] Community type. Possible values: 'group, page, event.'
- *  @property [country_id] Country ID.
- *  @property [city_id] City ID. If this parameter is transmitted, country_id is ignored.
- *  @property [future] '1' — to return only upcoming events. Works with the 'type' = 'event' only.
- *  @property [market] '1' — to return communities with enabled market only.
- *  @property [sort] Sort order. Possible values: *'0' — default sorting (similar the full version of the site),, *'1' — by growth speed,, *'2'— by the "day attendance/members number" ratio,, *'3' — by the "Likes number/members number" ratio,, *'4' — by the "comments number/members number" ratio,, *'5' — by the "boards entries number/members number" ratio.
- *  @property [offset] Offset needed to return a specific subset of results.
- *  @property [count] Number of communities to return. "Note that you can not receive more than first thousand of results, regardless of 'count' and 'offset' values."
+ * Returns a list of communities matching the search criteria.
+ *
+ * @property q Search query string.
+ * @property type Community type. Possible values: 'group, page, event.'
+ * @property countryId Country ID.
+ * @property cityId City ID. If this parameter is transmitted, country_id is ignored.
+ * @property future '1' — to return only upcoming events. Works with the 'type' = 'event' only.
+ * @property market '1' — to return communities with enabled market only.
+ * @property sort Sort order. Possible values: *'0' — default sorting (similar the full version of the site),, *'1' — by growth speed,, *'2'— by the "day attendance/members number" ratio,, *'3' — by the "Likes number/members number" ratio,, *'4' — by the "comments number/members number" ratio,, *'5' — by the "boards entries number/members number" ratio.
+ * @property offset Offset needed to return a specific subset of results.
+ * @property count Number of communities to return. "Note that you can not receive more than first thousand of results, regardless of 'count' and 'offset' values."
  */
-class GroupsSearchMethod() : VkMethod<VkList<Group>>(
+class GroupsSearchMethod(
+        q: String,
+        type: SearchType? = null,
+        countryId: Long? = null,
+        cityId: Long? = null,
+        future: Boolean? = null,
+        market: Boolean? = null,
+        sort: SearchSort? = null,
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<Group>>(
     "groups.search",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Group>>>() {}
+), UserMethod {
 
-    var q: String? by props
+    var q: String by props
     var type: SearchType? by props
     var countryId: Long? by props
     var cityId: Long? by props
@@ -37,17 +52,7 @@ class GroupsSearchMethod() : VkMethod<VkList<Group>>(
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        q: String? = null,
-        type: SearchType? = null,
-        countryId: Long? = null,
-        cityId: Long? = null,
-        future: Boolean? = null,
-        market: Boolean? = null,
-        sort: SearchSort? = null,
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.q = q
         this.type = type
         this.countryId = countryId
@@ -102,11 +107,5 @@ class GroupsSearchMethod() : VkMethod<VkList<Group>>(
     fun setCount(count: Long): GroupsSearchMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = GroupsSearchMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Group>>>() {}
     }
 }

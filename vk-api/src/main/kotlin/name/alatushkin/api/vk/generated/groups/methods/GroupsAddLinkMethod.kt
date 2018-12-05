@@ -1,31 +1,36 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Allows to add a link to the community.
+ * [https://vk.com/dev/groups.addLink]
  *
- *  [https://vk.com/dev/groups.addLink]
- *  @property [group_id] Community ID.
- *  @property [link] Link URL.
- *  @property [text] Description text for the link.
+ * Allows to add a link to the community.
+ *
+ * @property groupId Community ID.
+ * @property link Link URL.
+ * @property text Description text for the link.
  */
-class GroupsAddLinkMethod() : VkMethod<Boolean>(
+class GroupsAddLinkMethod(
+        groupId: Long,
+        link: String,
+        text: String? = null
+) : VkMethod<Boolean>(
     "groups.addLink",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<Boolean>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
-    var link: String? by props
+    var groupId: Long by props
+    var link: String by props
     var text: String? by props
 
-    constructor(
-        groupId: Long? = null,
-        link: String? = null,
-        text: String? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.link = link
         this.text = text
@@ -44,11 +49,5 @@ class GroupsAddLinkMethod() : VkMethod<Boolean>(
     fun setText(text: String): GroupsAddLinkMethod {
         this.text = text
         return this
-    }
-
-    override val classRef = GroupsAddLinkMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<Boolean>>() {}
     }
 }

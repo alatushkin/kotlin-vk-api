@@ -1,29 +1,34 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.messages.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.messages.IsMessagesFromGroupAllowedResponse
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns information whether sending messages from the community to current user is allowed.
+ * [https://vk.com/dev/messages.isMessagesFromGroupAllowed]
  *
- *  [https://vk.com/dev/messages.isMessagesFromGroupAllowed]
- *  @property [group_id] Group ID.
- *  @property [user_id] User ID.
+ * Returns information whether sending messages from the community to current user is allowed.
+ *
+ * @property groupId Group ID.
+ * @property userId User ID.
  */
-class MessagesIsMessagesFromGroupAllowedMethod() : VkMethod<IsMessagesFromGroupAllowedResponse>(
+class MessagesIsMessagesFromGroupAllowedMethod(
+        groupId: Long,
+        userId: Long
+) : VkMethod<IsMessagesFromGroupAllowedResponse>(
     "messages.isMessagesFromGroupAllowed",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<IsMessagesFromGroupAllowedResponse>>() {}
+), UserGroupMethod {
 
-    var groupId: Long? by props
-    var userId: Long? by props
+    var groupId: Long by props
+    var userId: Long by props
 
-    constructor(
-        groupId: Long? = null,
-        userId: Long? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.userId = userId
     }
@@ -36,11 +41,5 @@ class MessagesIsMessagesFromGroupAllowedMethod() : VkMethod<IsMessagesFromGroupA
     fun setUserId(userId: Long): MessagesIsMessagesFromGroupAllowedMethod {
         this.userId = userId
         return this
-    }
-
-    override val classRef = MessagesIsMessagesFromGroupAllowedMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<IsMessagesFromGroupAllowedResponse>>() {}
     }
 }

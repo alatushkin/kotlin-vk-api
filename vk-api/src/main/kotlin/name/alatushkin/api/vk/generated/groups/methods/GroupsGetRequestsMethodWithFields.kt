@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.groups.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,35 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
- *  Returns a list of requests to the community.
+ * [https://vk.com/dev/groups.getRequests]
  *
- *  [https://vk.com/dev/groups.getRequests]
- *  @property [group_id] Community ID.
- *  @property [offset] Offset needed to return a specific subset of results.
- *  @property [count] Number of results to return.
- *  @property [fields] Profile fields to return.
+ * Returns a list of requests to the community.
+ *
+ * @property groupId Community ID.
+ * @property offset Offset needed to return a specific subset of results.
+ * @property count Number of results to return.
+ * @property fields Profile fields to return.
  */
-class GroupsGetRequestsMethodWithFields() : VkMethod<VkList<UserFull>>(
+class GroupsGetRequestsMethodWithFields(
+        groupId: Long,
+        offset: Long? = null,
+        count: Long? = null,
+        fields: Array<String>? = null
+) : VkMethod<VkList<UserFull>>(
     "groups.getRequests",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<UserFull>>>() {}
+), UserMethod {
 
-    var groupId: Long? by props
+    var groupId: Long by props
     var offset: Long? by props
     var count: Long? by props
     var fields: Array<String>? by props
 
-    constructor(
-        groupId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null
-    ) : this() {
+    init {
         this.groupId = groupId
         this.offset = offset
         this.count = count
@@ -55,11 +60,5 @@ class GroupsGetRequestsMethodWithFields() : VkMethod<VkList<UserFull>>(
     fun setFields(fields: Array<String>): GroupsGetRequestsMethodWithFields {
         this.fields = fields
         return this
-    }
-
-    override val classRef = GroupsGetRequestsMethodWithFields.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<UserFull>>>() {}
     }
 }

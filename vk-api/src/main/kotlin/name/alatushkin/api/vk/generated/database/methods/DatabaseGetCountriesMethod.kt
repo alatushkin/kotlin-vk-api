@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.database.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,32 +7,35 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.common.Country
+import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
- *  Returns a list of countries.
+ * [https://vk.com/dev/database.getCountries]
  *
- *  [https://vk.com/dev/database.getCountries]
- *  @property [need_all] '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
- *  @property [code] Country codes in [vk.com/dev/country_codes|ISO 3166-1 alpha-2] standard.
- *  @property [offset] Offset needed to return a specific subset of countries.
- *  @property [count] Number of countries to return.
+ * Returns a list of countries.
+ *
+ * @property needAll '1' — to return a full list of all countries, '0' — to return a list of countries near the current user's country (default).
+ * @property code Country codes in [vk.com/dev/country_codes|ISO 3166-1 alpha-2] standard.
+ * @property offset Offset needed to return a specific subset of countries.
+ * @property count Number of countries to return.
  */
-class DatabaseGetCountriesMethod() : VkMethod<VkList<Country>>(
+class DatabaseGetCountriesMethod(
+        needAll: Boolean? = null,
+        code: String? = null,
+        offset: Long? = null,
+        count: Long? = null
+) : VkMethod<VkList<Country>>(
     "database.getCountries",
-    HashMap()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Country>>>() {}
+), UserServiceMethod {
 
     var needAll: Boolean? by props
     var code: String? by props
     var offset: Long? by props
     var count: Long? by props
 
-    constructor(
-        needAll: Boolean? = null,
-        code: String? = null,
-        offset: Long? = null,
-        count: Long? = null
-    ) : this() {
+    init {
         this.needAll = needAll
         this.code = code
         this.offset = offset
@@ -55,11 +60,5 @@ class DatabaseGetCountriesMethod() : VkMethod<VkList<Country>>(
     fun setCount(count: Long): DatabaseGetCountriesMethod {
         this.count = count
         return this
-    }
-
-    override val classRef = DatabaseGetCountriesMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Country>>>() {}
     }
 }

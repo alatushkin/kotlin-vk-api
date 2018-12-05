@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
+
 package name.alatushkin.api.vk.generated.stories.methods
 
 import com.fasterxml.jackson.core.type.TypeReference
@@ -5,34 +7,31 @@ import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.generated.stories.Story
+import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
- *  Returns stories available for current user.
+ * [https://vk.com/dev/stories.get]
  *
- *  [https://vk.com/dev/stories.get]
- *  @property [owner_id] Owner ID.
+ * Returns stories available for current user.
+ *
+ * @property ownerId Owner ID.
  */
-class StoriesGetMethod() : VkMethod<VkList<Array<Story>>>(
+class StoriesGetMethod(
+        ownerId: Long? = null
+) : VkMethod<VkList<Array<Story>>>(
     "stories.get",
-    mutableMapOf()
-) {
+    mutableMapOf(),
+    object : TypeReference<VkResponse<VkList<Array<Story>>>>() {}
+), UserGroupMethod {
 
     var ownerId: Long? by props
 
-    constructor(
-        ownerId: Long? = null
-    ) : this() {
+    init {
         this.ownerId = ownerId
     }
 
     fun setOwnerId(ownerId: Long): StoriesGetMethod {
         this.ownerId = ownerId
         return this
-    }
-
-    override val classRef = StoriesGetMethod.classRef
-
-    companion object {
-        val classRef = object : TypeReference<VkResponse<VkList<Array<Story>>>>() {}
     }
 }

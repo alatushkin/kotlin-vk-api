@@ -2,10 +2,11 @@ package name.alatushkin.api.vk.api.utils.upload
 
 import kotlinx.coroutines.runBlocking
 import name.alatushkin.api.vk.SimpleMethodExecutor
-import name.alatushkin.api.vk.VkClient
 import name.alatushkin.api.vk.api.toAttachmentId
 import name.alatushkin.api.vk.groupAccessToken
-import name.alatushkin.api.vk.withToken
+import name.alatushkin.api.vk.groupId
+import name.alatushkin.api.vk.tokens.GroupToken
+import name.alatushkin.api.vk.tokens.withToken
 import name.alatushkin.httpclient.httpClient
 import org.junit.Test
 
@@ -15,7 +16,8 @@ class HelperMethodsKtTest {
         runBlocking {
             val timeOut = 95
             val httpClient = httpClient(readTimeout = timeOut * 1000)
-            val api: VkClient = SimpleMethodExecutor(httpClient).withToken(groupAccessToken)
+            val token = GroupToken(groupAccessToken, groupId.toLong())
+            val api = SimpleMethodExecutor(httpClient).withToken(token)
 
             val result = api
                 .uploadMessagePhoto(
@@ -32,7 +34,8 @@ class HelperMethodsKtTest {
         runBlocking {
             val timeOut = 95
             val httpClient = httpClient(readTimeout = timeOut * 1000)
-            val api: VkClient = SimpleMethodExecutor(httpClient).withToken(groupAccessToken)
+            val token = GroupToken(groupAccessToken, groupId.toLong())
+            val api = SimpleMethodExecutor(httpClient).withToken(token)
 
             val result = api
                 .uploadMessageDocument(

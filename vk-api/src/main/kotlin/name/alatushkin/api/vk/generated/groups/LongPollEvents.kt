@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 open class LongPollEvents(
     val messageNew: Boolean,
     val messageReply: Boolean,

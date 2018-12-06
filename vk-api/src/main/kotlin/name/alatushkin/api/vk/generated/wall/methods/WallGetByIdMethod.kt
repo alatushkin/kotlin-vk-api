@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.WallpostFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields 
  */
 class WallGetByIdMethod(
-        posts: Array<String>,
-        copyHistoryDepth: Long? = null,
-        fields: Array<String>? = null
+    posts: Array<String>,
+    copyHistoryDepth: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<Array<WallpostFull>>(
     "wall.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<WallpostFull>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var posts: Array<String> by props
@@ -35,20 +34,5 @@ class WallGetByIdMethod(
         this.posts = posts
         this.copyHistoryDepth = copyHistoryDepth
         this.fields = fields
-    }
-
-    fun setPosts(posts: Array<String>): WallGetByIdMethod {
-        this.posts = posts
-        return this
-    }
-
-    fun setCopyHistoryDepth(copyHistoryDepth: Long): WallGetByIdMethod {
-        this.copyHistoryDepth = copyHistoryDepth
-        return this
-    }
-
-    fun setFields(fields: Array<String>): WallGetByIdMethod {
-        this.fields = fields
-        return this
     }
 }

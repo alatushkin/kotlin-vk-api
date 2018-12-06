@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetHistoryAttachmentsMediaType
 import name.alatushkin.api.vk.generated.messages.GetHistoryAttachmentsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with group access token)
  */
 class MessagesGetHistoryAttachmentsMethod(
-        peerId: Long,
-        mediaType: GetHistoryAttachmentsMediaType? = null,
-        startFrom: String? = null,
-        count: Long? = null,
-        photoSizes: Boolean? = null,
-        fields: Array<String>? = null,
-        groupId: Long? = null
+    peerId: Long,
+    mediaType: GetHistoryAttachmentsMediaType? = null,
+    startFrom: String? = null,
+    count: Long? = null,
+    photoSizes: Boolean? = null,
+    fields: Array<String>? = null,
+    groupId: Long? = null
 ) : VkMethod<GetHistoryAttachmentsResponse>(
     "messages.getHistoryAttachments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetHistoryAttachmentsResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var peerId: Long by props
@@ -52,40 +51,5 @@ class MessagesGetHistoryAttachmentsMethod(
         this.photoSizes = photoSizes
         this.fields = fields
         this.groupId = groupId
-    }
-
-    fun setPeerId(peerId: Long): MessagesGetHistoryAttachmentsMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setMediaType(mediaType: GetHistoryAttachmentsMediaType): MessagesGetHistoryAttachmentsMethod {
-        this.mediaType = mediaType
-        return this
-    }
-
-    fun setStartFrom(startFrom: String): MessagesGetHistoryAttachmentsMethod {
-        this.startFrom = startFrom
-        return this
-    }
-
-    fun setCount(count: Long): MessagesGetHistoryAttachmentsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setPhotoSizes(photoSizes: Boolean): MessagesGetHistoryAttachmentsMethod {
-        this.photoSizes = photoSizes
-        return this
-    }
-
-    fun setFields(fields: Array<String>): MessagesGetHistoryAttachmentsMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesGetHistoryAttachmentsMethod {
-        this.groupId = groupId
-        return this
     }
 }

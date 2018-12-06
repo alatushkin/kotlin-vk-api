@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketCategory
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of results.
  */
 class MarketGetCategoriesMethod(
-        count: Long? = null,
-        offset: Long? = null
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<VkList<MarketCategory>>(
     "market.getCategories",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<MarketCategory>>>() {}
+    successReference()
 ), UserMethod {
 
     var count: Long? by props
@@ -32,15 +31,5 @@ class MarketGetCategoriesMethod(
     init {
         this.count = count
         this.offset = offset
-    }
-
-    fun setCount(count: Long): MarketGetCategoriesMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): MarketGetCategoriesMethod {
-        this.offset = offset
-        return this
     }
 }

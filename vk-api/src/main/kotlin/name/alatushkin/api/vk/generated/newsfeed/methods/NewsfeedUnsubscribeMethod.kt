@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.UnsubscribeType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property itemId Object ID.
  */
 class NewsfeedUnsubscribeMethod(
-        type: UnsubscribeType,
-        ownerId: Long? = null,
-        itemId: Long
+    type: UnsubscribeType,
+    ownerId: Long? = null,
+    itemId: Long
 ) : VkMethod<Boolean>(
     "newsfeed.unsubscribe",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var type: UnsubscribeType by props
@@ -35,20 +34,5 @@ class NewsfeedUnsubscribeMethod(
         this.type = type
         this.ownerId = ownerId
         this.itemId = itemId
-    }
-
-    fun setType(type: UnsubscribeType): NewsfeedUnsubscribeMethod {
-        this.type = type
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): NewsfeedUnsubscribeMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): NewsfeedUnsubscribeMethod {
-        this.itemId = itemId
-        return this
     }
 }

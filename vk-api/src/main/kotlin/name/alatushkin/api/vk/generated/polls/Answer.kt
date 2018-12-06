@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.polls
 
-
 open class Answer(
     val id: Long,
     val text: String,

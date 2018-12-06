@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.docs.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
 import name.alatushkin.api.vk.generated.docs.GetMessagesUploadServerType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property peerId Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
  */
 class DocsGetMessagesUploadServerMethod(
-        type: GetMessagesUploadServerType? = null,
-        peerId: Long? = null
+    type: GetMessagesUploadServerType? = null,
+    peerId: Long? = null
 ) : VkMethod<UploadServer>(
     "docs.getMessagesUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<UploadServer>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var type: GetMessagesUploadServerType? by props
@@ -32,15 +31,5 @@ class DocsGetMessagesUploadServerMethod(
     init {
         this.type = type
         this.peerId = peerId
-    }
-
-    fun setType(type: GetMessagesUploadServerType): DocsGetMessagesUploadServerMethod {
-        this.type = type
-        return this
-    }
-
-    fun setPeerId(peerId: Long): DocsGetMessagesUploadServerMethod {
-        this.peerId = peerId
-        return this
     }
 }

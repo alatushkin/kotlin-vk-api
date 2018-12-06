@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.common
 
-
 open class LikesInfo(
     val count: Long,
     val userLikes: Long,

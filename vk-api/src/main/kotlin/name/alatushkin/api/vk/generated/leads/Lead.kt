@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.leads
 
-
 open class Lead(
     val limit: Long? = null,
     val spent: Long? = null,

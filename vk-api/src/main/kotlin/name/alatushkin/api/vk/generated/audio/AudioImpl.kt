@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.audio
 
-
 open class AudioImpl(
     override val id: Long,
     override val ownerId: Long,

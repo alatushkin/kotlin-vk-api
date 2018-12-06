@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.widgets.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.widgets.GetCommentsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count 
  */
 class WidgetsGetCommentsMethod(
-        widgetApiId: Long? = null,
-        url: String? = null,
-        pageId: String? = null,
-        order: String? = null,
-        fields: Array<String>? = null,
-        count: Long? = null
+    widgetApiId: Long? = null,
+    url: String? = null,
+    pageId: String? = null,
+    order: String? = null,
+    fields: Array<String>? = null,
+    count: Long? = null
 ) : VkMethod<GetCommentsResponse>(
     "widgets.getComments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var widgetApiId: Long? by props
@@ -47,35 +46,5 @@ class WidgetsGetCommentsMethod(
         this.order = order
         this.fields = fields
         this.count = count
-    }
-
-    fun setWidgetApiId(widgetApiId: Long): WidgetsGetCommentsMethod {
-        this.widgetApiId = widgetApiId
-        return this
-    }
-
-    fun setUrl(url: String): WidgetsGetCommentsMethod {
-        this.url = url
-        return this
-    }
-
-    fun setPageId(pageId: String): WidgetsGetCommentsMethod {
-        this.pageId = pageId
-        return this
-    }
-
-    fun setOrder(order: String): WidgetsGetCommentsMethod {
-        this.order = order
-        return this
-    }
-
-    fun setFields(fields: Array<String>): WidgetsGetCommentsMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setCount(count: Long): WidgetsGetCommentsMethod {
-        this.count = count
-        return this
     }
 }

@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ownerId identifier of a community or current user. "Note that community id must be negative. 'owner_id=1' – user, 'owner_id=-1' – community, "
  */
 class PhotosGetOwnerPhotoUploadServerMethod(
-        ownerId: Long? = null
+    ownerId: Long? = null
 ) : VkMethod<UploadServer>(
     "photos.getOwnerPhotoUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<UploadServer>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
 
     init {
         this.ownerId = ownerId
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosGetOwnerPhotoUploadServerMethod {
-        this.ownerId = ownerId
-        return this
     }
 }

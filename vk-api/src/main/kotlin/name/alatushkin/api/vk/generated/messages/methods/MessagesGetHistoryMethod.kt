@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetHistoryResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -25,19 +24,19 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property rev Sort order: '1' — return messages in chronological order. '0' — return messages in reverse chronological order.
  */
 class MessagesGetHistoryMethod(
-        offset: Long? = null,
-        count: Long? = null,
-        userId: Long? = null,
-        peerId: Long? = null,
-        startMessageId: Long? = null,
-        extended: Boolean? = null,
-        fields: Array<String>? = null,
-        groupId: Long? = null,
-        rev: VkDate? = null
+    offset: Long? = null,
+    count: Long? = null,
+    userId: Long? = null,
+    peerId: Long? = null,
+    startMessageId: Long? = null,
+    extended: Boolean? = null,
+    fields: Array<String>? = null,
+    groupId: Long? = null,
+    rev: VkDate? = null
 ) : VkMethod<GetHistoryResponse>(
     "messages.getHistory",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetHistoryResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var offset: Long? by props
@@ -60,50 +59,5 @@ class MessagesGetHistoryMethod(
         this.fields = fields
         this.groupId = groupId
         this.rev = rev
-    }
-
-    fun setOffset(offset: Long): MessagesGetHistoryMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): MessagesGetHistoryMethod {
-        this.count = count
-        return this
-    }
-
-    fun setUserId(userId: Long): MessagesGetHistoryMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setPeerId(peerId: Long): MessagesGetHistoryMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setStartMessageId(startMessageId: Long): MessagesGetHistoryMethod {
-        this.startMessageId = startMessageId
-        return this
-    }
-
-    fun setExtended(extended: Boolean): MessagesGetHistoryMethod {
-        this.extended = extended
-        return this
-    }
-
-    fun setFields(fields: Array<String>): MessagesGetHistoryMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesGetHistoryMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setRev(rev: VkDate): MessagesGetHistoryMethod {
-        this.rev = rev
-        return this
     }
 }

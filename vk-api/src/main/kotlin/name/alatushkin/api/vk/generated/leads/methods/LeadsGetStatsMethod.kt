@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.leads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.Lead
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property dateEnd Day to finish stats (YYYY_MM_DD, e.g.2011-09-17).
  */
 class LeadsGetStatsMethod(
-        leadId: Long,
-        secret: String? = null,
-        dateStart: String? = null,
-        dateEnd: String? = null
+    leadId: Long,
+    secret: String? = null,
+    dateStart: String? = null,
+    dateEnd: String? = null
 ) : VkMethod<Lead>(
     "leads.getStats",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Lead>>() {}
+    successReference()
 ), UserMethod {
 
     var leadId: Long by props
@@ -39,25 +38,5 @@ class LeadsGetStatsMethod(
         this.secret = secret
         this.dateStart = dateStart
         this.dateEnd = dateEnd
-    }
-
-    fun setLeadId(leadId: Long): LeadsGetStatsMethod {
-        this.leadId = leadId
-        return this
-    }
-
-    fun setSecret(secret: String): LeadsGetStatsMethod {
-        this.secret = secret
-        return this
-    }
-
-    fun setDateStart(dateStart: String): LeadsGetStatsMethod {
-        this.dateStart = dateStart
-        return this
-    }
-
-    fun setDateEnd(dateEnd: String): LeadsGetStatsMethod {
-        this.dateEnd = dateEnd
-        return this
     }
 }

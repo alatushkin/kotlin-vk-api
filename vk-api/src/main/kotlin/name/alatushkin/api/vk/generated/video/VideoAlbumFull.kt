@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.video
 
-
 open class VideoAlbumFull(
     val id: Long,
     val ownerId: Long,

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,17 +20,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property y2 Lower right-corner coordinate of the tagged area (as a percentage of the photo's height).
  */
 class PhotosPutTagMethod(
-        ownerId: Long? = null,
-        photoId: Long,
-        userId: Long,
-        x: Double? = null,
-        y: Double? = null,
-        x2: Double? = null,
-        y2: Double? = null
+    ownerId: Long? = null,
+    photoId: Long,
+    userId: Long,
+    x: Double? = null,
+    y: Double? = null,
+    x2: Double? = null,
+    y2: Double? = null
 ) : VkMethod<Long>(
     "photos.putTag",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -50,40 +49,5 @@ class PhotosPutTagMethod(
         this.y = y
         this.x2 = x2
         this.y2 = y2
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosPutTagMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosPutTagMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setUserId(userId: Long): PhotosPutTagMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setX(x: Double): PhotosPutTagMethod {
-        this.x = x
-        return this
-    }
-
-    fun setY(y: Double): PhotosPutTagMethod {
-        this.y = y
-        return this
-    }
-
-    fun setX2(x2: Double): PhotosPutTagMethod {
-        this.x2 = x2
-        return this
-    }
-
-    fun setY2(y2: Double): PhotosPutTagMethod {
-        this.y2 = y2
-        return this
     }
 }

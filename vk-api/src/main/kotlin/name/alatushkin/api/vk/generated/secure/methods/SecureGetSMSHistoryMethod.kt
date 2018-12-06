@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.secure.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.secure.SmsNotification
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property limit number of returned posts. By default — 1000.
  */
 class SecureGetSMSHistoryMethod(
-        userId: Long? = null,
-        dateFrom: Long? = null,
-        dateTo: Long? = null,
-        limit: Long? = null
+    userId: Long? = null,
+    dateFrom: Long? = null,
+    dateTo: Long? = null,
+    limit: Long? = null
 ) : VkMethod<Array<SmsNotification>>(
     "secure.getSMSHistory",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<SmsNotification>>>() {}
+    successReference()
 ), ServiceMethod {
 
     var userId: Long? by props
@@ -39,25 +38,5 @@ class SecureGetSMSHistoryMethod(
         this.dateFrom = dateFrom
         this.dateTo = dateTo
         this.limit = limit
-    }
-
-    fun setUserId(userId: Long): SecureGetSMSHistoryMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setDateFrom(dateFrom: Long): SecureGetSMSHistoryMethod {
-        this.dateFrom = dateFrom
-        return this
-    }
-
-    fun setDateTo(dateTo: Long): SecureGetSMSHistoryMethod {
-        this.dateTo = dateTo
-        return this
-    }
-
-    fun setLimit(limit: Long): SecureGetSMSHistoryMethod {
-        this.limit = limit
-        return this
     }
 }

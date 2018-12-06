@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.CreateSubtype
 import name.alatushkin.api.vk.generated.groups.CreateType
 import name.alatushkin.api.vk.generated.groups.Group
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,15 +21,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property subtype Public page subtype. Possible values: *'1' – place or small business,, *'2' – company, organization or website,, *'3' – famous person or group of people,, *'4' – product or work of art.
  */
 class GroupsCreateMethod(
-        title: String,
-        description: String? = null,
-        type: CreateType? = null,
-        publicCategory: Long? = null,
-        subtype: CreateSubtype? = null
+    title: String,
+    description: String? = null,
+    type: CreateType? = null,
+    publicCategory: Long? = null,
+    subtype: CreateSubtype? = null
 ) : VkMethod<Group>(
     "groups.create",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Group>>() {}
+    successReference()
 ), UserMethod {
 
     var title: String by props
@@ -45,30 +44,5 @@ class GroupsCreateMethod(
         this.type = type
         this.publicCategory = publicCategory
         this.subtype = subtype
-    }
-
-    fun setTitle(title: String): GroupsCreateMethod {
-        this.title = title
-        return this
-    }
-
-    fun setDescription(description: String): GroupsCreateMethod {
-        this.description = description
-        return this
-    }
-
-    fun setType(type: CreateType): GroupsCreateMethod {
-        this.type = type
-        return this
-    }
-
-    fun setPublicCategory(publicCategory: Long): GroupsCreateMethod {
-        this.publicCategory = publicCategory
-        return this
-    }
-
-    fun setSubtype(subtype: CreateSubtype): GroupsCreateMethod {
-        this.subtype = subtype
-        return this
     }
 }

@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.stats.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stats.Period
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property dateTo End datestamp (in Unix time) of statistics to return.
  */
 class StatsGetMethod(
-        groupId: Long? = null,
-        appId: Long? = null,
-        dateFrom: String? = null,
-        dateTo: String? = null
+    groupId: Long? = null,
+    appId: Long? = null,
+    dateFrom: String? = null,
+    dateTo: String? = null
 ) : VkMethod<Array<Period>>(
     "stats.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Period>>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long? by props
@@ -39,25 +38,5 @@ class StatsGetMethod(
         this.appId = appId
         this.dateFrom = dateFrom
         this.dateTo = dateTo
-    }
-
-    fun setGroupId(groupId: Long): StatsGetMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setAppId(appId: Long): StatsGetMethod {
-        this.appId = appId
-        return this
-    }
-
-    fun setDateFrom(dateFrom: String): StatsGetMethod {
-        this.dateFrom = dateFrom
-        return this
-    }
-
-    fun setDateTo(dateTo: String): StatsGetMethod {
-        this.dateTo = dateTo
-        return this
     }
 }

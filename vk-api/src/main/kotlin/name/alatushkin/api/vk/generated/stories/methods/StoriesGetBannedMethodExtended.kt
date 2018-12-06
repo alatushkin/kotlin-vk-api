@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetBannedExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fields Additional fields to return
  */
 class StoriesGetBannedMethodExtended(
-        fields: Array<String>? = null
+    fields: Array<String>? = null
 ) : VkMethod<GetBannedExtendedResponse>(
     "stories.getBanned",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetBannedExtendedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var fields: Array<String>? by props
 
     init {
         this.fields = fields
-    }
-
-    fun setFields(fields: Array<String>): StoriesGetBannedMethodExtended {
-        this.fields = fields
-        return this
     }
 }

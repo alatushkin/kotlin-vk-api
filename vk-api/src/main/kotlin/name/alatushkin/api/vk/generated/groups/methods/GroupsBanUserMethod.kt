@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.BanUserReason
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property commentVisible '1' — text of comment will be visible to the user,, '0' — text of comment will be invisible to the user. By default: '0'.
  */
 class GroupsBanUserMethod(
-        groupId: Long,
-        userId: Long,
-        endDate: Long? = null,
-        reason: BanUserReason? = null,
-        comment: String? = null,
-        commentVisible: Boolean? = null
+    groupId: Long,
+    userId: Long,
+    endDate: Long? = null,
+    reason: BanUserReason? = null,
+    comment: String? = null,
+    commentVisible: Boolean? = null
 ) : VkMethod<Boolean>(
     "groups.banUser",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -47,35 +46,5 @@ class GroupsBanUserMethod(
         this.reason = reason
         this.comment = comment
         this.commentVisible = commentVisible
-    }
-
-    fun setGroupId(groupId: Long): GroupsBanUserMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUserId(userId: Long): GroupsBanUserMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setEndDate(endDate: Long): GroupsBanUserMethod {
-        this.endDate = endDate
-        return this
-    }
-
-    fun setReason(reason: BanUserReason): GroupsBanUserMethod {
-        this.reason = reason
-        return this
-    }
-
-    fun setComment(comment: String): GroupsBanUserMethod {
-        this.comment = comment
-        return this
-    }
-
-    fun setCommentVisible(commentVisible: Boolean): GroupsBanUserMethod {
-        this.commentVisible = commentVisible
-        return this
     }
 }

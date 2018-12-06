@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.PhotoUpload
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId ID of community that owns the album (if the photo will be uploaded to a community album).
  */
 class PhotosGetUploadServerMethod(
-        albumId: Long? = null,
-        groupId: Long? = null
+    albumId: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<PhotoUpload>(
     "photos.getUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<PhotoUpload>>() {}
+    successReference()
 ), UserMethod {
 
     var albumId: Long? by props
@@ -31,15 +30,5 @@ class PhotosGetUploadServerMethod(
     init {
         this.albumId = albumId
         this.groupId = groupId
-    }
-
-    fun setAlbumId(albumId: Long): PhotosGetUploadServerMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PhotosGetUploadServerMethod {
-        this.groupId = groupId
-        return this
     }
 }

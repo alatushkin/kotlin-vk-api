@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.account
 
-
 open class Offer(
     val id: Long? = null,
     val title: String? = null,

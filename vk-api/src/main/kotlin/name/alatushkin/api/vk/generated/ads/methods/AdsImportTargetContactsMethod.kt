@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property contacts List of phone numbers, emails or user IDs separated with a comma.
  */
 class AdsImportTargetContactsMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        targetGroupId: Long,
-        contacts: String
+    accountId: Long,
+    clientId: Long? = null,
+    targetGroupId: Long,
+    contacts: String
 ) : VkMethod<Long>(
     "ads.importTargetContacts",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -38,25 +37,5 @@ class AdsImportTargetContactsMethod(
         this.clientId = clientId
         this.targetGroupId = targetGroupId
         this.contacts = contacts
-    }
-
-    fun setAccountId(accountId: Long): AdsImportTargetContactsMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsImportTargetContactsMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setTargetGroupId(targetGroupId: Long): AdsImportTargetContactsMethod {
-        this.targetGroupId = targetGroupId
-        return this
-    }
-
-    fun setContacts(contacts: String): AdsImportTargetContactsMethod {
-        this.contacts = contacts
-        return this
     }
 }

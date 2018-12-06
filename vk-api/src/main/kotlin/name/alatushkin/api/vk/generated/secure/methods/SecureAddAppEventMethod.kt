@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.secure.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property value depends on activity_id: * 1 – number, current level number,, * 2 – number, current user's points amount, , Any other value is ignored
  */
 class SecureAddAppEventMethod(
-        userId: Long,
-        activityId: Long,
-        value: Long? = null
+    userId: Long,
+    activityId: Long,
+    value: Long? = null
 ) : VkMethod<Boolean>(
     "secure.addAppEvent",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -34,20 +33,5 @@ class SecureAddAppEventMethod(
         this.userId = userId
         this.activityId = activityId
         this.value = value
-    }
-
-    fun setUserId(userId: Long): SecureAddAppEventMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setActivityId(activityId: Long): SecureAddAppEventMethod {
-        this.activityId = activityId
-        return this
-    }
-
-    fun setValue(value: Long): SecureAddAppEventMethod {
-        this.value = value
-        return this
     }
 }

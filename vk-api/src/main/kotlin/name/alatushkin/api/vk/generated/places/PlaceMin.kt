@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.places
 
-
 open class PlaceMin(
     val id: Long? = null,
     val title: String? = null,

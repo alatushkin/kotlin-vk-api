@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.likes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.DeleteResponse
 import name.alatushkin.api.vk.generated.likes.DeleteType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property itemId Object ID.
  */
 class LikesDeleteMethod(
-        type: DeleteType,
-        ownerId: Long? = null,
-        itemId: Long
+    type: DeleteType,
+    ownerId: Long? = null,
+    itemId: Long
 ) : VkMethod<DeleteResponse>(
     "likes.delete",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<DeleteResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var type: DeleteType by props
@@ -36,20 +35,5 @@ class LikesDeleteMethod(
         this.type = type
         this.ownerId = ownerId
         this.itemId = itemId
-    }
-
-    fun setType(type: DeleteType): LikesDeleteMethod {
-        this.type = type
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): LikesDeleteMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): LikesDeleteMethod {
-        this.itemId = itemId
-        return this
     }
 }

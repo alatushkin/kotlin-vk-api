@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.photos
 
-
 open class PhotoAlbumFull(
     val id: Long,
     val thumbId: Long? = null,

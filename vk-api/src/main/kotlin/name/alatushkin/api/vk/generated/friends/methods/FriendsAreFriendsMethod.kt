@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.FriendStatus
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property needSign '1' — to return 'sign' field. 'sign' is md5("{id}_{user_id}_{friends_status}_{application_secret}"), where id is current user ID. This field allows to check that data has not been modified by the client. By default: '0'.
  */
 class FriendsAreFriendsMethod(
-        userIds: Array<Long>,
-        needSign: Boolean? = null
+    userIds: Array<Long>,
+    needSign: Boolean? = null
 ) : VkMethod<Array<FriendStatus>>(
     "friends.areFriends",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<FriendStatus>>>() {}
+    successReference()
 ), UserMethod {
 
     var userIds: Array<Long> by props
@@ -31,15 +30,5 @@ class FriendsAreFriendsMethod(
     init {
         this.userIds = userIds
         this.needSign = needSign
-    }
-
-    fun setUserIds(userIds: Array<Long>): FriendsAreFriendsMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setNeedSign(needSign: Boolean): FriendsAreFriendsMethod {
-        this.needSign = needSign
-        return this
     }
 }

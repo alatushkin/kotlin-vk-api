@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 
 /**
  * [https://vk.com/dev/newsfeed.deleteList]
@@ -14,21 +13,16 @@ import name.alatushkin.api.vk.api.VkSuccess
  * @property listId 
  */
 class NewsfeedDeleteListMethod(
-        listId: Long
+    listId: Long
 ) : VkMethod<Boolean>(
     "newsfeed.deleteList",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ) {
 
     var listId: Long by props
 
     init {
         this.listId = listId
-    }
-
-    fun setListId(listId: Long): NewsfeedDeleteListMethod {
-        this.listId = listId
-        return this
     }
 }

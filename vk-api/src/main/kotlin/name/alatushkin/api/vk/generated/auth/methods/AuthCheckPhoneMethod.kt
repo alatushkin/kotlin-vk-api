@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.auth.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property authByPhone 
  */
 class AuthCheckPhoneMethod(
-        phone: String,
-        clientId: Long? = null,
-        clientSecret: String,
-        authByPhone: Boolean? = null
+    phone: String,
+    clientId: Long? = null,
+    clientSecret: String,
+    authByPhone: Boolean? = null
 ) : VkMethod<Boolean>(
     "auth.checkPhone",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), ServiceMethod {
 
     var phone: String by props
@@ -38,25 +37,5 @@ class AuthCheckPhoneMethod(
         this.clientId = clientId
         this.clientSecret = clientSecret
         this.authByPhone = authByPhone
-    }
-
-    fun setPhone(phone: String): AuthCheckPhoneMethod {
-        this.phone = phone
-        return this
-    }
-
-    fun setClientId(clientId: Long): AuthCheckPhoneMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setClientSecret(clientSecret: String): AuthCheckPhoneMethod {
-        this.clientSecret = clientSecret
-        return this
-    }
-
-    fun setAuthByPhone(authByPhone: Boolean): AuthCheckPhoneMethod {
-        this.authByPhone = authByPhone
-        return this
     }
 }

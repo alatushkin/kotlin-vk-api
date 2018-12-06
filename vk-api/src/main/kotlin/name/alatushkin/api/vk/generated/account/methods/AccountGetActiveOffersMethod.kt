@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.Offer
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,21 +16,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of results to return.
  */
 class AccountGetActiveOffersMethod(
-        count: Long? = null
+    count: Long? = null
 ) : VkMethod<VkList<Offer>>(
     "account.getActiveOffers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Offer>>>() {}
+    successReference()
 ), UserMethod {
 
     var count: Long? by props
 
     init {
         this.count = count
-    }
-
-    fun setCount(count: Long): AccountGetActiveOffersMethod {
-        this.count = count
-        return this
     }
 }

@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.GetRecommendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fields Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
  */
 class NewsfeedGetRecommendedMethod(
-        startTime: Long? = null,
-        endTime: Long? = null,
-        maxPhotos: Long? = null,
-        startFrom: String? = null,
-        count: Long? = null,
-        fields: Array<String>? = null
+    startTime: Long? = null,
+    endTime: Long? = null,
+    maxPhotos: Long? = null,
+    startFrom: String? = null,
+    count: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetRecommendedResponse>(
     "newsfeed.getRecommended",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetRecommendedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var startTime: Long? by props
@@ -47,35 +46,5 @@ class NewsfeedGetRecommendedMethod(
         this.startFrom = startFrom
         this.count = count
         this.fields = fields
-    }
-
-    fun setStartTime(startTime: Long): NewsfeedGetRecommendedMethod {
-        this.startTime = startTime
-        return this
-    }
-
-    fun setEndTime(endTime: Long): NewsfeedGetRecommendedMethod {
-        this.endTime = endTime
-        return this
-    }
-
-    fun setMaxPhotos(maxPhotos: Long): NewsfeedGetRecommendedMethod {
-        this.maxPhotos = maxPhotos
-        return this
-    }
-
-    fun setStartFrom(startFrom: String): NewsfeedGetRecommendedMethod {
-        this.startFrom = startFrom
-        return this
-    }
-
-    fun setCount(count: Long): NewsfeedGetRecommendedMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): NewsfeedGetRecommendedMethod {
-        this.fields = fields
-        return this
     }
 }

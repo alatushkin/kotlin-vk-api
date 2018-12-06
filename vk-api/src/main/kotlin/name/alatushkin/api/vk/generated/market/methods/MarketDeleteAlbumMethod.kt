@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property albumId Collection ID.
  */
 class MarketDeleteAlbumMethod(
-        ownerId: Long,
-        albumId: Long
+    ownerId: Long,
+    albumId: Long
 ) : VkMethod<Boolean>(
     "market.deleteAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -30,15 +29,5 @@ class MarketDeleteAlbumMethod(
     init {
         this.ownerId = ownerId
         this.albumId = albumId
-    }
-
-    fun setOwnerId(ownerId: Long): MarketDeleteAlbumMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): MarketDeleteAlbumMethod {
-        this.albumId = albumId
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property data Serialized JSON array of objects that describe added managers. Description of 'user_specification' objects see below.
  */
 class AdsAddOfficeUsersMethod(
-        accountId: Long,
-        data: String
+    accountId: Long,
+    data: String
 ) : VkMethod<Boolean>(
     "ads.addOfficeUsers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -30,15 +29,5 @@ class AdsAddOfficeUsersMethod(
     init {
         this.accountId = accountId
         this.data = data
-    }
-
-    fun setAccountId(accountId: Long): AdsAddOfficeUsersMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setData(data: String): AdsAddOfficeUsersMethod {
-        this.data = data
-        return this
     }
 }

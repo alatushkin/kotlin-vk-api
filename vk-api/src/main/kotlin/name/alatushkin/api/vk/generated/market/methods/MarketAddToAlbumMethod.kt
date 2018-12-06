@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property albumIds Collections IDs to add item to.
  */
 class MarketAddToAlbumMethod(
-        ownerId: Long,
-        itemId: Long,
-        albumIds: Array<Long>
+    ownerId: Long,
+    itemId: Long,
+    albumIds: Array<Long>
 ) : VkMethod<Boolean>(
     "market.addToAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -34,20 +33,5 @@ class MarketAddToAlbumMethod(
         this.ownerId = ownerId
         this.itemId = itemId
         this.albumIds = albumIds
-    }
-
-    fun setOwnerId(ownerId: Long): MarketAddToAlbumMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): MarketAddToAlbumMethod {
-        this.itemId = itemId
-        return this
-    }
-
-    fun setAlbumIds(albumIds: Array<Long>): MarketAddToAlbumMethod {
-        this.albumIds = albumIds
-        return this
     }
 }

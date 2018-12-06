@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.docs.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.Doc
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ownerId ID of the user or community that owns the documents. Use a negative value to designate a community ID.
  */
 class DocsGetMethod(
-        count: Long? = null,
-        offset: Long? = null,
-        ownerId: Long? = null
+    count: Long? = null,
+    offset: Long? = null,
+    ownerId: Long? = null
 ) : VkMethod<VkList<Doc>>(
     "docs.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Doc>>>() {}
+    successReference()
 ), UserMethod {
 
     var count: Long? by props
@@ -36,20 +35,5 @@ class DocsGetMethod(
         this.count = count
         this.offset = offset
         this.ownerId = ownerId
-    }
-
-    fun setCount(count: Long): DocsGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): DocsGetMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): DocsGetMethod {
-        this.ownerId = ownerId
-        return this
     }
 }

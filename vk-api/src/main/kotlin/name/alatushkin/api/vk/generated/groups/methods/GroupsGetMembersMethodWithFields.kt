@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.Filter
 import name.alatushkin.api.vk.generated.groups.Sort
 import name.alatushkin.api.vk.generated.groups.UserXtrRole
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -24,16 +23,16 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property filter *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
  */
 class GroupsGetMembersMethodWithFields(
-        groupId: String? = null,
-        sort: Sort? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        filter: Filter? = null
+    groupId: String? = null,
+    sort: Sort? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null,
+    filter: Filter? = null
 ) : VkMethod<VkList<UserXtrRole>>(
     "groups.getMembers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserXtrRole>>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var groupId: String? by props
@@ -50,35 +49,5 @@ class GroupsGetMembersMethodWithFields(
         this.count = count
         this.fields = fields
         this.filter = filter
-    }
-
-    fun setGroupId(groupId: String): GroupsGetMembersMethodWithFields {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setSort(sort: Sort): GroupsGetMembersMethodWithFields {
-        this.sort = sort
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsGetMembersMethodWithFields {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetMembersMethodWithFields {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): GroupsGetMembersMethodWithFields {
-        this.fields = fields
-        return this
-    }
-
-    fun setFilter(filter: Filter): GroupsGetMembersMethodWithFields {
-        this.filter = filter
-        return this
     }
 }

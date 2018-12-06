@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -26,22 +25,22 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property markAsAds 
  */
 class WallEditMethod(
-        ownerId: Long? = null,
-        postId: Long,
-        friendsOnly: Boolean? = null,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        services: String? = null,
-        signed: Boolean? = null,
-        publishDate: Long? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        placeId: Long? = null,
-        markAsAds: Boolean? = null
+    ownerId: Long? = null,
+    postId: Long,
+    friendsOnly: Boolean? = null,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    services: String? = null,
+    signed: Boolean? = null,
+    publishDate: Long? = null,
+    lat: Double? = null,
+    long: Double? = null,
+    placeId: Long? = null,
+    markAsAds: Boolean? = null
 ) : VkMethod<Boolean>(
     "wall.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -70,65 +69,5 @@ class WallEditMethod(
         this.long = long
         this.placeId = placeId
         this.markAsAds = markAsAds
-    }
-
-    fun setOwnerId(ownerId: Long): WallEditMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallEditMethod {
-        this.postId = postId
-        return this
-    }
-
-    fun setFriendsOnly(friendsOnly: Boolean): WallEditMethod {
-        this.friendsOnly = friendsOnly
-        return this
-    }
-
-    fun setMessage(message: String): WallEditMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): WallEditMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setServices(services: String): WallEditMethod {
-        this.services = services
-        return this
-    }
-
-    fun setSigned(signed: Boolean): WallEditMethod {
-        this.signed = signed
-        return this
-    }
-
-    fun setPublishDate(publishDate: Long): WallEditMethod {
-        this.publishDate = publishDate
-        return this
-    }
-
-    fun setLat(lat: Double): WallEditMethod {
-        this.lat = lat
-        return this
-    }
-
-    fun setLong(long: Double): WallEditMethod {
-        this.long = long
-        return this
-    }
-
-    fun setPlaceId(placeId: Long): WallEditMethod {
-        this.placeId = placeId
-        return this
-    }
-
-    fun setMarkAsAds(markAsAds: Boolean): WallEditMethod {
-        this.markAsAds = markAsAds
-        return this
     }
 }

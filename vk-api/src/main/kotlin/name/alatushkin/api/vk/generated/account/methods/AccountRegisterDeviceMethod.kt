@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,16 +19,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property settings Push settings in a [vk.com/dev/push_settings|special format].
  */
 class AccountRegisterDeviceMethod(
-        token: String,
-        deviceModel: String? = null,
-        deviceYear: Long? = null,
-        deviceId: String,
-        systemVersion: String? = null,
-        settings: String? = null
+    token: String,
+    deviceModel: String? = null,
+    deviceYear: Long? = null,
+    deviceId: String,
+    systemVersion: String? = null,
+    settings: String? = null
 ) : VkMethod<Boolean>(
     "account.registerDevice",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var token: String by props
@@ -46,35 +45,5 @@ class AccountRegisterDeviceMethod(
         this.deviceId = deviceId
         this.systemVersion = systemVersion
         this.settings = settings
-    }
-
-    fun setToken(token: String): AccountRegisterDeviceMethod {
-        this.token = token
-        return this
-    }
-
-    fun setDeviceModel(deviceModel: String): AccountRegisterDeviceMethod {
-        this.deviceModel = deviceModel
-        return this
-    }
-
-    fun setDeviceYear(deviceYear: Long): AccountRegisterDeviceMethod {
-        this.deviceYear = deviceYear
-        return this
-    }
-
-    fun setDeviceId(deviceId: String): AccountRegisterDeviceMethod {
-        this.deviceId = deviceId
-        return this
-    }
-
-    fun setSystemVersion(systemVersion: String): AccountRegisterDeviceMethod {
-        this.systemVersion = systemVersion
-        return this
-    }
-
-    fun setSettings(settings: String): AccountRegisterDeviceMethod {
-        this.settings = settings
-        return this
     }
 }

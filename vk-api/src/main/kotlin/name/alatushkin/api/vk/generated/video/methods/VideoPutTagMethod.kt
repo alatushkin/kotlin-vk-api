@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property taggedName Tag text.
  */
 class VideoPutTagMethod(
-        userId: Long,
-        ownerId: Long? = null,
-        videoId: Long,
-        taggedName: String? = null
+    userId: Long,
+    ownerId: Long? = null,
+    videoId: Long,
+    taggedName: String? = null
 ) : VkMethod<Long>(
     "video.putTag",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -38,25 +37,5 @@ class VideoPutTagMethod(
         this.ownerId = ownerId
         this.videoId = videoId
         this.taggedName = taggedName
-    }
-
-    fun setUserId(userId: Long): VideoPutTagMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): VideoPutTagMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoPutTagMethod {
-        this.videoId = videoId
-        return this
-    }
-
-    fun setTaggedName(taggedName: String): VideoPutTagMethod {
-        this.taggedName = taggedName
-        return this
     }
 }

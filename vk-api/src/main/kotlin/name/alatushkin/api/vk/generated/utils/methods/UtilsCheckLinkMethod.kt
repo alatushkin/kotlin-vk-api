@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.utils.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.LinkChecked
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property url Link to check (e.g., 'http://google.com').
  */
 class UtilsCheckLinkMethod(
-        url: String
+    url: String
 ) : VkMethod<LinkChecked>(
     "utils.checkLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<LinkChecked>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var url: String by props
 
     init {
         this.url = url
-    }
-
-    fun setUrl(url: String): UtilsCheckLinkMethod {
-        this.url = url
-        return this
     }
 }

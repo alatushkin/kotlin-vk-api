@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.AddListResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property userIds IDs of users to be added to the friend list.
  */
 class FriendsAddListMethod(
-        name: String,
-        userIds: Array<Long>? = null
+    name: String,
+    userIds: Array<Long>? = null
 ) : VkMethod<AddListResponse>(
     "friends.addList",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AddListResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var name: String by props
@@ -31,15 +30,5 @@ class FriendsAddListMethod(
     init {
         this.name = name
         this.userIds = userIds
-    }
-
-    fun setName(name: String): FriendsAddListMethod {
-        this.name = name
-        return this
-    }
-
-    fun setUserIds(userIds: Array<Long>): FriendsAddListMethod {
-        this.userIds = userIds
-        return this
     }
 }

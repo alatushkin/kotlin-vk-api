@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property topicId Topic ID.
  */
 class BoardUnfixTopicMethod(
-        groupId: Long,
-        topicId: Long
+    groupId: Long,
+    topicId: Long
 ) : VkMethod<Boolean>(
     "board.unfixTopic",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -30,15 +29,5 @@ class BoardUnfixTopicMethod(
     init {
         this.groupId = groupId
         this.topicId = topicId
-    }
-
-    fun setGroupId(groupId: Long): BoardUnfixTopicMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicId(topicId: Long): BoardUnfixTopicMethod {
-        this.topicId = topicId
-        return this
     }
 }

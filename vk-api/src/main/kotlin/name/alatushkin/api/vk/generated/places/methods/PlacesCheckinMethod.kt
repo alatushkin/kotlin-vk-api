@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.places.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.CheckinResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property services List of services or websites (e.g., 'twitter', 'facebook') to which the check-in will be exported, if the user has set up the respective option.
  */
 class PlacesCheckinMethod(
-        placeId: Long? = null,
-        text: String? = null,
-        latitude: Double? = null,
-        longitude: Double? = null,
-        friendsOnly: Boolean? = null,
-        services: Array<String>? = null
+    placeId: Long? = null,
+    text: String? = null,
+    latitude: Double? = null,
+    longitude: Double? = null,
+    friendsOnly: Boolean? = null,
+    services: Array<String>? = null
 ) : VkMethod<CheckinResponse>(
     "places.checkin",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<CheckinResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var placeId: Long? by props
@@ -47,35 +46,5 @@ class PlacesCheckinMethod(
         this.longitude = longitude
         this.friendsOnly = friendsOnly
         this.services = services
-    }
-
-    fun setPlaceId(placeId: Long): PlacesCheckinMethod {
-        this.placeId = placeId
-        return this
-    }
-
-    fun setText(text: String): PlacesCheckinMethod {
-        this.text = text
-        return this
-    }
-
-    fun setLatitude(latitude: Double): PlacesCheckinMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): PlacesCheckinMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setFriendsOnly(friendsOnly: Boolean): PlacesCheckinMethod {
-        this.friendsOnly = friendsOnly
-        return this
-    }
-
-    fun setServices(services: Array<String>): PlacesCheckinMethod {
-        this.services = services
-        return this
     }
 }

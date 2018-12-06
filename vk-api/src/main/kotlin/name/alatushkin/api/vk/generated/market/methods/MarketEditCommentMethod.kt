@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property attachments Comma-separated list of objects attached to a comment. The field is submitted the following way: , "'<owner_id>_<media_id>,<owner_id>_<media_id>'", , '' - media attachment type: "'photo' - photo, 'video' - video, 'audio' - audio, 'doc' - document", , '<owner_id>' - media owner id, '<media_id>' - media attachment id, , For example: "photo100172_166443618,photo66748_265827614",
  */
 class MarketEditCommentMethod(
-        ownerId: Long,
-        commentId: Long,
-        message: String? = null,
-        attachments: Array<String>? = null
+    ownerId: Long,
+    commentId: Long,
+    message: String? = null,
+    attachments: Array<String>? = null
 ) : VkMethod<Boolean>(
     "market.editComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -38,25 +37,5 @@ class MarketEditCommentMethod(
         this.commentId = commentId
         this.message = message
         this.attachments = attachments
-    }
-
-    fun setOwnerId(ownerId: Long): MarketEditCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setCommentId(commentId: Long): MarketEditCommentMethod {
-        this.commentId = commentId
-        return this
-    }
-
-    fun setMessage(message: String): MarketEditCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): MarketEditCommentMethod {
-        this.attachments = attachments
-        return this
     }
 }

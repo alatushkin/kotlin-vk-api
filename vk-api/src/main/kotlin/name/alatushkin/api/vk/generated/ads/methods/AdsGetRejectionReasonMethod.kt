@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.RejectReason
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property adId Ad ID.
  */
 class AdsGetRejectionReasonMethod(
-        accountId: Long,
-        adId: Long
+    accountId: Long,
+    adId: Long
 ) : VkMethod<RejectReason>(
     "ads.getRejectionReason",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<RejectReason>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -31,15 +30,5 @@ class AdsGetRejectionReasonMethod(
     init {
         this.accountId = accountId
         this.adId = adId
-    }
-
-    fun setAccountId(accountId: Long): AdsGetRejectionReasonMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setAdId(adId: Long): AdsGetRejectionReasonMethod {
-        this.adId = adId
-        return this
     }
 }

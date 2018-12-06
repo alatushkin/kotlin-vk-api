@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.fave.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property photoSizes '1' — to return photo sizes in a [vk.com/dev/photo_sizes|special format].
  */
 class FaveGetPhotosMethod(
-        offset: Long? = null,
-        count: Long? = null,
-        photoSizes: Boolean? = null
+    offset: Long? = null,
+    count: Long? = null,
+    photoSizes: Boolean? = null
 ) : VkMethod<VkList<Photo>>(
     "fave.getPhotos",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Photo>>>() {}
+    successReference()
 ), UserMethod {
 
     var offset: Long? by props
@@ -36,20 +35,5 @@ class FaveGetPhotosMethod(
         this.offset = offset
         this.count = count
         this.photoSizes = photoSizes
-    }
-
-    fun setOffset(offset: Long): FaveGetPhotosMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): FaveGetPhotosMethod {
-        this.count = count
-        return this
-    }
-
-    fun setPhotoSizes(photoSizes: Boolean): FaveGetPhotosMethod {
-        this.photoSizes = photoSizes
-        return this
     }
 }

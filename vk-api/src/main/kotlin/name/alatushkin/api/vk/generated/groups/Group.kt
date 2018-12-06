@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 interface Group {
     val id: Long?
     val name: String?

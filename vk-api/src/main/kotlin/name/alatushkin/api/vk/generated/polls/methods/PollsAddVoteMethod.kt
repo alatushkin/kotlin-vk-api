@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.polls.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property isBoard 
  */
 class PollsAddVoteMethod(
-        ownerId: Long? = null,
-        pollId: Long,
-        answerId: Long,
-        isBoard: Boolean? = null
+    ownerId: Long? = null,
+    pollId: Long,
+    answerId: Long,
+    isBoard: Boolean? = null
 ) : VkMethod<Boolean>(
     "polls.addVote",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -38,25 +37,5 @@ class PollsAddVoteMethod(
         this.pollId = pollId
         this.answerId = answerId
         this.isBoard = isBoard
-    }
-
-    fun setOwnerId(ownerId: Long): PollsAddVoteMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPollId(pollId: Long): PollsAddVoteMethod {
-        this.pollId = pollId
-        return this
-    }
-
-    fun setAnswerId(answerId: Long): PollsAddVoteMethod {
-        this.answerId = answerId
-        return this
-    }
-
-    fun setIsBoard(isBoard: Boolean): PollsAddVoteMethod {
-        this.isBoard = isBoard
-        return this
     }
 }

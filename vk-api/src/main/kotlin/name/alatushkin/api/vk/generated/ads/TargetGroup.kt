@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class TargetGroup(
     val id: Long? = null,
     val name: String? = null,

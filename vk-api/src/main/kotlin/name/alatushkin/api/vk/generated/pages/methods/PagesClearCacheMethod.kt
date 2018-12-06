@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.pages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property url Address of the page where you need to refesh the cached version
  */
 class PagesClearCacheMethod(
-        url: String
+    url: String
 ) : VkMethod<Boolean>(
     "pages.clearCache",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var url: String by props
 
     init {
         this.url = url
-    }
-
-    fun setUrl(url: String): PagesClearCacheMethod {
-        this.url = url
-        return this
     }
 }

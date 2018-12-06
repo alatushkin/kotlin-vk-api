@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.places.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.PlaceFull
 import name.alatushkin.api.vk.generated.places.SearchRadius
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -24,17 +23,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of locations to return.
  */
 class PlacesSearchMethod(
-        q: String? = null,
-        city: Long? = null,
-        latitude: Double,
-        longitude: Double,
-        radius: SearchRadius? = null,
-        offset: Long? = null,
-        count: Long? = null
+    q: String? = null,
+    city: Long? = null,
+    latitude: Double,
+    longitude: Double,
+    radius: SearchRadius? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<PlaceFull>>(
     "places.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<PlaceFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var q: String? by props
@@ -53,40 +52,5 @@ class PlacesSearchMethod(
         this.radius = radius
         this.offset = offset
         this.count = count
-    }
-
-    fun setQ(q: String): PlacesSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setCity(city: Long): PlacesSearchMethod {
-        this.city = city
-        return this
-    }
-
-    fun setLatitude(latitude: Double): PlacesSearchMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): PlacesSearchMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setRadius(radius: SearchRadius): PlacesSearchMethod {
-        this.radius = radius
-        return this
-    }
-
-    fun setOffset(offset: Long): PlacesSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PlacesSearchMethod {
-        this.count = count
-        return this
     }
 }

@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.GetOnlineOnlineMobileResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,15 +19,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of friends.
  */
 class FriendsGetOnlineMethodOnlineMobile(
-        userId: Long? = null,
-        listId: Long? = null,
-        order: String? = null,
-        count: Long? = null,
-        offset: Long? = null
+    userId: Long? = null,
+    listId: Long? = null,
+    order: String? = null,
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<GetOnlineOnlineMobileResponse>(
     "friends.getOnline",
     mutableMapOf("online_mobile" to "1"),
-    object : TypeReference<VkSuccess<GetOnlineOnlineMobileResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long? by props
@@ -43,30 +42,5 @@ class FriendsGetOnlineMethodOnlineMobile(
         this.order = order
         this.count = count
         this.offset = offset
-    }
-
-    fun setUserId(userId: Long): FriendsGetOnlineMethodOnlineMobile {
-        this.userId = userId
-        return this
-    }
-
-    fun setListId(listId: Long): FriendsGetOnlineMethodOnlineMobile {
-        this.listId = listId
-        return this
-    }
-
-    fun setOrder(order: String): FriendsGetOnlineMethodOnlineMobile {
-        this.order = order
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetOnlineMethodOnlineMobile {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): FriendsGetOnlineMethodOnlineMobile {
-        this.offset = offset
-        return this
     }
 }

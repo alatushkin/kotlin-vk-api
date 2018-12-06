@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property listId ID of the friend list to delete.
  */
 class FriendsDeleteListMethod(
-        listId: Long
+    listId: Long
 ) : VkMethod<Boolean>(
     "friends.deleteList",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var listId: Long by props
 
     init {
         this.listId = listId
-    }
-
-    fun setListId(listId: Long): FriendsDeleteListMethod {
-        this.listId = listId
-        return this
     }
 }

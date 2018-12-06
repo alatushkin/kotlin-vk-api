@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,19 +22,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property guid 
  */
 class PhotosCreateCommentMethod(
-        ownerId: Long? = null,
-        photoId: Long,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        fromGroup: Boolean? = null,
-        replyToComment: Long? = null,
-        stickerId: Long? = null,
-        accessKey: String? = null,
-        guid: String? = null
+    ownerId: Long? = null,
+    photoId: Long,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    fromGroup: Boolean? = null,
+    replyToComment: Long? = null,
+    stickerId: Long? = null,
+    accessKey: String? = null,
+    guid: String? = null
 ) : VkMethod<Long>(
     "photos.createComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -58,50 +57,5 @@ class PhotosCreateCommentMethod(
         this.stickerId = stickerId
         this.accessKey = accessKey
         this.guid = guid
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosCreateCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosCreateCommentMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setMessage(message: String): PhotosCreateCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): PhotosCreateCommentMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setFromGroup(fromGroup: Boolean): PhotosCreateCommentMethod {
-        this.fromGroup = fromGroup
-        return this
-    }
-
-    fun setReplyToComment(replyToComment: Long): PhotosCreateCommentMethod {
-        this.replyToComment = replyToComment
-        return this
-    }
-
-    fun setStickerId(stickerId: Long): PhotosCreateCommentMethod {
-        this.stickerId = stickerId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): PhotosCreateCommentMethod {
-        this.accessKey = accessKey
-        return this
-    }
-
-    fun setGuid(guid: String): PhotosCreateCommentMethod {
-        this.guid = guid
-        return this
     }
 }

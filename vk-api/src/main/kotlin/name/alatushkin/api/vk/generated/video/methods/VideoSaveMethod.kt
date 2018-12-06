@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.SaveResult
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -26,21 +25,21 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property repeat '1' — to repeat the playback of the video, '0' — to play the video once,
  */
 class VideoSaveMethod(
-        name: String? = null,
-        description: String? = null,
-        isPrivate: Boolean? = null,
-        wallpost: Boolean? = null,
-        link: String? = null,
-        groupId: Long? = null,
-        albumId: Long? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null,
-        noComments: Boolean? = null,
-        repeat: Boolean? = null
+    name: String? = null,
+    description: String? = null,
+    isPrivate: Boolean? = null,
+    wallpost: Boolean? = null,
+    link: String? = null,
+    groupId: Long? = null,
+    albumId: Long? = null,
+    privacyView: Array<String>? = null,
+    privacyComment: Array<String>? = null,
+    noComments: Boolean? = null,
+    repeat: Boolean? = null
 ) : VkMethod<SaveResult>(
     "video.save",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<SaveResult>>() {}
+    successReference()
 ), UserMethod {
 
     var name: String? by props
@@ -67,60 +66,5 @@ class VideoSaveMethod(
         this.privacyComment = privacyComment
         this.noComments = noComments
         this.repeat = repeat
-    }
-
-    fun setName(name: String): VideoSaveMethod {
-        this.name = name
-        return this
-    }
-
-    fun setDescription(description: String): VideoSaveMethod {
-        this.description = description
-        return this
-    }
-
-    fun setIsPrivate(isPrivate: Boolean): VideoSaveMethod {
-        this.isPrivate = isPrivate
-        return this
-    }
-
-    fun setWallpost(wallpost: Boolean): VideoSaveMethod {
-        this.wallpost = wallpost
-        return this
-    }
-
-    fun setLink(link: String): VideoSaveMethod {
-        this.link = link
-        return this
-    }
-
-    fun setGroupId(groupId: Long): VideoSaveMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): VideoSaveMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setPrivacyView(privacyView: Array<String>): VideoSaveMethod {
-        this.privacyView = privacyView
-        return this
-    }
-
-    fun setPrivacyComment(privacyComment: Array<String>): VideoSaveMethod {
-        this.privacyComment = privacyComment
-        return this
-    }
-
-    fun setNoComments(noComments: Boolean): VideoSaveMethod {
-        this.noComments = noComments
-        return this
-    }
-
-    fun setRepeat(repeat: Boolean): VideoSaveMethod {
-        this.repeat = repeat
-        return this
     }
 }

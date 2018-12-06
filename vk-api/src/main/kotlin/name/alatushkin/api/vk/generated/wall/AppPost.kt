@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.wall
 
-
 open class AppPost(
     val id: Long? = null,
     val name: String? = null,

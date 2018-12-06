@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketItem
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -25,18 +24,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of items to return.
  */
 class MarketSearchMethod(
-        ownerId: Long,
-        q: String? = null,
-        priceFrom: Long? = null,
-        priceTo: Long? = null,
-        tags: Array<Long>? = null,
-        rev: VkDate? = null,
-        offset: Long? = null,
-        count: Long? = null
+    ownerId: Long,
+    q: String? = null,
+    priceFrom: Long? = null,
+    priceTo: Long? = null,
+    tags: Array<Long>? = null,
+    rev: VkDate? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<MarketItem>>(
     "market.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<MarketItem>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -57,45 +56,5 @@ class MarketSearchMethod(
         this.rev = rev
         this.offset = offset
         this.count = count
-    }
-
-    fun setOwnerId(ownerId: Long): MarketSearchMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setQ(q: String): MarketSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setPriceFrom(priceFrom: Long): MarketSearchMethod {
-        this.priceFrom = priceFrom
-        return this
-    }
-
-    fun setPriceTo(priceTo: Long): MarketSearchMethod {
-        this.priceTo = priceTo
-        return this
-    }
-
-    fun setTags(tags: Array<Long>): MarketSearchMethod {
-        this.tags = tags
-        return this
-    }
-
-    fun setRev(rev: VkDate): MarketSearchMethod {
-        this.rev = rev
-        return this
-    }
-
-    fun setOffset(offset: Long): MarketSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): MarketSearchMethod {
-        this.count = count
-        return this
     }
 }

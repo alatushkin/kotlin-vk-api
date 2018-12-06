@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.GetAllExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property skipHidden '1' – not to return photos being hidden from the block above the wall. Works only with owner_id>0, no_service_albums is ignored.
  */
 class PhotosGetAllMethodExtended(
-        ownerId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        photoSizes: Boolean? = null,
-        noServiceAlbums: Boolean? = null,
-        needHidden: Boolean? = null,
-        skipHidden: Boolean? = null
+    ownerId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    photoSizes: Boolean? = null,
+    noServiceAlbums: Boolean? = null,
+    needHidden: Boolean? = null,
+    skipHidden: Boolean? = null
 ) : VkMethod<GetAllExtendedResponse>(
     "photos.getAll",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetAllExtendedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -51,40 +50,5 @@ class PhotosGetAllMethodExtended(
         this.noServiceAlbums = noServiceAlbums
         this.needHidden = needHidden
         this.skipHidden = skipHidden
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosGetAllMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setOffset(offset: Long): PhotosGetAllMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PhotosGetAllMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setPhotoSizes(photoSizes: Boolean): PhotosGetAllMethodExtended {
-        this.photoSizes = photoSizes
-        return this
-    }
-
-    fun setNoServiceAlbums(noServiceAlbums: Boolean): PhotosGetAllMethodExtended {
-        this.noServiceAlbums = noServiceAlbums
-        return this
-    }
-
-    fun setNeedHidden(needHidden: Boolean): PhotosGetAllMethodExtended {
-        this.needHidden = needHidden
-        return this
-    }
-
-    fun setSkipHidden(skipHidden: Boolean): PhotosGetAllMethodExtended {
-        this.skipHidden = skipHidden
-        return this
     }
 }

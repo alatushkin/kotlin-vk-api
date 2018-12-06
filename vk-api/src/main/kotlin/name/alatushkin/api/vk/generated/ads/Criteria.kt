@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 interface Criteria {
     val sex: CriteriaSex?
     val ageFrom: Long?

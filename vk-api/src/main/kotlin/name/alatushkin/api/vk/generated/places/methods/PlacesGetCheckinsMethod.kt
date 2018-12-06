@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.places.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.Checkin
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -25,19 +24,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property needPlaces '1' — to return location information with the check-ins. (Ignored if 'place' is not set.),
  */
 class PlacesGetCheckinsMethod(
-        latitude: Double? = null,
-        longitude: Double? = null,
-        place: Long? = null,
-        userId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        timestamp: Long? = null,
-        friendsOnly: Boolean? = null,
-        needPlaces: Boolean? = null
+    latitude: Double? = null,
+    longitude: Double? = null,
+    place: Long? = null,
+    userId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    timestamp: Long? = null,
+    friendsOnly: Boolean? = null,
+    needPlaces: Boolean? = null
 ) : VkMethod<VkList<Checkin>>(
     "places.getCheckins",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Checkin>>>() {}
+    successReference()
 ), UserMethod {
 
     var latitude: Double? by props
@@ -60,50 +59,5 @@ class PlacesGetCheckinsMethod(
         this.timestamp = timestamp
         this.friendsOnly = friendsOnly
         this.needPlaces = needPlaces
-    }
-
-    fun setLatitude(latitude: Double): PlacesGetCheckinsMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): PlacesGetCheckinsMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setPlace(place: Long): PlacesGetCheckinsMethod {
-        this.place = place
-        return this
-    }
-
-    fun setUserId(userId: Long): PlacesGetCheckinsMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setOffset(offset: Long): PlacesGetCheckinsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PlacesGetCheckinsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setTimestamp(timestamp: Long): PlacesGetCheckinsMethod {
-        this.timestamp = timestamp
-        return this
-    }
-
-    fun setFriendsOnly(friendsOnly: Boolean): PlacesGetCheckinsMethod {
-        this.friendsOnly = friendsOnly
-        return this
-    }
-
-    fun setNeedPlaces(needPlaces: Boolean): PlacesGetCheckinsMethod {
-        this.needPlaces = needPlaces
-        return this
     }
 }

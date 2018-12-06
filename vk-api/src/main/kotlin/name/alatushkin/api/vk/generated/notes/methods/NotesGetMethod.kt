@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.notes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notes.Note
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of notes to return.
  */
 class NotesGetMethod(
-        noteIds: Array<Long>? = null,
-        userId: Long? = null,
-        count: Long? = null
+    noteIds: Array<Long>? = null,
+    userId: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<Note>>(
     "notes.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Note>>>() {}
+    successReference()
 ), UserMethod {
 
     var noteIds: Array<Long>? by props
@@ -36,20 +35,5 @@ class NotesGetMethod(
         this.noteIds = noteIds
         this.userId = userId
         this.count = count
-    }
-
-    fun setNoteIds(noteIds: Array<Long>): NotesGetMethod {
-        this.noteIds = noteIds
-        return this
-    }
-
-    fun setUserId(userId: Long): NotesGetMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setCount(count: Long): NotesGetMethod {
-        this.count = count
-        return this
     }
 }

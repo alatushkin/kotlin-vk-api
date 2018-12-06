@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -25,21 +24,21 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property linkImage Link image url
  */
 class WallEditAdsStealthMethod(
-        ownerId: Long? = null,
-        postId: Long? = null,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        signed: Boolean? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        placeId: Long? = null,
-        linkButton: String? = null,
-        linkTitle: String? = null,
-        linkImage: String? = null
+    ownerId: Long? = null,
+    postId: Long? = null,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    signed: Boolean? = null,
+    lat: Double? = null,
+    long: Double? = null,
+    placeId: Long? = null,
+    linkButton: String? = null,
+    linkTitle: String? = null,
+    linkImage: String? = null
 ) : VkMethod<Boolean>(
     "wall.editAdsStealth",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -66,60 +65,5 @@ class WallEditAdsStealthMethod(
         this.linkButton = linkButton
         this.linkTitle = linkTitle
         this.linkImage = linkImage
-    }
-
-    fun setOwnerId(ownerId: Long): WallEditAdsStealthMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallEditAdsStealthMethod {
-        this.postId = postId
-        return this
-    }
-
-    fun setMessage(message: String): WallEditAdsStealthMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): WallEditAdsStealthMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setSigned(signed: Boolean): WallEditAdsStealthMethod {
-        this.signed = signed
-        return this
-    }
-
-    fun setLat(lat: Double): WallEditAdsStealthMethod {
-        this.lat = lat
-        return this
-    }
-
-    fun setLong(long: Double): WallEditAdsStealthMethod {
-        this.long = long
-        return this
-    }
-
-    fun setPlaceId(placeId: Long): WallEditAdsStealthMethod {
-        this.placeId = placeId
-        return this
-    }
-
-    fun setLinkButton(linkButton: String): WallEditAdsStealthMethod {
-        this.linkButton = linkButton
-        return this
-    }
-
-    fun setLinkTitle(linkTitle: String): WallEditAdsStealthMethod {
-        this.linkTitle = linkTitle
-        return this
-    }
-
-    fun setLinkImage(linkImage: String): WallEditAdsStealthMethod {
-        this.linkImage = linkImage
-        return this
     }
 }

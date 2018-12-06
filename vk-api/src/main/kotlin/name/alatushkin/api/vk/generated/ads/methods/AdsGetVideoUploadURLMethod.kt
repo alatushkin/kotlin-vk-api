@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 
 /**
  * [https://vk.com/dev/ads.getVideoUploadURL]
@@ -16,5 +15,5 @@ import name.alatushkin.api.vk.api.VkSuccess
 class AdsGetVideoUploadURLMethod : VkMethod<String>(
     "ads.getVideoUploadURL",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<String>>() {}
+    successReference()
 )

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ownersIds List of sources IDs
  */
 class StoriesBanOwnerMethod(
-        ownersIds: Array<Long>
+    ownersIds: Array<Long>
 ) : VkMethod<Boolean>(
     "stories.banOwner",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownersIds: Array<Long> by props
 
     init {
         this.ownersIds = ownersIds
-    }
-
-    fun setOwnersIds(ownersIds: Array<Long>): StoriesBanOwnerMethod {
-        this.ownersIds = ownersIds
-        return this
     }
 }

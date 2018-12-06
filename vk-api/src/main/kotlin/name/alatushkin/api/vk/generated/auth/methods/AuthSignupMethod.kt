@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.auth.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.auth.SignupResponse
 import name.alatushkin.api.vk.generated.auth.SignupSex
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -27,21 +26,21 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property sid Session ID required for method recall when SMS was not delivered.
  */
 class AuthSignupMethod(
-        firstName: String,
-        lastName: String,
-        birthday: String,
-        clientId: Long,
-        clientSecret: String,
-        phone: String,
-        password: String? = null,
-        testMode: Boolean? = null,
-        voice: Boolean? = null,
-        sex: SignupSex? = null,
-        sid: String? = null
+    firstName: String,
+    lastName: String,
+    birthday: String,
+    clientId: Long,
+    clientSecret: String,
+    phone: String,
+    password: String? = null,
+    testMode: Boolean? = null,
+    voice: Boolean? = null,
+    sex: SignupSex? = null,
+    sid: String? = null
 ) : VkMethod<SignupResponse>(
     "auth.signup",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<SignupResponse>>() {}
+    successReference()
 ), ServiceMethod {
 
     var firstName: String by props
@@ -68,60 +67,5 @@ class AuthSignupMethod(
         this.voice = voice
         this.sex = sex
         this.sid = sid
-    }
-
-    fun setFirstName(firstName: String): AuthSignupMethod {
-        this.firstName = firstName
-        return this
-    }
-
-    fun setLastName(lastName: String): AuthSignupMethod {
-        this.lastName = lastName
-        return this
-    }
-
-    fun setBirthday(birthday: String): AuthSignupMethod {
-        this.birthday = birthday
-        return this
-    }
-
-    fun setClientId(clientId: Long): AuthSignupMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setClientSecret(clientSecret: String): AuthSignupMethod {
-        this.clientSecret = clientSecret
-        return this
-    }
-
-    fun setPhone(phone: String): AuthSignupMethod {
-        this.phone = phone
-        return this
-    }
-
-    fun setPassword(password: String): AuthSignupMethod {
-        this.password = password
-        return this
-    }
-
-    fun setTestMode(testMode: Boolean): AuthSignupMethod {
-        this.testMode = testMode
-        return this
-    }
-
-    fun setVoice(voice: Boolean): AuthSignupMethod {
-        this.voice = voice
-        return this
-    }
-
-    fun setSex(sex: SignupSex): AuthSignupMethod {
-        this.sex = sex
-        return this
-    }
-
-    fun setSid(sid: String): AuthSignupMethod {
-        this.sid = sid
-        return this
     }
 }

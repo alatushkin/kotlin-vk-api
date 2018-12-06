@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.GetCatalogExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property filters list of requested catalog sections
  */
 class VideoGetCatalogMethodExtended(
-        count: Long? = null,
-        itemsCount: Long? = null,
-        from: String? = null,
-        filters: Array<String>? = null
+    count: Long? = null,
+    itemsCount: Long? = null,
+    from: String? = null,
+    filters: Array<String>? = null
 ) : VkMethod<GetCatalogExtendedResponse>(
     "video.getCatalog",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetCatalogExtendedResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var count: Long? by props
@@ -39,25 +38,5 @@ class VideoGetCatalogMethodExtended(
         this.itemsCount = itemsCount
         this.from = from
         this.filters = filters
-    }
-
-    fun setCount(count: Long): VideoGetCatalogMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setItemsCount(itemsCount: Long): VideoGetCatalogMethodExtended {
-        this.itemsCount = itemsCount
-        return this
-    }
-
-    fun setFrom(from: String): VideoGetCatalogMethodExtended {
-        this.from = from
-        return this
-    }
-
-    fun setFilters(filters: Array<String>): VideoGetCatalogMethodExtended {
-        this.filters = filters
-        return this
     }
 }

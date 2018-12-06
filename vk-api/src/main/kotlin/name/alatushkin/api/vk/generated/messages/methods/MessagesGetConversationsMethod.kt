@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetConversationsFilter
 import name.alatushkin.api.vk.generated.messages.GetConversationsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property fields Profile and communities fields to return.
  */
 class MessagesGetConversationsMethod(
-        groupId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        filter: GetConversationsFilter? = null,
-        extended: Boolean? = null,
-        startMessageId: Long? = null,
-        fields: Array<String>? = null
+    groupId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    filter: GetConversationsFilter? = null,
+    extended: Boolean? = null,
+    startMessageId: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetConversationsResponse>(
     "messages.getConversations",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetConversationsResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var groupId: Long? by props
@@ -52,40 +51,5 @@ class MessagesGetConversationsMethod(
         this.extended = extended
         this.startMessageId = startMessageId
         this.fields = fields
-    }
-
-    fun setGroupId(groupId: Long): MessagesGetConversationsMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setOffset(offset: Long): MessagesGetConversationsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): MessagesGetConversationsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFilter(filter: GetConversationsFilter): MessagesGetConversationsMethod {
-        this.filter = filter
-        return this
-    }
-
-    fun setExtended(extended: Boolean): MessagesGetConversationsMethod {
-        this.extended = extended
-        return this
-    }
-
-    fun setStartMessageId(startMessageId: Long): MessagesGetConversationsMethod {
-        this.startMessageId = startMessageId
-        return this
-    }
-
-    fun setFields(fields: Array<String>): MessagesGetConversationsMethod {
-        this.fields = fields
-        return this
     }
 }

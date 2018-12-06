@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.SaveOwnerPhotoResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property photo parameter returned after [vk.com/dev/upload_files|photo upload].
  */
 class PhotosSaveOwnerPhotoMethod(
-        server: String? = null,
-        hash: String? = null,
-        photo: String? = null
+    server: String? = null,
+    hash: String? = null,
+    photo: String? = null
 ) : VkMethod<SaveOwnerPhotoResponse>(
     "photos.saveOwnerPhoto",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<SaveOwnerPhotoResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var server: String? by props
@@ -35,20 +34,5 @@ class PhotosSaveOwnerPhotoMethod(
         this.server = server
         this.hash = hash
         this.photo = photo
-    }
-
-    fun setServer(server: String): PhotosSaveOwnerPhotoMethod {
-        this.server = server
-        return this
-    }
-
-    fun setHash(hash: String): PhotosSaveOwnerPhotoMethod {
-        this.hash = hash
-        return this
-    }
-
-    fun setPhoto(photo: String): PhotosSaveOwnerPhotoMethod {
-        this.photo = photo
-        return this
     }
 }

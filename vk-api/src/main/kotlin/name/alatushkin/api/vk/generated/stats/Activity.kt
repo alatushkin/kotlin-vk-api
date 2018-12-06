@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.stats
 
-
 open class Activity(
     val likes: Long? = null,
     val comments: Long? = null,

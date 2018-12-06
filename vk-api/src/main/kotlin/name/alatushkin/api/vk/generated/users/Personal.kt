@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class Personal(
     val political: Long? = null,
     val langs: Array<String>? = null,

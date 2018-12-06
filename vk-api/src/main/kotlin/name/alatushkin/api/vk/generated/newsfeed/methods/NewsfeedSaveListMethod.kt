@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property noReposts reposts display on and off ('1' is for off).
  */
 class NewsfeedSaveListMethod(
-        listId: Long? = null,
-        title: String,
-        sourceIds: Array<Long>? = null,
-        noReposts: Boolean? = null
+    listId: Long? = null,
+    title: String,
+    sourceIds: Array<Long>? = null,
+    noReposts: Boolean? = null
 ) : VkMethod<Long>(
     "newsfeed.saveList",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var listId: Long? by props
@@ -38,25 +37,5 @@ class NewsfeedSaveListMethod(
         this.title = title
         this.sourceIds = sourceIds
         this.noReposts = noReposts
-    }
-
-    fun setListId(listId: Long): NewsfeedSaveListMethod {
-        this.listId = listId
-        return this
-    }
-
-    fun setTitle(title: String): NewsfeedSaveListMethod {
-        this.title = title
-        return this
-    }
-
-    fun setSourceIds(sourceIds: Array<Long>): NewsfeedSaveListMethod {
-        this.sourceIds = sourceIds
-        return this
-    }
-
-    fun setNoReposts(noReposts: Boolean): NewsfeedSaveListMethod {
-        this.noReposts = noReposts
-        return this
     }
 }

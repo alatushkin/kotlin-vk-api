@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class TargSuggestionsSchools(
     val id: Long? = null,
     val name: String? = null,

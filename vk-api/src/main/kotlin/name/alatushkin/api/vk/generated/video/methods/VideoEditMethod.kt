@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,18 +21,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property repeat '1' — to repeat the playback of the video, '0' — to play the video once,
  */
 class VideoEditMethod(
-        ownerId: Long? = null,
-        videoId: Long,
-        name: String? = null,
-        desc: String? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null,
-        noComments: Boolean? = null,
-        repeat: Boolean? = null
+    ownerId: Long? = null,
+    videoId: Long,
+    name: String? = null,
+    desc: String? = null,
+    privacyView: Array<String>? = null,
+    privacyComment: Array<String>? = null,
+    noComments: Boolean? = null,
+    repeat: Boolean? = null
 ) : VkMethod<Boolean>(
     "video.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -54,45 +53,5 @@ class VideoEditMethod(
         this.privacyComment = privacyComment
         this.noComments = noComments
         this.repeat = repeat
-    }
-
-    fun setOwnerId(ownerId: Long): VideoEditMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoEditMethod {
-        this.videoId = videoId
-        return this
-    }
-
-    fun setName(name: String): VideoEditMethod {
-        this.name = name
-        return this
-    }
-
-    fun setDesc(desc: String): VideoEditMethod {
-        this.desc = desc
-        return this
-    }
-
-    fun setPrivacyView(privacyView: Array<String>): VideoEditMethod {
-        this.privacyView = privacyView
-        return this
-    }
-
-    fun setPrivacyComment(privacyComment: Array<String>): VideoEditMethod {
-        this.privacyComment = privacyComment
-        return this
-    }
-
-    fun setNoComments(noComments: Boolean): VideoEditMethod {
-        this.noComments = noComments
-        return this
-    }
-
-    fun setRepeat(repeat: Boolean): VideoEditMethod {
-        this.repeat = repeat
-        return this
     }
 }

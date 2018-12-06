@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 interface UserMin {
     val id: Long
     val firstName: String

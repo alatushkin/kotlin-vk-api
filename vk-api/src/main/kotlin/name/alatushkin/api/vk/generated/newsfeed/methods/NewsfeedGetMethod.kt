@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.GetResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -24,19 +23,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fields Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
  */
 class NewsfeedGetMethod(
-        filters: Array<String>? = null,
-        returnBanned: Boolean? = null,
-        startTime: Long? = null,
-        endTime: Long? = null,
-        maxPhotos: Long? = null,
-        sourceIds: Array<String>? = null,
-        startFrom: String? = null,
-        count: Long? = null,
-        fields: Array<String>? = null
+    filters: Array<String>? = null,
+    returnBanned: Boolean? = null,
+    startTime: Long? = null,
+    endTime: Long? = null,
+    maxPhotos: Long? = null,
+    sourceIds: Array<String>? = null,
+    startFrom: String? = null,
+    count: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetResponse>(
     "newsfeed.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var filters: Array<String>? by props
@@ -59,50 +58,5 @@ class NewsfeedGetMethod(
         this.startFrom = startFrom
         this.count = count
         this.fields = fields
-    }
-
-    fun setFilters(filters: Array<String>): NewsfeedGetMethod {
-        this.filters = filters
-        return this
-    }
-
-    fun setReturnBanned(returnBanned: Boolean): NewsfeedGetMethod {
-        this.returnBanned = returnBanned
-        return this
-    }
-
-    fun setStartTime(startTime: Long): NewsfeedGetMethod {
-        this.startTime = startTime
-        return this
-    }
-
-    fun setEndTime(endTime: Long): NewsfeedGetMethod {
-        this.endTime = endTime
-        return this
-    }
-
-    fun setMaxPhotos(maxPhotos: Long): NewsfeedGetMethod {
-        this.maxPhotos = maxPhotos
-        return this
-    }
-
-    fun setSourceIds(sourceIds: Array<String>): NewsfeedGetMethod {
-        this.sourceIds = sourceIds
-        return this
-    }
-
-    fun setStartFrom(startFrom: String): NewsfeedGetMethod {
-        this.startFrom = startFrom
-        return this
-    }
-
-    fun setCount(count: Long): NewsfeedGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): NewsfeedGetMethod {
-        this.fields = fields
-        return this
     }
 }

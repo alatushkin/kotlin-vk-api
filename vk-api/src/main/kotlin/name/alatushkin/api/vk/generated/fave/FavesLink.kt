@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.fave
 
-
 open class FavesLink(
     val id: Long? = null,
     val url: String? = null,

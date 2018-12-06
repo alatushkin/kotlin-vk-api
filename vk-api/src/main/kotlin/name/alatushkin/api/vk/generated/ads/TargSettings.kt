@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class TargSettings(
     val id: Long? = null,
     val campaignId: Long? = null,

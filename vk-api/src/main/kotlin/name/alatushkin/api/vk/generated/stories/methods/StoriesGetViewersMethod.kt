@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property offset Offset needed to return a specific subset of results.
  */
 class StoriesGetViewersMethod(
-        ownerId: Long,
-        storyId: Long,
-        count: Long? = null,
-        offset: Long? = null
+    ownerId: Long,
+    storyId: Long,
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<VkList<Long>>(
     "stories.getViewers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Long>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ownerId: Long by props
@@ -39,25 +38,5 @@ class StoriesGetViewersMethod(
         this.storyId = storyId
         this.count = count
         this.offset = offset
-    }
-
-    fun setOwnerId(ownerId: Long): StoriesGetViewersMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setStoryId(storyId: Long): StoriesGetViewersMethod {
-        this.storyId = storyId
-        return this
-    }
-
-    fun setCount(count: Long): StoriesGetViewersMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): StoriesGetViewersMethod {
-        this.offset = offset
-        return this
     }
 }

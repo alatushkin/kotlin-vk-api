@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.VideoTag
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property videoId Video ID.
  */
 class VideoGetTagsMethod(
-        ownerId: Long? = null,
-        videoId: Long
+    ownerId: Long? = null,
+    videoId: Long
 ) : VkMethod<Array<VideoTag>>(
     "video.getTags",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<VideoTag>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -31,15 +30,5 @@ class VideoGetTagsMethod(
     init {
         this.ownerId = ownerId
         this.videoId = videoId
-    }
-
-    fun setOwnerId(ownerId: Long): VideoGetTagsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoGetTagsMethod {
-        this.videoId = videoId
-        return this
     }
 }

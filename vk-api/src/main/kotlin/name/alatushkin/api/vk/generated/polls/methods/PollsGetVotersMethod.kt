@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.polls.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.polls.Voters
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -25,19 +24,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property nameCase Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
 class PollsGetVotersMethod(
-        ownerId: Long? = null,
-        pollId: Long,
-        answerIds: Array<Long>,
-        isBoard: Boolean? = null,
-        friendsOnly: Boolean? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    ownerId: Long? = null,
+    pollId: Long,
+    answerIds: Array<Long>,
+    isBoard: Boolean? = null,
+    friendsOnly: Boolean? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<Array<Voters>>(
     "polls.getVoters",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Voters>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -60,50 +59,5 @@ class PollsGetVotersMethod(
         this.count = count
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setOwnerId(ownerId: Long): PollsGetVotersMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPollId(pollId: Long): PollsGetVotersMethod {
-        this.pollId = pollId
-        return this
-    }
-
-    fun setAnswerIds(answerIds: Array<Long>): PollsGetVotersMethod {
-        this.answerIds = answerIds
-        return this
-    }
-
-    fun setIsBoard(isBoard: Boolean): PollsGetVotersMethod {
-        this.isBoard = isBoard
-        return this
-    }
-
-    fun setFriendsOnly(friendsOnly: Boolean): PollsGetVotersMethod {
-        this.friendsOnly = friendsOnly
-        return this
-    }
-
-    fun setOffset(offset: Long): PollsGetVotersMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PollsGetVotersMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): PollsGetVotersMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): PollsGetVotersMethod {
-        this.nameCase = nameCase
-        return this
     }
 }

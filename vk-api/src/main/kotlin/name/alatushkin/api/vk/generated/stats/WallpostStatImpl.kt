@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.stats
 
-
 open class WallpostStatImpl(
     override val reachSubscribers: Long? = null,
     override val reachTotal: Long? = null,

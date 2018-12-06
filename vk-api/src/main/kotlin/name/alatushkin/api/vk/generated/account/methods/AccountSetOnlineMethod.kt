@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property voip '1' if videocalls are available for current device.
  */
 class AccountSetOnlineMethod(
-        voip: Boolean? = null
+    voip: Boolean? = null
 ) : VkMethod<Boolean>(
     "account.setOnline",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var voip: Boolean? by props
 
     init {
         this.voip = voip
-    }
-
-    fun setVoip(voip: Boolean): AccountSetOnlineMethod {
-        this.voip = voip
-        return this
     }
 }

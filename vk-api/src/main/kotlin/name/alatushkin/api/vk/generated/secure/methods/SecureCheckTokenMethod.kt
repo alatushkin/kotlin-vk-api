@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.secure.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.secure.TokenChecked
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ip user 'ip address'. Note that user may access using the 'ipv6' address, in this case it is required to transmit the 'ipv6' address. If not transmitted, the address will not be checked.
  */
 class SecureCheckTokenMethod(
-        token: String? = null,
-        ip: String? = null
+    token: String? = null,
+    ip: String? = null
 ) : VkMethod<TokenChecked>(
     "secure.checkToken",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<TokenChecked>>() {}
+    successReference()
 ), UserMethod {
 
     var token: String? by props
@@ -31,15 +30,5 @@ class SecureCheckTokenMethod(
     init {
         this.token = token
         this.ip = ip
-    }
-
-    fun setToken(token: String): SecureCheckTokenMethod {
-        this.token = token
-        return this
-    }
-
-    fun setIp(ip: String): SecureCheckTokenMethod {
-        this.ip = ip
-        return this
     }
 }

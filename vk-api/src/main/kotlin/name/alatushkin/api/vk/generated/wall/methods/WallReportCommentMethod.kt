@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Reason
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property reason Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
  */
 class WallReportCommentMethod(
-        ownerId: Long,
-        commentId: Long,
-        reason: Reason? = null
+    ownerId: Long,
+    commentId: Long,
+    reason: Reason? = null
 ) : VkMethod<Boolean>(
     "wall.reportComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -35,20 +34,5 @@ class WallReportCommentMethod(
         this.ownerId = ownerId
         this.commentId = commentId
         this.reason = reason
-    }
-
-    fun setOwnerId(ownerId: Long): WallReportCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setCommentId(commentId: Long): WallReportCommentMethod {
-        this.commentId = commentId
-        return this
-    }
-
-    fun setReason(reason: Reason): WallReportCommentMethod {
-        this.reason = reason
-        return this
     }
 }

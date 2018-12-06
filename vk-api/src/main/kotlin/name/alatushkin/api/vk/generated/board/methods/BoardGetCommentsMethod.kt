@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.board.GetCommentsResponse
 import name.alatushkin.api.vk.generated.common.Sort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property sort Sort order: 'asc' — by creation date in chronological order, 'desc' — by creation date in reverse chronological order,
  */
 class BoardGetCommentsMethod(
-        groupId: Long,
-        topicId: Long,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null
+    groupId: Long,
+    topicId: Long,
+    needLikes: Boolean? = null,
+    startCommentId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    sort: Sort? = null
 ) : VkMethod<GetCommentsResponse>(
     "board.getComments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var groupId: Long by props
@@ -52,40 +51,5 @@ class BoardGetCommentsMethod(
         this.offset = offset
         this.count = count
         this.sort = sort
-    }
-
-    fun setGroupId(groupId: Long): BoardGetCommentsMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicId(topicId: Long): BoardGetCommentsMethod {
-        this.topicId = topicId
-        return this
-    }
-
-    fun setNeedLikes(needLikes: Boolean): BoardGetCommentsMethod {
-        this.needLikes = needLikes
-        return this
-    }
-
-    fun setStartCommentId(startCommentId: Long): BoardGetCommentsMethod {
-        this.startCommentId = startCommentId
-        return this
-    }
-
-    fun setOffset(offset: Long): BoardGetCommentsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): BoardGetCommentsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setSort(sort: Sort): BoardGetCommentsMethod {
-        this.sort = sort
-        return this
     }
 }

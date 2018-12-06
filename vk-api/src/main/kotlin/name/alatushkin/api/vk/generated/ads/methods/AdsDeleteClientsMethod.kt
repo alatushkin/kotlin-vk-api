@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ids Serialized JSON array with IDs of deleted clients.
  */
 class AdsDeleteClientsMethod(
-        accountId: Long,
-        ids: String
+    accountId: Long,
+    ids: String
 ) : VkMethod<Long>(
     "ads.deleteClients",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -30,15 +29,5 @@ class AdsDeleteClientsMethod(
     init {
         this.accountId = accountId
         this.ids = ids
-    }
-
-    fun setAccountId(accountId: Long): AdsDeleteClientsMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setIds(ids: String): AdsDeleteClientsMethod {
-        this.ids = ids
-        return this
     }
 }

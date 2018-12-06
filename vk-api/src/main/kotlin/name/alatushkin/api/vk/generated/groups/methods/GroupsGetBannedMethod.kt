@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.OwnerXtrBanInfo
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,15 +20,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property userId 
  */
 class GroupsGetBannedMethod(
-        groupId: Long,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        userId: Long? = null
+    groupId: Long,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null,
+    userId: Long? = null
 ) : VkMethod<VkList<OwnerXtrBanInfo>>(
     "groups.getBanned",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<OwnerXtrBanInfo>>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -44,30 +43,5 @@ class GroupsGetBannedMethod(
         this.count = count
         this.fields = fields
         this.userId = userId
-    }
-
-    fun setGroupId(groupId: Long): GroupsGetBannedMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsGetBannedMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetBannedMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): GroupsGetBannedMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setUserId(userId: Long): GroupsGetBannedMethod {
-        this.userId = userId
-        return this
     }
 }

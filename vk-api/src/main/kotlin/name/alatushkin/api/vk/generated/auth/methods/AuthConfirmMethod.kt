@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.auth.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.auth.ConfirmResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property intro 
  */
 class AuthConfirmMethod(
-        clientId: Long,
-        clientSecret: String,
-        phone: String,
-        code: String,
-        password: String? = null,
-        testMode: Boolean? = null,
-        intro: Long? = null
+    clientId: Long,
+    clientSecret: String,
+    phone: String,
+    code: String,
+    password: String? = null,
+    testMode: Boolean? = null,
+    intro: Long? = null
 ) : VkMethod<ConfirmResponse>(
     "auth.confirm",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<ConfirmResponse>>() {}
+    successReference()
 ), ServiceMethod {
 
     var clientId: Long by props
@@ -51,40 +50,5 @@ class AuthConfirmMethod(
         this.password = password
         this.testMode = testMode
         this.intro = intro
-    }
-
-    fun setClientId(clientId: Long): AuthConfirmMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setClientSecret(clientSecret: String): AuthConfirmMethod {
-        this.clientSecret = clientSecret
-        return this
-    }
-
-    fun setPhone(phone: String): AuthConfirmMethod {
-        this.phone = phone
-        return this
-    }
-
-    fun setCode(code: String): AuthConfirmMethod {
-        this.code = code
-        return this
-    }
-
-    fun setPassword(password: String): AuthConfirmMethod {
-        this.password = password
-        return this
-    }
-
-    fun setTestMode(testMode: Boolean): AuthConfirmMethod {
-        this.testMode = testMode
-        return this
-    }
-
-    fun setIntro(intro: Long): AuthConfirmMethod {
-        this.intro = intro
-        return this
     }
 }

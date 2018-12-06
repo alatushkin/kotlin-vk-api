@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.apps.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.apps.App
 import name.alatushkin.api.vk.generated.apps.GetPlatform
 import name.alatushkin.api.vk.generated.common.NameCase
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,15 +22,15 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property nameCase Case for declension of user name and surname: 'nom' — nominative (default),, 'gen' — genitive,, 'dat' — dative,, 'acc' — accusative,, 'ins' — instrumental,, 'abl' — prepositional. (only if 'return_friends' = '1')
  */
 class AppsGetMethod(
-        appId: Long? = null,
-        appIds: Array<String>? = null,
-        platform: GetPlatform? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    appId: Long? = null,
+    appIds: Array<String>? = null,
+    platform: GetPlatform? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<VkList<App>>(
     "apps.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<App>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var appId: Long? by props
@@ -46,30 +45,5 @@ class AppsGetMethod(
         this.platform = platform
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setAppId(appId: Long): AppsGetMethod {
-        this.appId = appId
-        return this
-    }
-
-    fun setAppIds(appIds: Array<String>): AppsGetMethod {
-        this.appIds = appIds
-        return this
-    }
-
-    fun setPlatform(platform: GetPlatform): AppsGetMethod {
-        this.platform = platform
-        return this
-    }
-
-    fun setFields(fields: Array<String>): AppsGetMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): AppsGetMethod {
-        this.nameCase = nameCase
-        return this
     }
 }

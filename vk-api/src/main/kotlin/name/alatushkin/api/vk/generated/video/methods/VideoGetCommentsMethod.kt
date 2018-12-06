@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.GetCommentsResponse
 import name.alatushkin.api.vk.generated.video.Sort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property sort Sort order: 'asc' — oldest comment first, 'desc' — newest comment first
  */
 class VideoGetCommentsMethod(
-        ownerId: Long? = null,
-        videoId: Long,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null
+    ownerId: Long? = null,
+    videoId: Long,
+    needLikes: Boolean? = null,
+    startCommentId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    sort: Sort? = null
 ) : VkMethod<GetCommentsResponse>(
     "video.getComments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -52,40 +51,5 @@ class VideoGetCommentsMethod(
         this.offset = offset
         this.count = count
         this.sort = sort
-    }
-
-    fun setOwnerId(ownerId: Long): VideoGetCommentsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoGetCommentsMethod {
-        this.videoId = videoId
-        return this
-    }
-
-    fun setNeedLikes(needLikes: Boolean): VideoGetCommentsMethod {
-        this.needLikes = needLikes
-        return this
-    }
-
-    fun setStartCommentId(startCommentId: Long): VideoGetCommentsMethod {
-        this.startCommentId = startCommentId
-        return this
-    }
-
-    fun setOffset(offset: Long): VideoGetCommentsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): VideoGetCommentsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setSort(sort: Sort): VideoGetCommentsMethod {
-        this.sort = sort
-        return this
     }
 }

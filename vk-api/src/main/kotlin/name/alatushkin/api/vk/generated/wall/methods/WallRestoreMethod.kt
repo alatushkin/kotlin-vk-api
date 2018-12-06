@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property postId ID of the post to be restored.
  */
 class WallRestoreMethod(
-        ownerId: Long? = null,
-        postId: Long? = null
+    ownerId: Long? = null,
+    postId: Long? = null
 ) : VkMethod<Boolean>(
     "wall.restore",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -30,15 +29,5 @@ class WallRestoreMethod(
     init {
         this.ownerId = ownerId
         this.postId = postId
-    }
-
-    fun setOwnerId(ownerId: Long): WallRestoreMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallRestoreMethod {
-        this.postId = postId
-        return this
     }
 }

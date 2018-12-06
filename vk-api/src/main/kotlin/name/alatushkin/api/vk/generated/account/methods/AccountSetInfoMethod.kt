@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property value Setting value.
  */
 class AccountSetInfoMethod(
-        name: String? = null,
-        value: String? = null
+    name: String? = null,
+    value: String? = null
 ) : VkMethod<Boolean>(
     "account.setInfo",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var name: String? by props
@@ -30,15 +29,5 @@ class AccountSetInfoMethod(
     init {
         this.name = name
         this.value = value
-    }
-
-    fun setName(name: String): AccountSetInfoMethod {
-        this.name = name
-        return this
-    }
-
-    fun setValue(value: String): AccountSetInfoMethod {
-        this.value = value
-        return this
     }
 }

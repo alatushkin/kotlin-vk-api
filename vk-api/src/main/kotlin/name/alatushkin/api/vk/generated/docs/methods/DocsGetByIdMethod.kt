@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.docs.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.Doc
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property docs Document IDs. Example: , "66748_91488,66748_91455",
  */
 class DocsGetByIdMethod(
-        docs: Array<String>
+    docs: Array<String>
 ) : VkMethod<Array<Doc>>(
     "docs.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Doc>>>() {}
+    successReference()
 ), UserMethod {
 
     var docs: Array<String> by props
 
     init {
         this.docs = docs
-    }
-
-    fun setDocs(docs: Array<String>): DocsGetByIdMethod {
-        this.docs = docs
-        return this
     }
 }

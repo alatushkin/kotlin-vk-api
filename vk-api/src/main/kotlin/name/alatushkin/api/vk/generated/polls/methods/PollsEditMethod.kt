@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.polls.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,16 +19,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property deleteAnswers list of answer ids to be deleted. For example: "[382967099, 382967103]"
  */
 class PollsEditMethod(
-        ownerId: Long,
-        pollId: Long,
-        question: String? = null,
-        addAnswers: String? = null,
-        editAnswers: String? = null,
-        deleteAnswers: String? = null
+    ownerId: Long,
+    pollId: Long,
+    question: String? = null,
+    addAnswers: String? = null,
+    editAnswers: String? = null,
+    deleteAnswers: String? = null
 ) : VkMethod<Boolean>(
     "polls.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -46,35 +45,5 @@ class PollsEditMethod(
         this.addAnswers = addAnswers
         this.editAnswers = editAnswers
         this.deleteAnswers = deleteAnswers
-    }
-
-    fun setOwnerId(ownerId: Long): PollsEditMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPollId(pollId: Long): PollsEditMethod {
-        this.pollId = pollId
-        return this
-    }
-
-    fun setQuestion(question: String): PollsEditMethod {
-        this.question = question
-        return this
-    }
-
-    fun setAddAnswers(addAnswers: String): PollsEditMethod {
-        this.addAnswers = addAnswers
-        return this
-    }
-
-    fun setEditAnswers(editAnswers: String): PollsEditMethod {
-        this.editAnswers = editAnswers
-        return this
-    }
-
-    fun setDeleteAnswers(deleteAnswers: String): PollsEditMethod {
-        this.deleteAnswers = deleteAnswers
-        return this
     }
 }

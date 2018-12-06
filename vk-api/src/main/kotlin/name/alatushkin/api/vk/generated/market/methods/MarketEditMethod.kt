@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,19 +22,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property photoIds IDs of additional photos.
  */
 class MarketEditMethod(
-        ownerId: Long,
-        itemId: Long,
-        name: String,
-        description: String,
-        categoryId: Long,
-        price: Double,
-        deleted: Boolean? = null,
-        mainPhotoId: Long,
-        photoIds: Array<Long>? = null
+    ownerId: Long,
+    itemId: Long,
+    name: String,
+    description: String,
+    categoryId: Long,
+    price: Double,
+    deleted: Boolean? = null,
+    mainPhotoId: Long,
+    photoIds: Array<Long>? = null
 ) : VkMethod<Boolean>(
     "market.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -58,50 +57,5 @@ class MarketEditMethod(
         this.deleted = deleted
         this.mainPhotoId = mainPhotoId
         this.photoIds = photoIds
-    }
-
-    fun setOwnerId(ownerId: Long): MarketEditMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): MarketEditMethod {
-        this.itemId = itemId
-        return this
-    }
-
-    fun setName(name: String): MarketEditMethod {
-        this.name = name
-        return this
-    }
-
-    fun setDescription(description: String): MarketEditMethod {
-        this.description = description
-        return this
-    }
-
-    fun setCategoryId(categoryId: Long): MarketEditMethod {
-        this.categoryId = categoryId
-        return this
-    }
-
-    fun setPrice(price: Double): MarketEditMethod {
-        this.price = price
-        return this
-    }
-
-    fun setDeleted(deleted: Boolean): MarketEditMethod {
-        this.deleted = deleted
-        return this
-    }
-
-    fun setMainPhotoId(mainPhotoId: Long): MarketEditMethod {
-        this.mainPhotoId = mainPhotoId
-        return this
-    }
-
-    fun setPhotoIds(photoIds: Array<Long>): MarketEditMethod {
-        this.photoIds = photoIds
-        return this
     }
 }

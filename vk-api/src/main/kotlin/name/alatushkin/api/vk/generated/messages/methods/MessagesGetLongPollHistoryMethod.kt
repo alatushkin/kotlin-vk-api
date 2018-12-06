@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.GetLongPollHistoryResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -24,19 +23,19 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with user access token)
  */
 class MessagesGetLongPollHistoryMethod(
-        ts: Long? = null,
-        pts: Long? = null,
-        previewLength: Long? = null,
-        onlines: Boolean? = null,
-        fields: Array<String>? = null,
-        eventsLimit: Long? = null,
-        msgsLimit: Long? = null,
-        maxMsgId: Long? = null,
-        groupId: Long? = null
+    ts: Long? = null,
+    pts: Long? = null,
+    previewLength: Long? = null,
+    onlines: Boolean? = null,
+    fields: Array<String>? = null,
+    eventsLimit: Long? = null,
+    msgsLimit: Long? = null,
+    maxMsgId: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<GetLongPollHistoryResponse>(
     "messages.getLongPollHistory",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetLongPollHistoryResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ts: Long? by props
@@ -59,50 +58,5 @@ class MessagesGetLongPollHistoryMethod(
         this.msgsLimit = msgsLimit
         this.maxMsgId = maxMsgId
         this.groupId = groupId
-    }
-
-    fun setTs(ts: Long): MessagesGetLongPollHistoryMethod {
-        this.ts = ts
-        return this
-    }
-
-    fun setPts(pts: Long): MessagesGetLongPollHistoryMethod {
-        this.pts = pts
-        return this
-    }
-
-    fun setPreviewLength(previewLength: Long): MessagesGetLongPollHistoryMethod {
-        this.previewLength = previewLength
-        return this
-    }
-
-    fun setOnlines(onlines: Boolean): MessagesGetLongPollHistoryMethod {
-        this.onlines = onlines
-        return this
-    }
-
-    fun setFields(fields: Array<String>): MessagesGetLongPollHistoryMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setEventsLimit(eventsLimit: Long): MessagesGetLongPollHistoryMethod {
-        this.eventsLimit = eventsLimit
-        return this
-    }
-
-    fun setMsgsLimit(msgsLimit: Long): MessagesGetLongPollHistoryMethod {
-        this.msgsLimit = msgsLimit
-        return this
-    }
-
-    fun setMaxMsgId(maxMsgId: Long): MessagesGetLongPollHistoryMethod {
-        this.maxMsgId = maxMsgId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesGetLongPollHistoryMethod {
-        this.groupId = groupId
-        return this
     }
 }

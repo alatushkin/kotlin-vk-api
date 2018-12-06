@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.search.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.search.GetHintsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,15 +19,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property searchGlobal 
  */
 class SearchGetHintsMethod(
-        q: String? = null,
-        offset: Long? = null,
-        limit: Long? = null,
-        filters: Array<String>? = null,
-        searchGlobal: Boolean? = null
+    q: String? = null,
+    offset: Long? = null,
+    limit: Long? = null,
+    filters: Array<String>? = null,
+    searchGlobal: Boolean? = null
 ) : VkMethod<GetHintsResponse>(
     "search.getHints",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetHintsResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var q: String? by props
@@ -43,30 +42,5 @@ class SearchGetHintsMethod(
         this.limit = limit
         this.filters = filters
         this.searchGlobal = searchGlobal
-    }
-
-    fun setQ(q: String): SearchGetHintsMethod {
-        this.q = q
-        return this
-    }
-
-    fun setOffset(offset: Long): SearchGetHintsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setLimit(limit: Long): SearchGetHintsMethod {
-        this.limit = limit
-        return this
-    }
-
-    fun setFilters(filters: Array<String>): SearchGetHintsMethod {
-        this.filters = filters
-        return this
-    }
-
-    fun setSearchGlobal(searchGlobal: Boolean): SearchGetHintsMethod {
-        this.searchGlobal = searchGlobal
-        return this
     }
 }

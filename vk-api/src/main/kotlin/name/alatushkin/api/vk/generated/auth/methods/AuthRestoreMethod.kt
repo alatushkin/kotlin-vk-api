@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.auth.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.auth.RestoreResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property lastName User last name.
  */
 class AuthRestoreMethod(
-        phone: String,
-        lastName: String
+    phone: String,
+    lastName: String
 ) : VkMethod<RestoreResponse>(
     "auth.restore",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<RestoreResponse>>() {}
+    successReference()
 ), ServiceMethod {
 
     var phone: String by props
@@ -31,15 +30,5 @@ class AuthRestoreMethod(
     init {
         this.phone = phone
         this.lastName = lastName
-    }
-
-    fun setPhone(phone: String): AuthRestoreMethod {
-        this.phone = phone
-        return this
-    }
-
-    fun setLastName(lastName: String): AuthRestoreMethod {
-        this.lastName = lastName
-        return this
     }
 }

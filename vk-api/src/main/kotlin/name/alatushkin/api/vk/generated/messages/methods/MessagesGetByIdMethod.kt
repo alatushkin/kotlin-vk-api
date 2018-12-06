@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.Message
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -21,15 +20,15 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with group access token)
  */
 class MessagesGetByIdMethod(
-        messageIds: Array<Long>,
-        previewLength: Long? = null,
-        extended: Boolean? = null,
-        fields: Array<String>? = null,
-        groupId: Long? = null
+    messageIds: Array<Long>,
+    previewLength: Long? = null,
+    extended: Boolean? = null,
+    fields: Array<String>? = null,
+    groupId: Long? = null
 ) : VkMethod<VkList<Message>>(
     "messages.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Message>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var messageIds: Array<Long> by props
@@ -44,30 +43,5 @@ class MessagesGetByIdMethod(
         this.extended = extended
         this.fields = fields
         this.groupId = groupId
-    }
-
-    fun setMessageIds(messageIds: Array<Long>): MessagesGetByIdMethod {
-        this.messageIds = messageIds
-        return this
-    }
-
-    fun setPreviewLength(previewLength: Long): MessagesGetByIdMethod {
-        this.previewLength = previewLength
-        return this
-    }
-
-    fun setExtended(extended: Boolean): MessagesGetByIdMethod {
-        this.extended = extended
-        return this
-    }
-
-    fun setFields(fields: Array<String>): MessagesGetByIdMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesGetByIdMethod {
-        this.groupId = groupId
-        return this
     }
 }

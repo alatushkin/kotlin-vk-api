@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property linkId Link ID.
  */
 class GroupsDeleteLinkMethod(
-        groupId: Long,
-        linkId: Long
+    groupId: Long,
+    linkId: Long
 ) : VkMethod<Boolean>(
     "groups.deleteLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -30,15 +29,5 @@ class GroupsDeleteLinkMethod(
     init {
         this.groupId = groupId
         this.linkId = linkId
-    }
-
-    fun setGroupId(groupId: Long): GroupsDeleteLinkMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setLinkId(linkId: Long): GroupsDeleteLinkMethod {
-        this.linkId = linkId
-        return this
     }
 }

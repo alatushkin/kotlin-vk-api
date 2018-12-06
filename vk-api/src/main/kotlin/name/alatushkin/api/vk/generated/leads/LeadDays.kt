@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.leads
 
-
 open class LeadDays(
     val impressions: Long? = null,
     val started: Long? = null,

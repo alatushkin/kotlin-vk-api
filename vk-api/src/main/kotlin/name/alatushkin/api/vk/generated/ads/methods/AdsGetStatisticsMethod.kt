@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.IdsType
 import name.alatushkin.api.vk.generated.ads.Period
 import name.alatushkin.api.vk.generated.ads.Stats
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,16 +22,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property dateTo Date to show statistics to. For different value of 'period' different date format is used: *day: YYYY-MM-DD, example: 2011-09-27 — September 27, 2011, **0 — current day,, *month: YYYY-MM, example: 2011-09 — September 2011, **0 — current month,, *overall: 0.
  */
 class AdsGetStatisticsMethod(
-        accountId: Long,
-        idsType: IdsType,
-        ids: String,
-        period: Period,
-        dateFrom: String,
-        dateTo: String
+    accountId: Long,
+    idsType: IdsType,
+    ids: String,
+    period: Period,
+    dateFrom: String,
+    dateTo: String
 ) : VkMethod<Array<Stats>>(
     "ads.getStatistics",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Stats>>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -49,35 +48,5 @@ class AdsGetStatisticsMethod(
         this.period = period
         this.dateFrom = dateFrom
         this.dateTo = dateTo
-    }
-
-    fun setAccountId(accountId: Long): AdsGetStatisticsMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setIdsType(idsType: IdsType): AdsGetStatisticsMethod {
-        this.idsType = idsType
-        return this
-    }
-
-    fun setIds(ids: String): AdsGetStatisticsMethod {
-        this.ids = ids
-        return this
-    }
-
-    fun setPeriod(period: Period): AdsGetStatisticsMethod {
-        this.period = period
-        return this
-    }
-
-    fun setDateFrom(dateFrom: String): AdsGetStatisticsMethod {
-        this.dateFrom = dateFrom
-        return this
-    }
-
-    fun setDateTo(dateTo: String): AdsGetStatisticsMethod {
-        this.dateTo = dateTo
-        return this
     }
 }

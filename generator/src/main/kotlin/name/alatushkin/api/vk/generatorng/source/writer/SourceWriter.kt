@@ -98,12 +98,10 @@ class KotlinSourceWriter(val typesSpace: TypesSpace) : SourceWriter {
             .filterNot { it.packages.first() in setOf("kotlin") }
             .filterNot { it.packages.containsAll(typeId.packages) }
 
-        if (importsToDo.isEmpty())
-            return "\n"
+        if (importsToDo.isEmpty()) return ""
 
         return importsToDo.map { importLine(basePackage, it) }
-                .toSortedSet().joinToString("\n", postfix = "\n\n") { "import $it" }
-
+                .toSortedSet().joinToString("\n", prefix = "\n\n") { "import $it" }
     }
 
     override fun copy(): SourceWriter {

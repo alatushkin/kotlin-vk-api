@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GroupFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property fields Group fields to return.
  */
 class GroupsGetByIdMethod(
-        groupIds: Array<String>? = null,
-        groupId: String? = null,
-        fields: Array<String>? = null
+    groupIds: Array<String>? = null,
+    groupId: String? = null,
+    fields: Array<String>? = null
 ) : VkMethod<Array<GroupFull>>(
     "groups.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<GroupFull>>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var groupIds: Array<String>? by props
@@ -35,20 +34,5 @@ class GroupsGetByIdMethod(
         this.groupIds = groupIds
         this.groupId = groupId
         this.fields = fields
-    }
-
-    fun setGroupIds(groupIds: Array<String>): GroupsGetByIdMethod {
-        this.groupIds = groupIds
-        return this
-    }
-
-    fun setGroupId(groupId: String): GroupsGetByIdMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setFields(fields: Array<String>): GroupsGetByIdMethod {
-        this.fields = fields
-        return this
     }
 }

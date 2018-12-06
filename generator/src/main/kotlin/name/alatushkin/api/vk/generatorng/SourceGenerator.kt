@@ -518,16 +518,15 @@ class SourceGenerator {
         val sourceWriter = KotlinSourceWriter(typesSpace)
         val absPath = Paths.get(path.toAbsolutePath().normalize().toString(), *basePackage.split(".").toTypedArray())
         deleteOldAndRecreate(absPath)
-        typesSpace.definedTypes.forEach { (typeId, type) ->
 
+        typesSpace.definedTypes.forEach { (typeId, type) ->
             if (type.hasSource) {
                 val source = type.generateSource(basePackage, typeId, sourceWriter.copy())
                 val filePath: Path =
                     Paths.get(absPath.toString(), *(typeId.packages.toTypedArray() + (typeId.typeName + ".kt")))
                 Files.createDirectories(filePath.parent)
-                Files.write(filePath, source.toByteArray())
+                Files.write(filePath, source.split('\n'))
             }
-
         }
     }
 

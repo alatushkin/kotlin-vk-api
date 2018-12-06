@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -51,47 +50,47 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property leadFormsNew New form in lead forms
  */
 class GroupsSetCallbackSettingsMethod(
-        groupId: Long,
-        serverId: Long? = null,
-        messageNew: Boolean? = null,
-        messageReply: Boolean? = null,
-        messageAllow: Boolean? = null,
-        messageDeny: Boolean? = null,
-        photoNew: Boolean? = null,
-        audioNew: Boolean? = null,
-        videoNew: Boolean? = null,
-        wallReplyNew: Boolean? = null,
-        wallReplyEdit: Boolean? = null,
-        wallReplyDelete: Boolean? = null,
-        wallReplyRestore: Boolean? = null,
-        wallPostNew: Boolean? = null,
-        wallRepost: Boolean? = null,
-        boardPostNew: Boolean? = null,
-        boardPostEdit: Boolean? = null,
-        boardPostRestore: Boolean? = null,
-        boardPostDelete: Boolean? = null,
-        photoCommentNew: Boolean? = null,
-        photoCommentEdit: Boolean? = null,
-        photoCommentDelete: Boolean? = null,
-        photoCommentRestore: Boolean? = null,
-        videoCommentNew: Boolean? = null,
-        videoCommentEdit: Boolean? = null,
-        videoCommentDelete: Boolean? = null,
-        videoCommentRestore: Boolean? = null,
-        marketCommentNew: Boolean? = null,
-        marketCommentEdit: Boolean? = null,
-        marketCommentDelete: Boolean? = null,
-        marketCommentRestore: Boolean? = null,
-        pollVoteNew: Boolean? = null,
-        groupJoin: Boolean? = null,
-        groupLeave: Boolean? = null,
-        userBlock: Boolean? = null,
-        userUnblock: Boolean? = null,
-        leadFormsNew: Boolean? = null
+    groupId: Long,
+    serverId: Long? = null,
+    messageNew: Boolean? = null,
+    messageReply: Boolean? = null,
+    messageAllow: Boolean? = null,
+    messageDeny: Boolean? = null,
+    photoNew: Boolean? = null,
+    audioNew: Boolean? = null,
+    videoNew: Boolean? = null,
+    wallReplyNew: Boolean? = null,
+    wallReplyEdit: Boolean? = null,
+    wallReplyDelete: Boolean? = null,
+    wallReplyRestore: Boolean? = null,
+    wallPostNew: Boolean? = null,
+    wallRepost: Boolean? = null,
+    boardPostNew: Boolean? = null,
+    boardPostEdit: Boolean? = null,
+    boardPostRestore: Boolean? = null,
+    boardPostDelete: Boolean? = null,
+    photoCommentNew: Boolean? = null,
+    photoCommentEdit: Boolean? = null,
+    photoCommentDelete: Boolean? = null,
+    photoCommentRestore: Boolean? = null,
+    videoCommentNew: Boolean? = null,
+    videoCommentEdit: Boolean? = null,
+    videoCommentDelete: Boolean? = null,
+    videoCommentRestore: Boolean? = null,
+    marketCommentNew: Boolean? = null,
+    marketCommentEdit: Boolean? = null,
+    marketCommentDelete: Boolean? = null,
+    marketCommentRestore: Boolean? = null,
+    pollVoteNew: Boolean? = null,
+    groupJoin: Boolean? = null,
+    groupLeave: Boolean? = null,
+    userBlock: Boolean? = null,
+    userUnblock: Boolean? = null,
+    leadFormsNew: Boolean? = null
 ) : VkMethod<Boolean>(
     "groups.setCallbackSettings",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var groupId: Long by props
@@ -170,190 +169,5 @@ class GroupsSetCallbackSettingsMethod(
         this.userBlock = userBlock
         this.userUnblock = userUnblock
         this.leadFormsNew = leadFormsNew
-    }
-
-    fun setGroupId(groupId: Long): GroupsSetCallbackSettingsMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setServerId(serverId: Long): GroupsSetCallbackSettingsMethod {
-        this.serverId = serverId
-        return this
-    }
-
-    fun setMessageNew(messageNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.messageNew = messageNew
-        return this
-    }
-
-    fun setMessageReply(messageReply: Boolean): GroupsSetCallbackSettingsMethod {
-        this.messageReply = messageReply
-        return this
-    }
-
-    fun setMessageAllow(messageAllow: Boolean): GroupsSetCallbackSettingsMethod {
-        this.messageAllow = messageAllow
-        return this
-    }
-
-    fun setMessageDeny(messageDeny: Boolean): GroupsSetCallbackSettingsMethod {
-        this.messageDeny = messageDeny
-        return this
-    }
-
-    fun setPhotoNew(photoNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.photoNew = photoNew
-        return this
-    }
-
-    fun setAudioNew(audioNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.audioNew = audioNew
-        return this
-    }
-
-    fun setVideoNew(videoNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.videoNew = videoNew
-        return this
-    }
-
-    fun setWallReplyNew(wallReplyNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.wallReplyNew = wallReplyNew
-        return this
-    }
-
-    fun setWallReplyEdit(wallReplyEdit: Boolean): GroupsSetCallbackSettingsMethod {
-        this.wallReplyEdit = wallReplyEdit
-        return this
-    }
-
-    fun setWallReplyDelete(wallReplyDelete: Boolean): GroupsSetCallbackSettingsMethod {
-        this.wallReplyDelete = wallReplyDelete
-        return this
-    }
-
-    fun setWallReplyRestore(wallReplyRestore: Boolean): GroupsSetCallbackSettingsMethod {
-        this.wallReplyRestore = wallReplyRestore
-        return this
-    }
-
-    fun setWallPostNew(wallPostNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.wallPostNew = wallPostNew
-        return this
-    }
-
-    fun setWallRepost(wallRepost: Boolean): GroupsSetCallbackSettingsMethod {
-        this.wallRepost = wallRepost
-        return this
-    }
-
-    fun setBoardPostNew(boardPostNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.boardPostNew = boardPostNew
-        return this
-    }
-
-    fun setBoardPostEdit(boardPostEdit: Boolean): GroupsSetCallbackSettingsMethod {
-        this.boardPostEdit = boardPostEdit
-        return this
-    }
-
-    fun setBoardPostRestore(boardPostRestore: Boolean): GroupsSetCallbackSettingsMethod {
-        this.boardPostRestore = boardPostRestore
-        return this
-    }
-
-    fun setBoardPostDelete(boardPostDelete: Boolean): GroupsSetCallbackSettingsMethod {
-        this.boardPostDelete = boardPostDelete
-        return this
-    }
-
-    fun setPhotoCommentNew(photoCommentNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.photoCommentNew = photoCommentNew
-        return this
-    }
-
-    fun setPhotoCommentEdit(photoCommentEdit: Boolean): GroupsSetCallbackSettingsMethod {
-        this.photoCommentEdit = photoCommentEdit
-        return this
-    }
-
-    fun setPhotoCommentDelete(photoCommentDelete: Boolean): GroupsSetCallbackSettingsMethod {
-        this.photoCommentDelete = photoCommentDelete
-        return this
-    }
-
-    fun setPhotoCommentRestore(photoCommentRestore: Boolean): GroupsSetCallbackSettingsMethod {
-        this.photoCommentRestore = photoCommentRestore
-        return this
-    }
-
-    fun setVideoCommentNew(videoCommentNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.videoCommentNew = videoCommentNew
-        return this
-    }
-
-    fun setVideoCommentEdit(videoCommentEdit: Boolean): GroupsSetCallbackSettingsMethod {
-        this.videoCommentEdit = videoCommentEdit
-        return this
-    }
-
-    fun setVideoCommentDelete(videoCommentDelete: Boolean): GroupsSetCallbackSettingsMethod {
-        this.videoCommentDelete = videoCommentDelete
-        return this
-    }
-
-    fun setVideoCommentRestore(videoCommentRestore: Boolean): GroupsSetCallbackSettingsMethod {
-        this.videoCommentRestore = videoCommentRestore
-        return this
-    }
-
-    fun setMarketCommentNew(marketCommentNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.marketCommentNew = marketCommentNew
-        return this
-    }
-
-    fun setMarketCommentEdit(marketCommentEdit: Boolean): GroupsSetCallbackSettingsMethod {
-        this.marketCommentEdit = marketCommentEdit
-        return this
-    }
-
-    fun setMarketCommentDelete(marketCommentDelete: Boolean): GroupsSetCallbackSettingsMethod {
-        this.marketCommentDelete = marketCommentDelete
-        return this
-    }
-
-    fun setMarketCommentRestore(marketCommentRestore: Boolean): GroupsSetCallbackSettingsMethod {
-        this.marketCommentRestore = marketCommentRestore
-        return this
-    }
-
-    fun setPollVoteNew(pollVoteNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.pollVoteNew = pollVoteNew
-        return this
-    }
-
-    fun setGroupJoin(groupJoin: Boolean): GroupsSetCallbackSettingsMethod {
-        this.groupJoin = groupJoin
-        return this
-    }
-
-    fun setGroupLeave(groupLeave: Boolean): GroupsSetCallbackSettingsMethod {
-        this.groupLeave = groupLeave
-        return this
-    }
-
-    fun setUserBlock(userBlock: Boolean): GroupsSetCallbackSettingsMethod {
-        this.userBlock = userBlock
-        return this
-    }
-
-    fun setUserUnblock(userUnblock: Boolean): GroupsSetCallbackSettingsMethod {
-        this.userUnblock = userUnblock
-        return this
-    }
-
-    fun setLeadFormsNew(leadFormsNew: Boolean): GroupsSetCallbackSettingsMethod {
-        this.leadFormsNew = leadFormsNew
-        return this
     }
 }

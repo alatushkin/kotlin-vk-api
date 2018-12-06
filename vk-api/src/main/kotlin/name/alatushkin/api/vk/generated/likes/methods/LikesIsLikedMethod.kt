@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.likes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.IsLikedResponse
 import name.alatushkin.api.vk.generated.likes.IsLikedType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property itemId Object ID.
  */
 class LikesIsLikedMethod(
-        userId: Long? = null,
-        type: IsLikedType,
-        ownerId: Long? = null,
-        itemId: Long
+    userId: Long? = null,
+    type: IsLikedType,
+    ownerId: Long? = null,
+    itemId: Long
 ) : VkMethod<IsLikedResponse>(
     "likes.isLiked",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<IsLikedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long? by props
@@ -40,25 +39,5 @@ class LikesIsLikedMethod(
         this.type = type
         this.ownerId = ownerId
         this.itemId = itemId
-    }
-
-    fun setUserId(userId: Long): LikesIsLikedMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setType(type: IsLikedType): LikesIsLikedMethod {
-        this.type = type
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): LikesIsLikedMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): LikesIsLikedMethod {
-        this.itemId = itemId
-        return this
     }
 }

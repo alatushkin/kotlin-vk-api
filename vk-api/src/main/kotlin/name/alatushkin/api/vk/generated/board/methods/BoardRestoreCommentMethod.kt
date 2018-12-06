@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property commentId Comment ID.
  */
 class BoardRestoreCommentMethod(
-        groupId: Long,
-        topicId: Long,
-        commentId: Long
+    groupId: Long,
+    topicId: Long,
+    commentId: Long
 ) : VkMethod<Boolean>(
     "board.restoreComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var groupId: Long by props
@@ -34,20 +33,5 @@ class BoardRestoreCommentMethod(
         this.groupId = groupId
         this.topicId = topicId
         this.commentId = commentId
-    }
-
-    fun setGroupId(groupId: Long): BoardRestoreCommentMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicId(topicId: Long): BoardRestoreCommentMethod {
-        this.topicId = topicId
-        return this
-    }
-
-    fun setCommentId(commentId: Long): BoardRestoreCommentMethod {
-        this.commentId = commentId
-        return this
     }
 }

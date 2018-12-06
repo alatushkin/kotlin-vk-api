@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property videoId Video ID.
  */
 class VideoRemoveTagMethod(
-        tagId: Long,
-        ownerId: Long? = null,
-        videoId: Long
+    tagId: Long,
+    ownerId: Long? = null,
+    videoId: Long
 ) : VkMethod<Boolean>(
     "video.removeTag",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var tagId: Long by props
@@ -34,20 +33,5 @@ class VideoRemoveTagMethod(
         this.tagId = tagId
         this.ownerId = ownerId
         this.videoId = videoId
-    }
-
-    fun setTagId(tagId: Long): VideoRemoveTagMethod {
-        this.tagId = tagId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): VideoRemoveTagMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoRemoveTagMethod {
-        this.videoId = videoId
-        return this
     }
 }

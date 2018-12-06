@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.Filter
 import name.alatushkin.api.vk.generated.wall.GetExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -22,16 +21,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields 
  */
 class WallGetMethodExtended(
-        ownerId: Long? = null,
-        domain: String? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        filter: Filter? = null,
-        fields: Array<String>? = null
+    ownerId: Long? = null,
+    domain: String? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    filter: Filter? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetExtendedResponse>(
     "wall.get",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetExtendedResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -48,35 +47,5 @@ class WallGetMethodExtended(
         this.count = count
         this.filter = filter
         this.fields = fields
-    }
-
-    fun setOwnerId(ownerId: Long): WallGetMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setDomain(domain: String): WallGetMethodExtended {
-        this.domain = domain
-        return this
-    }
-
-    fun setOffset(offset: Long): WallGetMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): WallGetMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setFilter(filter: Filter): WallGetMethodExtended {
-        this.filter = filter
-        return this
-    }
-
-    fun setFields(fields: Array<String>): WallGetMethodExtended {
-        this.fields = fields
-        return this
     }
 }

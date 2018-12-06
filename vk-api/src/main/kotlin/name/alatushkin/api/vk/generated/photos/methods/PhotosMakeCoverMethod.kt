@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property albumId Album ID.
  */
 class PhotosMakeCoverMethod(
-        ownerId: Long? = null,
-        photoId: Long,
-        albumId: Long? = null
+    ownerId: Long? = null,
+    photoId: Long,
+    albumId: Long? = null
 ) : VkMethod<Boolean>(
     "photos.makeCover",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -34,20 +33,5 @@ class PhotosMakeCoverMethod(
         this.ownerId = ownerId
         this.photoId = photoId
         this.albumId = albumId
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosMakeCoverMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosMakeCoverMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): PhotosMakeCoverMethod {
-        this.albumId = albumId
-        return this
     }
 }

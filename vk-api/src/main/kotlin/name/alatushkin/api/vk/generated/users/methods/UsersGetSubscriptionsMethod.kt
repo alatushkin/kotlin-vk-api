@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.users.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.GetSubscriptionsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields 
  */
 class UsersGetSubscriptionsMethod(
-        userId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null
+    userId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetSubscriptionsResponse>(
     "users.getSubscriptions",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetSubscriptionsResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var userId: Long? by props
@@ -39,25 +38,5 @@ class UsersGetSubscriptionsMethod(
         this.offset = offset
         this.count = count
         this.fields = fields
-    }
-
-    fun setUserId(userId: Long): UsersGetSubscriptionsMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setOffset(offset: Long): UsersGetSubscriptionsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): UsersGetSubscriptionsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): UsersGetSubscriptionsMethod {
-        this.fields = fields
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.secure.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property counter counter value.
  */
 class SecureSetCounterMethod(
-        counters: Array<String>? = null,
-        userId: Long? = null,
-        counter: Long? = null
+    counters: Array<String>? = null,
+    userId: Long? = null,
+    counter: Long? = null
 ) : VkMethod<Boolean>(
     "secure.setCounter",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), ServiceMethod {
 
     var counters: Array<String>? by props
@@ -34,20 +33,5 @@ class SecureSetCounterMethod(
         this.counters = counters
         this.userId = userId
         this.counter = counter
-    }
-
-    fun setCounters(counters: Array<String>): SecureSetCounterMethod {
-        this.counters = counters
-        return this
-    }
-
-    fun setUserId(userId: Long): SecureSetCounterMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setCounter(counter: Long): SecureSetCounterMethod {
-        this.counter = counter
-        return this
     }
 }

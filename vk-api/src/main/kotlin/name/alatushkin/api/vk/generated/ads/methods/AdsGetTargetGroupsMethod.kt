@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.TargetGroup
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property extended '1' — to return pixel code.
  */
 class AdsGetTargetGroupsMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        extended: Boolean? = null
+    accountId: Long,
+    clientId: Long? = null,
+    extended: Boolean? = null
 ) : VkMethod<Array<TargetGroup>>(
     "ads.getTargetGroups",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<TargetGroup>>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -35,20 +34,5 @@ class AdsGetTargetGroupsMethod(
         this.accountId = accountId
         this.clientId = clientId
         this.extended = extended
-    }
-
-    fun setAccountId(accountId: Long): AdsGetTargetGroupsMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsGetTargetGroupsMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setExtended(extended: Boolean): AdsGetTargetGroupsMethod {
-        this.extended = extended
-        return this
     }
 }

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.leads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.Entry
 import name.alatushkin.api.vk.generated.leads.GetUsersStatus
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -22,16 +21,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property reverse Sort order. Possible values: *'1' — chronological,, *'0' — reverse chronological.
  */
 class LeadsGetUsersMethod(
-        offerId: Long,
-        secret: String,
-        offset: Long? = null,
-        count: Long? = null,
-        status: GetUsersStatus? = null,
-        reverse: Boolean? = null
+    offerId: Long,
+    secret: String,
+    offset: Long? = null,
+    count: Long? = null,
+    status: GetUsersStatus? = null,
+    reverse: Boolean? = null
 ) : VkMethod<Array<Entry>>(
     "leads.getUsers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Entry>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var offerId: Long by props
@@ -48,35 +47,5 @@ class LeadsGetUsersMethod(
         this.count = count
         this.status = status
         this.reverse = reverse
-    }
-
-    fun setOfferId(offerId: Long): LeadsGetUsersMethod {
-        this.offerId = offerId
-        return this
-    }
-
-    fun setSecret(secret: String): LeadsGetUsersMethod {
-        this.secret = secret
-        return this
-    }
-
-    fun setOffset(offset: Long): LeadsGetUsersMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): LeadsGetUsersMethod {
-        this.count = count
-        return this
-    }
-
-    fun setStatus(status: GetUsersStatus): LeadsGetUsersMethod {
-        this.status = status
-        return this
-    }
-
-    fun setReverse(reverse: Boolean): LeadsGetUsersMethod {
-        this.reverse = reverse
-        return this
     }
 }

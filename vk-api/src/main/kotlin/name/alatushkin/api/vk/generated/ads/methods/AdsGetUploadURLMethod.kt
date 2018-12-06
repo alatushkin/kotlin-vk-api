@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.GetUploadURLAdFormat
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property adFormat Ad format: *1 — image and text,, *2 — big image,, *3 — exclusive format,, *4 — community, square image,, *7 — special app format.
  */
 class AdsGetUploadURLMethod(
-        adFormat: GetUploadURLAdFormat
+    adFormat: GetUploadURLAdFormat
 ) : VkMethod<String>(
     "ads.getUploadURL",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<String>>() {}
+    successReference()
 ), UserMethod {
 
     var adFormat: GetUploadURLAdFormat by props
 
     init {
         this.adFormat = adFormat
-    }
-
-    fun setAdFormat(adFormat: GetUploadURLAdFormat): AdsGetUploadURLMethod {
-        this.adFormat = adFormat
-        return this
     }
 }

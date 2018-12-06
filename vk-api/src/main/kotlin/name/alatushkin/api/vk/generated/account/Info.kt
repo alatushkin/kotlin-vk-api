@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.account
 
-
 open class Info(
     val country: String? = null,
     val httpsRequired: Boolean? = null,

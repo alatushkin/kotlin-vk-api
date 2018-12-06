@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.fave.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property text Description text.
  */
 class FaveAddLinkMethod(
-        link: String,
-        text: String? = null
+    link: String,
+    text: String? = null
 ) : VkMethod<Boolean>(
     "fave.addLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var link: String by props
@@ -30,15 +29,5 @@ class FaveAddLinkMethod(
     init {
         this.link = link
         this.text = text
-    }
-
-    fun setLink(link: String): FaveAddLinkMethod {
-        this.link = link
-        return this
-    }
-
-    fun setText(text: String): FaveAddLinkMethod {
-        this.text = text
-        return this
     }
 }

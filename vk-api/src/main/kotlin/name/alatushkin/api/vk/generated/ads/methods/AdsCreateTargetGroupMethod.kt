@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.CreateTargetGroupResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,15 +19,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property lifetime 'For groups with auditory created with pixel code only.', , Number of days after that users will be automatically removed from the group. '0' — not to remove users.
  */
 class AdsCreateTargetGroupMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        name: String,
-        domain: String? = null,
-        lifetime: Long? = null
+    accountId: Long,
+    clientId: Long? = null,
+    name: String,
+    domain: String? = null,
+    lifetime: Long? = null
 ) : VkMethod<CreateTargetGroupResponse>(
     "ads.createTargetGroup",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<CreateTargetGroupResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -43,30 +42,5 @@ class AdsCreateTargetGroupMethod(
         this.name = name
         this.domain = domain
         this.lifetime = lifetime
-    }
-
-    fun setAccountId(accountId: Long): AdsCreateTargetGroupMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsCreateTargetGroupMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setName(name: String): AdsCreateTargetGroupMethod {
-        this.name = name
-        return this
-    }
-
-    fun setDomain(domain: String): AdsCreateTargetGroupMethod {
-        this.domain = domain
-        return this
-    }
-
-    fun setLifetime(lifetime: Long): AdsCreateTargetGroupMethod {
-        this.lifetime = lifetime
-        return this
     }
 }

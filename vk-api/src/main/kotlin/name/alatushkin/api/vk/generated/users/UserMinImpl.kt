@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class UserMinImpl(
     override val id: Long,
     override val firstName: String,

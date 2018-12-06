@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.PhotoAlbumFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property commentsDisabled 
  */
 class PhotosCreateAlbumMethod(
-        title: String,
-        groupId: Long? = null,
-        description: String? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null,
-        uploadByAdminsOnly: Boolean? = null,
-        commentsDisabled: Boolean? = null
+    title: String,
+    groupId: Long? = null,
+    description: String? = null,
+    privacyView: Array<String>? = null,
+    privacyComment: Array<String>? = null,
+    uploadByAdminsOnly: Boolean? = null,
+    commentsDisabled: Boolean? = null
 ) : VkMethod<PhotoAlbumFull>(
     "photos.createAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<PhotoAlbumFull>>() {}
+    successReference()
 ), UserMethod {
 
     var title: String by props
@@ -51,40 +50,5 @@ class PhotosCreateAlbumMethod(
         this.privacyComment = privacyComment
         this.uploadByAdminsOnly = uploadByAdminsOnly
         this.commentsDisabled = commentsDisabled
-    }
-
-    fun setTitle(title: String): PhotosCreateAlbumMethod {
-        this.title = title
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PhotosCreateAlbumMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setDescription(description: String): PhotosCreateAlbumMethod {
-        this.description = description
-        return this
-    }
-
-    fun setPrivacyView(privacyView: Array<String>): PhotosCreateAlbumMethod {
-        this.privacyView = privacyView
-        return this
-    }
-
-    fun setPrivacyComment(privacyComment: Array<String>): PhotosCreateAlbumMethod {
-        this.privacyComment = privacyComment
-        return this
-    }
-
-    fun setUploadByAdminsOnly(uploadByAdminsOnly: Boolean): PhotosCreateAlbumMethod {
-        this.uploadByAdminsOnly = uploadByAdminsOnly
-        return this
-    }
-
-    fun setCommentsDisabled(commentsDisabled: Boolean): PhotosCreateAlbumMethod {
-        this.commentsDisabled = commentsDisabled
-        return this
     }
 }

@@ -64,30 +64,26 @@ data class ObjectType(
         val parentTypes = parents.joinToString(",\n    ") { arg ->
             sourceWriter.parentType(arg)
         }
+        val parentClause = parents.isNotEmpty()(" : $parentTypes")
 
         val packageClause = sourceWriter.packageClause(basePackage, typeId)
         val importClause = sourceWriter.importClause(basePackage, typeId)
 
         val builder = StringBuilder()
-        builder.append(packageClause)
-        builder.append("\n\n")
-        builder.append(importClause)
+        builder.append("$packageClause$importClause\n\n")
 
         if (kind == Kind.INTERFACE) {
             builder.append("interface")
         } else {
             if (props.isNotEmpty())
-                builder.append("open ")
+                builder.append("open class")
             else
-                builder.append("data ")
-            builder.append("class")
+                builder.append("data class")
         }
 
         builder.append(" ${typeId.typeName}")
         if (kind == Kind.INTERFACE) {
-            if (parents.isNotEmpty())
-                builder.append(" : ").append(parentTypes)
-            builder.append(" {\n")
+            builder.append("$parentClause {\n")
         } else {
             builder.append("(\n")
         }
@@ -97,9 +93,7 @@ data class ObjectType(
         if (kind == Kind.INTERFACE) {
             builder.append("\n}")
         } else {
-            builder.append("\n)")
-            if (parents.isNotEmpty())
-                builder.append(" : ").append(parentTypes)
+            builder.append("\n)$parentClause")
         }
 
         return builder.toString()

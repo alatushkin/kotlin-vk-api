@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.IsMessagesFromGroupAllowedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property userId User ID.
  */
 class MessagesIsMessagesFromGroupAllowedMethod(
-        groupId: Long,
-        userId: Long
+    groupId: Long,
+    userId: Long
 ) : VkMethod<IsMessagesFromGroupAllowedResponse>(
     "messages.isMessagesFromGroupAllowed",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<IsMessagesFromGroupAllowedResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var groupId: Long by props
@@ -31,15 +30,5 @@ class MessagesIsMessagesFromGroupAllowedMethod(
     init {
         this.groupId = groupId
         this.userId = userId
-    }
-
-    fun setGroupId(groupId: Long): MessagesIsMessagesFromGroupAllowedMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUserId(userId: Long): MessagesIsMessagesFromGroupAllowedMethod {
-        this.userId = userId
-        return this
     }
 }

@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.pages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.pages.WikipageVersion
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property userId 
  */
 class PagesGetHistoryMethod(
-        pageId: Long,
-        groupId: Long? = null,
-        userId: Long? = null
+    pageId: Long,
+    groupId: Long? = null,
+    userId: Long? = null
 ) : VkMethod<Array<WikipageVersion>>(
     "pages.getHistory",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<WikipageVersion>>>() {}
+    successReference()
 ), UserMethod {
 
     var pageId: Long by props
@@ -35,20 +34,5 @@ class PagesGetHistoryMethod(
         this.pageId = pageId
         this.groupId = groupId
         this.userId = userId
-    }
-
-    fun setPageId(pageId: Long): PagesGetHistoryMethod {
-        this.pageId = pageId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PagesGetHistoryMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUserId(userId: Long): PagesGetHistoryMethod {
-        this.userId = userId
-        return this
     }
 }

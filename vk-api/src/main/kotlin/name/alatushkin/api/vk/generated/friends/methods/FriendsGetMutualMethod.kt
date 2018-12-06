@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of mutual friends.
  */
 class FriendsGetMutualMethod(
-        sourceUid: Long? = null,
-        targetUid: Long? = null,
-        order: String? = null,
-        count: Long? = null,
-        offset: Long? = null
+    sourceUid: Long? = null,
+    targetUid: Long? = null,
+    order: String? = null,
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<Array<Long>>(
     "friends.getMutual",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Long>>>() {}
+    successReference()
 ), UserMethod {
 
     var sourceUid: Long? by props
@@ -42,30 +41,5 @@ class FriendsGetMutualMethod(
         this.order = order
         this.count = count
         this.offset = offset
-    }
-
-    fun setSourceUid(sourceUid: Long): FriendsGetMutualMethod {
-        this.sourceUid = sourceUid
-        return this
-    }
-
-    fun setTargetUid(targetUid: Long): FriendsGetMutualMethod {
-        this.targetUid = targetUid
-        return this
-    }
-
-    fun setOrder(order: String): FriendsGetMutualMethod {
-        this.order = order
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetMutualMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): FriendsGetMutualMethod {
-        this.offset = offset
-        return this
     }
 }

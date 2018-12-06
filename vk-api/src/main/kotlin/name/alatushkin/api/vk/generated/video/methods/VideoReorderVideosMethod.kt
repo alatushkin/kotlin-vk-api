@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,18 +21,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property afterVideoId ID of the video after which the photo in question shall be placed.
  */
 class VideoReorderVideosMethod(
-        targetId: Long? = null,
-        albumId: Long? = null,
-        ownerId: Long,
-        videoId: Long,
-        beforeOwnerId: Long? = null,
-        beforeVideoId: Long? = null,
-        afterOwnerId: Long? = null,
-        afterVideoId: Long? = null
+    targetId: Long? = null,
+    albumId: Long? = null,
+    ownerId: Long,
+    videoId: Long,
+    beforeOwnerId: Long? = null,
+    beforeVideoId: Long? = null,
+    afterOwnerId: Long? = null,
+    afterVideoId: Long? = null
 ) : VkMethod<Boolean>(
     "video.reorderVideos",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var targetId: Long? by props
@@ -54,45 +53,5 @@ class VideoReorderVideosMethod(
         this.beforeVideoId = beforeVideoId
         this.afterOwnerId = afterOwnerId
         this.afterVideoId = afterVideoId
-    }
-
-    fun setTargetId(targetId: Long): VideoReorderVideosMethod {
-        this.targetId = targetId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): VideoReorderVideosMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): VideoReorderVideosMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoReorderVideosMethod {
-        this.videoId = videoId
-        return this
-    }
-
-    fun setBeforeOwnerId(beforeOwnerId: Long): VideoReorderVideosMethod {
-        this.beforeOwnerId = beforeOwnerId
-        return this
-    }
-
-    fun setBeforeVideoId(beforeVideoId: Long): VideoReorderVideosMethod {
-        this.beforeVideoId = beforeVideoId
-        return this
-    }
-
-    fun setAfterOwnerId(afterOwnerId: Long): VideoReorderVideosMethod {
-        this.afterOwnerId = afterOwnerId
-        return this
-    }
-
-    fun setAfterVideoId(afterVideoId: Long): VideoReorderVideosMethod {
-        this.afterVideoId = afterVideoId
-        return this
     }
 }

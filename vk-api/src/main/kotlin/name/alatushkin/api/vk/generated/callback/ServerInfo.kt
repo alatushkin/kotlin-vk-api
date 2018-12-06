@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.callback
 
-
 open class ServerInfo(
     val id: Long? = null,
     val title: String? = null,

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property after ID of the link after which to place the link with 'link_id'.
  */
 class GroupsReorderLinkMethod(
-        groupId: Long,
-        linkId: Long,
-        after: Long? = null
+    groupId: Long,
+    linkId: Long,
+    after: Long? = null
 ) : VkMethod<Boolean>(
     "groups.reorderLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -34,20 +33,5 @@ class GroupsReorderLinkMethod(
         this.groupId = groupId
         this.linkId = linkId
         this.after = after
-    }
-
-    fun setGroupId(groupId: Long): GroupsReorderLinkMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setLinkId(linkId: Long): GroupsReorderLinkMethod {
-        this.linkId = linkId
-        return this
-    }
-
-    fun setAfter(after: Long): GroupsReorderLinkMethod {
-        this.after = after
-        return this
     }
 }

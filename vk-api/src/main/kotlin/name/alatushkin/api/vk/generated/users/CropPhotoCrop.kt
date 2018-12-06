@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class CropPhotoCrop(
     val x: Double? = null,
     val y: Double? = null,

@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.likes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.Filter
 import name.alatushkin.api.vk.generated.likes.GetListType
 import name.alatushkin.api.vk.generated.users.UserMin
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -27,19 +26,19 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property skipOwn 
  */
 class LikesGetListMethodExtended(
-        type: GetListType,
-        ownerId: Long? = null,
-        itemId: Long? = null,
-        pageUrl: String? = null,
-        filter: Filter? = null,
-        friendsOnly: Boolean? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        skipOwn: Boolean? = null
+    type: GetListType,
+    ownerId: Long? = null,
+    itemId: Long? = null,
+    pageUrl: String? = null,
+    filter: Filter? = null,
+    friendsOnly: Boolean? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    skipOwn: Boolean? = null
 ) : VkMethod<VkList<UserMin>>(
     "likes.getList",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<VkList<UserMin>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var type: GetListType by props
@@ -62,50 +61,5 @@ class LikesGetListMethodExtended(
         this.offset = offset
         this.count = count
         this.skipOwn = skipOwn
-    }
-
-    fun setType(type: GetListType): LikesGetListMethodExtended {
-        this.type = type
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): LikesGetListMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): LikesGetListMethodExtended {
-        this.itemId = itemId
-        return this
-    }
-
-    fun setPageUrl(pageUrl: String): LikesGetListMethodExtended {
-        this.pageUrl = pageUrl
-        return this
-    }
-
-    fun setFilter(filter: Filter): LikesGetListMethodExtended {
-        this.filter = filter
-        return this
-    }
-
-    fun setFriendsOnly(friendsOnly: Boolean): LikesGetListMethodExtended {
-        this.friendsOnly = friendsOnly
-        return this
-    }
-
-    fun setOffset(offset: Long): LikesGetListMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): LikesGetListMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setSkipOwn(skipOwn: Boolean): LikesGetListMethodExtended {
-        this.skipOwn = skipOwn
-        return this
     }
 }

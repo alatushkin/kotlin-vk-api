@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GetInvitesExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of invitations to return.
  */
 class GroupsGetInvitesMethodExtended(
-        offset: Long? = null,
-        count: Long? = null
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<GetInvitesExtendedResponse>(
     "groups.getInvites",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetInvitesExtendedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var offset: Long? by props
@@ -31,15 +30,5 @@ class GroupsGetInvitesMethodExtended(
     init {
         this.offset = offset
         this.count = count
-    }
-
-    fun setOffset(offset: Long): GroupsGetInvitesMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetInvitesMethodExtended {
-        this.count = count
-        return this
     }
 }

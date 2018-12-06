@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class School(
     val id: String? = null,
     val country: Long? = null,

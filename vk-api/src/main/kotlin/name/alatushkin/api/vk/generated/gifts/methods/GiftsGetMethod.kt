@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.gifts.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.gifts.Gift
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of results.
  */
 class GiftsGetMethod(
-        userId: Long? = null,
-        count: Long? = null,
-        offset: Long? = null
+    userId: Long? = null,
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<VkList<Gift>>(
     "gifts.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Gift>>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long? by props
@@ -36,20 +35,5 @@ class GiftsGetMethod(
         this.userId = userId
         this.count = count
         this.offset = offset
-    }
-
-    fun setUserId(userId: Long): GiftsGetMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setCount(count: Long): GiftsGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): GiftsGetMethod {
-        this.offset = offset
-        return this
     }
 }

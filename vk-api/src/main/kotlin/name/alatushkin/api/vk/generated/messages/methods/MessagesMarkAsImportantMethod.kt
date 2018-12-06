@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property important '1' — to add a star (mark as important), '0' — to remove the star
  */
 class MessagesMarkAsImportantMethod(
-        messageIds: Array<Long>? = null,
-        important: Boolean? = null
+    messageIds: Array<Long>? = null,
+    important: Boolean? = null
 ) : VkMethod<Array<Long>>(
     "messages.markAsImportant",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Long>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var messageIds: Array<Long>? by props
@@ -30,15 +29,5 @@ class MessagesMarkAsImportantMethod(
     init {
         this.messageIds = messageIds
         this.important = important
-    }
-
-    fun setMessageIds(messageIds: Array<Long>): MessagesMarkAsImportantMethod {
-        this.messageIds = messageIds
-        return this
-    }
-
-    fun setImportant(important: Boolean): MessagesMarkAsImportantMethod {
-        this.important = important
-        return this
     }
 }

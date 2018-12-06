@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property userIds User IDs.
  */
 class GroupsIsMemberMethodUserIds(
-        groupId: String,
-        userIds: Array<Long>? = null
+    groupId: String,
+    userIds: Array<Long>? = null
 ) : VkMethod<Boolean>(
     "groups.isMember",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var groupId: String by props
@@ -30,15 +29,5 @@ class GroupsIsMemberMethodUserIds(
     init {
         this.groupId = groupId
         this.userIds = userIds
-    }
-
-    fun setGroupId(groupId: String): GroupsIsMemberMethodUserIds {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUserIds(userIds: Array<Long>): GroupsIsMemberMethodUserIds {
-        this.userIds = userIds
-        return this
     }
 }

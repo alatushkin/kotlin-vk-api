@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId ID or screen name of the community.
  */
 class GroupsLeaveMethod(
-        groupId: Long
+    groupId: Long
 ) : VkMethod<Boolean>(
     "groups.leave",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
 
     init {
         this.groupId = groupId
-    }
-
-    fun setGroupId(groupId: Long): GroupsLeaveMethod {
-        this.groupId = groupId
-        return this
     }
 }

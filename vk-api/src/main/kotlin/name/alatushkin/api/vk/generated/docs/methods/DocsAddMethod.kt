@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.docs.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.docs.AddResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property accessKey Access key. This parameter is required if 'access_key' was returned with the document's data.
  */
 class DocsAddMethod(
-        ownerId: Long,
-        docId: Long,
-        accessKey: String? = null
+    ownerId: Long,
+    docId: Long,
+    accessKey: String? = null
 ) : VkMethod<AddResponse>(
     "docs.add",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AddResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -35,20 +34,5 @@ class DocsAddMethod(
         this.ownerId = ownerId
         this.docId = docId
         this.accessKey = accessKey
-    }
-
-    fun setOwnerId(ownerId: Long): DocsAddMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setDocId(docId: Long): DocsAddMethod {
-        this.docId = docId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): DocsAddMethod {
-        this.accessKey = accessKey
-        return this
     }
 }

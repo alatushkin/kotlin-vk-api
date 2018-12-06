@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.orders.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.orders.Order
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property testMode if this parameter is set to 1, this method returns a list of test mode orders. By default — 0.
  */
 class OrdersGetByIdMethod(
-        orderId: Long? = null,
-        orderIds: Array<Long>? = null,
-        testMode: Boolean? = null
+    orderId: Long? = null,
+    orderIds: Array<Long>? = null,
+    testMode: Boolean? = null
 ) : VkMethod<Array<Order>>(
     "orders.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Order>>>() {}
+    successReference()
 ), UserMethod {
 
     var orderId: Long? by props
@@ -35,20 +34,5 @@ class OrdersGetByIdMethod(
         this.orderId = orderId
         this.orderIds = orderIds
         this.testMode = testMode
-    }
-
-    fun setOrderId(orderId: Long): OrdersGetByIdMethod {
-        this.orderId = orderId
-        return this
-    }
-
-    fun setOrderIds(orderIds: Array<Long>): OrdersGetByIdMethod {
-        this.orderIds = orderIds
-        return this
-    }
-
-    fun setTestMode(testMode: Boolean): OrdersGetByIdMethod {
-        this.testMode = testMode
-        return this
     }
 }

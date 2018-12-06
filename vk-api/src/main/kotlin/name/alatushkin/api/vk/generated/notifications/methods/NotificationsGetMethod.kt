@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.notifications.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notifications.GetResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,15 +19,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property endTime Latest timestamp (in Unix time) of a notification to return. By default, the current time.
  */
 class NotificationsGetMethod(
-        count: Long? = null,
-        startFrom: String? = null,
-        filters: Array<String>? = null,
-        startTime: Long? = null,
-        endTime: Long? = null
+    count: Long? = null,
+    startFrom: String? = null,
+    filters: Array<String>? = null,
+    startTime: Long? = null,
+    endTime: Long? = null
 ) : VkMethod<GetResponse>(
     "notifications.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var count: Long? by props
@@ -43,30 +42,5 @@ class NotificationsGetMethod(
         this.filters = filters
         this.startTime = startTime
         this.endTime = endTime
-    }
-
-    fun setCount(count: Long): NotificationsGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setStartFrom(startFrom: String): NotificationsGetMethod {
-        this.startFrom = startFrom
-        return this
-    }
-
-    fun setFilters(filters: Array<String>): NotificationsGetMethod {
-        this.filters = filters
-        return this
-    }
-
-    fun setStartTime(startTime: Long): NotificationsGetMethod {
-        this.startTime = startTime
-        return this
-    }
-
-    fun setEndTime(endTime: Long): NotificationsGetMethod {
-        this.endTime = endTime
-        return this
     }
 }

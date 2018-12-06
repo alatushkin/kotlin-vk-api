@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.database.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Country
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count Number of countries to return.
  */
 class DatabaseGetCountriesMethod(
-        needAll: Boolean? = null,
-        code: String? = null,
-        offset: Long? = null,
-        count: Long? = null
+    needAll: Boolean? = null,
+    code: String? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<Country>>(
     "database.getCountries",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Country>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var needAll: Boolean? by props
@@ -40,25 +39,5 @@ class DatabaseGetCountriesMethod(
         this.code = code
         this.offset = offset
         this.count = count
-    }
-
-    fun setNeedAll(needAll: Boolean): DatabaseGetCountriesMethod {
-        this.needAll = needAll
-        return this
-    }
-
-    fun setCode(code: String): DatabaseGetCountriesMethod {
-        this.code = code
-        return this
-    }
-
-    fun setOffset(offset: Long): DatabaseGetCountriesMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): DatabaseGetCountriesMethod {
-        this.count = count
-        return this
     }
 }

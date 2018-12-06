@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 open class GroupXtrInvitedBy(
     val id: String? = null,
     val name: String? = null,

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerLinkText
 import name.alatushkin.api.vk.generated.stories.GetPhotoUploadServerResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -22,16 +21,16 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId ID of the community to upload the story (should be verified or with the "fire" icon).
  */
 class StoriesGetPhotoUploadServerMethod(
-        addToNews: Boolean? = null,
-        userIds: Array<Long>? = null,
-        replyToStory: String? = null,
-        linkText: GetPhotoUploadServerLinkText? = null,
-        linkUrl: String? = null,
-        groupId: Long? = null
+    addToNews: Boolean? = null,
+    userIds: Array<Long>? = null,
+    replyToStory: String? = null,
+    linkText: GetPhotoUploadServerLinkText? = null,
+    linkUrl: String? = null,
+    groupId: Long? = null
 ) : VkMethod<GetPhotoUploadServerResponse>(
     "stories.getPhotoUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetPhotoUploadServerResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var addToNews: Boolean? by props
@@ -48,35 +47,5 @@ class StoriesGetPhotoUploadServerMethod(
         this.linkText = linkText
         this.linkUrl = linkUrl
         this.groupId = groupId
-    }
-
-    fun setAddToNews(addToNews: Boolean): StoriesGetPhotoUploadServerMethod {
-        this.addToNews = addToNews
-        return this
-    }
-
-    fun setUserIds(userIds: Array<Long>): StoriesGetPhotoUploadServerMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setReplyToStory(replyToStory: String): StoriesGetPhotoUploadServerMethod {
-        this.replyToStory = replyToStory
-        return this
-    }
-
-    fun setLinkText(linkText: GetPhotoUploadServerLinkText): StoriesGetPhotoUploadServerMethod {
-        this.linkText = linkText
-        return this
-    }
-
-    fun setLinkUrl(linkUrl: String): StoriesGetPhotoUploadServerMethod {
-        this.linkUrl = linkUrl
-        return this
-    }
-
-    fun setGroupId(groupId: Long): StoriesGetPhotoUploadServerMethod {
-        this.groupId = groupId
-        return this
     }
 }

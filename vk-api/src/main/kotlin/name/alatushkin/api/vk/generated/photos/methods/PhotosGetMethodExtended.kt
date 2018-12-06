@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.AlbumId
 import name.alatushkin.api.vk.generated.photos.PhotoFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -26,19 +25,19 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count 
  */
 class PhotosGetMethodExtended(
-        ownerId: Long? = null,
-        albumId: AlbumId? = null,
-        photoIds: Array<String>? = null,
-        rev: Boolean? = null,
-        feedType: String? = null,
-        feed: Long? = null,
-        photoSizes: Boolean? = null,
-        offset: Long? = null,
-        count: Long? = null
+    ownerId: Long? = null,
+    albumId: AlbumId? = null,
+    photoIds: Array<String>? = null,
+    rev: Boolean? = null,
+    feedType: String? = null,
+    feed: Long? = null,
+    photoSizes: Boolean? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<PhotoFull>>(
     "photos.get",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<VkList<PhotoFull>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -61,50 +60,5 @@ class PhotosGetMethodExtended(
         this.photoSizes = photoSizes
         this.offset = offset
         this.count = count
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosGetMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAlbumId(albumId: AlbumId): PhotosGetMethodExtended {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setPhotoIds(photoIds: Array<String>): PhotosGetMethodExtended {
-        this.photoIds = photoIds
-        return this
-    }
-
-    fun setRev(rev: Boolean): PhotosGetMethodExtended {
-        this.rev = rev
-        return this
-    }
-
-    fun setFeedType(feedType: String): PhotosGetMethodExtended {
-        this.feedType = feedType
-        return this
-    }
-
-    fun setFeed(feed: Long): PhotosGetMethodExtended {
-        this.feed = feed
-        return this
-    }
-
-    fun setPhotoSizes(photoSizes: Boolean): PhotosGetMethodExtended {
-        this.photoSizes = photoSizes
-        return this
-    }
-
-    fun setOffset(offset: Long): PhotosGetMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PhotosGetMethodExtended {
-        this.count = count
-        return this
     }
 }

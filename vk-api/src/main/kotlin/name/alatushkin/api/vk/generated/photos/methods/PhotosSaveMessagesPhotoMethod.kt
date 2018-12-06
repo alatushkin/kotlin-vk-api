@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property hash 
  */
 class PhotosSaveMessagesPhotoMethod(
-        photo: String,
-        server: Long? = null,
-        hash: String? = null
+    photo: String,
+    server: Long? = null,
+    hash: String? = null
 ) : VkMethod<Array<Photo>>(
     "photos.saveMessagesPhoto",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Photo>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var photo: String by props
@@ -35,20 +34,5 @@ class PhotosSaveMessagesPhotoMethod(
         this.photo = photo
         this.server = server
         this.hash = hash
-    }
-
-    fun setPhoto(photo: String): PhotosSaveMessagesPhotoMethod {
-        this.photo = photo
-        return this
-    }
-
-    fun setServer(server: Long): PhotosSaveMessagesPhotoMethod {
-        this.server = server
-        return this
-    }
-
-    fun setHash(hash: String): PhotosSaveMessagesPhotoMethod {
-        this.hash = hash
-        return this
     }
 }

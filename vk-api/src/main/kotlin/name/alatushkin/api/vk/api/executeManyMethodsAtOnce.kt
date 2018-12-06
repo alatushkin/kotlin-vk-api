@@ -4,16 +4,17 @@ import com.fasterxml.jackson.databind.JavaType
 import name.alatushkin.api.vk.VK_OBJECT_MAPPER
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.methods.ExecuteMethod
-import name.alatushkin.api.vk.constructType
-import name.alatushkin.api.vk.tokens.MethodRequirement
+import name.alatushkin.api.vk.constructJavaType
+import name.alatushkin.api.vk.toSuccessReference
+import name.alatushkin.api.vk.tokens.UserOrGroupMethod
 import name.alatushkin.api.vk.tokens.VkClient
 
 suspend inline operator fun <reified T, M> VkClient<M>.invoke(methods: List<M>): Array<T>
-        where M : VkMethod<T>, M : MethodRequirement =
-    executeUnchecked(makeVkScriptToCall(methods, constructType<T>()))
+        where M : VkMethod<T>, M : UserOrGroupMethod =
+    executeUnchecked(makeVkScriptToCall(methods, constructJavaType<T>()))
 
 suspend inline fun <reified T, M : VkMethod<T>> VkClient<*>.executeUnchecked(methods: List<M>): Array<T> =
-    executeUnchecked(makeVkScriptToCall(methods, constructType<T>()))
+    executeUnchecked(makeVkScriptToCall(methods, constructJavaType<T>()))
 
 fun <T, M : VkMethod<T>> makeVkScriptToCall(methods: List<M>, singleType: JavaType): ExecuteMethod<T> {
 
@@ -28,5 +29,5 @@ fun <T, M : VkMethod<T>> makeVkScriptToCall(methods: List<M>, singleType: JavaTy
     }
 
     val arrayType = typeFactory.constructArrayType(singleType)
-    return ExecuteMethod(code, arrayType)
+    return ExecuteMethod(code, toSuccessReference(arrayType))
 }

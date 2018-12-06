@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.audio
 
-
 interface Audio {
     val id: Long
     val ownerId: Long

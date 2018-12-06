@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,18 +21,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property guid 
  */
 class VideoCreateCommentMethod(
-        ownerId: Long? = null,
-        videoId: Long,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        fromGroup: Boolean? = null,
-        replyToComment: Long? = null,
-        stickerId: Long? = null,
-        guid: String? = null
+    ownerId: Long? = null,
+    videoId: Long,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    fromGroup: Boolean? = null,
+    replyToComment: Long? = null,
+    stickerId: Long? = null,
+    guid: String? = null
 ) : VkMethod<Long>(
     "video.createComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -54,45 +53,5 @@ class VideoCreateCommentMethod(
         this.replyToComment = replyToComment
         this.stickerId = stickerId
         this.guid = guid
-    }
-
-    fun setOwnerId(ownerId: Long): VideoCreateCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoCreateCommentMethod {
-        this.videoId = videoId
-        return this
-    }
-
-    fun setMessage(message: String): VideoCreateCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): VideoCreateCommentMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setFromGroup(fromGroup: Boolean): VideoCreateCommentMethod {
-        this.fromGroup = fromGroup
-        return this
-    }
-
-    fun setReplyToComment(replyToComment: Long): VideoCreateCommentMethod {
-        this.replyToComment = replyToComment
-        return this
-    }
-
-    fun setStickerId(stickerId: Long): VideoCreateCommentMethod {
-        this.stickerId = stickerId
-        return this
-    }
-
-    fun setGuid(guid: String): VideoCreateCommentMethod {
-        this.guid = guid
-        return this
     }
 }

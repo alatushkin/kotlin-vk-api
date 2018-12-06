@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.places.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.places.AddResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property address Street address of the location (e.g., '125 Elm Street').
  */
 class PlacesAddMethod(
-        type: Long? = null,
-        title: String,
-        latitude: Double,
-        longitude: Double,
-        country: Long? = null,
-        city: Long? = null,
-        address: String? = null
+    type: Long? = null,
+    title: String,
+    latitude: Double,
+    longitude: Double,
+    country: Long? = null,
+    city: Long? = null,
+    address: String? = null
 ) : VkMethod<AddResponse>(
     "places.add",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AddResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var type: Long? by props
@@ -51,40 +50,5 @@ class PlacesAddMethod(
         this.country = country
         this.city = city
         this.address = address
-    }
-
-    fun setType(type: Long): PlacesAddMethod {
-        this.type = type
-        return this
-    }
-
-    fun setTitle(title: String): PlacesAddMethod {
-        this.title = title
-        return this
-    }
-
-    fun setLatitude(latitude: Double): PlacesAddMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): PlacesAddMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setCountry(country: Long): PlacesAddMethod {
-        this.country = country
-        return this
-    }
-
-    fun setCity(city: Long): PlacesAddMethod {
-        this.city = city
-        return this
-    }
-
-    fun setAddress(address: String): PlacesAddMethod {
-        this.address = address
-        return this
     }
 }

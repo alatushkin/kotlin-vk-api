@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -20,15 +19,15 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property cropY2 Y coordinate of the right-bottom corner
  */
 class PhotosGetOwnerCoverPhotoUploadServerMethod(
-        groupId: Long? = null,
-        cropX: Long? = null,
-        cropY: Long? = null,
-        cropX2: Long? = null,
-        cropY2: Long? = null
+    groupId: Long? = null,
+    cropX: Long? = null,
+    cropY: Long? = null,
+    cropX2: Long? = null,
+    cropY2: Long? = null
 ) : VkMethod<UploadServer>(
     "photos.getOwnerCoverPhotoUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<UploadServer>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var groupId: Long? by props
@@ -43,30 +42,5 @@ class PhotosGetOwnerCoverPhotoUploadServerMethod(
         this.cropY = cropY
         this.cropX2 = cropX2
         this.cropY2 = cropY2
-    }
-
-    fun setGroupId(groupId: Long): PhotosGetOwnerCoverPhotoUploadServerMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setCropX(cropX: Long): PhotosGetOwnerCoverPhotoUploadServerMethod {
-        this.cropX = cropX
-        return this
-    }
-
-    fun setCropY(cropY: Long): PhotosGetOwnerCoverPhotoUploadServerMethod {
-        this.cropY = cropY
-        return this
-    }
-
-    fun setCropX2(cropX2: Long): PhotosGetOwnerCoverPhotoUploadServerMethod {
-        this.cropX2 = cropX2
-        return this
-    }
-
-    fun setCropY2(cropY2: Long): PhotosGetOwnerCoverPhotoUploadServerMethod {
-        this.cropY2 = cropY2
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property privacy new access permissions for the album. Possible values: , *'0' – all users,, *'1' – friends only,, *'2' – friends and friends of friends,, *'3' – "only me".
  */
 class VideoEditAlbumMethod(
-        groupId: Long? = null,
-        albumId: Long,
-        title: String,
-        privacy: Array<String>? = null
+    groupId: Long? = null,
+    albumId: Long,
+    title: String,
+    privacy: Array<String>? = null
 ) : VkMethod<Boolean>(
     "video.editAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long? by props
@@ -38,25 +37,5 @@ class VideoEditAlbumMethod(
         this.albumId = albumId
         this.title = title
         this.privacy = privacy
-    }
-
-    fun setGroupId(groupId: Long): VideoEditAlbumMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): VideoEditAlbumMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setTitle(title: String): VideoEditAlbumMethod {
-        this.title = title
-        return this
-    }
-
-    fun setPrivacy(privacy: Array<String>): VideoEditAlbumMethod {
-        this.privacy = privacy
-        return this
     }
 }

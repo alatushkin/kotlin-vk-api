@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.GetCommentsResponse
 import name.alatushkin.api.vk.generated.photos.Sort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -25,19 +24,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fields 
  */
 class PhotosGetCommentsMethod(
-        ownerId: Long? = null,
-        photoId: Long,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null,
-        accessKey: String? = null,
-        fields: Array<String>? = null
+    ownerId: Long? = null,
+    photoId: Long,
+    needLikes: Boolean? = null,
+    startCommentId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    sort: Sort? = null,
+    accessKey: String? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetCommentsResponse>(
     "photos.getComments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -60,50 +59,5 @@ class PhotosGetCommentsMethod(
         this.sort = sort
         this.accessKey = accessKey
         this.fields = fields
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosGetCommentsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosGetCommentsMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setNeedLikes(needLikes: Boolean): PhotosGetCommentsMethod {
-        this.needLikes = needLikes
-        return this
-    }
-
-    fun setStartCommentId(startCommentId: Long): PhotosGetCommentsMethod {
-        this.startCommentId = startCommentId
-        return this
-    }
-
-    fun setOffset(offset: Long): PhotosGetCommentsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PhotosGetCommentsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setSort(sort: Sort): PhotosGetCommentsMethod {
-        this.sort = sort
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): PhotosGetCommentsMethod {
-        this.accessKey = accessKey
-        return this
-    }
-
-    fun setFields(fields: Array<String>): PhotosGetCommentsMethod {
-        this.fields = fields
-        return this
     }
 }

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.Lang
 import name.alatushkin.api.vk.generated.ads.TargSuggestionsCities
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property lang Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
  */
 class AdsGetSuggestionsMethodCities(
-        q: String? = null,
-        country: Long? = null,
-        lang: Lang? = null
+    q: String? = null,
+    country: Long? = null,
+    lang: Lang? = null
 ) : VkMethod<Array<TargSuggestionsCities>>(
     "ads.getSuggestions",
     mutableMapOf("section" to "cities"),
-    object : TypeReference<VkSuccess<Array<TargSuggestionsCities>>>() {}
+    successReference()
 ), UserMethod {
 
     var q: String? by props
@@ -36,20 +35,5 @@ class AdsGetSuggestionsMethodCities(
         this.q = q
         this.country = country
         this.lang = lang
-    }
-
-    fun setQ(q: String): AdsGetSuggestionsMethodCities {
-        this.q = q
-        return this
-    }
-
-    fun setCountry(country: Long): AdsGetSuggestionsMethodCities {
-        this.country = country
-        return this
-    }
-
-    fun setLang(lang: Lang): AdsGetSuggestionsMethodCities {
-        this.lang = lang
-        return this
     }
 }

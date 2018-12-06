@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property mainAlbum Set as main ('1' – set, '0' – no).
  */
 class MarketEditAlbumMethod(
-        ownerId: Long,
-        albumId: Long,
-        title: String,
-        photoId: Long? = null,
-        mainAlbum: Boolean? = null
+    ownerId: Long,
+    albumId: Long,
+    title: String,
+    photoId: Long? = null,
+    mainAlbum: Boolean? = null
 ) : VkMethod<Boolean>(
     "market.editAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -42,30 +41,5 @@ class MarketEditAlbumMethod(
         this.title = title
         this.photoId = photoId
         this.mainAlbum = mainAlbum
-    }
-
-    fun setOwnerId(ownerId: Long): MarketEditAlbumMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): MarketEditAlbumMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setTitle(title: String): MarketEditAlbumMethod {
-        this.title = title
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): MarketEditAlbumMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setMainAlbum(mainAlbum: Boolean): MarketEditAlbumMethod {
-        this.mainAlbum = mainAlbum
-        return this
     }
 }

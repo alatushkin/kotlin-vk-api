@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property ownerId ID of the user whose replies should be hidden.
  */
 class StoriesHideAllRepliesMethod(
-        ownerId: Long
+    ownerId: Long
 ) : VkMethod<Boolean>(
     "stories.hideAllReplies",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ownerId: Long by props
 
     init {
         this.ownerId = ownerId
-    }
-
-    fun setOwnerId(ownerId: Long): StoriesHideAllRepliesMethod {
-        this.ownerId = ownerId
-        return this
     }
 }

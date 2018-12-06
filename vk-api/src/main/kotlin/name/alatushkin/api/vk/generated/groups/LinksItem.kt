@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 open class LinksItem(
     val id: Long? = null,
     val url: String? = null,

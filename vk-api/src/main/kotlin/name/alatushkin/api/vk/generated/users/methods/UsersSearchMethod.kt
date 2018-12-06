@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.users.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.SearchSex
 import name.alatushkin.api.vk.generated.users.SearchStatus
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -51,43 +50,43 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fromList 
  */
 class UsersSearchMethod(
-        q: String? = null,
-        sort: String? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        city: Long? = null,
-        country: Long? = null,
-        hometown: String? = null,
-        universityCountry: Long? = null,
-        university: Long? = null,
-        universityYear: Long? = null,
-        universityFaculty: Long? = null,
-        universityChair: Long? = null,
-        sex: SearchSex? = null,
-        status: SearchStatus? = null,
-        ageFrom: Long? = null,
-        ageTo: Long? = null,
-        birthDay: Long? = null,
-        birthMonth: Long? = null,
-        birthYear: Long? = null,
-        online: Boolean? = null,
-        hasPhoto: Boolean? = null,
-        schoolCountry: Long? = null,
-        schoolCity: Long? = null,
-        schoolClass: Long? = null,
-        school: Long? = null,
-        schoolYear: Long? = null,
-        religion: String? = null,
-        interests: String? = null,
-        company: String? = null,
-        position: String? = null,
-        groupId: Long? = null,
-        fromList: Array<String>? = null
+    q: String? = null,
+    sort: String? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null,
+    city: Long? = null,
+    country: Long? = null,
+    hometown: String? = null,
+    universityCountry: Long? = null,
+    university: Long? = null,
+    universityYear: Long? = null,
+    universityFaculty: Long? = null,
+    universityChair: Long? = null,
+    sex: SearchSex? = null,
+    status: SearchStatus? = null,
+    ageFrom: Long? = null,
+    ageTo: Long? = null,
+    birthDay: Long? = null,
+    birthMonth: Long? = null,
+    birthYear: Long? = null,
+    online: Boolean? = null,
+    hasPhoto: Boolean? = null,
+    schoolCountry: Long? = null,
+    schoolCity: Long? = null,
+    schoolClass: Long? = null,
+    school: Long? = null,
+    schoolYear: Long? = null,
+    religion: String? = null,
+    interests: String? = null,
+    company: String? = null,
+    position: String? = null,
+    groupId: Long? = null,
+    fromList: Array<String>? = null
 ) : VkMethod<VkList<UserFull>>(
     "users.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var q: String? by props
@@ -158,170 +157,5 @@ class UsersSearchMethod(
         this.position = position
         this.groupId = groupId
         this.fromList = fromList
-    }
-
-    fun setQ(q: String): UsersSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setSort(sort: String): UsersSearchMethod {
-        this.sort = sort
-        return this
-    }
-
-    fun setOffset(offset: Long): UsersSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): UsersSearchMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): UsersSearchMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setCity(city: Long): UsersSearchMethod {
-        this.city = city
-        return this
-    }
-
-    fun setCountry(country: Long): UsersSearchMethod {
-        this.country = country
-        return this
-    }
-
-    fun setHometown(hometown: String): UsersSearchMethod {
-        this.hometown = hometown
-        return this
-    }
-
-    fun setUniversityCountry(universityCountry: Long): UsersSearchMethod {
-        this.universityCountry = universityCountry
-        return this
-    }
-
-    fun setUniversity(university: Long): UsersSearchMethod {
-        this.university = university
-        return this
-    }
-
-    fun setUniversityYear(universityYear: Long): UsersSearchMethod {
-        this.universityYear = universityYear
-        return this
-    }
-
-    fun setUniversityFaculty(universityFaculty: Long): UsersSearchMethod {
-        this.universityFaculty = universityFaculty
-        return this
-    }
-
-    fun setUniversityChair(universityChair: Long): UsersSearchMethod {
-        this.universityChair = universityChair
-        return this
-    }
-
-    fun setSex(sex: SearchSex): UsersSearchMethod {
-        this.sex = sex
-        return this
-    }
-
-    fun setStatus(status: SearchStatus): UsersSearchMethod {
-        this.status = status
-        return this
-    }
-
-    fun setAgeFrom(ageFrom: Long): UsersSearchMethod {
-        this.ageFrom = ageFrom
-        return this
-    }
-
-    fun setAgeTo(ageTo: Long): UsersSearchMethod {
-        this.ageTo = ageTo
-        return this
-    }
-
-    fun setBirthDay(birthDay: Long): UsersSearchMethod {
-        this.birthDay = birthDay
-        return this
-    }
-
-    fun setBirthMonth(birthMonth: Long): UsersSearchMethod {
-        this.birthMonth = birthMonth
-        return this
-    }
-
-    fun setBirthYear(birthYear: Long): UsersSearchMethod {
-        this.birthYear = birthYear
-        return this
-    }
-
-    fun setOnline(online: Boolean): UsersSearchMethod {
-        this.online = online
-        return this
-    }
-
-    fun setHasPhoto(hasPhoto: Boolean): UsersSearchMethod {
-        this.hasPhoto = hasPhoto
-        return this
-    }
-
-    fun setSchoolCountry(schoolCountry: Long): UsersSearchMethod {
-        this.schoolCountry = schoolCountry
-        return this
-    }
-
-    fun setSchoolCity(schoolCity: Long): UsersSearchMethod {
-        this.schoolCity = schoolCity
-        return this
-    }
-
-    fun setSchoolClass(schoolClass: Long): UsersSearchMethod {
-        this.schoolClass = schoolClass
-        return this
-    }
-
-    fun setSchool(school: Long): UsersSearchMethod {
-        this.school = school
-        return this
-    }
-
-    fun setSchoolYear(schoolYear: Long): UsersSearchMethod {
-        this.schoolYear = schoolYear
-        return this
-    }
-
-    fun setReligion(religion: String): UsersSearchMethod {
-        this.religion = religion
-        return this
-    }
-
-    fun setInterests(interests: String): UsersSearchMethod {
-        this.interests = interests
-        return this
-    }
-
-    fun setCompany(company: String): UsersSearchMethod {
-        this.company = company
-        return this
-    }
-
-    fun setPosition(position: String): UsersSearchMethod {
-        this.position = position
-        return this
-    }
-
-    fun setGroupId(groupId: Long): UsersSearchMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setFromList(fromList: Array<String>): UsersSearchMethod {
-        this.fromList = fromList
-        return this
     }
 }

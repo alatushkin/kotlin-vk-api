@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoBdateVisibility
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoRelation
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoResponse
 import name.alatushkin.api.vk.generated.account.SaveProfileInfoSex
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -32,24 +31,24 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property status Status text.
  */
 class AccountSaveProfileInfoMethod(
-        firstName: String? = null,
-        lastName: String? = null,
-        maidenName: String? = null,
-        screenName: String? = null,
-        cancelRequestId: Long? = null,
-        sex: SaveProfileInfoSex? = null,
-        relation: SaveProfileInfoRelation? = null,
-        relationPartnerId: Long? = null,
-        bdate: String? = null,
-        bdateVisibility: SaveProfileInfoBdateVisibility? = null,
-        homeTown: String? = null,
-        countryId: Long? = null,
-        cityId: Long? = null,
-        status: String? = null
+    firstName: String? = null,
+    lastName: String? = null,
+    maidenName: String? = null,
+    screenName: String? = null,
+    cancelRequestId: Long? = null,
+    sex: SaveProfileInfoSex? = null,
+    relation: SaveProfileInfoRelation? = null,
+    relationPartnerId: Long? = null,
+    bdate: String? = null,
+    bdateVisibility: SaveProfileInfoBdateVisibility? = null,
+    homeTown: String? = null,
+    countryId: Long? = null,
+    cityId: Long? = null,
+    status: String? = null
 ) : VkMethod<SaveProfileInfoResponse>(
     "account.saveProfileInfo",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<SaveProfileInfoResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var firstName: String? by props
@@ -82,75 +81,5 @@ class AccountSaveProfileInfoMethod(
         this.countryId = countryId
         this.cityId = cityId
         this.status = status
-    }
-
-    fun setFirstName(firstName: String): AccountSaveProfileInfoMethod {
-        this.firstName = firstName
-        return this
-    }
-
-    fun setLastName(lastName: String): AccountSaveProfileInfoMethod {
-        this.lastName = lastName
-        return this
-    }
-
-    fun setMaidenName(maidenName: String): AccountSaveProfileInfoMethod {
-        this.maidenName = maidenName
-        return this
-    }
-
-    fun setScreenName(screenName: String): AccountSaveProfileInfoMethod {
-        this.screenName = screenName
-        return this
-    }
-
-    fun setCancelRequestId(cancelRequestId: Long): AccountSaveProfileInfoMethod {
-        this.cancelRequestId = cancelRequestId
-        return this
-    }
-
-    fun setSex(sex: SaveProfileInfoSex): AccountSaveProfileInfoMethod {
-        this.sex = sex
-        return this
-    }
-
-    fun setRelation(relation: SaveProfileInfoRelation): AccountSaveProfileInfoMethod {
-        this.relation = relation
-        return this
-    }
-
-    fun setRelationPartnerId(relationPartnerId: Long): AccountSaveProfileInfoMethod {
-        this.relationPartnerId = relationPartnerId
-        return this
-    }
-
-    fun setBdate(bdate: String): AccountSaveProfileInfoMethod {
-        this.bdate = bdate
-        return this
-    }
-
-    fun setBdateVisibility(bdateVisibility: SaveProfileInfoBdateVisibility): AccountSaveProfileInfoMethod {
-        this.bdateVisibility = bdateVisibility
-        return this
-    }
-
-    fun setHomeTown(homeTown: String): AccountSaveProfileInfoMethod {
-        this.homeTown = homeTown
-        return this
-    }
-
-    fun setCountryId(countryId: Long): AccountSaveProfileInfoMethod {
-        this.countryId = countryId
-        return this
-    }
-
-    fun setCityId(cityId: Long): AccountSaveProfileInfoMethod {
-        this.cityId = cityId
-        return this
-    }
-
-    fun setStatus(status: String): AccountSaveProfileInfoMethod {
-        this.status = status
-        return this
     }
 }

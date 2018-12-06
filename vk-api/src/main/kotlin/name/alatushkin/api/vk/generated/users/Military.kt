@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class Military(
     val unit: String? = null,
     val unitId: Long? = null,

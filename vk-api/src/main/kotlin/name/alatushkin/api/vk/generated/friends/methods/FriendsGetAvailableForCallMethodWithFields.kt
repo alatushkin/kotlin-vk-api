@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,12 +18,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property nameCase Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
 class FriendsGetAvailableForCallMethodWithFields(
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<VkList<UserFull>>(
     "friends.getAvailableForCall",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var fields: Array<String>? by props
@@ -33,15 +32,5 @@ class FriendsGetAvailableForCallMethodWithFields(
     init {
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setFields(fields: Array<String>): FriendsGetAvailableForCallMethodWithFields {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): FriendsGetAvailableForCallMethodWithFields {
-        this.nameCase = nameCase
-        return this
     }
 }

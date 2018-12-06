@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with user access token)
  */
 class MessagesRestoreMethod(
-        messageId: Long,
-        groupId: Long? = null
+    messageId: Long,
+    groupId: Long? = null
 ) : VkMethod<Boolean>(
     "messages.restore",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var messageId: Long by props
@@ -30,15 +29,5 @@ class MessagesRestoreMethod(
     init {
         this.messageId = messageId
         this.groupId = groupId
-    }
-
-    fun setMessageId(messageId: Long): MessagesRestoreMethod {
-        this.messageId = messageId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesRestoreMethod {
-        this.groupId = groupId
-        return this
     }
 }

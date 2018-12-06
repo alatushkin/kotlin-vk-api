@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.apps.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.apps.App
 import name.alatushkin.api.vk.generated.apps.GetCatalogSort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -28,21 +27,21 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property filter 'installed' — to return list of installed apps (only for mobile platform).
  */
 class AppsGetCatalogMethod(
-        sort: GetCatalogSort? = null,
-        offset: Long? = null,
-        count: Long,
-        platform: String? = null,
-        extended: Boolean? = null,
-        returnFriends: Boolean? = null,
-        fields: Array<String>? = null,
-        nameCase: String? = null,
-        q: String? = null,
-        genreId: Long? = null,
-        filter: String? = null
+    sort: GetCatalogSort? = null,
+    offset: Long? = null,
+    count: Long,
+    platform: String? = null,
+    extended: Boolean? = null,
+    returnFriends: Boolean? = null,
+    fields: Array<String>? = null,
+    nameCase: String? = null,
+    q: String? = null,
+    genreId: Long? = null,
+    filter: String? = null
 ) : VkMethod<VkList<App>>(
     "apps.getCatalog",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<App>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var sort: GetCatalogSort? by props
@@ -69,60 +68,5 @@ class AppsGetCatalogMethod(
         this.q = q
         this.genreId = genreId
         this.filter = filter
-    }
-
-    fun setSort(sort: GetCatalogSort): AppsGetCatalogMethod {
-        this.sort = sort
-        return this
-    }
-
-    fun setOffset(offset: Long): AppsGetCatalogMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): AppsGetCatalogMethod {
-        this.count = count
-        return this
-    }
-
-    fun setPlatform(platform: String): AppsGetCatalogMethod {
-        this.platform = platform
-        return this
-    }
-
-    fun setExtended(extended: Boolean): AppsGetCatalogMethod {
-        this.extended = extended
-        return this
-    }
-
-    fun setReturnFriends(returnFriends: Boolean): AppsGetCatalogMethod {
-        this.returnFriends = returnFriends
-        return this
-    }
-
-    fun setFields(fields: Array<String>): AppsGetCatalogMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: String): AppsGetCatalogMethod {
-        this.nameCase = nameCase
-        return this
-    }
-
-    fun setQ(q: String): AppsGetCatalogMethod {
-        this.q = q
-        return this
-    }
-
-    fun setGenreId(genreId: Long): AppsGetCatalogMethod {
-        this.genreId = genreId
-        return this
-    }
-
-    fun setFilter(filter: String): AppsGetCatalogMethod {
-        this.filter = filter
-        return this
     }
 }

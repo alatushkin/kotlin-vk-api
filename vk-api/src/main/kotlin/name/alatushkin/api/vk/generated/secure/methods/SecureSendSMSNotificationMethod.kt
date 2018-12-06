@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.secure.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
  * @property message 'SMS' text to be sent in 'UTF-8' encoding. Only Latin letters and numbers are allowed. Maximum size is '160' characters.
  */
 class SecureSendSMSNotificationMethod(
-        userId: Long,
-        message: String
+    userId: Long,
+    message: String
 ) : VkMethod<Boolean>(
     "secure.sendSMSNotification",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), ServiceMethod {
 
     var userId: Long by props
@@ -30,15 +29,5 @@ class SecureSendSMSNotificationMethod(
     init {
         this.userId = userId
         this.message = message
-    }
-
-    fun setUserId(userId: Long): SecureSendSMSNotificationMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setMessage(message: String): SecureSendSMSNotificationMethod {
-        this.message = message
-        return this
     }
 }

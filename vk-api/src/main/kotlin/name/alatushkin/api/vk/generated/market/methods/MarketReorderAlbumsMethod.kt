@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property after ID of a collection to place current collection after it.
  */
 class MarketReorderAlbumsMethod(
-        ownerId: Long,
-        albumId: Long,
-        before: Long? = null,
-        after: Long? = null
+    ownerId: Long,
+    albumId: Long,
+    before: Long? = null,
+    after: Long? = null
 ) : VkMethod<Boolean>(
     "market.reorderAlbums",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -38,25 +37,5 @@ class MarketReorderAlbumsMethod(
         this.albumId = albumId
         this.before = before
         this.after = after
-    }
-
-    fun setOwnerId(ownerId: Long): MarketReorderAlbumsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): MarketReorderAlbumsMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setBefore(before: Long): MarketReorderAlbumsMethod {
-        this.before = before
-        return this
-    }
-
-    fun setAfter(after: Long): MarketReorderAlbumsMethod {
-        this.after = after
-        return this
     }
 }

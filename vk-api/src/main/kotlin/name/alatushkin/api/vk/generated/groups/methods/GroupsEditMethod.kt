@@ -2,15 +2,14 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Mode
 import name.alatushkin.api.vk.generated.groups.Access
 import name.alatushkin.api.vk.generated.groups.EditAgeLimits
 import name.alatushkin.api.vk.generated.groups.EditMarketCurrency
 import name.alatushkin.api.vk.generated.groups.EditSubject
 import name.alatushkin.api.vk.generated.groups.EditWall
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -59,49 +58,49 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property obsceneWords Keywords for stopwords filter.
  */
 class GroupsEditMethod(
-        groupId: Long,
-        title: String? = null,
-        description: String? = null,
-        screenName: String? = null,
-        access: Access? = null,
-        website: String? = null,
-        subject: EditSubject? = null,
-        email: String? = null,
-        phone: String? = null,
-        rss: String? = null,
-        eventStartDate: Long? = null,
-        eventFinishDate: Long? = null,
-        eventGroupId: Long? = null,
-        publicCategory: Long? = null,
-        publicSubcategory: Long? = null,
-        publicDate: String? = null,
-        wall: EditWall? = null,
-        topics: Mode? = null,
-        photos: Mode? = null,
-        video: Mode? = null,
-        audio: Mode? = null,
-        links: Boolean? = null,
-        events: Boolean? = null,
-        places: Boolean? = null,
-        contacts: Boolean? = null,
-        docs: Mode? = null,
-        wiki: Mode? = null,
-        messages: Boolean? = null,
-        ageLimits: EditAgeLimits? = null,
-        market: Boolean? = null,
-        marketComments: Boolean? = null,
-        marketCountry: Array<Long>? = null,
-        marketCity: Array<Long>? = null,
-        marketCurrency: EditMarketCurrency? = null,
-        marketContact: Long? = null,
-        marketWiki: Long? = null,
-        obsceneFilter: Boolean? = null,
-        obsceneStopwords: Boolean? = null,
-        obsceneWords: Array<String>? = null
+    groupId: Long,
+    title: String? = null,
+    description: String? = null,
+    screenName: String? = null,
+    access: Access? = null,
+    website: String? = null,
+    subject: EditSubject? = null,
+    email: String? = null,
+    phone: String? = null,
+    rss: String? = null,
+    eventStartDate: Long? = null,
+    eventFinishDate: Long? = null,
+    eventGroupId: Long? = null,
+    publicCategory: Long? = null,
+    publicSubcategory: Long? = null,
+    publicDate: String? = null,
+    wall: EditWall? = null,
+    topics: Mode? = null,
+    photos: Mode? = null,
+    video: Mode? = null,
+    audio: Mode? = null,
+    links: Boolean? = null,
+    events: Boolean? = null,
+    places: Boolean? = null,
+    contacts: Boolean? = null,
+    docs: Mode? = null,
+    wiki: Mode? = null,
+    messages: Boolean? = null,
+    ageLimits: EditAgeLimits? = null,
+    market: Boolean? = null,
+    marketComments: Boolean? = null,
+    marketCountry: Array<Long>? = null,
+    marketCity: Array<Long>? = null,
+    marketCurrency: EditMarketCurrency? = null,
+    marketContact: Long? = null,
+    marketWiki: Long? = null,
+    obsceneFilter: Boolean? = null,
+    obsceneStopwords: Boolean? = null,
+    obsceneWords: Array<String>? = null
 ) : VkMethod<Boolean>(
     "groups.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -184,200 +183,5 @@ class GroupsEditMethod(
         this.obsceneFilter = obsceneFilter
         this.obsceneStopwords = obsceneStopwords
         this.obsceneWords = obsceneWords
-    }
-
-    fun setGroupId(groupId: Long): GroupsEditMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTitle(title: String): GroupsEditMethod {
-        this.title = title
-        return this
-    }
-
-    fun setDescription(description: String): GroupsEditMethod {
-        this.description = description
-        return this
-    }
-
-    fun setScreenName(screenName: String): GroupsEditMethod {
-        this.screenName = screenName
-        return this
-    }
-
-    fun setAccess(access: Access): GroupsEditMethod {
-        this.access = access
-        return this
-    }
-
-    fun setWebsite(website: String): GroupsEditMethod {
-        this.website = website
-        return this
-    }
-
-    fun setSubject(subject: EditSubject): GroupsEditMethod {
-        this.subject = subject
-        return this
-    }
-
-    fun setEmail(email: String): GroupsEditMethod {
-        this.email = email
-        return this
-    }
-
-    fun setPhone(phone: String): GroupsEditMethod {
-        this.phone = phone
-        return this
-    }
-
-    fun setRss(rss: String): GroupsEditMethod {
-        this.rss = rss
-        return this
-    }
-
-    fun setEventStartDate(eventStartDate: Long): GroupsEditMethod {
-        this.eventStartDate = eventStartDate
-        return this
-    }
-
-    fun setEventFinishDate(eventFinishDate: Long): GroupsEditMethod {
-        this.eventFinishDate = eventFinishDate
-        return this
-    }
-
-    fun setEventGroupId(eventGroupId: Long): GroupsEditMethod {
-        this.eventGroupId = eventGroupId
-        return this
-    }
-
-    fun setPublicCategory(publicCategory: Long): GroupsEditMethod {
-        this.publicCategory = publicCategory
-        return this
-    }
-
-    fun setPublicSubcategory(publicSubcategory: Long): GroupsEditMethod {
-        this.publicSubcategory = publicSubcategory
-        return this
-    }
-
-    fun setPublicDate(publicDate: String): GroupsEditMethod {
-        this.publicDate = publicDate
-        return this
-    }
-
-    fun setWall(wall: EditWall): GroupsEditMethod {
-        this.wall = wall
-        return this
-    }
-
-    fun setTopics(topics: Mode): GroupsEditMethod {
-        this.topics = topics
-        return this
-    }
-
-    fun setPhotos(photos: Mode): GroupsEditMethod {
-        this.photos = photos
-        return this
-    }
-
-    fun setVideo(video: Mode): GroupsEditMethod {
-        this.video = video
-        return this
-    }
-
-    fun setAudio(audio: Mode): GroupsEditMethod {
-        this.audio = audio
-        return this
-    }
-
-    fun setLinks(links: Boolean): GroupsEditMethod {
-        this.links = links
-        return this
-    }
-
-    fun setEvents(events: Boolean): GroupsEditMethod {
-        this.events = events
-        return this
-    }
-
-    fun setPlaces(places: Boolean): GroupsEditMethod {
-        this.places = places
-        return this
-    }
-
-    fun setContacts(contacts: Boolean): GroupsEditMethod {
-        this.contacts = contacts
-        return this
-    }
-
-    fun setDocs(docs: Mode): GroupsEditMethod {
-        this.docs = docs
-        return this
-    }
-
-    fun setWiki(wiki: Mode): GroupsEditMethod {
-        this.wiki = wiki
-        return this
-    }
-
-    fun setMessages(messages: Boolean): GroupsEditMethod {
-        this.messages = messages
-        return this
-    }
-
-    fun setAgeLimits(ageLimits: EditAgeLimits): GroupsEditMethod {
-        this.ageLimits = ageLimits
-        return this
-    }
-
-    fun setMarket(market: Boolean): GroupsEditMethod {
-        this.market = market
-        return this
-    }
-
-    fun setMarketComments(marketComments: Boolean): GroupsEditMethod {
-        this.marketComments = marketComments
-        return this
-    }
-
-    fun setMarketCountry(marketCountry: Array<Long>): GroupsEditMethod {
-        this.marketCountry = marketCountry
-        return this
-    }
-
-    fun setMarketCity(marketCity: Array<Long>): GroupsEditMethod {
-        this.marketCity = marketCity
-        return this
-    }
-
-    fun setMarketCurrency(marketCurrency: EditMarketCurrency): GroupsEditMethod {
-        this.marketCurrency = marketCurrency
-        return this
-    }
-
-    fun setMarketContact(marketContact: Long): GroupsEditMethod {
-        this.marketContact = marketContact
-        return this
-    }
-
-    fun setMarketWiki(marketWiki: Long): GroupsEditMethod {
-        this.marketWiki = marketWiki
-        return this
-    }
-
-    fun setObsceneFilter(obsceneFilter: Boolean): GroupsEditMethod {
-        this.obsceneFilter = obsceneFilter
-        return this
-    }
-
-    fun setObsceneStopwords(obsceneStopwords: Boolean): GroupsEditMethod {
-        this.obsceneStopwords = obsceneStopwords
-        return this
-    }
-
-    fun setObsceneWords(obsceneWords: Array<String>): GroupsEditMethod {
-        this.obsceneWords = obsceneWords
-        return this
     }
 }

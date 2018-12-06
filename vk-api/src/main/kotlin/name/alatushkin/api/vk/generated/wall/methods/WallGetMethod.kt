@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.Filter
 import name.alatushkin.api.vk.generated.wall.WallpostFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,16 +22,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields 
  */
 class WallGetMethod(
-        ownerId: Long? = null,
-        domain: String? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        filter: Filter? = null,
-        fields: Array<String>? = null
+    ownerId: Long? = null,
+    domain: String? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    filter: Filter? = null,
+    fields: Array<String>? = null
 ) : VkMethod<VkList<WallpostFull>>(
     "wall.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<WallpostFull>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -49,35 +48,5 @@ class WallGetMethod(
         this.count = count
         this.filter = filter
         this.fields = fields
-    }
-
-    fun setOwnerId(ownerId: Long): WallGetMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setDomain(domain: String): WallGetMethod {
-        this.domain = domain
-        return this
-    }
-
-    fun setOffset(offset: Long): WallGetMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): WallGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFilter(filter: Filter): WallGetMethod {
-        this.filter = filter
-        return this
-    }
-
-    fun setFields(fields: Array<String>): WallGetMethod {
-        this.fields = fields
-        return this
     }
 }

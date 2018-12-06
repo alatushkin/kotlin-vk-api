@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property accessKey Access key for the private object.
  */
 class StoriesHideReplyMethod(
-        ownerId: Long,
-        storyId: Long,
-        accessKey: String? = null
+    ownerId: Long,
+    storyId: Long,
+    accessKey: String? = null
 ) : VkMethod<Boolean>(
     "stories.hideReply",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ownerId: Long by props
@@ -34,20 +33,5 @@ class StoriesHideReplyMethod(
         this.ownerId = ownerId
         this.storyId = storyId
         this.accessKey = accessKey
-    }
-
-    fun setOwnerId(ownerId: Long): StoriesHideReplyMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setStoryId(storyId: Long): StoriesHideReplyMethod {
-        this.storyId = storyId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): StoriesHideReplyMethod {
-        this.accessKey = accessKey
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property title Chat title.
  */
 class MessagesCreateChatMethod(
-        userIds: Array<Long>,
-        title: String? = null
+    userIds: Array<Long>,
+    title: String? = null
 ) : VkMethod<Long>(
     "messages.createChat",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var userIds: Array<Long> by props
@@ -30,15 +29,5 @@ class MessagesCreateChatMethod(
     init {
         this.userIds = userIds
         this.title = title
-    }
-
-    fun setUserIds(userIds: Array<Long>): MessagesCreateChatMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setTitle(title: String): MessagesCreateChatMethod {
-        this.title = title
-        return this
     }
 }

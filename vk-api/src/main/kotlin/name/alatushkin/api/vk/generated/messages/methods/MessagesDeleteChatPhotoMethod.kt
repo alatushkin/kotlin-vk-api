@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.DeleteChatPhotoResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property chatId Chat ID.
  */
 class MessagesDeleteChatPhotoMethod(
-        chatId: Long
+    chatId: Long
 ) : VkMethod<DeleteChatPhotoResponse>(
     "messages.deleteChatPhoto",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<DeleteChatPhotoResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var chatId: Long by props
 
     init {
         this.chatId = chatId
-    }
-
-    fun setChatId(chatId: Long): MessagesDeleteChatPhotoMethod {
-        this.chatId = chatId
-        return this
     }
 }

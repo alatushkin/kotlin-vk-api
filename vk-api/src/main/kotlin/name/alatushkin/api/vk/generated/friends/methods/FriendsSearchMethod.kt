@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,16 +22,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of friends to return.
  */
 class FriendsSearchMethod(
-        userId: Long,
-        q: String? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null,
-        offset: Long? = null,
-        count: Long? = null
+    userId: Long,
+    q: String? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<UserFull>>(
     "friends.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -49,35 +48,5 @@ class FriendsSearchMethod(
         this.nameCase = nameCase
         this.offset = offset
         this.count = count
-    }
-
-    fun setUserId(userId: Long): FriendsSearchMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setQ(q: String): FriendsSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setFields(fields: Array<String>): FriendsSearchMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): FriendsSearchMethod {
-        this.nameCase = nameCase
-        return this
-    }
-
-    fun setOffset(offset: Long): FriendsSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): FriendsSearchMethod {
-        this.count = count
-        return this
     }
 }

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.Requests
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,15 +20,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property suggested '1' — to return a list of suggested friends, '0' — to return friend requests (default)
  */
 class FriendsGetRequestsMethodNeedMutual(
-        offset: Long? = null,
-        count: Long? = null,
-        out: Boolean? = null,
-        sort: String? = null,
-        suggested: Boolean? = null
+    offset: Long? = null,
+    count: Long? = null,
+    out: Boolean? = null,
+    sort: String? = null,
+    suggested: Boolean? = null
 ) : VkMethod<VkList<Requests>>(
     "friends.getRequests",
     mutableMapOf("need_mutual" to "1"),
-    object : TypeReference<VkSuccess<VkList<Requests>>>() {}
+    successReference()
 ), UserMethod {
 
     var offset: Long? by props
@@ -44,30 +43,5 @@ class FriendsGetRequestsMethodNeedMutual(
         this.out = out
         this.sort = sort
         this.suggested = suggested
-    }
-
-    fun setOffset(offset: Long): FriendsGetRequestsMethodNeedMutual {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetRequestsMethodNeedMutual {
-        this.count = count
-        return this
-    }
-
-    fun setOut(out: Boolean): FriendsGetRequestsMethodNeedMutual {
-        this.out = out
-        return this
-    }
-
-    fun setSort(sort: String): FriendsGetRequestsMethodNeedMutual {
-        this.sort = sort
-        return this
-    }
-
-    fun setSuggested(suggested: Boolean): FriendsGetRequestsMethodNeedMutual {
-        this.suggested = suggested
-        return this
     }
 }

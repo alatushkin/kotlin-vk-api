@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.AddCallbackServerResponse
+import name.alatushkin.api.vk.successReference
 
 /**
  * [https://vk.com/dev/groups.addCallbackServer]
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.generated.groups.AddCallbackServerResponse
  * @property secretKey Secret key
  */
 class GroupsAddCallbackServerMethod(
-        groupId: Long,
-        url: String? = null,
-        title: String? = null,
-        secretKey: String? = null
+    groupId: Long,
+    url: String? = null,
+    title: String? = null,
+    secretKey: String? = null
 ) : VkMethod<AddCallbackServerResponse>(
     "groups.addCallbackServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AddCallbackServerResponse>>() {}
+    successReference()
 ) {
 
     var groupId: Long by props
@@ -38,25 +37,5 @@ class GroupsAddCallbackServerMethod(
         this.url = url
         this.title = title
         this.secretKey = secretKey
-    }
-
-    fun setGroupId(groupId: Long): GroupsAddCallbackServerMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUrl(url: String): GroupsAddCallbackServerMethod {
-        this.url = url
-        return this
-    }
-
-    fun setTitle(title: String): GroupsAddCallbackServerMethod {
-        this.title = title
-        return this
-    }
-
-    fun setSecretKey(secretKey: String): GroupsAddCallbackServerMethod {
-        this.secretKey = secretKey
-        return this
     }
 }

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.Lang
 import name.alatushkin.api.vk.generated.ads.TargSuggestionsCities
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property lang Language of the returned string values. Supported languages: *ru — Russian,, *ua — Ukrainian,, *en — English.
  */
 class AdsGetSuggestionsMethodDecodeStreets(
-        ids: String? = null,
-        lang: Lang? = null
+    ids: String? = null,
+    lang: Lang? = null
 ) : VkMethod<Array<TargSuggestionsCities>>(
     "ads.getSuggestions",
     mutableMapOf("section" to "streets"),
-    object : TypeReference<VkSuccess<Array<TargSuggestionsCities>>>() {}
+    successReference()
 ), UserMethod {
 
     var ids: String? by props
@@ -32,15 +31,5 @@ class AdsGetSuggestionsMethodDecodeStreets(
     init {
         this.ids = ids
         this.lang = lang
-    }
-
-    fun setIds(ids: String): AdsGetSuggestionsMethodDecodeStreets {
-        this.ids = ids
-        return this
-    }
-
-    fun setLang(lang: Lang): AdsGetSuggestionsMethodDecodeStreets {
-        this.lang = lang
-        return this
     }
 }

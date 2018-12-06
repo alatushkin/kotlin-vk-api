@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property photoSizes '1' — to return photo sizes in a
  */
 class PhotosGetByIdMethod(
-        photos: Array<String>,
-        photoSizes: Boolean? = null
+    photos: Array<String>,
+    photoSizes: Boolean? = null
 ) : VkMethod<Array<Photo>>(
     "photos.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Photo>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var photos: Array<String> by props
@@ -31,15 +30,5 @@ class PhotosGetByIdMethod(
     init {
         this.photos = photos
         this.photoSizes = photoSizes
-    }
-
-    fun setPhotos(photos: Array<String>): PhotosGetByIdMethod {
-        this.photos = photos
-        return this
-    }
-
-    fun setPhotoSizes(photoSizes: Boolean): PhotosGetByIdMethod {
-        this.photoSizes = photoSizes
-        return this
     }
 }

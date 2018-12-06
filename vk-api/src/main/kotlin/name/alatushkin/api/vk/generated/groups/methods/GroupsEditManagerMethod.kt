@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.EditManagerRole
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property contactEmail Contact e-mail.
  */
 class GroupsEditManagerMethod(
-        groupId: Long,
-        userId: Long,
-        role: EditManagerRole? = null,
-        isContact: Boolean? = null,
-        contactPosition: String? = null,
-        contactPhone: String? = null,
-        contactEmail: String? = null
+    groupId: Long,
+    userId: Long,
+    role: EditManagerRole? = null,
+    isContact: Boolean? = null,
+    contactPosition: String? = null,
+    contactPhone: String? = null,
+    contactEmail: String? = null
 ) : VkMethod<Boolean>(
     "groups.editManager",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -51,40 +50,5 @@ class GroupsEditManagerMethod(
         this.contactPosition = contactPosition
         this.contactPhone = contactPhone
         this.contactEmail = contactEmail
-    }
-
-    fun setGroupId(groupId: Long): GroupsEditManagerMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUserId(userId: Long): GroupsEditManagerMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setRole(role: EditManagerRole): GroupsEditManagerMethod {
-        this.role = role
-        return this
-    }
-
-    fun setIsContact(isContact: Boolean): GroupsEditManagerMethod {
-        this.isContact = isContact
-        return this
-    }
-
-    fun setContactPosition(contactPosition: String): GroupsEditManagerMethod {
-        this.contactPosition = contactPosition
-        return this
-    }
-
-    fun setContactPhone(contactPhone: String): GroupsEditManagerMethod {
-        this.contactPhone = contactPhone
-        return this
-    }
-
-    fun setContactEmail(contactEmail: String): GroupsEditManagerMethod {
-        this.contactEmail = contactEmail
-        return this
     }
 }

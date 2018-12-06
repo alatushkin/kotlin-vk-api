@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.stats
 
-
 open class Reach(
     val reach: Long? = null,
     val reachSubscribers: Long? = null,

@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.account
 
-
 open class AccountCounters(
     val friends: Long? = null,
     val messages: Long? = null,

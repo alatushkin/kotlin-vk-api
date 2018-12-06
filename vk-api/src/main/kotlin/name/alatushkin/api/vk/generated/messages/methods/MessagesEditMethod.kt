@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -22,18 +21,18 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with user access token)
  */
 class MessagesEditMethod(
-        peerId: Long,
-        message: String? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        attachment: Array<String>? = null,
-        keepForwardMessages: Boolean? = null,
-        keepSnippets: Boolean? = null,
-        groupId: Long? = null
+    peerId: Long,
+    message: String? = null,
+    lat: Double? = null,
+    long: Double? = null,
+    attachment: Array<String>? = null,
+    keepForwardMessages: Boolean? = null,
+    keepSnippets: Boolean? = null,
+    groupId: Long? = null
 ) : VkMethod<Boolean>(
     "messages.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var peerId: Long by props
@@ -54,45 +53,5 @@ class MessagesEditMethod(
         this.keepForwardMessages = keepForwardMessages
         this.keepSnippets = keepSnippets
         this.groupId = groupId
-    }
-
-    fun setPeerId(peerId: Long): MessagesEditMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setMessage(message: String): MessagesEditMethod {
-        this.message = message
-        return this
-    }
-
-    fun setLat(lat: Double): MessagesEditMethod {
-        this.lat = lat
-        return this
-    }
-
-    fun setLong(long: Double): MessagesEditMethod {
-        this.long = long
-        return this
-    }
-
-    fun setAttachment(attachment: Array<String>): MessagesEditMethod {
-        this.attachment = attachment
-        return this
-    }
-
-    fun setKeepForwardMessages(keepForwardMessages: Boolean): MessagesEditMethod {
-        this.keepForwardMessages = keepForwardMessages
-        return this
-    }
-
-    fun setKeepSnippets(keepSnippets: Boolean): MessagesEditMethod {
-        this.keepSnippets = keepSnippets
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesEditMethod {
-        this.groupId = groupId
-        return this
     }
 }

@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.friends
 
-
 open class DeleteResponse(
     val success: Boolean,
     val friendDeleted: Boolean? = null,

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,18 +21,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property commentsDisabled 
  */
 class PhotosEditAlbumMethod(
-        albumId: Long,
-        title: String? = null,
-        description: String? = null,
-        ownerId: Long? = null,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null,
-        uploadByAdminsOnly: Boolean? = null,
-        commentsDisabled: Boolean? = null
+    albumId: Long,
+    title: String? = null,
+    description: String? = null,
+    ownerId: Long? = null,
+    privacyView: Array<String>? = null,
+    privacyComment: Array<String>? = null,
+    uploadByAdminsOnly: Boolean? = null,
+    commentsDisabled: Boolean? = null
 ) : VkMethod<Boolean>(
     "photos.editAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var albumId: Long by props
@@ -54,45 +53,5 @@ class PhotosEditAlbumMethod(
         this.privacyComment = privacyComment
         this.uploadByAdminsOnly = uploadByAdminsOnly
         this.commentsDisabled = commentsDisabled
-    }
-
-    fun setAlbumId(albumId: Long): PhotosEditAlbumMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setTitle(title: String): PhotosEditAlbumMethod {
-        this.title = title
-        return this
-    }
-
-    fun setDescription(description: String): PhotosEditAlbumMethod {
-        this.description = description
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosEditAlbumMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPrivacyView(privacyView: Array<String>): PhotosEditAlbumMethod {
-        this.privacyView = privacyView
-        return this
-    }
-
-    fun setPrivacyComment(privacyComment: Array<String>): PhotosEditAlbumMethod {
-        this.privacyComment = privacyComment
-        return this
-    }
-
-    fun setUploadByAdminsOnly(uploadByAdminsOnly: Boolean): PhotosEditAlbumMethod {
-        this.uploadByAdminsOnly = uploadByAdminsOnly
-        return this
-    }
-
-    fun setCommentsDisabled(commentsDisabled: Boolean): PhotosEditAlbumMethod {
-        this.commentsDisabled = commentsDisabled
-        return this
     }
 }

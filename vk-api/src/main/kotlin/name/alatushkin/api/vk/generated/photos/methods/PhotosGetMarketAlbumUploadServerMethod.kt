@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId Community ID.
  */
 class PhotosGetMarketAlbumUploadServerMethod(
-        groupId: Long
+    groupId: Long
 ) : VkMethod<UploadServer>(
     "photos.getMarketAlbumUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<UploadServer>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
 
     init {
         this.groupId = groupId
-    }
-
-    fun setGroupId(groupId: Long): PhotosGetMarketAlbumUploadServerMethod {
-        this.groupId = groupId
-        return this
     }
 }

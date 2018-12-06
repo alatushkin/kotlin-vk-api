@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.stats
 
-
 interface WallpostStat {
     val reachSubscribers: Long?
     val reachTotal: Long?

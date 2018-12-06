@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.board.GetTopicsResponse
 import name.alatushkin.api.vk.generated.board.Order
 import name.alatushkin.api.vk.generated.board.Preview
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -24,17 +23,17 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property previewLength Number of characters after which to truncate the previewed comment. To preview the full comment, specify '0'.
  */
 class BoardGetTopicsMethod(
-        groupId: Long,
-        topicIds: Array<Long>? = null,
-        order: Order? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        preview: Preview? = null,
-        previewLength: Long? = null
+    groupId: Long,
+    topicIds: Array<Long>? = null,
+    order: Order? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    preview: Preview? = null,
+    previewLength: Long? = null
 ) : VkMethod<GetTopicsResponse>(
     "board.getTopics",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetTopicsResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var groupId: Long by props
@@ -53,40 +52,5 @@ class BoardGetTopicsMethod(
         this.count = count
         this.preview = preview
         this.previewLength = previewLength
-    }
-
-    fun setGroupId(groupId: Long): BoardGetTopicsMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicIds(topicIds: Array<Long>): BoardGetTopicsMethod {
-        this.topicIds = topicIds
-        return this
-    }
-
-    fun setOrder(order: Order): BoardGetTopicsMethod {
-        this.order = order
-        return this
-    }
-
-    fun setOffset(offset: Long): BoardGetTopicsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): BoardGetTopicsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setPreview(preview: Preview): BoardGetTopicsMethod {
-        this.preview = preview
-        return this
-    }
-
-    fun setPreviewLength(previewLength: Long): BoardGetTopicsMethod {
-        this.previewLength = previewLength
-        return this
     }
 }

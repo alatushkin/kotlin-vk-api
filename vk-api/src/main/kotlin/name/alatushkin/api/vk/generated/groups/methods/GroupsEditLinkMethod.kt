@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property text New description text for the link.
  */
 class GroupsEditLinkMethod(
-        groupId: Long,
-        linkId: Long,
-        text: String? = null
+    groupId: Long,
+    linkId: Long,
+    text: String? = null
 ) : VkMethod<Boolean>(
     "groups.editLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -34,20 +33,5 @@ class GroupsEditLinkMethod(
         this.groupId = groupId
         this.linkId = linkId
         this.text = text
-    }
-
-    fun setGroupId(groupId: Long): GroupsEditLinkMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setLinkId(linkId: Long): GroupsEditLinkMethod {
-        this.linkId = linkId
-        return this
-    }
-
-    fun setText(text: String): GroupsEditLinkMethod {
-        this.text = text
-        return this
     }
 }

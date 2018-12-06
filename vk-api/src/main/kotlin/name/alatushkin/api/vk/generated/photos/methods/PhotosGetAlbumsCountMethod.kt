@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId Community ID.
  */
 class PhotosGetAlbumsCountMethod(
-        userId: Long? = null,
-        groupId: Long? = null
+    userId: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<Long>(
     "photos.getAlbumsCount",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long? by props
@@ -30,15 +29,5 @@ class PhotosGetAlbumsCountMethod(
     init {
         this.userId = userId
         this.groupId = groupId
-    }
-
-    fun setUserId(userId: Long): PhotosGetAlbumsCountMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PhotosGetAlbumsCountMethod {
-        this.groupId = groupId
-        return this
     }
 }

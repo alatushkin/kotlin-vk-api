@@ -13,41 +13,41 @@ data class MethodArgument(
 data class MethodAccessType(val interfaceName: String, val interfacePackage: String)
 
 data class MethodType(
-        val methodUrl: String,
-        val arguments: List<MethodArgument>,
-        val result: TypeId,
-        val defaultParams: Map<String, String?> = emptyMap(),
-        val methodAccessType: MethodAccessType?,
-        override val description: String?
+    val methodUrl: String,
+    val arguments: List<MethodArgument>,
+    val result: TypeId,
+    val defaultParams: Map<String, String?> = emptyMap(),
+    val methodAccessType: MethodAccessType?,
+    override val description: String?
 ) : TypeDefinition {
 
     class Item(val name: String, val value: String)
 
     override fun generateSource(
-            basePackage: String,
-            typeId: TypeId,
-            sourceWriter: SourceWriter
+        basePackage: String,
+        typeId: TypeId,
+        sourceWriter: SourceWriter
     ): String = with(sourceWriter) {
 
         val hasParams = arguments.isNotEmpty()
         val fieldsDefinition = arguments.joinToString("\n", prefix = "\n", postfix = "\n") { arg ->
             sourceWriter.constructorField(
-                    name = arg.name,
-                    type = arg.typeId,
-                    inherited = false,
-                    final = false,
-                    nullable = !arg.required,
-                    delegateBy = "props",
-                    defaultValue = null
+                name = arg.name,
+                type = arg.typeId,
+                inherited = false,
+                final = false,
+                nullable = !arg.required,
+                delegateBy = "props",
+                defaultValue = null
             )
         }
 
-        val constructorArgs = arguments.joinToString(",\n        ", prefix = "\n        ") { arg ->
+        val constructorArgs = arguments.joinToString(",\n    ", prefix = "\n    ") { arg ->
             sourceWriter.argument(
-                    name = arg.name,
-                    type = arg.typeId,
-                    nullable = !arg.required,
-                    defaultValue = if (arg.required) null else "null"
+                name = arg.name,
+                type = arg.typeId,
+                nullable = !arg.required,
+                defaultValue = if (arg.required) null else "null"
             )
         }
 
@@ -66,52 +66,43 @@ data class MethodType(
 
         val builder = StringBuilder()
 
-        builder.append("""
+        builder.append(
+            """
             |@file:Suppress("unused", "MemberVisibilityCanBePrivate", "SpellCheckingInspection")
             |
-            |$packageClause
+            |$packageClause$importClause
             |
-            |$importClause$description
+            |$description
             |class ${typeId.typeName}${hasParams("($constructorArgs\n)")} : $parentClass(
             |    "$methodUrl",
             |    ${renderMutableMap(defaultParams)},
             |    $classRef
             |)$implementsClause
-        """.trimMargin())
+            """.trimMargin()
+        )
 
         if (hasParams) {
             val constructorBody = arguments
-                    .map { fieldNameEscaped(it.name) }
-                    .joinToString("\n") { "        this.$it = $it" }
+                .map { fieldNameEscaped(it.name) }
+                .joinToString("\n") { "        this.$it = $it" }
 
-            builder.append(""" {
+            builder.append(
+                """ {
                 |$fieldsDefinition
                 |    init {
                 |$constructorBody
                 |    }
-                |
-                |
-            """.trimMargin())
-
-            builder.append(arguments.joinToString("\n\n", postfix = "\n}") {
-                """
-                |    fun set${fieldName(it.name).capitalize()}(${fieldNameEscaped(it.name)}: ${realType(it.typeId).fullTypeName}): ${typeId.typeName} {
-                |        this.${fieldNameEscaped(it.name)} = ${fieldNameEscaped(it.name)}
-                |        return this
-                |    }
+                |}
                 """.trimMargin()
-            })
+            )
         }
-
-        builder.append("\n")
 
         return builder.toString()
     }
 
     private fun renderClassRef(sourceWriter: SourceWriter): String {
-        sourceWriter.importType(TypeId("/com.fasterxml.jackson.core.type", "TypeReference"))
-        sourceWriter.importType(TypeId("/name.alatushkin.api.vk.api", "VkSuccess"))
-        return "object : TypeReference<VkSuccess<${result.paramTypeIds.first().fullTypeName}>>() {}"
+        sourceWriter.importType(TypeId("/name.alatushkin.api.vk", "successReference"))
+        return "successReference()"
     }
 
     private fun renderMutableMap(map: Map<String, String?>): String {

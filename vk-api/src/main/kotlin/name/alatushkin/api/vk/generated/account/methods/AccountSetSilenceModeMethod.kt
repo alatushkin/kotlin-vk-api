@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property sound '1' — to enable sound in this dialog, '0' — to disable sound. Only if 'peer_id' contains user or community ID.
  */
 class AccountSetSilenceModeMethod(
-        deviceId: String? = null,
-        time: Long? = null,
-        peerId: Long? = null,
-        sound: Long? = null
+    deviceId: String? = null,
+    time: Long? = null,
+    peerId: Long? = null,
+    sound: Long? = null
 ) : VkMethod<Boolean>(
     "account.setSilenceMode",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var deviceId: String? by props
@@ -38,25 +37,5 @@ class AccountSetSilenceModeMethod(
         this.time = time
         this.peerId = peerId
         this.sound = sound
-    }
-
-    fun setDeviceId(deviceId: String): AccountSetSilenceModeMethod {
-        this.deviceId = deviceId
-        return this
-    }
-
-    fun setTime(time: Long): AccountSetSilenceModeMethod {
-        this.time = time
-        return this
-    }
-
-    fun setPeerId(peerId: Long): AccountSetSilenceModeMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setSound(sound: Long): AccountSetSilenceModeMethod {
-        this.sound = sound
-        return this
     }
 }

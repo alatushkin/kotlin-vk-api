@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.TargSettings
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of results.
  */
 class AdsGetAdsTargetingMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        includeDeleted: Boolean? = null,
-        campaignIds: String? = null,
-        adIds: String? = null,
-        limit: Long? = null,
-        offset: Long? = null
+    accountId: Long,
+    clientId: Long? = null,
+    includeDeleted: Boolean? = null,
+    campaignIds: String? = null,
+    adIds: String? = null,
+    limit: Long? = null,
+    offset: Long? = null
 ) : VkMethod<Array<TargSettings>>(
     "ads.getAdsTargeting",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<TargSettings>>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -51,40 +50,5 @@ class AdsGetAdsTargetingMethod(
         this.adIds = adIds
         this.limit = limit
         this.offset = offset
-    }
-
-    fun setAccountId(accountId: Long): AdsGetAdsTargetingMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsGetAdsTargetingMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setIncludeDeleted(includeDeleted: Boolean): AdsGetAdsTargetingMethod {
-        this.includeDeleted = includeDeleted
-        return this
-    }
-
-    fun setCampaignIds(campaignIds: String): AdsGetAdsTargetingMethod {
-        this.campaignIds = campaignIds
-        return this
-    }
-
-    fun setAdIds(adIds: String): AdsGetAdsTargetingMethod {
-        this.adIds = adIds
-        return this
-    }
-
-    fun setLimit(limit: Long): AdsGetAdsTargetingMethod {
-        this.limit = limit
-        return this
-    }
-
-    fun setOffset(offset: Long): AdsGetAdsTargetingMethod {
-        this.offset = offset
-        return this
     }
 }

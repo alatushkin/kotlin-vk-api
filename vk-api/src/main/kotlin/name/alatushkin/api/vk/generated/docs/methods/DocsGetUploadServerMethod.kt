@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.docs.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId Community ID (if the document will be uploaded to the community).
  */
 class DocsGetUploadServerMethod(
-        groupId: Long? = null
+    groupId: Long? = null
 ) : VkMethod<UploadServer>(
     "docs.getUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<UploadServer>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long? by props
 
     init {
         this.groupId = groupId
-    }
-
-    fun setGroupId(groupId: Long): DocsGetUploadServerMethod {
-        this.groupId = groupId
-        return this
     }
 }

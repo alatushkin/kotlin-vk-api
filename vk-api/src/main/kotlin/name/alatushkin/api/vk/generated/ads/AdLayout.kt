@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class AdLayout(
     val id: Long,
     val campaignId: Long,

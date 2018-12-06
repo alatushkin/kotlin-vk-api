@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.apps.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.apps.SendRequestType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property separate 
  */
 class AppsSendRequestMethod(
-        userId: Long,
-        text: String? = null,
-        type: SendRequestType? = null,
-        name: String? = null,
-        key: String? = null,
-        separate: Boolean? = null
+    userId: Long,
+    text: String? = null,
+    type: SendRequestType? = null,
+    name: String? = null,
+    key: String? = null,
+    separate: Boolean? = null
 ) : VkMethod<Long>(
     "apps.sendRequest",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -47,35 +46,5 @@ class AppsSendRequestMethod(
         this.name = name
         this.key = key
         this.separate = separate
-    }
-
-    fun setUserId(userId: Long): AppsSendRequestMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setText(text: String): AppsSendRequestMethod {
-        this.text = text
-        return this
-    }
-
-    fun setType(type: SendRequestType): AppsSendRequestMethod {
-        this.type = type
-        return this
-    }
-
-    fun setName(name: String): AppsSendRequestMethod {
-        this.name = name
-        return this
-    }
-
-    fun setKey(key: String): AppsSendRequestMethod {
-        this.key = key
-        return this
-    }
-
-    fun setSeparate(separate: Boolean): AppsSendRequestMethod {
-        this.separate = separate
-        return this
     }
 }

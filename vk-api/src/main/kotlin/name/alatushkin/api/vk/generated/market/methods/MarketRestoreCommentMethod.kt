@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property commentId deleted comment id
  */
 class MarketRestoreCommentMethod(
-        ownerId: Long,
-        commentId: Long
+    ownerId: Long,
+    commentId: Long
 ) : VkMethod<Boolean>(
     "market.restoreComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -30,15 +29,5 @@ class MarketRestoreCommentMethod(
     init {
         this.ownerId = ownerId
         this.commentId = commentId
-    }
-
-    fun setOwnerId(ownerId: Long): MarketRestoreCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setCommentId(commentId: Long): MarketRestoreCommentMethod {
-        this.commentId = commentId
-        return this
     }
 }

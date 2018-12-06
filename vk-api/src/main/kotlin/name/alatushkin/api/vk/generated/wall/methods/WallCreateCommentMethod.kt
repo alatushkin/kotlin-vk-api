@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.CreateCommentResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,18 +22,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property guid Unique identifier to avoid repeated comments.
  */
 class WallCreateCommentMethod(
-        ownerId: Long? = null,
-        postId: Long,
-        fromGroup: Long? = null,
-        message: String? = null,
-        replyToComment: Long? = null,
-        attachments: Array<String>? = null,
-        stickerId: Long? = null,
-        guid: String? = null
+    ownerId: Long? = null,
+    postId: Long,
+    fromGroup: Long? = null,
+    message: String? = null,
+    replyToComment: Long? = null,
+    attachments: Array<String>? = null,
+    stickerId: Long? = null,
+    guid: String? = null
 ) : VkMethod<CreateCommentResponse>(
     "wall.createComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<CreateCommentResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -55,45 +54,5 @@ class WallCreateCommentMethod(
         this.attachments = attachments
         this.stickerId = stickerId
         this.guid = guid
-    }
-
-    fun setOwnerId(ownerId: Long): WallCreateCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallCreateCommentMethod {
-        this.postId = postId
-        return this
-    }
-
-    fun setFromGroup(fromGroup: Long): WallCreateCommentMethod {
-        this.fromGroup = fromGroup
-        return this
-    }
-
-    fun setMessage(message: String): WallCreateCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setReplyToComment(replyToComment: Long): WallCreateCommentMethod {
-        this.replyToComment = replyToComment
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): WallCreateCommentMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setStickerId(stickerId: Long): WallCreateCommentMethod {
-        this.stickerId = stickerId
-        return this
-    }
-
-    fun setGuid(guid: String): WallCreateCommentMethod {
-        this.guid = guid
-        return this
     }
 }

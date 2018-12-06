@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class UserCounters(
     val albums: Long? = null,
     val videos: Long? = null,

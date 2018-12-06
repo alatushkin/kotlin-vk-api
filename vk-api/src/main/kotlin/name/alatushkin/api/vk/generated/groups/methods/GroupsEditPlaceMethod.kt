@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.EditPlaceResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property longitude Geographical longitude.
  */
 class GroupsEditPlaceMethod(
-        groupId: Long,
-        title: String? = null,
-        address: String? = null,
-        countryId: Long? = null,
-        cityId: Long? = null,
-        latitude: Double? = null,
-        longitude: Double? = null
+    groupId: Long,
+    title: String? = null,
+    address: String? = null,
+    countryId: Long? = null,
+    cityId: Long? = null,
+    latitude: Double? = null,
+    longitude: Double? = null
 ) : VkMethod<EditPlaceResponse>(
     "groups.editPlace",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<EditPlaceResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -51,40 +50,5 @@ class GroupsEditPlaceMethod(
         this.cityId = cityId
         this.latitude = latitude
         this.longitude = longitude
-    }
-
-    fun setGroupId(groupId: Long): GroupsEditPlaceMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTitle(title: String): GroupsEditPlaceMethod {
-        this.title = title
-        return this
-    }
-
-    fun setAddress(address: String): GroupsEditPlaceMethod {
-        this.address = address
-        return this
-    }
-
-    fun setCountryId(countryId: Long): GroupsEditPlaceMethod {
-        this.countryId = countryId
-        return this
-    }
-
-    fun setCityId(cityId: Long): GroupsEditPlaceMethod {
-        this.cityId = cityId
-        return this
-    }
-
-    fun setLatitude(latitude: Double): GroupsEditPlaceMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): GroupsEditPlaceMethod {
-        this.longitude = longitude
-        return this
     }
 }

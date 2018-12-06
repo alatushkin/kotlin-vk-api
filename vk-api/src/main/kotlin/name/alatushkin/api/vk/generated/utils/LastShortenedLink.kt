@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.utils
 
-
 open class LastShortenedLink(
     val timestamp: Long? = null,
     val url: String? = null,

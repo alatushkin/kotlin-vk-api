@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with user access token)
  */
 class MessagesMarkAsReadMethod(
-        messageIds: Array<Long>? = null,
-        peerId: Long? = null,
-        startMessageId: Long? = null,
-        groupId: Long? = null
+    messageIds: Array<Long>? = null,
+    peerId: Long? = null,
+    startMessageId: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<Boolean>(
     "messages.markAsRead",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var messageIds: Array<Long>? by props
@@ -38,25 +37,5 @@ class MessagesMarkAsReadMethod(
         this.peerId = peerId
         this.startMessageId = startMessageId
         this.groupId = groupId
-    }
-
-    fun setMessageIds(messageIds: Array<Long>): MessagesMarkAsReadMethod {
-        this.messageIds = messageIds
-        return this
-    }
-
-    fun setPeerId(peerId: Long): MessagesMarkAsReadMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setStartMessageId(startMessageId: Long): MessagesMarkAsReadMethod {
-        this.startMessageId = startMessageId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesMarkAsReadMethod {
-        this.groupId = groupId
-        return this
     }
 }

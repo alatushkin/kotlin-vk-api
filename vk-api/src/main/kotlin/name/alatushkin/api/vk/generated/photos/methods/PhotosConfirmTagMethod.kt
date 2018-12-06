@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property tagId Tag ID.
  */
 class PhotosConfirmTagMethod(
-        ownerId: Long? = null,
-        photoId: String,
-        tagId: Long
+    ownerId: Long? = null,
+    photoId: String,
+    tagId: Long
 ) : VkMethod<Boolean>(
     "photos.confirmTag",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -34,20 +33,5 @@ class PhotosConfirmTagMethod(
         this.ownerId = ownerId
         this.photoId = photoId
         this.tagId = tagId
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosConfirmTagMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: String): PhotosConfirmTagMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setTagId(tagId: Long): PhotosConfirmTagMethod {
-        this.tagId = tagId
-        return this
     }
 }

@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.SearchResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,18 +22,18 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
  */
 class NewsfeedSearchMethod(
-        q: String? = null,
-        count: Long? = null,
-        latitude: Double? = null,
-        longitude: Double? = null,
-        startTime: Long? = null,
-        endTime: Long? = null,
-        startFrom: String? = null,
-        fields: Array<String>? = null
+    q: String? = null,
+    count: Long? = null,
+    latitude: Double? = null,
+    longitude: Double? = null,
+    startTime: Long? = null,
+    endTime: Long? = null,
+    startFrom: String? = null,
+    fields: Array<String>? = null
 ) : VkMethod<SearchResponse>(
     "newsfeed.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<SearchResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var q: String? by props
@@ -55,45 +54,5 @@ class NewsfeedSearchMethod(
         this.endTime = endTime
         this.startFrom = startFrom
         this.fields = fields
-    }
-
-    fun setQ(q: String): NewsfeedSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setCount(count: Long): NewsfeedSearchMethod {
-        this.count = count
-        return this
-    }
-
-    fun setLatitude(latitude: Double): NewsfeedSearchMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): NewsfeedSearchMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setStartTime(startTime: Long): NewsfeedSearchMethod {
-        this.startTime = startTime
-        return this
-    }
-
-    fun setEndTime(endTime: Long): NewsfeedSearchMethod {
-        this.endTime = endTime
-        return this
-    }
-
-    fun setStartFrom(startFrom: String): NewsfeedSearchMethod {
-        this.startFrom = startFrom
-        return this
-    }
-
-    fun setFields(fields: Array<String>): NewsfeedSearchMethod {
-        this.fields = fields
-        return this
     }
 }

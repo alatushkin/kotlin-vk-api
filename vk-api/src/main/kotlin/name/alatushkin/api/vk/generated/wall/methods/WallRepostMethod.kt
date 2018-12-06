@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.RepostResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property markAsAds 
  */
 class WallRepostMethod(
-        `object`: String,
-        message: String? = null,
-        groupId: Long? = null,
-        markAsAds: Boolean? = null
+    `object`: String,
+    message: String? = null,
+    groupId: Long? = null,
+    markAsAds: Boolean? = null
 ) : VkMethod<RepostResponse>(
     "wall.repost",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<RepostResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var `object`: String by props
@@ -39,25 +38,5 @@ class WallRepostMethod(
         this.message = message
         this.groupId = groupId
         this.markAsAds = markAsAds
-    }
-
-    fun setObject(`object`: String): WallRepostMethod {
-        this.`object` = `object`
-        return this
-    }
-
-    fun setMessage(message: String): WallRepostMethod {
-        this.message = message
-        return this
-    }
-
-    fun setGroupId(groupId: Long): WallRepostMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setMarkAsAds(markAsAds: Boolean): WallRepostMethod {
-        this.markAsAds = markAsAds
-        return this
     }
 }

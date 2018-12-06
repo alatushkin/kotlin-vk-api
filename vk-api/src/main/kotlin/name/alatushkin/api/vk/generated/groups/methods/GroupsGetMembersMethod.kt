@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.Filter
 import name.alatushkin.api.vk.generated.groups.Sort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -22,15 +21,15 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property filter *'friends' – only friends in this community will be returned,, *'unsure' – only those who pressed 'I may attend' will be returned (if it's an event).
  */
 class GroupsGetMembersMethod(
-        groupId: String? = null,
-        sort: Sort? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        filter: Filter? = null
+    groupId: String? = null,
+    sort: Sort? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    filter: Filter? = null
 ) : VkMethod<VkList<Long>>(
     "groups.getMembers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Long>>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var groupId: String? by props
@@ -45,30 +44,5 @@ class GroupsGetMembersMethod(
         this.offset = offset
         this.count = count
         this.filter = filter
-    }
-
-    fun setGroupId(groupId: String): GroupsGetMembersMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setSort(sort: Sort): GroupsGetMembersMethod {
-        this.sort = sort
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsGetMembersMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetMembersMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFilter(filter: Filter): GroupsGetMembersMethod {
-        this.filter = filter
-        return this
     }
 }

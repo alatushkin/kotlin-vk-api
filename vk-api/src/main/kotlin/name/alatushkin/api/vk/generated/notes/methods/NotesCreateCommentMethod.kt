@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.notes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property guid 
  */
 class NotesCreateCommentMethod(
-        noteId: Long,
-        ownerId: Long? = null,
-        replyTo: Long? = null,
-        message: String,
-        guid: String? = null
+    noteId: Long,
+    ownerId: Long? = null,
+    replyTo: Long? = null,
+    message: String,
+    guid: String? = null
 ) : VkMethod<Long>(
     "notes.createComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var noteId: Long by props
@@ -42,30 +41,5 @@ class NotesCreateCommentMethod(
         this.replyTo = replyTo
         this.message = message
         this.guid = guid
-    }
-
-    fun setNoteId(noteId: Long): NotesCreateCommentMethod {
-        this.noteId = noteId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): NotesCreateCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setReplyTo(replyTo: Long): NotesCreateCommentMethod {
-        this.replyTo = replyTo
-        return this
-    }
-
-    fun setMessage(message: String): NotesCreateCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setGuid(guid: String): NotesCreateCommentMethod {
-        this.guid = guid
-        return this
     }
 }

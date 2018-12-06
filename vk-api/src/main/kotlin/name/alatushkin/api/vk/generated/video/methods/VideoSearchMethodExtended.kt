@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.SearchExtendedResponse
 import name.alatushkin.api.vk.generated.video.Sort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -26,20 +25,20 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of videos to return.
  */
 class VideoSearchMethodExtended(
-        q: String,
-        sort: Sort? = null,
-        hd: Long? = null,
-        adult: Boolean? = null,
-        filters: Array<String>? = null,
-        searchOwn: Boolean? = null,
-        offset: Long? = null,
-        longer: Long? = null,
-        shorter: Long? = null,
-        count: Long? = null
+    q: String,
+    sort: Sort? = null,
+    hd: Long? = null,
+    adult: Boolean? = null,
+    filters: Array<String>? = null,
+    searchOwn: Boolean? = null,
+    offset: Long? = null,
+    longer: Long? = null,
+    shorter: Long? = null,
+    count: Long? = null
 ) : VkMethod<SearchExtendedResponse>(
     "video.search",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var q: String by props
@@ -64,55 +63,5 @@ class VideoSearchMethodExtended(
         this.longer = longer
         this.shorter = shorter
         this.count = count
-    }
-
-    fun setQ(q: String): VideoSearchMethodExtended {
-        this.q = q
-        return this
-    }
-
-    fun setSort(sort: Sort): VideoSearchMethodExtended {
-        this.sort = sort
-        return this
-    }
-
-    fun setHd(hd: Long): VideoSearchMethodExtended {
-        this.hd = hd
-        return this
-    }
-
-    fun setAdult(adult: Boolean): VideoSearchMethodExtended {
-        this.adult = adult
-        return this
-    }
-
-    fun setFilters(filters: Array<String>): VideoSearchMethodExtended {
-        this.filters = filters
-        return this
-    }
-
-    fun setSearchOwn(searchOwn: Boolean): VideoSearchMethodExtended {
-        this.searchOwn = searchOwn
-        return this
-    }
-
-    fun setOffset(offset: Long): VideoSearchMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setLonger(longer: Long): VideoSearchMethodExtended {
-        this.longer = longer
-        return this
-    }
-
-    fun setShorter(shorter: Long): VideoSearchMethodExtended {
-        this.shorter = shorter
-        return this
-    }
-
-    fun setCount(count: Long): VideoSearchMethodExtended {
-        this.count = count
-        return this
     }
 }

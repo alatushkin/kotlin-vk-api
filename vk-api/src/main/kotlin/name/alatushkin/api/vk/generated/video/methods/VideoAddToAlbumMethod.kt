@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 
 /**
  * [https://vk.com/dev/video.addToAlbum]
@@ -18,15 +17,15 @@ import name.alatushkin.api.vk.api.VkSuccess
  * @property videoId 
  */
 class VideoAddToAlbumMethod(
-        targetId: Long? = null,
-        albumId: Long? = null,
-        albumIds: Array<Long>? = null,
-        ownerId: Long,
-        videoId: Long
+    targetId: Long? = null,
+    albumId: Long? = null,
+    albumIds: Array<Long>? = null,
+    ownerId: Long,
+    videoId: Long
 ) : VkMethod<Boolean>(
     "video.addToAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ) {
 
     var targetId: Long? by props
@@ -41,30 +40,5 @@ class VideoAddToAlbumMethod(
         this.albumIds = albumIds
         this.ownerId = ownerId
         this.videoId = videoId
-    }
-
-    fun setTargetId(targetId: Long): VideoAddToAlbumMethod {
-        this.targetId = targetId
-        return this
-    }
-
-    fun setAlbumId(albumId: Long): VideoAddToAlbumMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setAlbumIds(albumIds: Array<Long>): VideoAddToAlbumMethod {
-        this.albumIds = albumIds
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): VideoAddToAlbumMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoAddToAlbumMethod {
-        this.videoId = videoId
-        return this
     }
 }

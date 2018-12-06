@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.friends.Order
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,16 +22,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property nameCase Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
 class FriendsGetMethod(
-        userId: Long? = null,
-        order: Order? = null,
-        listId: Long? = null,
-        count: Long? = null,
-        offset: Long? = null,
-        nameCase: NameCase? = null
+    userId: Long? = null,
+    order: Order? = null,
+    listId: Long? = null,
+    count: Long? = null,
+    offset: Long? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<VkList<Long>>(
     "friends.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Long>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var userId: Long? by props
@@ -49,35 +48,5 @@ class FriendsGetMethod(
         this.count = count
         this.offset = offset
         this.nameCase = nameCase
-    }
-
-    fun setUserId(userId: Long): FriendsGetMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setOrder(order: Order): FriendsGetMethod {
-        this.order = order
-        return this
-    }
-
-    fun setListId(listId: Long): FriendsGetMethod {
-        this.listId = listId
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): FriendsGetMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): FriendsGetMethod {
-        this.nameCase = nameCase
-        return this
     }
 }

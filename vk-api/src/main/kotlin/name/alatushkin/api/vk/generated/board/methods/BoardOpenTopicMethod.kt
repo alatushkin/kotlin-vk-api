@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property topicId Topic ID.
  */
 class BoardOpenTopicMethod(
-        groupId: Long,
-        topicId: Long
+    groupId: Long,
+    topicId: Long
 ) : VkMethod<Boolean>(
     "board.openTopic",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -30,15 +29,5 @@ class BoardOpenTopicMethod(
     init {
         this.groupId = groupId
         this.topicId = topicId
-    }
-
-    fun setGroupId(groupId: Long): BoardOpenTopicMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicId(topicId: Long): BoardOpenTopicMethod {
-        this.topicId = topicId
-        return this
     }
 }

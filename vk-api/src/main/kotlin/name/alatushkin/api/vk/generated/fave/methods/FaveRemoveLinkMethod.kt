@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.fave.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property linkId Link ID (can be obtained by [vk.com/dev/faves.getLinks|faves.getLinks] method).
  */
 class FaveRemoveLinkMethod(
-        linkId: String
+    linkId: String
 ) : VkMethod<Boolean>(
     "fave.removeLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var linkId: String by props
 
     init {
         this.linkId = linkId
-    }
-
-    fun setLinkId(linkId: String): FaveRemoveLinkMethod {
-        this.linkId = linkId
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with group access token)
  */
 class MessagesSetActivityMethod(
-        userId: String? = null,
-        type: String? = null,
-        peerId: Long? = null,
-        groupId: Long? = null
+    userId: String? = null,
+    type: String? = null,
+    peerId: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<Boolean>(
     "messages.setActivity",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var userId: String? by props
@@ -38,25 +37,5 @@ class MessagesSetActivityMethod(
         this.type = type
         this.peerId = peerId
         this.groupId = groupId
-    }
-
-    fun setUserId(userId: String): MessagesSetActivityMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setType(type: String): MessagesSetActivityMethod {
-        this.type = type
-        return this
-    }
-
-    fun setPeerId(peerId: Long): MessagesSetActivityMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesSetActivityMethod {
-        this.groupId = groupId
-        return this
     }
 }

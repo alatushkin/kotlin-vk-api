@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.GetRepostsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count Number of reposts to return.
  */
 class WallGetRepostsMethod(
-        ownerId: Long? = null,
-        postId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
+    ownerId: Long? = null,
+    postId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<GetRepostsResponse>(
     "wall.getReposts",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetRepostsResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -39,25 +38,5 @@ class WallGetRepostsMethod(
         this.postId = postId
         this.offset = offset
         this.count = count
-    }
-
-    fun setOwnerId(ownerId: Long): WallGetRepostsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallGetRepostsMethod {
-        this.postId = postId
-        return this
-    }
-
-    fun setOffset(offset: Long): WallGetRepostsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): WallGetRepostsMethod {
-        this.count = count
-        return this
     }
 }

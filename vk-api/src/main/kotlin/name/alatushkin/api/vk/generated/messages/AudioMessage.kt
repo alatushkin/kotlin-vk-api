@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.messages
 
-
 open class AudioMessage(
     val id: Long,
     val ownerId: Long,

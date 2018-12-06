@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Sort
 import name.alatushkin.api.vk.generated.wall.GetCommentsExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -24,18 +23,18 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property previewLength Number of characters at which to truncate comments when previewed. By default, '90'. Specify '0' if you do not want to truncate comments.
  */
 class WallGetCommentsMethodExtended(
-        ownerId: Long? = null,
-        postId: Long,
-        needLikes: Boolean? = null,
-        startCommentId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        sort: Sort? = null,
-        previewLength: Long? = null
+    ownerId: Long? = null,
+    postId: Long,
+    needLikes: Boolean? = null,
+    startCommentId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    sort: Sort? = null,
+    previewLength: Long? = null
 ) : VkMethod<GetCommentsExtendedResponse>(
     "wall.getComments",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetCommentsExtendedResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -56,45 +55,5 @@ class WallGetCommentsMethodExtended(
         this.count = count
         this.sort = sort
         this.previewLength = previewLength
-    }
-
-    fun setOwnerId(ownerId: Long): WallGetCommentsMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallGetCommentsMethodExtended {
-        this.postId = postId
-        return this
-    }
-
-    fun setNeedLikes(needLikes: Boolean): WallGetCommentsMethodExtended {
-        this.needLikes = needLikes
-        return this
-    }
-
-    fun setStartCommentId(startCommentId: Long): WallGetCommentsMethodExtended {
-        this.startCommentId = startCommentId
-        return this
-    }
-
-    fun setOffset(offset: Long): WallGetCommentsMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): WallGetCommentsMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setSort(sort: Sort): WallGetCommentsMethodExtended {
-        this.sort = sort
-        return this
-    }
-
-    fun setPreviewLength(previewLength: Long): WallGetCommentsMethodExtended {
-        this.previewLength = previewLength
-        return this
     }
 }

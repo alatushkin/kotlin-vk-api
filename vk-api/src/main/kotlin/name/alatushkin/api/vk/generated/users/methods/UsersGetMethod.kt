@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.users.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.UserXtrCounters
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property nameCase Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
 class UsersGetMethod(
-        userIds: Array<String>? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    userIds: Array<String>? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<Array<UserXtrCounters>>(
     "users.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<UserXtrCounters>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var userIds: Array<String>? by props
@@ -36,20 +35,5 @@ class UsersGetMethod(
         this.userIds = userIds
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setUserIds(userIds: Array<String>): UsersGetMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setFields(fields: Array<String>): UsersGetMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): UsersGetMethod {
-        this.nameCase = nameCase
-        return this
     }
 }

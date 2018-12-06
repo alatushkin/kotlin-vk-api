@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.ChangePasswordResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property newPassword New password that will be set as a current
  */
 class AccountChangePasswordMethod(
-        restoreSid: String? = null,
-        changePasswordHash: String? = null,
-        oldPassword: String? = null,
-        newPassword: String
+    restoreSid: String? = null,
+    changePasswordHash: String? = null,
+    oldPassword: String? = null,
+    newPassword: String
 ) : VkMethod<ChangePasswordResponse>(
     "account.changePassword",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<ChangePasswordResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var restoreSid: String? by props
@@ -39,25 +38,5 @@ class AccountChangePasswordMethod(
         this.changePasswordHash = changePasswordHash
         this.oldPassword = oldPassword
         this.newPassword = newPassword
-    }
-
-    fun setRestoreSid(restoreSid: String): AccountChangePasswordMethod {
-        this.restoreSid = restoreSid
-        return this
-    }
-
-    fun setChangePasswordHash(changePasswordHash: String): AccountChangePasswordMethod {
-        this.changePasswordHash = changePasswordHash
-        return this
-    }
-
-    fun setOldPassword(oldPassword: String): AccountChangePasswordMethod {
-        this.oldPassword = oldPassword
-        return this
-    }
-
-    fun setNewPassword(newPassword: String): AccountChangePasswordMethod {
-        this.newPassword = newPassword
-        return this
     }
 }

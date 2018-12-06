@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class Client(
     val id: Long,
     val name: String,

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.video.VideoAlbumFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of video albums to return.
  */
 class VideoGetAlbumsMethodExtended(
-        ownerId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
+    ownerId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<VideoAlbumFull>>(
     "video.getAlbums",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<VkList<VideoAlbumFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -36,20 +35,5 @@ class VideoGetAlbumsMethodExtended(
         this.ownerId = ownerId
         this.offset = offset
         this.count = count
-    }
-
-    fun setOwnerId(ownerId: Long): VideoGetAlbumsMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setOffset(offset: Long): VideoGetAlbumsMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): VideoGetAlbumsMethodExtended {
-        this.count = count
-        return this
     }
 }

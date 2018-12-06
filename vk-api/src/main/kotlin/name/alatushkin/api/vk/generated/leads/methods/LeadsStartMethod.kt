@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.leads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.Start
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property secret Secret key from the lead testing interface.
  */
 class LeadsStartMethod(
-        leadId: Long,
-        secret: String
+    leadId: Long,
+    secret: String
 ) : VkMethod<Start>(
     "leads.start",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Start>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var leadId: Long by props
@@ -31,15 +30,5 @@ class LeadsStartMethod(
     init {
         this.leadId = leadId
         this.secret = secret
-    }
-
-    fun setLeadId(leadId: Long): LeadsStartMethod {
-        this.leadId = leadId
-        return this
-    }
-
-    fun setSecret(secret: String): LeadsStartMethod {
-        this.secret = secret
-        return this
     }
 }

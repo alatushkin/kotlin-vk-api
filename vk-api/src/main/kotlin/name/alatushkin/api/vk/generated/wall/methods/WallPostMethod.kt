@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.PostResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -29,24 +28,24 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property markAsAds 
  */
 class WallPostMethod(
-        ownerId: Long? = null,
-        friendsOnly: Boolean? = null,
-        fromGroup: Boolean? = null,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        services: String? = null,
-        signed: Boolean? = null,
-        publishDate: Long? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        placeId: Long? = null,
-        postId: Long? = null,
-        guid: String? = null,
-        markAsAds: Boolean? = null
+    ownerId: Long? = null,
+    friendsOnly: Boolean? = null,
+    fromGroup: Boolean? = null,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    services: String? = null,
+    signed: Boolean? = null,
+    publishDate: Long? = null,
+    lat: Double? = null,
+    long: Double? = null,
+    placeId: Long? = null,
+    postId: Long? = null,
+    guid: String? = null,
+    markAsAds: Boolean? = null
 ) : VkMethod<PostResponse>(
     "wall.post",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<PostResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -79,75 +78,5 @@ class WallPostMethod(
         this.postId = postId
         this.guid = guid
         this.markAsAds = markAsAds
-    }
-
-    fun setOwnerId(ownerId: Long): WallPostMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setFriendsOnly(friendsOnly: Boolean): WallPostMethod {
-        this.friendsOnly = friendsOnly
-        return this
-    }
-
-    fun setFromGroup(fromGroup: Boolean): WallPostMethod {
-        this.fromGroup = fromGroup
-        return this
-    }
-
-    fun setMessage(message: String): WallPostMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): WallPostMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setServices(services: String): WallPostMethod {
-        this.services = services
-        return this
-    }
-
-    fun setSigned(signed: Boolean): WallPostMethod {
-        this.signed = signed
-        return this
-    }
-
-    fun setPublishDate(publishDate: Long): WallPostMethod {
-        this.publishDate = publishDate
-        return this
-    }
-
-    fun setLat(lat: Double): WallPostMethod {
-        this.lat = lat
-        return this
-    }
-
-    fun setLong(long: Double): WallPostMethod {
-        this.long = long
-        return this
-    }
-
-    fun setPlaceId(placeId: Long): WallPostMethod {
-        this.placeId = placeId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallPostMethod {
-        this.postId = postId
-        return this
-    }
-
-    fun setGuid(guid: String): WallPostMethod {
-        this.guid = guid
-        return this
-    }
-
-    fun setMarkAsAds(markAsAds: Boolean): WallPostMethod {
-        this.markAsAds = markAsAds
-        return this
     }
 }

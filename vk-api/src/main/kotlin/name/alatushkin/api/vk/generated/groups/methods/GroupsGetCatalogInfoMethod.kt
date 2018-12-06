@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GetCatalogInfoResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property subcategories 1 – to return subcategories info. By default: 0.
  */
 class GroupsGetCatalogInfoMethod(
-        subcategories: Boolean? = null
+    subcategories: Boolean? = null
 ) : VkMethod<GetCatalogInfoResponse>(
     "groups.getCatalogInfo",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetCatalogInfoResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var subcategories: Boolean? by props
 
     init {
         this.subcategories = subcategories
-    }
-
-    fun setSubcategories(subcategories: Boolean): GroupsGetCatalogInfoMethod {
-        this.subcategories = subcategories
-        return this
     }
 }

@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.WallpostFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields 
  */
 class WallSearchMethod(
-        ownerId: Long? = null,
-        domain: String? = null,
-        query: String? = null,
-        ownersOnly: Boolean? = null,
-        count: Long? = null,
-        offset: Long? = null,
-        fields: Array<String>? = null
+    ownerId: Long? = null,
+    domain: String? = null,
+    query: String? = null,
+    ownersOnly: Boolean? = null,
+    count: Long? = null,
+    offset: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<VkList<WallpostFull>>(
     "wall.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<WallpostFull>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -52,40 +51,5 @@ class WallSearchMethod(
         this.count = count
         this.offset = offset
         this.fields = fields
-    }
-
-    fun setOwnerId(ownerId: Long): WallSearchMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setDomain(domain: String): WallSearchMethod {
-        this.domain = domain
-        return this
-    }
-
-    fun setQuery(query: String): WallSearchMethod {
-        this.query = query
-        return this
-    }
-
-    fun setOwnersOnly(ownersOnly: Boolean): WallSearchMethod {
-        this.ownersOnly = ownersOnly
-        return this
-    }
-
-    fun setCount(count: Long): WallSearchMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): WallSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setFields(fields: Array<String>): WallSearchMethod {
-        this.fields = fields
-        return this
     }
 }

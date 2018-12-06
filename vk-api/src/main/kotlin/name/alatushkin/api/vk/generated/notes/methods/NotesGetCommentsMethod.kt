@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.notes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notes.NoteComment
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of comments to return.
  */
 class NotesGetCommentsMethod(
-        noteId: Long,
-        ownerId: Long? = null,
-        count: Long? = null
+    noteId: Long,
+    ownerId: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<NoteComment>>(
     "notes.getComments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<NoteComment>>>() {}
+    successReference()
 ), UserMethod {
 
     var noteId: Long by props
@@ -36,20 +35,5 @@ class NotesGetCommentsMethod(
         this.noteId = noteId
         this.ownerId = ownerId
         this.count = count
-    }
-
-    fun setNoteId(noteId: Long): NotesGetCommentsMethod {
-        this.noteId = noteId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): NotesGetCommentsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setCount(count: Long): NotesGetCommentsMethod {
-        this.count = count
-        return this
     }
 }

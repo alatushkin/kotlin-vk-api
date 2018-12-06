@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.account.AccountCounters
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property filter Counters to be returned.
  */
 class AccountGetCountersMethod(
-        filter: Array<String>? = null
+    filter: Array<String>? = null
 ) : VkMethod<AccountCounters>(
     "account.getCounters",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AccountCounters>>() {}
+    successReference()
 ), UserMethod {
 
     var filter: Array<String>? by props
 
     init {
         this.filter = filter
-    }
-
-    fun setFilter(filter: Array<String>): AccountGetCountersMethod {
-        this.filter = filter
-        return this
     }
 }

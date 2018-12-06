@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.friends.Order
 import name.alatushkin.api.vk.generated.friends.UserXtrLists
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -25,17 +24,17 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property nameCase Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
 class FriendsGetMethodWithFields(
-        userId: Long? = null,
-        order: Order? = null,
-        listId: Long? = null,
-        count: Long? = null,
-        offset: Long? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    userId: Long? = null,
+    order: Order? = null,
+    listId: Long? = null,
+    count: Long? = null,
+    offset: Long? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<VkList<UserXtrLists>>(
     "friends.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserXtrLists>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var userId: Long? by props
@@ -54,40 +53,5 @@ class FriendsGetMethodWithFields(
         this.offset = offset
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setUserId(userId: Long): FriendsGetMethodWithFields {
-        this.userId = userId
-        return this
-    }
-
-    fun setOrder(order: Order): FriendsGetMethodWithFields {
-        this.order = order
-        return this
-    }
-
-    fun setListId(listId: Long): FriendsGetMethodWithFields {
-        this.listId = listId
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetMethodWithFields {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): FriendsGetMethodWithFields {
-        this.offset = offset
-        return this
-    }
-
-    fun setFields(fields: Array<String>): FriendsGetMethodWithFields {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): FriendsGetMethodWithFields {
-        this.nameCase = nameCase
-        return this
     }
 }

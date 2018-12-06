@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 open class GroupImpl(
     override val id: Long? = null,
     override val name: String? = null,

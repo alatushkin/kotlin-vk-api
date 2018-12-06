@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.MutualFriend
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of mutual friends.
  */
 class FriendsGetMutualMethodManyUIds(
-        sourceUid: Long? = null,
-        targetUid: Long? = null,
-        targetUids: Array<Long>? = null,
-        order: String? = null,
-        count: Long? = null,
-        offset: Long? = null
+    sourceUid: Long? = null,
+    targetUid: Long? = null,
+    targetUids: Array<Long>? = null,
+    order: String? = null,
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<Array<MutualFriend>>(
     "friends.getMutual",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<MutualFriend>>>() {}
+    successReference()
 ), UserMethod {
 
     var sourceUid: Long? by props
@@ -47,35 +46,5 @@ class FriendsGetMutualMethodManyUIds(
         this.order = order
         this.count = count
         this.offset = offset
-    }
-
-    fun setSourceUid(sourceUid: Long): FriendsGetMutualMethodManyUIds {
-        this.sourceUid = sourceUid
-        return this
-    }
-
-    fun setTargetUid(targetUid: Long): FriendsGetMutualMethodManyUIds {
-        this.targetUid = targetUid
-        return this
-    }
-
-    fun setTargetUids(targetUids: Array<Long>): FriendsGetMutualMethodManyUIds {
-        this.targetUids = targetUids
-        return this
-    }
-
-    fun setOrder(order: String): FriendsGetMutualMethodManyUIds {
-        this.order = order
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetMutualMethodManyUIds {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): FriendsGetMutualMethodManyUIds {
-        this.offset = offset
-        return this
     }
 }

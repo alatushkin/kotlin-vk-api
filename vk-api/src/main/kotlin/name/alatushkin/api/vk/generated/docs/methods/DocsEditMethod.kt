@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.docs.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property tags Document tags.
  */
 class DocsEditMethod(
-        ownerId: Long,
-        docId: Long,
-        title: String? = null,
-        tags: Array<String>? = null
+    ownerId: Long,
+    docId: Long,
+    title: String? = null,
+    tags: Array<String>? = null
 ) : VkMethod<Boolean>(
     "docs.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -38,25 +37,5 @@ class DocsEditMethod(
         this.docId = docId
         this.title = title
         this.tags = tags
-    }
-
-    fun setOwnerId(ownerId: Long): DocsEditMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setDocId(docId: Long): DocsEditMethod {
-        this.docId = docId
-        return this
-    }
-
-    fun setTitle(title: String): DocsEditMethod {
-        this.title = title
-        return this
-    }
-
-    fun setTags(tags: Array<String>): DocsEditMethod {
-        this.tags = tags
-        return this
     }
 }

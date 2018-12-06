@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.leads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.Checked
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property country User country code.
  */
 class LeadsCheckUserMethod(
-        leadId: Long,
-        testResult: Long? = null,
-        age: Long? = null,
-        country: String? = null
+    leadId: Long,
+    testResult: Long? = null,
+    age: Long? = null,
+    country: String? = null
 ) : VkMethod<Checked>(
     "leads.checkUser",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Checked>>() {}
+    successReference()
 ), UserMethod {
 
     var leadId: Long by props
@@ -39,25 +38,5 @@ class LeadsCheckUserMethod(
         this.testResult = testResult
         this.age = age
         this.country = country
-    }
-
-    fun setLeadId(leadId: Long): LeadsCheckUserMethod {
-        this.leadId = leadId
-        return this
-    }
-
-    fun setTestResult(testResult: Long): LeadsCheckUserMethod {
-        this.testResult = testResult
-        return this
-    }
-
-    fun setAge(age: Long): LeadsCheckUserMethod {
-        this.age = age
-        return this
-    }
-
-    fun setCountry(country: String): LeadsCheckUserMethod {
-        this.country = country
-        return this
     }
 }

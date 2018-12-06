@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetVideoUploadServerResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -21,16 +20,16 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId ID of the community to upload the story (should be verified or with the "fire" icon).
  */
 class StoriesGetVideoUploadServerMethod(
-        addToNews: Boolean? = null,
-        userIds: Array<Long>? = null,
-        replyToStory: String? = null,
-        linkText: String? = null,
-        linkUrl: String? = null,
-        groupId: Long? = null
+    addToNews: Boolean? = null,
+    userIds: Array<Long>? = null,
+    replyToStory: String? = null,
+    linkText: String? = null,
+    linkUrl: String? = null,
+    groupId: Long? = null
 ) : VkMethod<GetVideoUploadServerResponse>(
     "stories.getVideoUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetVideoUploadServerResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var addToNews: Boolean? by props
@@ -47,35 +46,5 @@ class StoriesGetVideoUploadServerMethod(
         this.linkText = linkText
         this.linkUrl = linkUrl
         this.groupId = groupId
-    }
-
-    fun setAddToNews(addToNews: Boolean): StoriesGetVideoUploadServerMethod {
-        this.addToNews = addToNews
-        return this
-    }
-
-    fun setUserIds(userIds: Array<Long>): StoriesGetVideoUploadServerMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setReplyToStory(replyToStory: String): StoriesGetVideoUploadServerMethod {
-        this.replyToStory = replyToStory
-        return this
-    }
-
-    fun setLinkText(linkText: String): StoriesGetVideoUploadServerMethod {
-        this.linkText = linkText
-        return this
-    }
-
-    fun setLinkUrl(linkUrl: String): StoriesGetVideoUploadServerMethod {
-        this.linkUrl = linkUrl
-        return this
-    }
-
-    fun setGroupId(groupId: Long): StoriesGetVideoUploadServerMethod {
-        this.groupId = groupId
-        return this
     }
 }

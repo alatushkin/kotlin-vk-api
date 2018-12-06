@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.Photo
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,18 +22,18 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property caption Text describing the photo. 2048 digits max.
  */
 class PhotosSaveMethod(
-        albumId: Long? = null,
-        groupId: Long? = null,
-        server: Long? = null,
-        photosList: String? = null,
-        hash: String? = null,
-        latitude: Double? = null,
-        longitude: Double? = null,
-        caption: String? = null
+    albumId: Long? = null,
+    groupId: Long? = null,
+    server: Long? = null,
+    photosList: String? = null,
+    hash: String? = null,
+    latitude: Double? = null,
+    longitude: Double? = null,
+    caption: String? = null
 ) : VkMethod<Array<Photo>>(
     "photos.save",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Photo>>>() {}
+    successReference()
 ), UserMethod {
 
     var albumId: Long? by props
@@ -55,45 +54,5 @@ class PhotosSaveMethod(
         this.latitude = latitude
         this.longitude = longitude
         this.caption = caption
-    }
-
-    fun setAlbumId(albumId: Long): PhotosSaveMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PhotosSaveMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setServer(server: Long): PhotosSaveMethod {
-        this.server = server
-        return this
-    }
-
-    fun setPhotosList(photosList: String): PhotosSaveMethod {
-        this.photosList = photosList
-        return this
-    }
-
-    fun setHash(hash: String): PhotosSaveMethod {
-        this.hash = hash
-        return this
-    }
-
-    fun setLatitude(latitude: Double): PhotosSaveMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): PhotosSaveMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setCaption(caption: String): PhotosSaveMethod {
-        this.caption = caption
-        return this
     }
 }

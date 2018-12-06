@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.leads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.leads.Complete
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property comment Comment text.
  */
 class LeadsCompleteMethod(
-        vkSid: String,
-        secret: String,
-        comment: String? = null
+    vkSid: String,
+    secret: String,
+    comment: String? = null
 ) : VkMethod<Complete>(
     "leads.complete",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Complete>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var vkSid: String by props
@@ -35,20 +34,5 @@ class LeadsCompleteMethod(
         this.vkSid = vkSid
         this.secret = secret
         this.comment = comment
-    }
-
-    fun setVkSid(vkSid: String): LeadsCompleteMethod {
-        this.vkSid = vkSid
-        return this
-    }
-
-    fun setSecret(secret: String): LeadsCompleteMethod {
-        this.secret = secret
-        return this
-    }
-
-    fun setComment(comment: String): LeadsCompleteMethod {
-        this.comment = comment
-        return this
     }
 }

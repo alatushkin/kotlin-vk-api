@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.Message
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with group access token)
  */
 class MessagesSearchMethod(
-        q: String? = null,
-        peerId: Long? = null,
-        date: Long? = null,
-        previewLength: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        groupId: Long? = null
+    q: String? = null,
+    peerId: Long? = null,
+    date: Long? = null,
+    previewLength: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<VkList<Message>>(
     "messages.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Message>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var q: String? by props
@@ -52,40 +51,5 @@ class MessagesSearchMethod(
         this.offset = offset
         this.count = count
         this.groupId = groupId
-    }
-
-    fun setQ(q: String): MessagesSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setPeerId(peerId: Long): MessagesSearchMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setDate(date: Long): MessagesSearchMethod {
-        this.date = date
-        return this
-    }
-
-    fun setPreviewLength(previewLength: Long): MessagesSearchMethod {
-        this.previewLength = previewLength
-        return this
-    }
-
-    fun setOffset(offset: Long): MessagesSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): MessagesSearchMethod {
-        this.count = count
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesSearchMethod {
-        this.groupId = groupId
-        return this
     }
 }

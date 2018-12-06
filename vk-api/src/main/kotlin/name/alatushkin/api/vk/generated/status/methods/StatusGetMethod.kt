@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.status.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.status.Status
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId 
  */
 class StatusGetMethod(
-        userId: Long? = null,
-        groupId: Long? = null
+    userId: Long? = null,
+    groupId: Long? = null
 ) : VkMethod<Status>(
     "status.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Status>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long? by props
@@ -31,15 +30,5 @@ class StatusGetMethod(
     init {
         this.userId = userId
         this.groupId = groupId
-    }
-
-    fun setUserId(userId: Long): StatusGetMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): StatusGetMethod {
-        this.groupId = groupId
-        return this
     }
 }

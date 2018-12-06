@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.Users
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property accountId Advertising account ID.
  */
 class AdsGetOfficeUsersMethod(
-        accountId: Long
+    accountId: Long
 ) : VkMethod<Array<Users>>(
     "ads.getOfficeUsers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Users>>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
 
     init {
         this.accountId = accountId
-    }
-
-    fun setAccountId(accountId: Long): AdsGetOfficeUsersMethod {
-        this.accountId = accountId
-        return this
     }
 }

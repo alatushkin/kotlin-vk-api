@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.IgnoreItemType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property itemId Item identifier
  */
 class NewsfeedIgnoreItemMethod(
-        type: IgnoreItemType,
-        ownerId: Long,
-        itemId: Long
+    type: IgnoreItemType,
+    ownerId: Long,
+    itemId: Long
 ) : VkMethod<Boolean>(
     "newsfeed.ignoreItem",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var type: IgnoreItemType by props
@@ -35,20 +34,5 @@ class NewsfeedIgnoreItemMethod(
         this.type = type
         this.ownerId = ownerId
         this.itemId = itemId
-    }
-
-    fun setType(type: IgnoreItemType): NewsfeedIgnoreItemMethod {
-        this.type = type
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): NewsfeedIgnoreItemMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): NewsfeedIgnoreItemMethod {
-        this.itemId = itemId
-        return this
     }
 }

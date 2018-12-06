@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.common
 
-
 open class Place(
     val id: Long? = null,
     val title: String? = null,

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property name Application screen name.
  */
 class AccountSetNameInMenuMethod(
-        userId: Long,
-        name: String? = null
+    userId: Long,
+    name: String? = null
 ) : VkMethod<Boolean>(
     "account.setNameInMenu",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -30,15 +29,5 @@ class AccountSetNameInMenuMethod(
     init {
         this.userId = userId
         this.name = name
-    }
-
-    fun setUserId(userId: Long): AccountSetNameInMenuMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setName(name: String): AccountSetNameInMenuMethod {
-        this.name = name
-        return this
     }
 }

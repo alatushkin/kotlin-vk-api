@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.MemberRole
 import name.alatushkin.api.vk.generated.groups.Sort
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -21,14 +20,14 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property count Number of community members to return.
  */
 class GroupsGetMembersMethodManagers(
-        groupId: String? = null,
-        sort: Sort? = null,
-        offset: Long? = null,
-        count: Long? = null
+    groupId: String? = null,
+    sort: Sort? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<MemberRole>>(
     "groups.getMembers",
     mutableMapOf("filter" to "managers"),
-    object : TypeReference<VkSuccess<VkList<MemberRole>>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var groupId: String? by props
@@ -41,25 +40,5 @@ class GroupsGetMembersMethodManagers(
         this.sort = sort
         this.offset = offset
         this.count = count
-    }
-
-    fun setGroupId(groupId: String): GroupsGetMembersMethodManagers {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setSort(sort: Sort): GroupsGetMembersMethodManagers {
-        this.sort = sort
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsGetMembersMethodManagers {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetMembersMethodManagers {
-        this.count = count
-        return this
     }
 }

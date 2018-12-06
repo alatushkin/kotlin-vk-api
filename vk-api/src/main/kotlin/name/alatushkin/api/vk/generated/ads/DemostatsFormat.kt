@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class DemostatsFormat(
     val day: String? = null,
     val month: String? = null,

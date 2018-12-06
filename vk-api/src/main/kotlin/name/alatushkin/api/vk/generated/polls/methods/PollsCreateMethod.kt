@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.polls.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.polls.Poll
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property addAnswers available answers list, for example: " ["yes","no","maybe"]", There can be from 1 to 10 answers.
  */
 class PollsCreateMethod(
-        question: String? = null,
-        isAnonymous: Boolean? = null,
-        ownerId: Long? = null,
-        addAnswers: String? = null
+    question: String? = null,
+    isAnonymous: Boolean? = null,
+    ownerId: Long? = null,
+    addAnswers: String? = null
 ) : VkMethod<Poll>(
     "polls.create",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Poll>>() {}
+    successReference()
 ), UserMethod {
 
     var question: String? by props
@@ -39,25 +38,5 @@ class PollsCreateMethod(
         this.isAnonymous = isAnonymous
         this.ownerId = ownerId
         this.addAnswers = addAnswers
-    }
-
-    fun setQuestion(question: String): PollsCreateMethod {
-        this.question = question
-        return this
-    }
-
-    fun setIsAnonymous(isAnonymous: Boolean): PollsCreateMethod {
-        this.isAnonymous = isAnonymous
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): PollsCreateMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAddAnswers(addAnswers: String): PollsCreateMethod {
-        this.addAnswers = addAnswers
-        return this
     }
 }

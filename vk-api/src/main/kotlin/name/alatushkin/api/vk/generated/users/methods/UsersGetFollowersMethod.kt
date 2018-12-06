@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.users.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -21,15 +20,15 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property nameCase Case for declension of user name and surname: 'nom' — nominative (default), 'gen' — genitive , 'dat' — dative, 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
  */
 class UsersGetFollowersMethod(
-        userId: Long? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    userId: Long? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<VkList<Long>>(
     "users.getFollowers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Long>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var userId: Long? by props
@@ -44,30 +43,5 @@ class UsersGetFollowersMethod(
         this.count = count
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setUserId(userId: Long): UsersGetFollowersMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setOffset(offset: Long): UsersGetFollowersMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): UsersGetFollowersMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): UsersGetFollowersMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): UsersGetFollowersMethod {
-        this.nameCase = nameCase
-        return this
     }
 }

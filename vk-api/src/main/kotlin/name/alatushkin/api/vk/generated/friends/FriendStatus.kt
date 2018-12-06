@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.friends
 
-
 open class FriendStatus(
     val userId: Long,
     val friendStatus: FriendStatusStatus,

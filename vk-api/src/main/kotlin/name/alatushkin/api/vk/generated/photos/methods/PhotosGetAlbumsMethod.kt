@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.PhotoAlbumFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property photoSizes '1' — to return photo sizes in a
  */
 class PhotosGetAlbumsMethod(
-        ownerId: Long? = null,
-        albumIds: Array<Long>? = null,
-        offset: Long? = null,
-        count: Long? = null,
-        needSystem: Boolean? = null,
-        needCovers: Boolean? = null,
-        photoSizes: Boolean? = null
+    ownerId: Long? = null,
+    albumIds: Array<Long>? = null,
+    offset: Long? = null,
+    count: Long? = null,
+    needSystem: Boolean? = null,
+    needCovers: Boolean? = null,
+    photoSizes: Boolean? = null
 ) : VkMethod<VkList<PhotoAlbumFull>>(
     "photos.getAlbums",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<PhotoAlbumFull>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -52,40 +51,5 @@ class PhotosGetAlbumsMethod(
         this.needSystem = needSystem
         this.needCovers = needCovers
         this.photoSizes = photoSizes
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosGetAlbumsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAlbumIds(albumIds: Array<Long>): PhotosGetAlbumsMethod {
-        this.albumIds = albumIds
-        return this
-    }
-
-    fun setOffset(offset: Long): PhotosGetAlbumsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): PhotosGetAlbumsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setNeedSystem(needSystem: Boolean): PhotosGetAlbumsMethod {
-        this.needSystem = needSystem
-        return this
-    }
-
-    fun setNeedCovers(needCovers: Boolean): PhotosGetAlbumsMethod {
-        this.needCovers = needCovers
-        return this
-    }
-
-    fun setPhotoSizes(photoSizes: Boolean): PhotosGetAlbumsMethod {
-        this.photoSizes = photoSizes
-        return this
     }
 }

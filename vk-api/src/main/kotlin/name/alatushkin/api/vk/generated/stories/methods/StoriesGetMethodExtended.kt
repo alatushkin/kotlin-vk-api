@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property ownerId Owner ID.
  */
 class StoriesGetMethodExtended(
-        ownerId: Long? = null
+    ownerId: Long? = null
 ) : VkMethod<GetExtendedResponse>(
     "stories.get",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetExtendedResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ownerId: Long? by props
 
     init {
         this.ownerId = ownerId
-    }
-
-    fun setOwnerId(ownerId: Long): StoriesGetMethodExtended {
-        this.ownerId = ownerId
-        return this
     }
 }

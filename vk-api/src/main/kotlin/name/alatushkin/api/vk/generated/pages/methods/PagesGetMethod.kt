@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.pages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.pages.WikipageFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property needHtml '1' — to return the page as HTML,
  */
 class PagesGetMethod(
-        ownerId: Long? = null,
-        pageId: Long? = null,
-        global: Boolean? = null,
-        sitePreview: Boolean? = null,
-        title: String? = null,
-        needSource: Boolean? = null,
-        needHtml: Boolean? = null
+    ownerId: Long? = null,
+    pageId: Long? = null,
+    global: Boolean? = null,
+    sitePreview: Boolean? = null,
+    title: String? = null,
+    needSource: Boolean? = null,
+    needHtml: Boolean? = null
 ) : VkMethod<WikipageFull>(
     "pages.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<WikipageFull>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -51,40 +50,5 @@ class PagesGetMethod(
         this.title = title
         this.needSource = needSource
         this.needHtml = needHtml
-    }
-
-    fun setOwnerId(ownerId: Long): PagesGetMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPageId(pageId: Long): PagesGetMethod {
-        this.pageId = pageId
-        return this
-    }
-
-    fun setGlobal(global: Boolean): PagesGetMethod {
-        this.global = global
-        return this
-    }
-
-    fun setSitePreview(sitePreview: Boolean): PagesGetMethod {
-        this.sitePreview = sitePreview
-        return this
-    }
-
-    fun setTitle(title: String): PagesGetMethod {
-        this.title = title
-        return this
-    }
-
-    fun setNeedSource(needSource: Boolean): PagesGetMethod {
-        this.needSource = needSource
-        return this
-    }
-
-    fun setNeedHtml(needHtml: Boolean): PagesGetMethod {
-        this.needHtml = needHtml
-        return this
     }
 }

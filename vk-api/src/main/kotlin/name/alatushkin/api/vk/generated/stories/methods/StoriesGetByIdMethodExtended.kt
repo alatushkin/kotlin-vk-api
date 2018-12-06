@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.GetByIdExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property fields Additional fields to return
  */
 class StoriesGetByIdMethodExtended(
-        stories: Array<String>? = null,
-        fields: Array<String>? = null
+    stories: Array<String>? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetByIdExtendedResponse>(
     "stories.getById",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetByIdExtendedResponse>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var stories: Array<String>? by props
@@ -31,15 +30,5 @@ class StoriesGetByIdMethodExtended(
     init {
         this.stories = stories
         this.fields = fields
-    }
-
-    fun setStories(stories: Array<String>): StoriesGetByIdMethodExtended {
-        this.stories = stories
-        return this
-    }
-
-    fun setFields(fields: Array<String>): StoriesGetByIdMethodExtended {
-        this.fields = fields
-        return this
     }
 }

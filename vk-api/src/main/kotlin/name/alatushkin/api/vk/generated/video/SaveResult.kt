@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.video
 
-
 open class SaveResult(
     val uploadUrl: String? = null,
     val videoId: Long? = null,

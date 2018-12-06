@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.PhotoUpload
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -16,21 +15,16 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property peerId Destination ID. "For user: 'User ID', e.g. '12345'. For chat: '2000000000' + 'Chat ID', e.g. '2000000001'. For community: '- Community ID', e.g. '-12345'. "
  */
 class PhotosGetMessagesUploadServerMethod(
-        peerId: Long? = null
+    peerId: Long? = null
 ) : VkMethod<PhotoUpload>(
     "photos.getMessagesUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<PhotoUpload>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var peerId: Long? by props
 
     init {
         this.peerId = peerId
-    }
-
-    fun setPeerId(peerId: Long): PhotosGetMessagesUploadServerMethod {
-        this.peerId = peerId
-        return this
     }
 }

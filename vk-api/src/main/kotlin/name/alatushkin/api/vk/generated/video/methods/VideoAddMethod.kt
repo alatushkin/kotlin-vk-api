@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ownerId ID of the user or community that owns the video. Use a negative value to designate a community ID.
  */
 class VideoAddMethod(
-        targetId: Long? = null,
-        videoId: Long,
-        ownerId: Long
+    targetId: Long? = null,
+    videoId: Long,
+    ownerId: Long
 ) : VkMethod<Boolean>(
     "video.add",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var targetId: Long? by props
@@ -34,20 +33,5 @@ class VideoAddMethod(
         this.targetId = targetId
         this.videoId = videoId
         this.ownerId = ownerId
-    }
-
-    fun setTargetId(targetId: Long): VideoAddMethod {
-        this.targetId = targetId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoAddMethod {
-        this.videoId = videoId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): VideoAddMethod {
-        this.ownerId = ownerId
-        return this
     }
 }

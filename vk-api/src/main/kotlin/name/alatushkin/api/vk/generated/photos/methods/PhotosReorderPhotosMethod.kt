@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property after ID of the photo after which the photo in question shall be placed.
  */
 class PhotosReorderPhotosMethod(
-        ownerId: Long? = null,
-        photoId: Long,
-        before: Long? = null,
-        after: Long? = null
+    ownerId: Long? = null,
+    photoId: Long,
+    before: Long? = null,
+    after: Long? = null
 ) : VkMethod<Boolean>(
     "photos.reorderPhotos",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -38,25 +37,5 @@ class PhotosReorderPhotosMethod(
         this.photoId = photoId
         this.before = before
         this.after = after
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosReorderPhotosMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosReorderPhotosMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setBefore(before: Long): PhotosReorderPhotosMethod {
-        this.before = before
-        return this
-    }
-
-    fun setAfter(after: Long): PhotosReorderPhotosMethod {
-        this.after = after
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,17 +20,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property guid Unique identifier to avoid repeated comments.
  */
 class BoardCreateCommentMethod(
-        groupId: Long,
-        topicId: Long,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        fromGroup: Boolean? = null,
-        stickerId: Long? = null,
-        guid: String? = null
+    groupId: Long,
+    topicId: Long,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    fromGroup: Boolean? = null,
+    stickerId: Long? = null,
+    guid: String? = null
 ) : VkMethod<Long>(
     "board.createComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -50,40 +49,5 @@ class BoardCreateCommentMethod(
         this.fromGroup = fromGroup
         this.stickerId = stickerId
         this.guid = guid
-    }
-
-    fun setGroupId(groupId: Long): BoardCreateCommentMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicId(topicId: Long): BoardCreateCommentMethod {
-        this.topicId = topicId
-        return this
-    }
-
-    fun setMessage(message: String): BoardCreateCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): BoardCreateCommentMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setFromGroup(fromGroup: Boolean): BoardCreateCommentMethod {
-        this.fromGroup = fromGroup
-        return this
-    }
-
-    fun setStickerId(stickerId: Long): BoardCreateCommentMethod {
-        this.stickerId = stickerId
-        return this
-    }
-
-    fun setGuid(guid: String): BoardCreateCommentMethod {
-        this.guid = guid
-        return this
     }
 }

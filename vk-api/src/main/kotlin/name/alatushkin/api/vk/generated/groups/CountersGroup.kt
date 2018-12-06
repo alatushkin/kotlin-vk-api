@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 open class CountersGroup(
     val photos: Long? = null,
     val albums: Long? = null,

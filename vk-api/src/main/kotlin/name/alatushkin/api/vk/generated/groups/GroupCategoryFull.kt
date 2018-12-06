@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.groups
 
-
 open class GroupCategoryFull(
     val id: Long,
     val name: String,

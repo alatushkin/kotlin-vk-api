@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.Campaign
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property campaignIds Filter of advertising campaigns to show. Serialized JSON array with campaign IDs. Only campaigns that exist in 'campaign_ids' and belong to the specified advertising account will be shown. If the parameter is null, all campaigns will be shown.
  */
 class AdsGetCampaignsMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        includeDeleted: Boolean? = null,
-        campaignIds: String? = null
+    accountId: Long,
+    clientId: Long? = null,
+    includeDeleted: Boolean? = null,
+    campaignIds: String? = null
 ) : VkMethod<Array<Campaign>>(
     "ads.getCampaigns",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Campaign>>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -39,25 +38,5 @@ class AdsGetCampaignsMethod(
         this.clientId = clientId
         this.includeDeleted = includeDeleted
         this.campaignIds = campaignIds
-    }
-
-    fun setAccountId(accountId: Long): AdsGetCampaignsMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsGetCampaignsMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setIncludeDeleted(includeDeleted: Boolean): AdsGetCampaignsMethod {
-        this.includeDeleted = includeDeleted
-        return this
-    }
-
-    fun setCampaignIds(campaignIds: String): AdsGetCampaignsMethod {
-        this.campaignIds = campaignIds
-        return this
     }
 }

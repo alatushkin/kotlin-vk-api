@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.orders.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.orders.Amount
+import name.alatushkin.api.vk.successReference
 
 /**
  * [https://vk.com/dev/orders.getAmount]
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.generated.orders.Amount
  * @property votes 
  */
 class OrdersGetAmountMethod(
-        userId: Long,
-        votes: Array<String>
+    userId: Long,
+    votes: Array<String>
 ) : VkMethod<Amount>(
     "orders.getAmount",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Amount>>() {}
+    successReference()
 ) {
 
     var userId: Long by props
@@ -30,15 +29,5 @@ class OrdersGetAmountMethod(
     init {
         this.userId = userId
         this.votes = votes
-    }
-
-    fun setUserId(userId: Long): OrdersGetAmountMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setVotes(votes: Array<String>): OrdersGetAmountMethod {
-        this.votes = votes
-        return this
     }
 }

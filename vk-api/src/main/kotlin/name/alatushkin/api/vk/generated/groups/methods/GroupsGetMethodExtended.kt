@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.GroupFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,15 +20,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of communities to return.
  */
 class GroupsGetMethodExtended(
-        userId: Long? = null,
-        filter: Array<String>? = null,
-        fields: Array<String>? = null,
-        offset: Long? = null,
-        count: Long? = null
+    userId: Long? = null,
+    filter: Array<String>? = null,
+    fields: Array<String>? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<GroupFull>>(
     "groups.get",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<VkList<GroupFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long? by props
@@ -44,30 +43,5 @@ class GroupsGetMethodExtended(
         this.fields = fields
         this.offset = offset
         this.count = count
-    }
-
-    fun setUserId(userId: Long): GroupsGetMethodExtended {
-        this.userId = userId
-        return this
-    }
-
-    fun setFilter(filter: Array<String>): GroupsGetMethodExtended {
-        this.filter = filter
-        return this
-    }
-
-    fun setFields(fields: Array<String>): GroupsGetMethodExtended {
-        this.fields = fields
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsGetMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetMethodExtended {
-        this.count = count
-        return this
     }
 }

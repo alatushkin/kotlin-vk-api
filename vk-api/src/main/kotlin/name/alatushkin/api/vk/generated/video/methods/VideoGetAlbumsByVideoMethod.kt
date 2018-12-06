@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.video.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 
 /**
  * [https://vk.com/dev/video.getAlbumsByVideo]
@@ -16,13 +15,13 @@ import name.alatushkin.api.vk.api.VkSuccess
  * @property videoId 
  */
 class VideoGetAlbumsByVideoMethod(
-        targetId: Long? = null,
-        ownerId: Long,
-        videoId: Long
+    targetId: Long? = null,
+    ownerId: Long,
+    videoId: Long
 ) : VkMethod<Array<Long>>(
     "video.getAlbumsByVideo",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Long>>>() {}
+    successReference()
 ) {
 
     var targetId: Long? by props
@@ -33,20 +32,5 @@ class VideoGetAlbumsByVideoMethod(
         this.targetId = targetId
         this.ownerId = ownerId
         this.videoId = videoId
-    }
-
-    fun setTargetId(targetId: Long): VideoGetAlbumsByVideoMethod {
-        this.targetId = targetId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): VideoGetAlbumsByVideoMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setVideoId(videoId: Long): VideoGetAlbumsByVideoMethod {
-        this.videoId = videoId
-        return this
     }
 }

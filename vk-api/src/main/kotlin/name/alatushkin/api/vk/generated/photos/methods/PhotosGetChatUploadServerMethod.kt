@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.UploadServer
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property cropWidth Width (in pixels) of the photo after cropping.
  */
 class PhotosGetChatUploadServerMethod(
-        chatId: Long,
-        cropX: Long? = null,
-        cropY: Long? = null,
-        cropWidth: Long? = null
+    chatId: Long,
+    cropX: Long? = null,
+    cropY: Long? = null,
+    cropWidth: Long? = null
 ) : VkMethod<UploadServer>(
     "photos.getChatUploadServer",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<UploadServer>>() {}
+    successReference()
 ), UserMethod {
 
     var chatId: Long by props
@@ -39,25 +38,5 @@ class PhotosGetChatUploadServerMethod(
         this.cropX = cropX
         this.cropY = cropY
         this.cropWidth = cropWidth
-    }
-
-    fun setChatId(chatId: Long): PhotosGetChatUploadServerMethod {
-        this.chatId = chatId
-        return this
-    }
-
-    fun setCropX(cropX: Long): PhotosGetChatUploadServerMethod {
-        this.cropX = cropX
-        return this
-    }
-
-    fun setCropY(cropY: Long): PhotosGetChatUploadServerMethod {
-        this.cropY = cropY
-        return this
-    }
-
-    fun setCropWidth(cropWidth: Long): PhotosGetChatUploadServerMethod {
-        this.cropWidth = cropWidth
-        return this
     }
 }

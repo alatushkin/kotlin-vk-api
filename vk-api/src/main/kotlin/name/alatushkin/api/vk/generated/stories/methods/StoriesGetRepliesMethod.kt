@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.stories.Story
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property fields Additional fields to return
  */
 class StoriesGetRepliesMethod(
-        ownerId: Long,
-        storyId: Long,
-        accessKey: String? = null,
-        fields: Array<String>? = null
+    ownerId: Long,
+    storyId: Long,
+    accessKey: String? = null,
+    fields: Array<String>? = null
 ) : VkMethod<VkList<Array<Story>>>(
     "stories.getReplies",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Array<Story>>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ownerId: Long by props
@@ -40,25 +39,5 @@ class StoriesGetRepliesMethod(
         this.storyId = storyId
         this.accessKey = accessKey
         this.fields = fields
-    }
-
-    fun setOwnerId(ownerId: Long): StoriesGetRepliesMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setStoryId(storyId: Long): StoriesGetRepliesMethod {
-        this.storyId = storyId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): StoriesGetRepliesMethod {
-        this.accessKey = accessKey
-        return this
-    }
-
-    fun setFields(fields: Array<String>): StoriesGetRepliesMethod {
-        this.fields = fields
-        return this
     }
 }

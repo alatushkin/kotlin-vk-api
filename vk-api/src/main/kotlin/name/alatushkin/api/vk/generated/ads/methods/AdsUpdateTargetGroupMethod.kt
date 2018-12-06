@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,16 +19,16 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property lifetime 'Only for the groups that get audience from sites with user accounting code.', Time in days when users added to a retarget group will be automatically excluded from it. '0' – automatic exclusion is off.
  */
 class AdsUpdateTargetGroupMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        targetGroupId: Long,
-        name: String,
-        domain: String? = null,
-        lifetime: Long? = null
+    accountId: Long,
+    clientId: Long? = null,
+    targetGroupId: Long,
+    name: String,
+    domain: String? = null,
+    lifetime: Long? = null
 ) : VkMethod<Boolean>(
     "ads.updateTargetGroup",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -46,35 +45,5 @@ class AdsUpdateTargetGroupMethod(
         this.name = name
         this.domain = domain
         this.lifetime = lifetime
-    }
-
-    fun setAccountId(accountId: Long): AdsUpdateTargetGroupMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsUpdateTargetGroupMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setTargetGroupId(targetGroupId: Long): AdsUpdateTargetGroupMethod {
-        this.targetGroupId = targetGroupId
-        return this
-    }
-
-    fun setName(name: String): AdsUpdateTargetGroupMethod {
-        this.name = name
-        return this
-    }
-
-    fun setDomain(domain: String): AdsUpdateTargetGroupMethod {
-        this.domain = domain
-        return this
-    }
-
-    fun setLifetime(lifetime: Long): AdsUpdateTargetGroupMethod {
-        this.lifetime = lifetime
-        return this
     }
 }

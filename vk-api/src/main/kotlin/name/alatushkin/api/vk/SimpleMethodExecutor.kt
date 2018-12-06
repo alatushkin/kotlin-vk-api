@@ -14,8 +14,8 @@ data class SimpleMethodExecutor(override val httpClient: HttpClient) : MethodExe
     override suspend operator fun <T> invoke(method: VkMethod<T>): VkResponse<T> {
         val params = method.toJsonObject()
         val httpRequest = HttpMethod.POST(
-                url = methodUrl(method),
-                body = RequestBody.FormUrlEncoded(params)
+            url = methodUrl(method),
+            body = RequestBody.FormUrlEncoded(params)
         )
         val response = httpClient(httpRequest)
         return deserializeResponse(response, method)
@@ -26,12 +26,13 @@ data class SimpleMethodExecutor(override val httpClient: HttpClient) : MethodExe
         method: VkMethod<T>
     ): VkResponse<T> {
         val node = VK_OBJECT_MAPPER.readTree(response.data)
-        return if (node.has("error")) {
-            VkFail(node["error"].traverse(VK_OBJECT_MAPPER).readValueAs(VkSingleError::class.java))
-        } else if (node.has("execute_errors")) {
-            VkFail(node["execute_errors"].traverse(VK_OBJECT_MAPPER).readValueAs(VkMultiError::class.java))
-        } else {
-            node.traverse(VK_OBJECT_MAPPER).readValueAs(method.responseType)
+        return when {
+            node.has("error") ->
+                VkFail(node["error"].traverse(VK_OBJECT_MAPPER).readValueAs(VkSingleError::class.java))
+            node.has("execute_errors") ->
+                VkFail(node["execute_errors"].traverse(VK_OBJECT_MAPPER).readValueAs(VkMultiError::class.java))
+            else ->
+                VK_OBJECT_MAPPER.readValue(node.traverse(VK_OBJECT_MAPPER), method.responseType)
         }
     }
 

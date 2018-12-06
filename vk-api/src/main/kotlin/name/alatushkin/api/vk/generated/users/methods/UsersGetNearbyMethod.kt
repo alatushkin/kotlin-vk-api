@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.users.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.NameCase
 import name.alatushkin.api.vk.generated.users.GetNearbyRadius
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -25,17 +24,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property nameCase Case for declension of user name and surname: , nom –nominative (default) , gen – genitive , dat – dative , acc – accusative , ins – instrumental , abl – prepositional
  */
 class UsersGetNearbyMethod(
-        latitude: Double,
-        longitude: Double,
-        accuracy: Long? = null,
-        timeout: Long? = null,
-        radius: GetNearbyRadius? = null,
-        fields: Array<String>? = null,
-        nameCase: NameCase? = null
+    latitude: Double,
+    longitude: Double,
+    accuracy: Long? = null,
+    timeout: Long? = null,
+    radius: GetNearbyRadius? = null,
+    fields: Array<String>? = null,
+    nameCase: NameCase? = null
 ) : VkMethod<VkList<UserFull>>(
     "users.getNearby",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var latitude: Double by props
@@ -54,40 +53,5 @@ class UsersGetNearbyMethod(
         this.radius = radius
         this.fields = fields
         this.nameCase = nameCase
-    }
-
-    fun setLatitude(latitude: Double): UsersGetNearbyMethod {
-        this.latitude = latitude
-        return this
-    }
-
-    fun setLongitude(longitude: Double): UsersGetNearbyMethod {
-        this.longitude = longitude
-        return this
-    }
-
-    fun setAccuracy(accuracy: Long): UsersGetNearbyMethod {
-        this.accuracy = accuracy
-        return this
-    }
-
-    fun setTimeout(timeout: Long): UsersGetNearbyMethod {
-        this.timeout = timeout
-        return this
-    }
-
-    fun setRadius(radius: GetNearbyRadius): UsersGetNearbyMethod {
-        this.radius = radius
-        return this
-    }
-
-    fun setFields(fields: Array<String>): UsersGetNearbyMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setNameCase(nameCase: NameCase): UsersGetNearbyMethod {
-        this.nameCase = nameCase
-        return this
     }
 }

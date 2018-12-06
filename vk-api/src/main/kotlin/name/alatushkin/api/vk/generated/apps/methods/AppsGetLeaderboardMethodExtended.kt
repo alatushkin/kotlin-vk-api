@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.apps.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.apps.GetLeaderboardExtendedResponse
 import name.alatushkin.api.vk.generated.apps.GetLeaderboardType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property global Rating type. Possible values: *'1' — global rating among all players,, *'0' — rating among user friends.
  */
 class AppsGetLeaderboardMethodExtended(
-        type: GetLeaderboardType,
-        global: Boolean? = null
+    type: GetLeaderboardType,
+    global: Boolean? = null
 ) : VkMethod<GetLeaderboardExtendedResponse>(
     "apps.getLeaderboard",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<GetLeaderboardExtendedResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var type: GetLeaderboardType by props
@@ -32,15 +31,5 @@ class AppsGetLeaderboardMethodExtended(
     init {
         this.type = type
         this.global = global
-    }
-
-    fun setType(type: GetLeaderboardType): AppsGetLeaderboardMethodExtended {
-        this.type = type
-        return this
-    }
-
-    fun setGlobal(global: Boolean): AppsGetLeaderboardMethodExtended {
-        this.global = global
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property accessKey for private photos
  */
 class PhotosCopyMethod(
-        ownerId: Long,
-        photoId: Long,
-        accessKey: String? = null
+    ownerId: Long,
+    photoId: Long,
+    accessKey: String? = null
 ) : VkMethod<Long>(
     "photos.copy",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -34,20 +33,5 @@ class PhotosCopyMethod(
         this.ownerId = ownerId
         this.photoId = photoId
         this.accessKey = accessKey
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosCopyMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosCopyMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): PhotosCopyMethod {
-        this.accessKey = accessKey
-        return this
     }
 }

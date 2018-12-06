@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.SearchExtendedResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property fields 
  */
 class WallSearchMethodExtended(
-        ownerId: Long? = null,
-        domain: String? = null,
-        query: String? = null,
-        ownersOnly: Boolean? = null,
-        count: Long? = null,
-        offset: Long? = null,
-        fields: Array<String>? = null
+    ownerId: Long? = null,
+    domain: String? = null,
+    query: String? = null,
+    ownersOnly: Boolean? = null,
+    count: Long? = null,
+    offset: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<SearchExtendedResponse>(
     "wall.search",
     mutableMapOf("extended" to "1"),
-    object : TypeReference<VkSuccess<SearchExtendedResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var ownerId: Long? by props
@@ -51,40 +50,5 @@ class WallSearchMethodExtended(
         this.count = count
         this.offset = offset
         this.fields = fields
-    }
-
-    fun setOwnerId(ownerId: Long): WallSearchMethodExtended {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setDomain(domain: String): WallSearchMethodExtended {
-        this.domain = domain
-        return this
-    }
-
-    fun setQuery(query: String): WallSearchMethodExtended {
-        this.query = query
-        return this
-    }
-
-    fun setOwnersOnly(ownersOnly: Boolean): WallSearchMethodExtended {
-        this.ownersOnly = ownersOnly
-        return this
-    }
-
-    fun setCount(count: Long): WallSearchMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): WallSearchMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setFields(fields: Array<String>): WallSearchMethodExtended {
-        this.fields = fields
-        return this
     }
 }

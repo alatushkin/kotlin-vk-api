@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property attachments List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
  */
 class WallEditCommentMethod(
-        ownerId: Long? = null,
-        commentId: Long,
-        message: String? = null,
-        attachments: Array<String>? = null
+    ownerId: Long? = null,
+    commentId: Long,
+    message: String? = null,
+    attachments: Array<String>? = null
 ) : VkMethod<Boolean>(
     "wall.editComment",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -38,25 +37,5 @@ class WallEditCommentMethod(
         this.commentId = commentId
         this.message = message
         this.attachments = attachments
-    }
-
-    fun setOwnerId(ownerId: Long): WallEditCommentMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setCommentId(commentId: Long): WallEditCommentMethod {
-        this.commentId = commentId
-        return this
-    }
-
-    fun setMessage(message: String): WallEditCommentMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): WallEditCommentMethod {
-        this.attachments = attachments
-        return this
     }
 }

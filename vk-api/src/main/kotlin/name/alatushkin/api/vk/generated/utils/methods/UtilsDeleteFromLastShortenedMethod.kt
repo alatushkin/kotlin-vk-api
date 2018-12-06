@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.utils.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property key Link key (characters after vk.cc/).
  */
 class UtilsDeleteFromLastShortenedMethod(
-        key: String
+    key: String
 ) : VkMethod<Boolean>(
     "utils.deleteFromLastShortened",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var key: String by props
 
     init {
         this.key = key
-    }
-
-    fun setKey(key: String): UtilsDeleteFromLastShortenedMethod {
-        this.key = key
-        return this
     }
 }

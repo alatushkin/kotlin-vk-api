@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.video
 
-
 open class CatBlock(
     val items: Array<CatElement>,
     val next: String,

@@ -38,12 +38,14 @@ private fun vkObjectMapper(): ObjectMapper {
 
 val EMPTY_OBJECT_MAPPER = ObjectMapper()
 
-inline fun <reified T> constructType(): JavaType =
+inline fun <reified T> constructJavaType(): JavaType =
     EMPTY_OBJECT_MAPPER.typeFactory.constructType(object : TypeReference<T>() {})
 
-fun <T> constructRefType(cls: JavaType): TypeReference<VkSuccess<T>> {
+inline fun <reified T> successReference(): TypeReference<VkSuccess<T>> = object : TypeReference<VkSuccess<T>>() {}
+
+fun <T> toSuccessReference(type: JavaType): TypeReference<VkSuccess<T>> {
     val typeFactory = EMPTY_OBJECT_MAPPER.typeFactory
-    val resultType = typeFactory.constructParametricType(VkSuccess::class.java, cls)
+    val resultType = typeFactory.constructParametricType(VkSuccess::class.java, type)
     return object : TypeReference<VkSuccess<T>>() {
         override fun getType() = resultType
     }

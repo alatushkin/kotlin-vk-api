@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.ConversationWithMessage
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with group access token)
  */
 class MessagesGetConversationsByIdMethod(
-        peerIds: Array<Long>,
-        extended: Boolean? = null,
-        fields: Array<String>? = null,
-        groupId: Long? = null
+    peerIds: Array<Long>,
+    extended: Boolean? = null,
+    fields: Array<String>? = null,
+    groupId: Long? = null
 ) : VkMethod<VkList<ConversationWithMessage>>(
     "messages.getConversationsById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<ConversationWithMessage>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var peerIds: Array<Long> by props
@@ -40,25 +39,5 @@ class MessagesGetConversationsByIdMethod(
         this.extended = extended
         this.fields = fields
         this.groupId = groupId
-    }
-
-    fun setPeerIds(peerIds: Array<Long>): MessagesGetConversationsByIdMethod {
-        this.peerIds = peerIds
-        return this
-    }
-
-    fun setExtended(extended: Boolean): MessagesGetConversationsByIdMethod {
-        this.extended = extended
-        return this
-    }
-
-    fun setFields(fields: Array<String>): MessagesGetConversationsByIdMethod {
-        this.fields = fields
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesGetConversationsByIdMethod {
-        this.groupId = groupId
-        return this
     }
 }

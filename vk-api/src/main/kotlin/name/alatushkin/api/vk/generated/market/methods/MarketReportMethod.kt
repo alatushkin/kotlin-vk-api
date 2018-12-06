@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Reason
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property reason Complaint reason. Possible values: *'0' — spam,, *'1' — child porn,, *'2' — extremism,, *'3' — violence,, *'4' — drugs propaganda,, *'5' — adult materials,, *'6' — insult.
  */
 class MarketReportMethod(
-        ownerId: Long,
-        itemId: Long,
-        reason: Reason
+    ownerId: Long,
+    itemId: Long,
+    reason: Reason
 ) : VkMethod<Boolean>(
     "market.report",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -35,20 +34,5 @@ class MarketReportMethod(
         this.ownerId = ownerId
         this.itemId = itemId
         this.reason = reason
-    }
-
-    fun setOwnerId(ownerId: Long): MarketReportMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): MarketReportMethod {
-        this.itemId = itemId
-        return this
-    }
-
-    fun setReason(reason: Reason): MarketReportMethod {
-        this.reason = reason
-        return this
     }
 }

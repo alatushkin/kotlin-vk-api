@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.apps.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,5 +16,5 @@ import name.alatushkin.api.vk.tokens.UserMethod
 class AppsDeleteAppRequestsMethod : VkMethod<Boolean>(
     "apps.deleteAppRequests",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod

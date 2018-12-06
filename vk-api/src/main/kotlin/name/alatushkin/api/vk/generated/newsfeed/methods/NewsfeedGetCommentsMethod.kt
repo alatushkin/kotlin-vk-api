@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.newsfeed.GetCommentsResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,17 +21,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fields Additional fields of [vk.com/dev/fields|profiles] and [vk.com/dev/fields_groups|communities] to return.
  */
 class NewsfeedGetCommentsMethod(
-        count: Long? = null,
-        filters: Array<String>? = null,
-        reposts: String? = null,
-        startTime: Long? = null,
-        endTime: Long? = null,
-        startFrom: String? = null,
-        fields: Array<String>? = null
+    count: Long? = null,
+    filters: Array<String>? = null,
+    reposts: String? = null,
+    startTime: Long? = null,
+    endTime: Long? = null,
+    startFrom: String? = null,
+    fields: Array<String>? = null
 ) : VkMethod<GetCommentsResponse>(
     "newsfeed.getComments",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetCommentsResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var count: Long? by props
@@ -51,40 +50,5 @@ class NewsfeedGetCommentsMethod(
         this.endTime = endTime
         this.startFrom = startFrom
         this.fields = fields
-    }
-
-    fun setCount(count: Long): NewsfeedGetCommentsMethod {
-        this.count = count
-        return this
-    }
-
-    fun setFilters(filters: Array<String>): NewsfeedGetCommentsMethod {
-        this.filters = filters
-        return this
-    }
-
-    fun setReposts(reposts: String): NewsfeedGetCommentsMethod {
-        this.reposts = reposts
-        return this
-    }
-
-    fun setStartTime(startTime: Long): NewsfeedGetCommentsMethod {
-        this.startTime = startTime
-        return this
-    }
-
-    fun setEndTime(endTime: Long): NewsfeedGetCommentsMethod {
-        this.endTime = endTime
-        return this
-    }
-
-    fun setStartFrom(startFrom: String): NewsfeedGetCommentsMethod {
-        this.startFrom = startFrom
-        return this
-    }
-
-    fun setFields(fields: Array<String>): NewsfeedGetCommentsMethod {
-        this.fields = fields
-        return this
     }
 }

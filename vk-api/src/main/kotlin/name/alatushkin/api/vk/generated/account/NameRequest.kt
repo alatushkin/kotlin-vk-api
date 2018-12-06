@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.account
 
-
 open class NameRequest(
     val id: Long? = null,
     val status: NameRequestStatus? = null,

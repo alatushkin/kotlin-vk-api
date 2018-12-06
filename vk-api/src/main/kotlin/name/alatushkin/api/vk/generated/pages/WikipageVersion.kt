@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.pages
 
-
 open class WikipageVersion(
     val id: Long? = null,
     val length: Long? = null,

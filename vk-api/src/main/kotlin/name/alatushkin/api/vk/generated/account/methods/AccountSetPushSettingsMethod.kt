@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.account.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property value New value for the key in a [vk.com/dev/push_settings|special format].
  */
 class AccountSetPushSettingsMethod(
-        deviceId: String,
-        settings: String? = null,
-        key: String? = null,
-        value: Array<String>? = null
+    deviceId: String,
+    settings: String? = null,
+    key: String? = null,
+    value: Array<String>? = null
 ) : VkMethod<Boolean>(
     "account.setPushSettings",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var deviceId: String by props
@@ -38,25 +37,5 @@ class AccountSetPushSettingsMethod(
         this.settings = settings
         this.key = key
         this.value = value
-    }
-
-    fun setDeviceId(deviceId: String): AccountSetPushSettingsMethod {
-        this.deviceId = deviceId
-        return this
-    }
-
-    fun setSettings(settings: String): AccountSetPushSettingsMethod {
-        this.settings = settings
-        return this
-    }
-
-    fun setKey(key: String): AccountSetPushSettingsMethod {
-        this.key = key
-        return this
-    }
-
-    fun setValue(value: Array<String>): AccountSetPushSettingsMethod {
-        this.value = value
-        return this
     }
 }

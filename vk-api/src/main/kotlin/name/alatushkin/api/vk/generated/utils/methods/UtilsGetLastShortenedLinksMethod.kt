@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.utils.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.LastShortenedLink
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property offset Offset needed to return a specific subset of links.
  */
 class UtilsGetLastShortenedLinksMethod(
-        count: Long? = null,
-        offset: Long? = null
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<VkList<LastShortenedLink>>(
     "utils.getLastShortenedLinks",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<LastShortenedLink>>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var count: Long? by props
@@ -32,15 +31,5 @@ class UtilsGetLastShortenedLinksMethod(
     init {
         this.count = count
         this.offset = offset
-    }
-
-    fun setCount(count: Long): UtilsGetLastShortenedLinksMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): UtilsGetLastShortenedLinksMethod {
-        this.offset = offset
-        return this
     }
 }

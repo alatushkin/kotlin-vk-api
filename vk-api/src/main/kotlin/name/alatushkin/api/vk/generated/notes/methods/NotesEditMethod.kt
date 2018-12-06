@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.notes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property privacyComment 
  */
 class NotesEditMethod(
-        noteId: Long,
-        title: String,
-        text: String,
-        privacyView: Array<String>? = null,
-        privacyComment: Array<String>? = null
+    noteId: Long,
+    title: String,
+    text: String,
+    privacyView: Array<String>? = null,
+    privacyComment: Array<String>? = null
 ) : VkMethod<Boolean>(
     "notes.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var noteId: Long by props
@@ -42,30 +41,5 @@ class NotesEditMethod(
         this.text = text
         this.privacyView = privacyView
         this.privacyComment = privacyComment
-    }
-
-    fun setNoteId(noteId: Long): NotesEditMethod {
-        this.noteId = noteId
-        return this
-    }
-
-    fun setTitle(title: String): NotesEditMethod {
-        this.title = title
-        return this
-    }
-
-    fun setText(text: String): NotesEditMethod {
-        this.text = text
-        return this
-    }
-
-    fun setPrivacyView(privacyView: Array<String>): NotesEditMethod {
-        this.privacyView = privacyView
-        return this
-    }
-
-    fun setPrivacyComment(privacyComment: Array<String>): NotesEditMethod {
-        this.privacyComment = privacyComment
-        return this
     }
 }

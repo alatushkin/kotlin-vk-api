@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.stories.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property storyId Story ID.
  */
 class StoriesDeleteMethod(
-        ownerId: Long,
-        storyId: Long
+    ownerId: Long,
+    storyId: Long
 ) : VkMethod<Boolean>(
     "stories.delete",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var ownerId: Long by props
@@ -30,15 +29,5 @@ class StoriesDeleteMethod(
     init {
         this.ownerId = ownerId
         this.storyId = storyId
-    }
-
-    fun setOwnerId(ownerId: Long): StoriesDeleteMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setStoryId(storyId: Long): StoriesDeleteMethod {
-        this.storyId = storyId
-        return this
     }
 }

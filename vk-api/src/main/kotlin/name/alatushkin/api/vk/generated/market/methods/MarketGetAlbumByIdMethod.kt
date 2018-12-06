@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketAlbum
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property albumIds collections identifiers to obtain data from
  */
 class MarketGetAlbumByIdMethod(
-        ownerId: Long,
-        albumIds: Array<Long>
+    ownerId: Long,
+    albumIds: Array<Long>
 ) : VkMethod<VkList<MarketAlbum>>(
     "market.getAlbumById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<MarketAlbum>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -32,15 +31,5 @@ class MarketGetAlbumByIdMethod(
     init {
         this.ownerId = ownerId
         this.albumIds = albumIds
-    }
-
-    fun setOwnerId(ownerId: Long): MarketGetAlbumByIdMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setAlbumIds(albumIds: Array<Long>): MarketGetAlbumByIdMethod {
-        this.albumIds = albumIds
-        return this
     }
 }

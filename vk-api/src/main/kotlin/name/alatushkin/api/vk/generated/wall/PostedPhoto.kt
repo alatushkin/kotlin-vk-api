@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.wall
 
-
 open class PostedPhoto(
     val id: Long? = null,
     val ownerId: Long? = null,

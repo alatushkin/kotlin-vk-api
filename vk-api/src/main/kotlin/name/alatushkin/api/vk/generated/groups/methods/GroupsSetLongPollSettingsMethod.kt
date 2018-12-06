@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -51,47 +50,47 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property userUnblock User removed from community blacklist
  */
 class GroupsSetLongPollSettingsMethod(
-        groupId: Long,
-        enabled: Boolean? = null,
-        messageNew: Boolean? = null,
-        messageReply: Boolean? = null,
-        messageEdit: Boolean? = null,
-        messageAllow: Boolean? = null,
-        messageDeny: Boolean? = null,
-        photoNew: Boolean? = null,
-        audioNew: Boolean? = null,
-        videoNew: Boolean? = null,
-        wallReplyNew: Boolean? = null,
-        wallReplyEdit: Boolean? = null,
-        wallReplyDelete: Boolean? = null,
-        wallReplyRestore: Boolean? = null,
-        wallPostNew: Boolean? = null,
-        wallRepost: Boolean? = null,
-        boardPostNew: Boolean? = null,
-        boardPostEdit: Boolean? = null,
-        boardPostRestore: Boolean? = null,
-        boardPostDelete: Boolean? = null,
-        photoCommentNew: Boolean? = null,
-        photoCommentEdit: Boolean? = null,
-        photoCommentDelete: Boolean? = null,
-        photoCommentRestore: Boolean? = null,
-        videoCommentNew: Boolean? = null,
-        videoCommentEdit: Boolean? = null,
-        videoCommentDelete: Boolean? = null,
-        videoCommentRestore: Boolean? = null,
-        marketCommentNew: Boolean? = null,
-        marketCommentEdit: Boolean? = null,
-        marketCommentDelete: Boolean? = null,
-        marketCommentRestore: Boolean? = null,
-        pollVoteNew: Boolean? = null,
-        groupJoin: Boolean? = null,
-        groupLeave: Boolean? = null,
-        userBlock: Boolean? = null,
-        userUnblock: Boolean? = null
+    groupId: Long,
+    enabled: Boolean? = null,
+    messageNew: Boolean? = null,
+    messageReply: Boolean? = null,
+    messageEdit: Boolean? = null,
+    messageAllow: Boolean? = null,
+    messageDeny: Boolean? = null,
+    photoNew: Boolean? = null,
+    audioNew: Boolean? = null,
+    videoNew: Boolean? = null,
+    wallReplyNew: Boolean? = null,
+    wallReplyEdit: Boolean? = null,
+    wallReplyDelete: Boolean? = null,
+    wallReplyRestore: Boolean? = null,
+    wallPostNew: Boolean? = null,
+    wallRepost: Boolean? = null,
+    boardPostNew: Boolean? = null,
+    boardPostEdit: Boolean? = null,
+    boardPostRestore: Boolean? = null,
+    boardPostDelete: Boolean? = null,
+    photoCommentNew: Boolean? = null,
+    photoCommentEdit: Boolean? = null,
+    photoCommentDelete: Boolean? = null,
+    photoCommentRestore: Boolean? = null,
+    videoCommentNew: Boolean? = null,
+    videoCommentEdit: Boolean? = null,
+    videoCommentDelete: Boolean? = null,
+    videoCommentRestore: Boolean? = null,
+    marketCommentNew: Boolean? = null,
+    marketCommentEdit: Boolean? = null,
+    marketCommentDelete: Boolean? = null,
+    marketCommentRestore: Boolean? = null,
+    pollVoteNew: Boolean? = null,
+    groupJoin: Boolean? = null,
+    groupLeave: Boolean? = null,
+    userBlock: Boolean? = null,
+    userUnblock: Boolean? = null
 ) : VkMethod<Boolean>(
     "groups.setLongPollSettings",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var groupId: Long by props
@@ -170,190 +169,5 @@ class GroupsSetLongPollSettingsMethod(
         this.groupLeave = groupLeave
         this.userBlock = userBlock
         this.userUnblock = userUnblock
-    }
-
-    fun setGroupId(groupId: Long): GroupsSetLongPollSettingsMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setEnabled(enabled: Boolean): GroupsSetLongPollSettingsMethod {
-        this.enabled = enabled
-        return this
-    }
-
-    fun setMessageNew(messageNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.messageNew = messageNew
-        return this
-    }
-
-    fun setMessageReply(messageReply: Boolean): GroupsSetLongPollSettingsMethod {
-        this.messageReply = messageReply
-        return this
-    }
-
-    fun setMessageEdit(messageEdit: Boolean): GroupsSetLongPollSettingsMethod {
-        this.messageEdit = messageEdit
-        return this
-    }
-
-    fun setMessageAllow(messageAllow: Boolean): GroupsSetLongPollSettingsMethod {
-        this.messageAllow = messageAllow
-        return this
-    }
-
-    fun setMessageDeny(messageDeny: Boolean): GroupsSetLongPollSettingsMethod {
-        this.messageDeny = messageDeny
-        return this
-    }
-
-    fun setPhotoNew(photoNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.photoNew = photoNew
-        return this
-    }
-
-    fun setAudioNew(audioNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.audioNew = audioNew
-        return this
-    }
-
-    fun setVideoNew(videoNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.videoNew = videoNew
-        return this
-    }
-
-    fun setWallReplyNew(wallReplyNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.wallReplyNew = wallReplyNew
-        return this
-    }
-
-    fun setWallReplyEdit(wallReplyEdit: Boolean): GroupsSetLongPollSettingsMethod {
-        this.wallReplyEdit = wallReplyEdit
-        return this
-    }
-
-    fun setWallReplyDelete(wallReplyDelete: Boolean): GroupsSetLongPollSettingsMethod {
-        this.wallReplyDelete = wallReplyDelete
-        return this
-    }
-
-    fun setWallReplyRestore(wallReplyRestore: Boolean): GroupsSetLongPollSettingsMethod {
-        this.wallReplyRestore = wallReplyRestore
-        return this
-    }
-
-    fun setWallPostNew(wallPostNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.wallPostNew = wallPostNew
-        return this
-    }
-
-    fun setWallRepost(wallRepost: Boolean): GroupsSetLongPollSettingsMethod {
-        this.wallRepost = wallRepost
-        return this
-    }
-
-    fun setBoardPostNew(boardPostNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.boardPostNew = boardPostNew
-        return this
-    }
-
-    fun setBoardPostEdit(boardPostEdit: Boolean): GroupsSetLongPollSettingsMethod {
-        this.boardPostEdit = boardPostEdit
-        return this
-    }
-
-    fun setBoardPostRestore(boardPostRestore: Boolean): GroupsSetLongPollSettingsMethod {
-        this.boardPostRestore = boardPostRestore
-        return this
-    }
-
-    fun setBoardPostDelete(boardPostDelete: Boolean): GroupsSetLongPollSettingsMethod {
-        this.boardPostDelete = boardPostDelete
-        return this
-    }
-
-    fun setPhotoCommentNew(photoCommentNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.photoCommentNew = photoCommentNew
-        return this
-    }
-
-    fun setPhotoCommentEdit(photoCommentEdit: Boolean): GroupsSetLongPollSettingsMethod {
-        this.photoCommentEdit = photoCommentEdit
-        return this
-    }
-
-    fun setPhotoCommentDelete(photoCommentDelete: Boolean): GroupsSetLongPollSettingsMethod {
-        this.photoCommentDelete = photoCommentDelete
-        return this
-    }
-
-    fun setPhotoCommentRestore(photoCommentRestore: Boolean): GroupsSetLongPollSettingsMethod {
-        this.photoCommentRestore = photoCommentRestore
-        return this
-    }
-
-    fun setVideoCommentNew(videoCommentNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.videoCommentNew = videoCommentNew
-        return this
-    }
-
-    fun setVideoCommentEdit(videoCommentEdit: Boolean): GroupsSetLongPollSettingsMethod {
-        this.videoCommentEdit = videoCommentEdit
-        return this
-    }
-
-    fun setVideoCommentDelete(videoCommentDelete: Boolean): GroupsSetLongPollSettingsMethod {
-        this.videoCommentDelete = videoCommentDelete
-        return this
-    }
-
-    fun setVideoCommentRestore(videoCommentRestore: Boolean): GroupsSetLongPollSettingsMethod {
-        this.videoCommentRestore = videoCommentRestore
-        return this
-    }
-
-    fun setMarketCommentNew(marketCommentNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.marketCommentNew = marketCommentNew
-        return this
-    }
-
-    fun setMarketCommentEdit(marketCommentEdit: Boolean): GroupsSetLongPollSettingsMethod {
-        this.marketCommentEdit = marketCommentEdit
-        return this
-    }
-
-    fun setMarketCommentDelete(marketCommentDelete: Boolean): GroupsSetLongPollSettingsMethod {
-        this.marketCommentDelete = marketCommentDelete
-        return this
-    }
-
-    fun setMarketCommentRestore(marketCommentRestore: Boolean): GroupsSetLongPollSettingsMethod {
-        this.marketCommentRestore = marketCommentRestore
-        return this
-    }
-
-    fun setPollVoteNew(pollVoteNew: Boolean): GroupsSetLongPollSettingsMethod {
-        this.pollVoteNew = pollVoteNew
-        return this
-    }
-
-    fun setGroupJoin(groupJoin: Boolean): GroupsSetLongPollSettingsMethod {
-        this.groupJoin = groupJoin
-        return this
-    }
-
-    fun setGroupLeave(groupLeave: Boolean): GroupsSetLongPollSettingsMethod {
-        this.groupLeave = groupLeave
-        return this
-    }
-
-    fun setUserBlock(userBlock: Boolean): GroupsSetLongPollSettingsMethod {
-        this.userBlock = userBlock
-        return this
-    }
-
-    fun setUserUnblock(userUnblock: Boolean): GroupsSetLongPollSettingsMethod {
-        this.userUnblock = userUnblock
-        return this
     }
 }

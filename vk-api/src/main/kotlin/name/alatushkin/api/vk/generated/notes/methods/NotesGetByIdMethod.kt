@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.notes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.notes.Note
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,12 +16,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property ownerId Note owner ID.
  */
 class NotesGetByIdMethod(
-        noteId: Long,
-        ownerId: Long? = null
+    noteId: Long,
+    ownerId: Long? = null
 ) : VkMethod<Note>(
     "notes.getById",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Note>>() {}
+    successReference()
 ), UserMethod {
 
     var noteId: Long by props
@@ -31,15 +30,5 @@ class NotesGetByIdMethod(
     init {
         this.noteId = noteId
         this.ownerId = ownerId
-    }
-
-    fun setNoteId(noteId: Long): NotesGetByIdMethod {
-        this.noteId = noteId
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): NotesGetByIdMethod {
-        this.ownerId = ownerId
-        return this
     }
 }

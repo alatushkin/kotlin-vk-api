@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.database.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -15,21 +14,16 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property countryId Country ID.
  */
 class DatabaseGetSchoolClassesMethod(
-        countryId: Long? = null
+    countryId: Long? = null
 ) : VkMethod<Array<Array<String>>>(
     "database.getSchoolClasses",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Array<String>>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var countryId: Long? by props
 
     init {
         this.countryId = countryId
-    }
-
-    fun setCountryId(countryId: Long): DatabaseGetSchoolClassesMethod {
-        this.countryId = countryId
-        return this
     }
 }

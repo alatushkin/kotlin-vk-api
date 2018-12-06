@@ -2,13 +2,12 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.groups.Group
 import name.alatushkin.api.vk.generated.groups.SearchSort
 import name.alatushkin.api.vk.generated.groups.SearchType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -27,19 +26,19 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of communities to return. "Note that you can not receive more than first thousand of results, regardless of 'count' and 'offset' values."
  */
 class GroupsSearchMethod(
-        q: String,
-        type: SearchType? = null,
-        countryId: Long? = null,
-        cityId: Long? = null,
-        future: Boolean? = null,
-        market: Boolean? = null,
-        sort: SearchSort? = null,
-        offset: Long? = null,
-        count: Long? = null
+    q: String,
+    type: SearchType? = null,
+    countryId: Long? = null,
+    cityId: Long? = null,
+    future: Boolean? = null,
+    market: Boolean? = null,
+    sort: SearchSort? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<Group>>(
     "groups.search",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Group>>>() {}
+    successReference()
 ), UserMethod {
 
     var q: String by props
@@ -62,50 +61,5 @@ class GroupsSearchMethod(
         this.sort = sort
         this.offset = offset
         this.count = count
-    }
-
-    fun setQ(q: String): GroupsSearchMethod {
-        this.q = q
-        return this
-    }
-
-    fun setType(type: SearchType): GroupsSearchMethod {
-        this.type = type
-        return this
-    }
-
-    fun setCountryId(countryId: Long): GroupsSearchMethod {
-        this.countryId = countryId
-        return this
-    }
-
-    fun setCityId(cityId: Long): GroupsSearchMethod {
-        this.cityId = cityId
-        return this
-    }
-
-    fun setFuture(future: Boolean): GroupsSearchMethod {
-        this.future = future
-        return this
-    }
-
-    fun setMarket(market: Boolean): GroupsSearchMethod {
-        this.market = market
-        return this
-    }
-
-    fun setSort(sort: SearchSort): GroupsSearchMethod {
-        this.sort = sort
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsSearchMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsSearchMethod {
-        this.count = count
-        return this
     }
 }

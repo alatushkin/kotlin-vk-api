@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.utils.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.utils.Interval
 import name.alatushkin.api.vk.generated.utils.LinkStats
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserGroupServiceMethod
  * @property intervalsCount Number of intervals to return.
  */
 class UtilsGetLinkStatsMethod(
-        key: String,
-        accessKey: String? = null,
-        interval: Interval? = null,
-        intervalsCount: Long? = null
+    key: String,
+    accessKey: String? = null,
+    interval: Interval? = null,
+    intervalsCount: Long? = null
 ) : VkMethod<LinkStats>(
     "utils.getLinkStats",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<LinkStats>>() {}
+    successReference()
 ), UserGroupServiceMethod {
 
     var key: String by props
@@ -40,25 +39,5 @@ class UtilsGetLinkStatsMethod(
         this.accessKey = accessKey
         this.interval = interval
         this.intervalsCount = intervalsCount
-    }
-
-    fun setKey(key: String): UtilsGetLinkStatsMethod {
-        this.key = key
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): UtilsGetLinkStatsMethod {
-        this.accessKey = accessKey
-        return this
-    }
-
-    fun setInterval(interval: Interval): UtilsGetLinkStatsMethod {
-        this.interval = interval
-        return this
-    }
-
-    fun setIntervalsCount(intervalsCount: Long): UtilsGetLinkStatsMethod {
-        this.intervalsCount = intervalsCount
-        return this
     }
 }

@@ -106,7 +106,6 @@ data class EnumType(
             |            ${typeId.typeName}.values().find { it.jsonValue == value }!!
             |    }
             |}
-            |
         """.trimMargin())
         return result.toString()
     }

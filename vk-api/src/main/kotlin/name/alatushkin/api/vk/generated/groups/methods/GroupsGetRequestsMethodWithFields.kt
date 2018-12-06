@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.groups.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.UserFull
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property fields Profile fields to return.
  */
 class GroupsGetRequestsMethodWithFields(
-        groupId: Long,
-        offset: Long? = null,
-        count: Long? = null,
-        fields: Array<String>? = null
+    groupId: Long,
+    offset: Long? = null,
+    count: Long? = null,
+    fields: Array<String>? = null
 ) : VkMethod<VkList<UserFull>>(
     "groups.getRequests",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserFull>>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -40,25 +39,5 @@ class GroupsGetRequestsMethodWithFields(
         this.offset = offset
         this.count = count
         this.fields = fields
-    }
-
-    fun setGroupId(groupId: Long): GroupsGetRequestsMethodWithFields {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setOffset(offset: Long): GroupsGetRequestsMethodWithFields {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): GroupsGetRequestsMethodWithFields {
-        this.count = count
-        return this
-    }
-
-    fun setFields(fields: Array<String>): GroupsGetRequestsMethodWithFields {
-        this.fields = fields
-        return this
     }
 }

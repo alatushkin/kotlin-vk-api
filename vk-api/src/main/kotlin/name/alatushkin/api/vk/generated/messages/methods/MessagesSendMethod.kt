@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.messages.Keyboard
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -30,25 +29,25 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property keyboard keyboard to message
  */
 class MessagesSendMethod(
-        userId: Long? = null,
-        randomId: Long? = null,
-        peerId: Long? = null,
-        domain: String? = null,
-        chatId: Long? = null,
-        userIds: Array<Long>? = null,
-        message: String? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        attachment: Array<String>? = null,
-        forwardMessages: String? = null,
-        stickerId: Long? = null,
-        notification: Boolean? = null,
-        groupId: Long? = null,
-        keyboard: Keyboard? = null
+    userId: Long? = null,
+    randomId: Long? = null,
+    peerId: Long? = null,
+    domain: String? = null,
+    chatId: Long? = null,
+    userIds: Array<Long>? = null,
+    message: String? = null,
+    lat: Double? = null,
+    long: Double? = null,
+    attachment: Array<String>? = null,
+    forwardMessages: String? = null,
+    stickerId: Long? = null,
+    notification: Boolean? = null,
+    groupId: Long? = null,
+    keyboard: Keyboard? = null
 ) : VkMethod<Long>(
     "messages.send",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var userId: Long? by props
@@ -83,80 +82,5 @@ class MessagesSendMethod(
         this.notification = notification
         this.groupId = groupId
         this.keyboard = keyboard
-    }
-
-    fun setUserId(userId: Long): MessagesSendMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setRandomId(randomId: Long): MessagesSendMethod {
-        this.randomId = randomId
-        return this
-    }
-
-    fun setPeerId(peerId: Long): MessagesSendMethod {
-        this.peerId = peerId
-        return this
-    }
-
-    fun setDomain(domain: String): MessagesSendMethod {
-        this.domain = domain
-        return this
-    }
-
-    fun setChatId(chatId: Long): MessagesSendMethod {
-        this.chatId = chatId
-        return this
-    }
-
-    fun setUserIds(userIds: Array<Long>): MessagesSendMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setMessage(message: String): MessagesSendMethod {
-        this.message = message
-        return this
-    }
-
-    fun setLat(lat: Double): MessagesSendMethod {
-        this.lat = lat
-        return this
-    }
-
-    fun setLong(long: Double): MessagesSendMethod {
-        this.long = long
-        return this
-    }
-
-    fun setAttachment(attachment: Array<String>): MessagesSendMethod {
-        this.attachment = attachment
-        return this
-    }
-
-    fun setForwardMessages(forwardMessages: String): MessagesSendMethod {
-        this.forwardMessages = forwardMessages
-        return this
-    }
-
-    fun setStickerId(stickerId: Long): MessagesSendMethod {
-        this.stickerId = stickerId
-        return this
-    }
-
-    fun setNotification(notification: Boolean): MessagesSendMethod {
-        this.notification = notification
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesSendMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setKeyboard(keyboard: Keyboard): MessagesSendMethod {
-        this.keyboard = keyboard
-        return this
     }
 }

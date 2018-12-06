@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.pages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId ID of the group in the context of which this markup is interpreted.
  */
 class PagesParseWikiMethod(
-        text: String,
-        groupId: Long? = null
+    text: String,
+    groupId: Long? = null
 ) : VkMethod<String>(
     "pages.parseWiki",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<String>>() {}
+    successReference()
 ), UserMethod {
 
     var text: String by props
@@ -30,15 +29,5 @@ class PagesParseWikiMethod(
     init {
         this.text = text
         this.groupId = groupId
-    }
-
-    fun setText(text: String): PagesParseWikiMethod {
-        this.text = text
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PagesParseWikiMethod {
-        this.groupId = groupId
-        return this
     }
 }

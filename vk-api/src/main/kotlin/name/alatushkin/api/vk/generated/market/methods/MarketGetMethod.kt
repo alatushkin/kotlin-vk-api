@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.market.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.market.MarketItem
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property offset Offset needed to return a specific subset of results.
  */
 class MarketGetMethod(
-        ownerId: Long,
-        count: Long? = null,
-        offset: Long? = null
+    ownerId: Long,
+    count: Long? = null,
+    offset: Long? = null
 ) : VkMethod<VkList<MarketItem>>(
     "market.get",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<MarketItem>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -36,20 +35,5 @@ class MarketGetMethod(
         this.ownerId = ownerId
         this.count = count
         this.offset = offset
-    }
-
-    fun setOwnerId(ownerId: Long): MarketGetMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setCount(count: Long): MarketGetMethod {
-        this.count = count
-        return this
-    }
-
-    fun setOffset(offset: Long): MarketGetMethod {
-        this.offset = offset
-        return this
     }
 }

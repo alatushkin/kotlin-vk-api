@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.CheckLinkLinkType
 import name.alatushkin.api.vk.generated.ads.LinkStatus
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property campaignId Campaign ID
  */
 class AdsCheckLinkMethod(
-        accountId: Long,
-        linkType: CheckLinkLinkType,
-        linkUrl: String,
-        campaignId: Long? = null
+    accountId: Long,
+    linkType: CheckLinkLinkType,
+    linkUrl: String,
+    campaignId: Long? = null
 ) : VkMethod<LinkStatus>(
     "ads.checkLink",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<LinkStatus>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -40,25 +39,5 @@ class AdsCheckLinkMethod(
         this.linkType = linkType
         this.linkUrl = linkUrl
         this.campaignId = campaignId
-    }
-
-    fun setAccountId(accountId: Long): AdsCheckLinkMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setLinkType(linkType: CheckLinkLinkType): AdsCheckLinkMethod {
-        this.linkType = linkType
-        return this
-    }
-
-    fun setLinkUrl(linkUrl: String): AdsCheckLinkMethod {
-        this.linkUrl = linkUrl
-        return this
-    }
-
-    fun setCampaignId(campaignId: Long): AdsCheckLinkMethod {
-        this.campaignId = campaignId
-        return this
     }
 }

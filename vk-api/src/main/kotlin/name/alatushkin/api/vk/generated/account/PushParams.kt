@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.account
 
-
 open class PushParams(
     val msg: Array<PushParamsMode>? = null,
     val chat: Array<PushParamsMode>? = null,

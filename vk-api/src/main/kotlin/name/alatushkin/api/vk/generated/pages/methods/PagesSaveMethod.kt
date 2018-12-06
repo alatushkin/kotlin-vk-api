@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.pages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property title Wiki page title.
  */
 class PagesSaveMethod(
-        text: String? = null,
-        pageId: Long? = null,
-        groupId: Long? = null,
-        userId: Long? = null,
-        title: String? = null
+    text: String? = null,
+    pageId: Long? = null,
+    groupId: Long? = null,
+    userId: Long? = null,
+    title: String? = null
 ) : VkMethod<Long>(
     "pages.save",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var text: String? by props
@@ -42,30 +41,5 @@ class PagesSaveMethod(
         this.groupId = groupId
         this.userId = userId
         this.title = title
-    }
-
-    fun setText(text: String): PagesSaveMethod {
-        this.text = text
-        return this
-    }
-
-    fun setPageId(pageId: Long): PagesSaveMethod {
-        this.pageId = pageId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PagesSaveMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setUserId(userId: Long): PagesSaveMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setTitle(title: String): PagesSaveMethod {
-        this.title = title
-        return this
     }
 }

@@ -2,12 +2,11 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkDate
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.RequestsXtrMessage
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -22,15 +21,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property suggested '1' — to return a list of suggested friends, '0' — to return friend requests (default)
  */
 class FriendsGetRequestsMethodExtended(
-        offset: Long? = null,
-        count: Long? = null,
-        out: Boolean? = null,
-        sort: VkDate? = null,
-        suggested: Boolean? = null
+    offset: Long? = null,
+    count: Long? = null,
+    out: Boolean? = null,
+    sort: VkDate? = null,
+    suggested: Boolean? = null
 ) : VkMethod<VkList<RequestsXtrMessage>>(
     "friends.getRequests",
     mutableMapOf("extended" to "1", "need_mutual" to "1"),
-    object : TypeReference<VkSuccess<VkList<RequestsXtrMessage>>>() {}
+    successReference()
 ), UserMethod {
 
     var offset: Long? by props
@@ -45,30 +44,5 @@ class FriendsGetRequestsMethodExtended(
         this.out = out
         this.sort = sort
         this.suggested = suggested
-    }
-
-    fun setOffset(offset: Long): FriendsGetRequestsMethodExtended {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): FriendsGetRequestsMethodExtended {
-        this.count = count
-        return this
-    }
-
-    fun setOut(out: Boolean): FriendsGetRequestsMethodExtended {
-        this.out = out
-        return this
-    }
-
-    fun setSort(sort: VkDate): FriendsGetRequestsMethodExtended {
-        this.sort = sort
-        return this
-    }
-
-    fun setSuggested(suggested: Boolean): FriendsGetRequestsMethodExtended {
-        this.suggested = suggested
-        return this
     }
 }

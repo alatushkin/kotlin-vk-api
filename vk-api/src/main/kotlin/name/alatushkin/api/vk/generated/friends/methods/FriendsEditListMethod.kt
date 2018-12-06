@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property deleteUserIds (Applies if 'user_ids' parameter is not set.), User IDs to delete from the friend list.
  */
 class FriendsEditListMethod(
-        name: String? = null,
-        listId: Long,
-        userIds: Array<Long>? = null,
-        addUserIds: Array<Long>? = null,
-        deleteUserIds: Array<Long>? = null
+    name: String? = null,
+    listId: Long,
+    userIds: Array<Long>? = null,
+    addUserIds: Array<Long>? = null,
+    deleteUserIds: Array<Long>? = null
 ) : VkMethod<Boolean>(
     "friends.editList",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var name: String? by props
@@ -42,30 +41,5 @@ class FriendsEditListMethod(
         this.userIds = userIds
         this.addUserIds = addUserIds
         this.deleteUserIds = deleteUserIds
-    }
-
-    fun setName(name: String): FriendsEditListMethod {
-        this.name = name
-        return this
-    }
-
-    fun setListId(listId: Long): FriendsEditListMethod {
-        this.listId = listId
-        return this
-    }
-
-    fun setUserIds(userIds: Array<Long>): FriendsEditListMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setAddUserIds(addUserIds: Array<Long>): FriendsEditListMethod {
-        this.addUserIds = addUserIds
-        return this
-    }
-
-    fun setDeleteUserIds(deleteUserIds: Array<Long>): FriendsEditListMethod {
-        this.deleteUserIds = deleteUserIds
-        return this
     }
 }

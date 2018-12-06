@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property title New title of the topic.
  */
 class BoardEditTopicMethod(
-        groupId: Long,
-        topicId: Long,
-        title: String
+    groupId: Long,
+    topicId: Long,
+    title: String
 ) : VkMethod<Boolean>(
     "board.editTopic",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -34,20 +33,5 @@ class BoardEditTopicMethod(
         this.groupId = groupId
         this.topicId = topicId
         this.title = title
-    }
-
-    fun setGroupId(groupId: Long): BoardEditTopicMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTopicId(topicId: Long): BoardEditTopicMethod {
-        this.topicId = topicId
-        return this
-    }
-
-    fun setTitle(title: String): BoardEditTopicMethod {
-        this.title = title
-        return this
     }
 }

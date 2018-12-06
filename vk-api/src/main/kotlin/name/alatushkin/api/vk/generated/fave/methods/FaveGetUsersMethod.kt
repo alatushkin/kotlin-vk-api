@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.fave.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.users.UserMin
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,12 +17,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of users to return.
  */
 class FaveGetUsersMethod(
-        offset: Long? = null,
-        count: Long? = null
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<UserMin>>(
     "fave.getUsers",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<UserMin>>>() {}
+    successReference()
 ), UserMethod {
 
     var offset: Long? by props
@@ -32,15 +31,5 @@ class FaveGetUsersMethod(
     init {
         this.offset = offset
         this.count = count
-    }
-
-    fun setOffset(offset: Long): FaveGetUsersMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): FaveGetUsersMethod {
-        this.count = count
-        return this
     }
 }

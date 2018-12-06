@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.likes.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.likes.AddResponse
 import name.alatushkin.api.vk.generated.likes.AddType
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property accessKey Access key required for an object owned by a private entity.
  */
 class LikesAddMethod(
-        type: AddType,
-        ownerId: Long? = null,
-        itemId: Long,
-        accessKey: String? = null
+    type: AddType,
+    ownerId: Long? = null,
+    itemId: Long,
+    accessKey: String? = null
 ) : VkMethod<AddResponse>(
     "likes.add",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AddResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var type: AddType by props
@@ -40,25 +39,5 @@ class LikesAddMethod(
         this.ownerId = ownerId
         this.itemId = itemId
         this.accessKey = accessKey
-    }
-
-    fun setType(type: AddType): LikesAddMethod {
-        this.type = type
-        return this
-    }
-
-    fun setOwnerId(ownerId: Long): LikesAddMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setItemId(itemId: Long): LikesAddMethod {
-        this.itemId = itemId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): LikesAddMethod {
-        this.accessKey = accessKey
-        return this
     }
 }

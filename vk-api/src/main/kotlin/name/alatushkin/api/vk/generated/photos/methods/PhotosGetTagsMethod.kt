@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.photos.PhotoTag
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property accessKey 
  */
 class PhotosGetTagsMethod(
-        ownerId: Long? = null,
-        photoId: Long,
-        accessKey: String? = null
+    ownerId: Long? = null,
+    photoId: Long,
+    accessKey: String? = null
 ) : VkMethod<Array<PhotoTag>>(
     "photos.getTags",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<PhotoTag>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -35,20 +34,5 @@ class PhotosGetTagsMethod(
         this.ownerId = ownerId
         this.photoId = photoId
         this.accessKey = accessKey
-    }
-
-    fun setOwnerId(ownerId: Long): PhotosGetTagsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setPhotoId(photoId: Long): PhotosGetTagsMethod {
-        this.photoId = photoId
-        return this
-    }
-
-    fun setAccessKey(accessKey: String): PhotosGetTagsMethod {
-        this.accessKey = accessKey
-        return this
     }
 }

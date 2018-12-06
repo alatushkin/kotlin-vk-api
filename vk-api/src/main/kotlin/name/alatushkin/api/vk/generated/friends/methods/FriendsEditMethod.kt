@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property listIds IDs of the friend lists to which to add the user.
  */
 class FriendsEditMethod(
-        userId: Long,
-        listIds: Array<Long>? = null
+    userId: Long,
+    listIds: Array<Long>? = null
 ) : VkMethod<Boolean>(
     "friends.edit",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -30,15 +29,5 @@ class FriendsEditMethod(
     init {
         this.userId = userId
         this.listIds = listIds
-    }
-
-    fun setUserId(userId: Long): FriendsEditMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setListIds(listIds: Array<Long>): FriendsEditMethod {
-        this.listIds = listIds
-        return this
     }
 }

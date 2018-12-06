@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.board.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -19,15 +18,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property attachments List of media objects attached to the topic, in the following format: "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media object: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media owner. '<media_id>' — Media ID. Example: "photo100172_166443618,photo66748_265827614", , "NOTE: If you try to attach more than one reference, an error will be thrown.",
  */
 class BoardAddTopicMethod(
-        groupId: Long,
-        title: String,
-        text: String? = null,
-        fromGroup: Boolean? = null,
-        attachments: Array<String>? = null
+    groupId: Long,
+    title: String,
+    text: String? = null,
+    fromGroup: Boolean? = null,
+    attachments: Array<String>? = null
 ) : VkMethod<Long>(
     "board.addTopic",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Long>>() {}
+    successReference()
 ), UserMethod {
 
     var groupId: Long by props
@@ -42,30 +41,5 @@ class BoardAddTopicMethod(
         this.text = text
         this.fromGroup = fromGroup
         this.attachments = attachments
-    }
-
-    fun setGroupId(groupId: Long): BoardAddTopicMethod {
-        this.groupId = groupId
-        return this
-    }
-
-    fun setTitle(title: String): BoardAddTopicMethod {
-        this.title = title
-        return this
-    }
-
-    fun setText(text: String): BoardAddTopicMethod {
-        this.text = text
-        return this
-    }
-
-    fun setFromGroup(fromGroup: Boolean): BoardAddTopicMethod {
-        this.fromGroup = fromGroup
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): BoardAddTopicMethod {
-        this.attachments = attachments
-        return this
     }
 }

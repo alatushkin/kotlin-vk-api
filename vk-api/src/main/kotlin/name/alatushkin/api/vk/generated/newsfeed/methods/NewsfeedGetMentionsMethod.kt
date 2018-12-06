@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.WallpostToId
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -21,15 +20,15 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property count Number of posts to return.
  */
 class NewsfeedGetMentionsMethod(
-        ownerId: Long? = null,
-        startTime: Long? = null,
-        endTime: Long? = null,
-        offset: Long? = null,
-        count: Long? = null
+    ownerId: Long? = null,
+    startTime: Long? = null,
+    endTime: Long? = null,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<WallpostToId>>(
     "newsfeed.getMentions",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<WallpostToId>>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long? by props
@@ -44,30 +43,5 @@ class NewsfeedGetMentionsMethod(
         this.endTime = endTime
         this.offset = offset
         this.count = count
-    }
-
-    fun setOwnerId(ownerId: Long): NewsfeedGetMentionsMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setStartTime(startTime: Long): NewsfeedGetMentionsMethod {
-        this.startTime = startTime
-        return this
-    }
-
-    fun setEndTime(endTime: Long): NewsfeedGetMentionsMethod {
-        this.endTime = endTime
-        return this
-    }
-
-    fun setOffset(offset: Long): NewsfeedGetMentionsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): NewsfeedGetMentionsMethod {
-        this.count = count
-        return this
     }
 }

@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.newsfeed.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupIds 
  */
 class NewsfeedDeleteBanMethod(
-        userIds: Array<Long>? = null,
-        groupIds: Array<Long>? = null
+    userIds: Array<Long>? = null,
+    groupIds: Array<Long>? = null
 ) : VkMethod<Boolean>(
     "newsfeed.deleteBan",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var userIds: Array<Long>? by props
@@ -30,15 +29,5 @@ class NewsfeedDeleteBanMethod(
     init {
         this.userIds = userIds
         this.groupIds = groupIds
-    }
-
-    fun setUserIds(userIds: Array<Long>): NewsfeedDeleteBanMethod {
-        this.userIds = userIds
-        return this
-    }
-
-    fun setGroupIds(groupIds: Array<Long>): NewsfeedDeleteBanMethod {
-        this.groupIds = groupIds
-        return this
     }
 }

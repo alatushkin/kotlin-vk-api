@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.users
 
-
 open class Career(
     val groupId: Long? = null,
     val company: String? = null,

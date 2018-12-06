@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.secure.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.secure.Transaction
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.ServiceMethod
 
 /**
@@ -18,5 +17,5 @@ import name.alatushkin.api.vk.tokens.ServiceMethod
 class SecureGetTransactionsHistoryMethod : VkMethod<Array<Transaction>>(
     "secure.getTransactionsHistory",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Array<Transaction>>>() {}
+    successReference()
 ), ServiceMethod

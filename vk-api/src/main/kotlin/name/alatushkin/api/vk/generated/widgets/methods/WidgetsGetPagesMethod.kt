@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.widgets.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.widgets.GetPagesResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -19,14 +18,14 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count 
  */
 class WidgetsGetPagesMethod(
-        widgetApiId: Long? = null,
-        order: String? = null,
-        period: String? = null,
-        count: Long? = null
+    widgetApiId: Long? = null,
+    order: String? = null,
+    period: String? = null,
+    count: Long? = null
 ) : VkMethod<GetPagesResponse>(
     "widgets.getPages",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<GetPagesResponse>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var widgetApiId: Long? by props
@@ -39,25 +38,5 @@ class WidgetsGetPagesMethod(
         this.order = order
         this.period = period
         this.count = count
-    }
-
-    fun setWidgetApiId(widgetApiId: Long): WidgetsGetPagesMethod {
-        this.widgetApiId = widgetApiId
-        return this
-    }
-
-    fun setOrder(order: String): WidgetsGetPagesMethod {
-        this.order = order
-        return this
-    }
-
-    fun setPeriod(period: String): WidgetsGetPagesMethod {
-        this.period = period
-        return this
-    }
-
-    fun setCount(count: Long): WidgetsGetPagesMethod {
-        this.count = count
-        return this
     }
 }

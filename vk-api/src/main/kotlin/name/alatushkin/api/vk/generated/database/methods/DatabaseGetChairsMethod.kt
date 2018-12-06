@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.database.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.common.Object
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -19,13 +18,13 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count amount of chairs to get
  */
 class DatabaseGetChairsMethod(
-        facultyId: Long,
-        offset: Long? = null,
-        count: Long? = null
+    facultyId: Long,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<Object>>(
     "database.getChairs",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<Object>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var facultyId: Long by props
@@ -36,20 +35,5 @@ class DatabaseGetChairsMethod(
         this.facultyId = facultyId
         this.offset = offset
         this.count = count
-    }
-
-    fun setFacultyId(facultyId: Long): DatabaseGetChairsMethod {
-        this.facultyId = facultyId
-        return this
-    }
-
-    fun setOffset(offset: Long): DatabaseGetChairsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): DatabaseGetChairsMethod {
-        this.count = count
-        return this
     }
 }

@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.stats
 
-
 open class Period(
     val periodFrom: String? = null,
     val periodTo: String? = null,

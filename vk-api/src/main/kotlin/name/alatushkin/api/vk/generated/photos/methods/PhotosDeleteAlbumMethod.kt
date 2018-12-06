@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.photos.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -16,12 +15,12 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property groupId ID of the community that owns the album.
  */
 class PhotosDeleteAlbumMethod(
-        albumId: Long,
-        groupId: Long? = null
+    albumId: Long,
+    groupId: Long? = null
 ) : VkMethod<Boolean>(
     "photos.deleteAlbum",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var albumId: Long by props
@@ -30,15 +29,5 @@ class PhotosDeleteAlbumMethod(
     init {
         this.albumId = albumId
         this.groupId = groupId
-    }
-
-    fun setAlbumId(albumId: Long): PhotosDeleteAlbumMethod {
-        this.albumId = albumId
-        return this
-    }
-
-    fun setGroupId(groupId: Long): PhotosDeleteAlbumMethod {
-        this.groupId = groupId
-        return this
     }
 }

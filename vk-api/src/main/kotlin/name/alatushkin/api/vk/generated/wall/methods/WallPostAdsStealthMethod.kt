@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.wall.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.wall.PostAdsStealthResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -27,22 +26,22 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property linkImage Link image url
  */
 class WallPostAdsStealthMethod(
-        ownerId: Long,
-        message: String? = null,
-        attachments: Array<String>? = null,
-        signed: Boolean? = null,
-        lat: Double? = null,
-        long: Double? = null,
-        placeId: Long? = null,
-        postId: Long? = null,
-        guid: String? = null,
-        linkButton: String? = null,
-        linkTitle: String? = null,
-        linkImage: String? = null
+    ownerId: Long,
+    message: String? = null,
+    attachments: Array<String>? = null,
+    signed: Boolean? = null,
+    lat: Double? = null,
+    long: Double? = null,
+    placeId: Long? = null,
+    postId: Long? = null,
+    guid: String? = null,
+    linkButton: String? = null,
+    linkTitle: String? = null,
+    linkImage: String? = null
 ) : VkMethod<PostAdsStealthResponse>(
     "wall.postAdsStealth",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<PostAdsStealthResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var ownerId: Long by props
@@ -71,65 +70,5 @@ class WallPostAdsStealthMethod(
         this.linkButton = linkButton
         this.linkTitle = linkTitle
         this.linkImage = linkImage
-    }
-
-    fun setOwnerId(ownerId: Long): WallPostAdsStealthMethod {
-        this.ownerId = ownerId
-        return this
-    }
-
-    fun setMessage(message: String): WallPostAdsStealthMethod {
-        this.message = message
-        return this
-    }
-
-    fun setAttachments(attachments: Array<String>): WallPostAdsStealthMethod {
-        this.attachments = attachments
-        return this
-    }
-
-    fun setSigned(signed: Boolean): WallPostAdsStealthMethod {
-        this.signed = signed
-        return this
-    }
-
-    fun setLat(lat: Double): WallPostAdsStealthMethod {
-        this.lat = lat
-        return this
-    }
-
-    fun setLong(long: Double): WallPostAdsStealthMethod {
-        this.long = long
-        return this
-    }
-
-    fun setPlaceId(placeId: Long): WallPostAdsStealthMethod {
-        this.placeId = placeId
-        return this
-    }
-
-    fun setPostId(postId: Long): WallPostAdsStealthMethod {
-        this.postId = postId
-        return this
-    }
-
-    fun setGuid(guid: String): WallPostAdsStealthMethod {
-        this.guid = guid
-        return this
-    }
-
-    fun setLinkButton(linkButton: String): WallPostAdsStealthMethod {
-        this.linkButton = linkButton
-        return this
-    }
-
-    fun setLinkTitle(linkTitle: String): WallPostAdsStealthMethod {
-        this.linkTitle = linkTitle
-        return this
-    }
-
-    fun setLinkImage(linkImage: String): WallPostAdsStealthMethod {
-        this.linkImage = linkImage
-        return this
     }
 }

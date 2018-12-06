@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -17,13 +16,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property targetGroupId Group ID.
  */
 class AdsDeleteTargetGroupMethod(
-        accountId: Long,
-        clientId: Long? = null,
-        targetGroupId: Long
+    accountId: Long,
+    clientId: Long? = null,
+    targetGroupId: Long
 ) : VkMethod<Boolean>(
     "ads.deleteTargetGroup",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Boolean>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -34,20 +33,5 @@ class AdsDeleteTargetGroupMethod(
         this.accountId = accountId
         this.clientId = clientId
         this.targetGroupId = targetGroupId
-    }
-
-    fun setAccountId(accountId: Long): AdsDeleteTargetGroupMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setClientId(clientId: Long): AdsDeleteTargetGroupMethod {
-        this.clientId = clientId
-        return this
-    }
-
-    fun setTargetGroupId(targetGroupId: Long): AdsDeleteTargetGroupMethod {
-        this.targetGroupId = targetGroupId
-        return this
     }
 }

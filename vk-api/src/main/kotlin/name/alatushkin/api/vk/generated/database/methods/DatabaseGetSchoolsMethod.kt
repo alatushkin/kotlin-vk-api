@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.database.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
 import name.alatushkin.api.vk.api.VkList
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.database.School
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserServiceMethod
 
 /**
@@ -20,14 +19,14 @@ import name.alatushkin.api.vk.tokens.UserServiceMethod
  * @property count Number of schools to return.
  */
 class DatabaseGetSchoolsMethod(
-        q: String? = null,
-        cityId: Long,
-        offset: Long? = null,
-        count: Long? = null
+    q: String? = null,
+    cityId: Long,
+    offset: Long? = null,
+    count: Long? = null
 ) : VkMethod<VkList<School>>(
     "database.getSchools",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<VkList<School>>>() {}
+    successReference()
 ), UserServiceMethod {
 
     var q: String? by props
@@ -40,25 +39,5 @@ class DatabaseGetSchoolsMethod(
         this.cityId = cityId
         this.offset = offset
         this.count = count
-    }
-
-    fun setQ(q: String): DatabaseGetSchoolsMethod {
-        this.q = q
-        return this
-    }
-
-    fun setCityId(cityId: Long): DatabaseGetSchoolsMethod {
-        this.cityId = cityId
-        return this
-    }
-
-    fun setOffset(offset: Long): DatabaseGetSchoolsMethod {
-        this.offset = offset
-        return this
-    }
-
-    fun setCount(count: Long): DatabaseGetSchoolsMethod {
-        this.count = count
-        return this
     }
 }

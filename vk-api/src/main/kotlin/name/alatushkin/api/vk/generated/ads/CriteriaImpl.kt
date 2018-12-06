@@ -1,6 +1,5 @@
 package name.alatushkin.api.vk.generated.ads
 
-
 open class CriteriaImpl(
     override val sex: CriteriaSex? = null,
     override val ageFrom: Long? = null,

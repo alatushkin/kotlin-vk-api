@@ -2,11 +2,10 @@
 
 package name.alatushkin.api.vk.generated.ads.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.ads.GetTargetingStatsAdFormat
 import name.alatushkin.api.vk.generated.ads.TargStats
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -23,17 +22,17 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property linkDomain Domain of the advertised object.
  */
 class AdsGetTargetingStatsMethod(
-        accountId: Long,
-        criteria: String? = null,
-        adId: Long? = null,
-        adFormat: GetTargetingStatsAdFormat? = null,
-        adPlatform: String? = null,
-        linkUrl: String,
-        linkDomain: String? = null
+    accountId: Long,
+    criteria: String? = null,
+    adId: Long? = null,
+    adFormat: GetTargetingStatsAdFormat? = null,
+    adPlatform: String? = null,
+    linkUrl: String,
+    linkDomain: String? = null
 ) : VkMethod<TargStats>(
     "ads.getTargetingStats",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<TargStats>>() {}
+    successReference()
 ), UserMethod {
 
     var accountId: Long by props
@@ -52,40 +51,5 @@ class AdsGetTargetingStatsMethod(
         this.adPlatform = adPlatform
         this.linkUrl = linkUrl
         this.linkDomain = linkDomain
-    }
-
-    fun setAccountId(accountId: Long): AdsGetTargetingStatsMethod {
-        this.accountId = accountId
-        return this
-    }
-
-    fun setCriteria(criteria: String): AdsGetTargetingStatsMethod {
-        this.criteria = criteria
-        return this
-    }
-
-    fun setAdId(adId: Long): AdsGetTargetingStatsMethod {
-        this.adId = adId
-        return this
-    }
-
-    fun setAdFormat(adFormat: GetTargetingStatsAdFormat): AdsGetTargetingStatsMethod {
-        this.adFormat = adFormat
-        return this
-    }
-
-    fun setAdPlatform(adPlatform: String): AdsGetTargetingStatsMethod {
-        this.adPlatform = adPlatform
-        return this
-    }
-
-    fun setLinkUrl(linkUrl: String): AdsGetTargetingStatsMethod {
-        this.linkUrl = linkUrl
-        return this
-    }
-
-    fun setLinkDomain(linkDomain: String): AdsGetTargetingStatsMethod {
-        this.linkDomain = linkDomain
-        return this
     }
 }

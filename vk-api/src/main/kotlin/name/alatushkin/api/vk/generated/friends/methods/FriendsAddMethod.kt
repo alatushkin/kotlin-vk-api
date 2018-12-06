@@ -2,10 +2,9 @@
 
 package name.alatushkin.api.vk.generated.friends.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
 import name.alatushkin.api.vk.generated.friends.responses.AddResponseResponse
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserMethod
 
 /**
@@ -18,13 +17,13 @@ import name.alatushkin.api.vk.tokens.UserMethod
  * @property follow '1' to pass an incoming request to followers list.
  */
 class FriendsAddMethod(
-        userId: Long,
-        text: String? = null,
-        follow: Boolean? = null
+    userId: Long,
+    text: String? = null,
+    follow: Boolean? = null
 ) : VkMethod<AddResponseResponse>(
     "friends.add",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<AddResponseResponse>>() {}
+    successReference()
 ), UserMethod {
 
     var userId: Long by props
@@ -35,20 +34,5 @@ class FriendsAddMethod(
         this.userId = userId
         this.text = text
         this.follow = follow
-    }
-
-    fun setUserId(userId: Long): FriendsAddMethod {
-        this.userId = userId
-        return this
-    }
-
-    fun setText(text: String): FriendsAddMethod {
-        this.text = text
-        return this
-    }
-
-    fun setFollow(follow: Boolean): FriendsAddMethod {
-        this.follow = follow
-        return this
     }
 }

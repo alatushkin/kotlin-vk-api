@@ -2,9 +2,8 @@
 
 package name.alatushkin.api.vk.generated.messages.methods
 
-import com.fasterxml.jackson.core.type.TypeReference
 import name.alatushkin.api.vk.VkMethod
-import name.alatushkin.api.vk.api.VkSuccess
+import name.alatushkin.api.vk.successReference
 import name.alatushkin.api.vk.tokens.UserGroupMethod
 
 /**
@@ -18,14 +17,14 @@ import name.alatushkin.api.vk.tokens.UserGroupMethod
  * @property groupId Group ID (for group messages with user access token)
  */
 class MessagesDeleteMethod(
-        messageIds: Array<Long>? = null,
-        spam: Boolean? = null,
-        deleteForAll: Boolean? = null,
-        groupId: Long? = null
+    messageIds: Array<Long>? = null,
+    spam: Boolean? = null,
+    deleteForAll: Boolean? = null,
+    groupId: Long? = null
 ) : VkMethod<Map<Long, Boolean>>(
     "messages.delete",
     mutableMapOf(),
-    object : TypeReference<VkSuccess<Map<Long, Boolean>>>() {}
+    successReference()
 ), UserGroupMethod {
 
     var messageIds: Array<Long>? by props
@@ -38,25 +37,5 @@ class MessagesDeleteMethod(
         this.spam = spam
         this.deleteForAll = deleteForAll
         this.groupId = groupId
-    }
-
-    fun setMessageIds(messageIds: Array<Long>): MessagesDeleteMethod {
-        this.messageIds = messageIds
-        return this
-    }
-
-    fun setSpam(spam: Boolean): MessagesDeleteMethod {
-        this.spam = spam
-        return this
-    }
-
-    fun setDeleteForAll(deleteForAll: Boolean): MessagesDeleteMethod {
-        this.deleteForAll = deleteForAll
-        return this
-    }
-
-    fun setGroupId(groupId: Long): MessagesDeleteMethod {
-        this.groupId = groupId
-        return this
     }
 }

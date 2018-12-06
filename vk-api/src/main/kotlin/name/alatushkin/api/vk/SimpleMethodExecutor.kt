@@ -4,6 +4,7 @@ import name.alatushkin.api.vk.api.VkFail
 import name.alatushkin.api.vk.api.VkMultiError
 import name.alatushkin.api.vk.api.VkResponse
 import name.alatushkin.api.vk.api.VkSingleError
+import name.alatushkin.api.vk.tokens.Token
 import name.alatushkin.httpclient.HttpClient
 import name.alatushkin.httpclient.HttpMethod
 import name.alatushkin.httpclient.RequestBody
@@ -11,13 +12,16 @@ import name.alatushkin.httpclient.Response
 
 data class SimpleMethodExecutor(override val httpClient: HttpClient) : MethodExecutor {
 
-    override suspend operator fun <T> invoke(method: VkMethod<T>): VkResponse<T> {
+    override suspend operator fun <T> invoke(method: VkMethod<T>, token: Token<*>): VkResponse<T> {
+        token.attachTo(method)
         val params = method.toJsonObject()
+
         val httpRequest = HttpMethod.POST(
             url = methodUrl(method),
             body = RequestBody.FormUrlEncoded(params)
         )
         val response = httpClient(httpRequest)
+
         return deserializeResponse(response, method)
     }
 

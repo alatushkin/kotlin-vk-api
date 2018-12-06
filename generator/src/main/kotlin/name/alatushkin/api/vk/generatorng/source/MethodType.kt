@@ -111,12 +111,12 @@ data class MethodType(
         }.joinToString(", ", prefix = "mutableMapOf(", postfix = ")")
     }
 
-    private fun renderDescription(sourceWriter: SourceWriter): String = with(sourceWriter) {
+    private fun renderDescription(sourceWriter: SourceWriter): String {
         val propertyDescriptions = arguments.joinToString("\n") { arg ->
-            " * @property ${fieldName(arg.name)} ${arg.description?.trim().orEmpty()}"
+            " * @property ${sourceWriter.fieldName(arg.name)} ${arg.description?.trim().orEmpty()}"
         }
 
-        """
+        return """
         |/**
         | * [https://vk.com/dev/$methodUrl]
         | *
